@@ -21,7 +21,7 @@
 <meta name="twitter:card" content="summary">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/combine/gh/nexmoe/nexmoe.github.io@latest/css/style.css,npm/highlight.js@9.15.8/styles/atom-one-dark.css,gh/nexmoe/nexmoe.github.io@latest/lib/mdui_043tiny/css/mdui.css,gh/nexmoe/nexmoe.github.io@latest/lib/iconfont/iconfont.css" crossorigin>
   
-  <!--<link rel="stylesheet" href="/css/style.css?v=1585315213754">-->
+  <!--<link rel="stylesheet" href="/css/style.css?v=1585316915661">-->
 
   
 <meta name="generator" content="Hexo 4.2.0"></head>
@@ -47,7 +47,7 @@
         </a>
     </div>
     <div class="nexmoe-count">
-        <div><span>Articles</span>21</div>
+        <div><span>Articles</span>20</div>
         <div><span>Tags</span>6</div>
         <div><span>Categories</span>0</div>
     </div>
@@ -130,42 +130,6 @@
   <div id="nexmoe-content">
     <div class="nexmoe-primary">
         <section class="nexmoe-posts">
-    
-    <div class="nexmoe-post">
-        <a href="/2020/03/27/hello-world/">
-            
-                <div class="nexmoe-post-cover mdui-ripple" style="padding-bottom: 66.66666666666666%;"> 
-                    <img data-src="https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/cover/5c3aec85a4343.jpg" data-sizes="auto" alt="Hello World" class="lazyload">
-                    <h1>Hello World</h1>
-                </div>
-            
-        </a>
-
-        <div class="nexmoe-post-meta">
-            <a><i class="nexmoefont icon-calendar-fill"></i>2020年03月27日</a>
-            <a><i class="nexmoefont icon-areachart"></i>73 字</a>
-            <a><i class="nexmoefont icon-time-circle-fill"></i>大概 1 分钟</a>
-        </div>
-
-        <article>
-            
-                <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-            
-        </article>
-    </div>
     
     <div class="nexmoe-post">
         <a href="/2020/03/21/SpringBoot%E5%9F%BA%E7%A1%80%E4%BA%94/">
@@ -1644,17 +1608,95 @@
         </article>
     </div>
     
+    <div class="nexmoe-post">
+        <a href="/2019/09/27/%E6%B5%85%E6%9E%90cookie-session-token/">
+            
+                <div class="nexmoe-post-cover mdui-ripple" style="padding-bottom: 66.66666666666666%;"> 
+                    <img data-src="https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/cover/5c3aec85a4343.jpg" data-sizes="auto" alt="浅析cookie，session和token" class="lazyload">
+                    <h1>浅析cookie，session和token</h1>
+                </div>
+            
+        </a>
+
+        <div class="nexmoe-post-meta">
+            <a><i class="nexmoefont icon-calendar-fill"></i>2019年09月27日</a>
+            <a><i class="nexmoefont icon-areachart"></i>2k 字</a>
+            <a><i class="nexmoefont icon-time-circle-fill"></i>大概 8 分钟</a>
+        </div>
+
+        <article>
+            
+                <h5 id="一、发展史"><a href="#一、发展史" class="headerlink" title="一、发展史"></a>一、发展史</h5><p>​            以前，Web应用基本都是文档浏览，在浏览过程中，服务器无需记录哪位用户浏览了哪些文档，所以每次请求都是新的HTTP协议（请求和响应）。</p>
+<p>​            当我们用浏览器打开一个网页，用到的是HTTP协议，它是无状态的，当前请求和上一次请求是没有任何关系的，互不关联。但是这种无状态的的好处是快速。所以就会带来一个问题就是，当几个请求的页面要有关联，比如：我在<a href="http://www.a.com/login.php里面登陆了，我在www.a.com/index.php" target="_blank" rel="noopener">www.a.com/login.php里面登陆了，我在www.a.com/index.php</a> 也希望是登陆状态，但是，这是2个不同的页面，也就是2个不同的HTTP请求，这2个HTTP请求是无状态的，也就是无关联的，所以无法单纯的在index.php中读取到它在login.php中已经登陆了！</p>
+<p>​            因为不可能这2个页面都去登陆一次或者2个页面都去查询数据库，如果有登陆状态，就判断是登陆的了。这种查询数据库的方案虽然可行，但是每次都要去查询数据库，会造成数据库的压力。 </p>
+<p>​            为了解决以上问题，一种新的客户端存储数据方式出现了：cookie。cookie是把少量的信息存储在用户自己的电脑上，它在一个域名下是一个全局的，只要设置它的存储路径在域名<a href="http://www.a.com下" target="_blank" rel="noopener">www.a.com下</a> ，那么当用户用浏览器访问时，php就可以从这个域名的任意页面读取cookie中的信息。所以就很好的解决了我在<a href="http://www.a.com/login.php页面登陆了，我也可以在www.a.com/index.php获取到这个登陆信息了。同时又不用反复去查询数据库。" target="_blank" rel="noopener">www.a.com/login.php页面登陆了，我也可以在www.a.com/index.php获取到这个登陆信息了。同时又不用反复去查询数据库。</a></p>
+<p>​            虽然这种方案很不错，也很快速方便，但是由于cookie 是存在用户端，而且它本身存储的尺寸大小也有限，最关键是用户可以是可见的，并可以随意的修改，很不安全。那如何又要安全，又可以方便的全局读取信息呢？于是，这个时候，一种新的存储会话机制：session 诞生了。</p>
+<h5 id="二、cookie"><a href="#二、cookie" class="headerlink" title="二、cookie"></a>二、cookie</h5><p>​            cookie是浏览器里面能永久存储的数据，仅仅是浏览器实现的一种数据存储功能。</p>
+<p>​             cookie由服务器生成，发送给浏览器，浏览器把cookie以k-v形式保存到某个目录下的文本文件内，下一次请求同一网站时会把该cookie发送给服务器。由于cookie是存在客户端上的，所以浏览器加入了一些限制确保cookie不会被恶意使用，同时不会占据太多磁盘空间，所以每个域的cookie数量是有限的。</p>
+<h5 id="三、session"><a href="#三、session" class="headerlink" title="三、session"></a>三、session</h5><p>​            Session 就是在一次会话中解决2次HTTP的请求的关联，让它们产生联系，让2两个页面都能读取到找个这个全局的session信息。session信息存在于服务器端，所以也就很好的解决了安全问题。</p>
+<p>​            Session的中文翻译是“会话”，当用户打开某个web应用时，便与web服务器产生一次session。服务器使用session把用户的信息临时保存在了服务器上，用户离开网站后session会被销毁。这种用户信息存储方式相对cookie来说更安全，可是session有一个缺陷：如果web服务器做了负载均衡，那么下一个操作请求到了另一台服务器的时候session会丢失。</p>
+<p><strong>session请求过程：</strong></p>
+<ul>
+<li><p>客户端向服务器请求，发送用户名和密码</p>
+</li>
+<li><p>服务器生成sessionId，绑定用户数据存储在数据库</p>
+</li>
+<li><p>服务器返回sessionId给客户端</p>
+</li>
+<li><p>客户端存储sessionId，以后的请求都带上这个sessionId</p>
+</li>
+<li><p>服务器如果收到这个sessionId，那么就去数据库查找用户数据，如果找到了说明验证通过</p>
+</li>
+<li><p>服务器把验证结果返回客户端</p>
+</li>
+</ul>
+<p><img data-sizes="auto" data-src="%E6%B5%85%E6%9E%90cookie-session-token/1.png" alt="" class="lazyload"></p>
+<blockquote>
+<p>session存在问题：</p>
+<p>1、session保存在服务端，当客户访问量增加时，服务端就需要存储大量的session会话，对服务器有很大的考验；<br>2、当服务端为集群时，用户登陆其中一台服务器，会将session保存到该服务器的内存中，但是当用户的访问到其他服务器时，会无法访问，通常采用缓存一致性技术来保证可以共享，或者采用第三方缓存来保存session，不方便。</p>
+</blockquote>
+<h5 id="四、Token"><a href="#四、Token" class="headerlink" title="四、Token"></a>四、Token</h5><p>​            Token是服务端生成的一串字符串，以作客户端进行请求的一个令牌，当第一次登录后，服务器生成一个Token便将此Token返回给客户端，以后客户端只需带上这个Token前来请求数据即可，无需再次带上用户名和密码。</p>
+<p>​            Token 的认证方式类似于<strong>临时的证书签名</strong>, 并且是一种服务端无状态的认证方式, 非常适合于 REST API 的场景. 所谓无状态就是服务端并不会保存身份认证相关的数据。</p>
+<p><strong>Token组成：</strong></p>
+<ul>
+<li>uid: 用户唯一身份标识</li>
+<li>time: 当前时间的时间戳</li>
+<li>sign: 签名, 使用 hash/encrypt 压缩成定长的十六进制字符串，以防止第三方恶意拼接</li>
+<li>固定参数(可选): 将一些常用的固定参数加入到 token 中是为了避免重复查库</li>
+</ul>
+<p><strong>Toeken存放：</strong></p>
+<p>Token在客户端一般存放于localStorage，cookie，或sessionStorage中。在服务器一般存于数据库中.</p>
+<p><strong>Token过程:</strong><br>1、客户端向服务器请求，发送用户名和密码<br>2、服务器根据用户信息通过加密生成token，用户信息包括账号，token过期时间等，具体由服务器自定义。<br>3、服务器返回token给客户端<br>4、客户端用cookie存储token，以后的请求都带上这个token<br>5、服务器把token解密，确认用户信息是否正确，如经过正确就说明验证通过。<br>6、服务器把验证结果返回客户端</p>
+<p><img data-sizes="auto" data-src="%E6%B5%85%E6%9E%90cookie-session-token/2.png" alt="" class="lazyload"></p>
+<h5 id="五、Cookie与session区别："><a href="#五、Cookie与session区别：" class="headerlink" title="五、Cookie与session区别："></a>五、Cookie与session区别：</h5><p>1、cookie数据存放在客户的浏览器上，session数据放在服务器上。<br>2、cookie不是很安全，别人可以分析存放在本地的cookie并进行cookie欺骗,考虑到安全应当使用session。</p>
+<p>3、session会在一定时间内保存在服务器上。当访问增多，会比较占用你服务器的性能,考虑到减轻服务器性能方面，应当使用cookie。</p>
+<p>4、单个cookie保存的数据不能超过4K，很多浏览器都限制一个站点最多保存20个cookie。</p>
+<h5 id="六、Token与session区别"><a href="#六、Token与session区别" class="headerlink" title="六、Token与session区别"></a>六、Token与session区别</h5><ol>
+<li>token就是令牌，比如你授权（登录）一个程序时，他就是个依据，判断你是否已经授权该软件，Token的状态是存储在客户端。</li>
+<li>cookie就是写在客户端的一个txt文件，里面包括你登录信息之类的，这样你下次在登录某个网站，就会自动调用cookie自动登录用户名；</li>
+<li>session是写在服务器端的文件，也需要在客户端写入cookie文件，但是文件里是你的浏览器编号.Session的状态是存储在服务器端，客户端只有session id；</li>
+</ol>
+<h5 id="七、小结"><a href="#七、小结" class="headerlink" title="七、小结"></a>七、小结</h5><ol>
+<li>session存储于服务器，可以理解为一个状态列表，拥有一个唯一识别符号sessionId，通常存放于cookie中。服务器收到cookie后解析出sessionId，再去session列表中查找，才能找到相应session。依赖cookie</li>
+<li>cookie类似一个令牌，装有sessionId，存储在客户端，浏览器通常会自动添加。</li>
+<li>token也类似一个令牌，无状态，用户信息都被加密到token中，服务器收到token后解密就可知道是哪个用户。需要开发者手动添加。</li>
+</ol>
+
+            
+        </article>
+    </div>
+    
 </section>
 
     <nav class="nexmoe-page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="nexmoefont icon-right"></i></a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="nexmoefont icon-right"></i></a>
     </nav>
   
     </div>
   </div>
   <script src="https://cdn.jsdelivr.net/combine/npm/lazysizes@5.1.0/lazysizes.min.js,gh/highlightjs/cdn-release@9.15.8/build/highlight.min.js,npm/mdui@0.4.3/dist/js/mdui.min.js,gh/nexmoe/nexmoe.github.io@latest/js/app.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
-<!--<script src="/js/app.js?v=1585315213757"></script>-->
+<!--<script src="/js/app.js?v=1585316915663"></script>-->
 
 
     <script src="https://cdn.jsdelivr.net/gh/xtaodada/xtaodada.github.io@0.0.2/copy.js"></script>
