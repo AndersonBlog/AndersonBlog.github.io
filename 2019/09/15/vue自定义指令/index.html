@@ -1,161 +1,220 @@
 <!DOCTYPE html>
-
-<html lang="en">
-
+<html lang="zh-CN">
 <head>
-  
-  <title>vue自定义指令 - Hexo</title>
   <meta charset="UTF-8">
-  <meta name="description" content="">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
-  
-  
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/2.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/1.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
 
-  <link rel="shortcut icon" href="/favicon.ico" type="image/png" />
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Gemini","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
   <meta name="description" content="1.背景：​         这周差不多一周没有正式写代码，成为一名“数据分析师”，回想起之前学习的前端框架vue，我好像对vue的自定义指定不熟悉，决定学习这一部分内容。 2.常用指令​        vue有很多常用指令，比如v-on添加监听事件，v-bind做属性绑定，v-if进行控制切换一个元素是否显示，v-for指令可以绑定数组的数据来渲染一个项目列表。 3.自定义指令​">
 <meta property="og:type" content="article">
 <meta property="og:title" content="vue自定义指令">
 <meta property="og:url" content="http://yoursite.com/2019/09/15/vue%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8C%87%E4%BB%A4/index.html">
-<meta property="og:site_name" content="Hexo">
+<meta property="og:site_name" content="陪你度过漫长岁月">
 <meta property="og:description" content="1.背景：​         这周差不多一周没有正式写代码，成为一名“数据分析师”，回想起之前学习的前端框架vue，我好像对vue的自定义指定不熟悉，决定学习这一部分内容。 2.常用指令​        vue有很多常用指令，比如v-on添加监听事件，v-bind做属性绑定，v-if进行控制切换一个元素是否显示，v-for指令可以绑定数组的数据来渲染一个项目列表。 3.自定义指令​">
-<meta property="og:locale" content="en_US">
+<meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://yoursite.com/2019/09/15/vue%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8C%87%E4%BB%A4/vue%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8C%87%E4%BB%A4/define1.PNG">
 <meta property="og:image" content="http://yoursite.com/2019/09/15/vue%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8C%87%E4%BB%A4/vue%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8C%87%E4%BB%A4/define2.PNG">
 <meta property="article:published_time" content="2019-09-15T12:02:19.000Z">
 <meta property="article:modified_time" content="2019-09-22T06:31:01.204Z">
-<meta property="article:author" content="John Doe">
+<meta property="article:author" content="Anderson Wu">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://yoursite.com/2019/09/15/vue%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8C%87%E4%BB%A4/vue%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8C%87%E4%BB%A4/define1.PNG">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/combine/gh/nexmoe/nexmoe.github.io@latest/css/style.css,npm/highlight.js@9.15.8/styles/atom-one-dark.css,gh/nexmoe/nexmoe.github.io@latest/lib/mdui_043tiny/css/mdui.css,gh/nexmoe/nexmoe.github.io@latest/lib/iconfont/iconfont.css" crossorigin>
-  
-  <!--<link rel="stylesheet" href="/css/style.css?v=1585322669243">-->
 
-  
-<meta name="generator" content="Hexo 4.2.0"></head>
+<link rel="canonical" href="http://yoursite.com/2019/09/15/vue%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8C%87%E4%BB%A4/">
 
-<body class="mdui-drawer-body-left">
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>vue自定义指令 | 陪你度过漫长岁月</title>
   
-  <div id="nexmoe-background">
-    <div class="nexmoe-bg" style="background-image: url(https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/cover/5c3aec85a4343.jpg)"></div>
-    <div class="mdui-appbar mdui-shadow-0">
-      <div class="mdui-toolbar">
-        <a mdui-drawer="{target: '#drawer', swipe: true}" title="menu" class="mdui-btn mdui-btn-icon mdui-ripple"><i class="mdui-icon nexmoefont icon-menu"></i></a>
-        <div class="mdui-toolbar-spacer"></div>
-        <!--<a href="javascript:;" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">search</i></a>-->
-        <a href="/" title="John Doe" class="mdui-btn mdui-btn-icon"><img src="https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/avatar.png" alt="John Doe"></a>
-       </div>
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
     </div>
   </div>
-  <div id="nexmoe-header">
-      <div class="nexmoe-drawer mdui-drawer" id="drawer">
-    <div class="nexmoe-avatar mdui-ripple">
-        <a href="/" title="John Doe">
-            <img src="https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/avatar.png" alt="John Doe" alt="John Doe">
-        </a>
-    </div>
-    <div class="nexmoe-count">
-        <div><span>Articles</span>20</div>
-        <div><span>Tags</span>6</div>
-        <div><span>Categories</span>0</div>
-    </div>
-    <div class="nexmoe-list mdui-list" mdui-collapse="{accordion: true}">
-        
-        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/" title="回到首页">
-            <i class="mdui-list-item-icon nexmoefont icon-home"></i>
-            <div class="mdui-list-item-content">
-                回到首页
-            </div>
-        </a>
-        
-        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/about.html" title="关于博客">
-            <i class="mdui-list-item-icon nexmoefont icon-info-circle"></i>
-            <div class="mdui-list-item-content">
-                关于博客
-            </div>
-        </a>
-        
-        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/PY.html" title="我的朋友">
-            <i class="mdui-list-item-icon nexmoefont icon-unorderedlist"></i>
-            <div class="mdui-list-item-content">
-                我的朋友
-            </div>
-        </a>
-        
-    </div>
-    <aside id="nexmoe-sidebar">
-  
-  <div class="nexmoe-widget-wrap">
-    <div class="nexmoe-widget nexmoe-search">
-        <form id="search_form" action_e="https://cn.bing.com/search?q=site:nexmoe.com" onsubmit="return search();">
-            <label><input id="search_value" name="q" type="search" placeholder="Search"></label>
-        </form>
-    </div>
-</div>
-  
-  <div class="nexmoe-widget-wrap">
-    <h3 class="nexmoe-widget-title">Social</h3>
-    <div class="nexmoe-widget nexmoe-social">
-        <a class="mdui-ripple" href="https://space.bilibili.com/20238211" target="_blank" mdui-tooltip="{content: '哔哩哔哩'}" style="color: rgb(231, 106, 141);background-color: rgba(231, 106, 141, .15);">
-            <i class="nexmoefont icon-bilibili"></i>
-        </a><a class="mdui-ripple" href="https://github.com/nexmoe/" target="_blank" mdui-tooltip="{content: 'GitHub'}" style="color: rgb(25, 23, 23);background-color: rgba(25, 23, 23, .15);">
-            <i class="nexmoefont icon-github"></i>
-        </a>
-    </div>
-</div>
-  
-  
 
-  
-  
-  <div class="nexmoe-widget-wrap">
-    <h3 class="nexmoe-widget-title">Tag Cloud</h3>
-    <div id="randomtagcloud" class="nexmoe-widget tagcloud">
-      <a href="/tags/Algorithm/" style="font-size: 10px;">Algorithm</a> <a href="/tags/Cookie-seesion-Token/" style="font-size: 10px;">Cookie seesion Token</a> <a href="/tags/Element-UI/" style="font-size: 10px;">Element UI</a> <a href="/tags/SpringBoot/" style="font-size: 20px;">SpringBoot</a> <a href="/tags/Token-JWT-SpringBoot/" style="font-size: 10px;">Token JWT SpringBoot</a> <a href="/tags/Vue/" style="font-size: 10px;">Vue</a>
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">陪你度过漫长岁月</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">To be yourself</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
     </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
     
-  </div>
-
-  
-  
-  <div class="nexmoe-widget-wrap">
-    <h3 class="nexmoe-widget-title">Archive</h3>
-    <div class="nexmoe-widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li></ul>
-    </div>
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
   </div>
 
 
-  
-</aside>
-    <div class="nexmoe-copyright">
-        &copy; 2020 John Doe
-        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
-        & <a href="https://nexmoe.com/hexo-theme-nexmoe.html" target="_blank">Nexmoe</a>
-    </div>
-</div><!-- .nexmoe-drawer -->
-  </div>
-  <div id="nexmoe-content">
-    <div class="nexmoe-primary">
-        <div class="nexmoe-post">
-  
-      <div class="nexmoe-post-cover" style="padding-bottom: 66.66666666666666%;"> 
-          <img data-src="https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/cover/5c3aec85a4343.jpg" data-sizes="auto" alt="vue自定义指令" class="lazyload">
-          <h1>vue自定义指令</h1>
-      </div>
-  
-  
-  <div class="nexmoe-post-meta" style="margin:10px 0!important;">
-    <a><i class="nexmoefont icon-calendar-fill"></i>2019年09月15日</a>
-    <a><i class="nexmoefont icon-areachart"></i>566 字</a>
-    <a><i class="nexmoefont icon-time-circle-fill"></i>大概 2 分钟</a>
-</div>
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
 
-  <div class="nexmoe-post-right">
+          <div class="content post">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/15/vue%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8C%87%E4%BB%A4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/2.png">
+      <meta itemprop="name" content="Anderson Wu">
+      <meta itemprop="description" content="Love is love">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="陪你度过漫长岁月">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          vue自定义指令
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-09-15 20:02:19" itemprop="dateCreated datePublished" datetime="2019-09-15T20:02:19+08:00">2019-09-15</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-09-22 14:31:01" itemprop="dateModified" datetime="2019-09-22T14:31:01+08:00">2019-09-22</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
     
-  </div>
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
-  <article>
-    <h5 id="1-背景："><a href="#1-背景：" class="headerlink" title="1.背景："></a>1.背景：</h5><p>​         这周差不多一周没有正式写代码，成为一名“数据分析师”，回想起之前学习的前端框架vue，我好像对vue的自定义指定不熟悉，决定学习这一部分内容。</p>
+      
+        <h5 id="1-背景："><a href="#1-背景：" class="headerlink" title="1.背景："></a>1.背景：</h5><p>​         这周差不多一周没有正式写代码，成为一名“数据分析师”，回想起之前学习的前端框架vue，我好像对vue的自定义指定不熟悉，决定学习这一部分内容。</p>
 <h5 id="2-常用指令"><a href="#2-常用指令" class="headerlink" title="2.常用指令"></a>2.常用指令</h5><p>​        vue有很多常用指令，比如v-on添加监听事件，v-bind做属性绑定，v-if进行控制切换一个元素是否显示，v-for指令可以绑定数组的数据来渲染一个项目列表。</p>
 <h5 id="3-自定义指令"><a href="#3-自定义指令" class="headerlink" title="3.自定义指令"></a>3.自定义指令</h5><p>​        利用之前ThoughtWorks老师教的“需求驱动学习法”，首先确定一个小需求：给文字添加粉红色。当然，直接添加样式就可以实现该需求，但使用自定义指令同样可以。</p>
 <p>自定义属性实现该需求步骤：</p>
@@ -171,7 +230,7 @@
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"http://how2j.cn/study/vue.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"> </span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"div1"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">v-pink</span>&gt;</span> 好好学习，天天向上 <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"> </span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"> </span><br><span class="line"><span class="actionscript">Vue.directive(<span class="string">'pink'</span>, <span class="function"><span class="keyword">function</span> <span class="params">(el)</span> </span>&#123;</span></span><br><span class="line"><span class="actionscript">    el.innerHTML = el.innerHTML + <span class="string">' ( 使用自定义指令x-pink ) '</span></span></span><br><span class="line"><span class="actionscript">    el.style.color = <span class="string">'pink'</span></span></span><br><span class="line">    el.font-weight:bold</span><br><span class="line">&#125;)</span><br><span class="line"> </span><br><span class="line"><span class="actionscript"><span class="keyword">new</span> Vue(&#123;</span></span><br><span class="line"><span class="actionscript">  el: <span class="string">'#div1'</span></span></span><br><span class="line">&#125;)</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <p>效果：</p>
-<p><img data-sizes="auto" data-src="vue%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8C%87%E4%BB%A4/define1.PNG" alt="" class="lazyload"></p>
+<p><img src="vue%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8C%87%E4%BB%A4/define1.PNG" alt=""></p>
 <h5 id="4-带参数的自定义指令"><a href="#4-带参数的自定义指令" class="headerlink" title="4.带参数的自定义指令"></a>4.带参数的自定义指令</h5><p>​        自定义指令可以获取视图中的json对象的值。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Vue.directive(<span class="string">'xart'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">el,binding</span>) </span>&#123;</span><br><span class="line">	el.innerHTML = el.innerHTML + <span class="string">'( '</span> + binding.value.text + <span class="string">' )'</span></span><br><span class="line">	el.style.color = binding.value.color</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 
@@ -182,54 +241,183 @@
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"http://how2j.cn/study/vue.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"> </span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"div1"</span>&gt;</span></span><br><span class="line">     </span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">v-xart</span>=<span class="string">"&#123;color:'red',text:'best learning video'&#125;"</span>&gt;</span> 好好学习，天天向上 <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">     </span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"> </span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"> </span><br><span class="line"><span class="actionscript">Vue.directive(<span class="string">'xart'</span>, <span class="function"><span class="keyword">function</span> <span class="params">(el,binding)</span> </span>&#123;</span></span><br><span class="line"><span class="actionscript">    el.innerHTML = el.innerHTML + <span class="string">'( '</span> + binding.value.text + <span class="string">' )'</span></span></span><br><span class="line">    el.style.color = binding.value.color</span><br><span class="line">&#125;)</span><br><span class="line"> </span><br><span class="line"><span class="actionscript"><span class="keyword">new</span> Vue(&#123;</span></span><br><span class="line"><span class="actionscript">  el: <span class="string">'#div1'</span></span></span><br><span class="line">&#125;)</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <p>效果：</p>
-<p><img data-sizes="auto" data-src="vue%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8C%87%E4%BB%A4/define2.PNG" alt="" class="lazyload"></p>
+<p><img src="vue%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8C%87%E4%BB%A4/define2.PNG" alt=""></p>
 
-  </article>
-
-  <div class="nexmoe-post-meta">
-    
-    
-</div>
-
-  <div class="nexmoe-post-footer">
-    
-      
-  <div class="nexmoe-post-copyright">
-    <strong>Author：</strong>John Doe<br>
-    <strong>Link：</strong><a href="http://yoursite.com/2019/09/15/vue%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8C%87%E4%BB%A4/" title="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;09&#x2F;15&#x2F;vue%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8C%87%E4%BB%A4&#x2F;" target="_blank" rel="noopener">http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;09&#x2F;15&#x2F;vue%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8C%87%E4%BB%A4&#x2F;</a><br>
-    
-      <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可
-    
-  </div>
-
-
-    
-    <section class="nexmoe-comment">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.5.0/dist/gitalk.min.css">
-<div id="gitalk"></div>
-<script src="https://cdn.jsdelivr.net/npm/gitalk@1.5.0/dist/gitalk.min.js"></script>
-<script type="text/javascript">
-    var gitalk = new Gitalk({
-        clientID: '80b2453b6d5f37ad6225',
-        clientSecret: '43e99fa852795c9a7b3eb924b2558c64b84bbdeb',
-        id: window.location.pathname,
-        repo: 'nexmoe.github.io',
-        owner: 'nexmoe',
-        admin: 'nexmoe'
-    })
-    gitalk.render('gitalk')
-</script>
-</section>
-  </div>
-</div>
     </div>
+
+    
+    
+    
+	<div>
+		
+		<div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+
+		
+	</div>
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019/09/08/Toplink/" rel="prev" title="TopLink和Hibernate区别">
+      <i class="fa fa-chevron-left"></i> TopLink和Hibernate区别
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2019/09/22/vue%E4%BD%BF%E7%94%A8prop%E6%95%B0%E6%8D%AE%E7%BB%91%E5%AE%9A%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/" rel="next" title="vue使用props数据绑定异常">
+      vue使用props数据绑定异常 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
   </div>
-  <script src="https://cdn.jsdelivr.net/combine/npm/lazysizes@5.1.0/lazysizes.min.js,gh/highlightjs/cdn-release@9.15.8/build/highlight.min.js,npm/mdui@0.4.3/dist/js/mdui.min.js,gh/nexmoe/nexmoe.github.io@latest/js/app.js"></script>
-<script>hljs.initHighlightingOnLoad();</script>
-<!--<script src="/js/app.js?v=1585322669245"></script>-->
 
 
-    <script src="https://cdn.jsdelivr.net/gh/xtaodada/xtaodada.github.io@0.0.2/copy.js"></script>
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-背景："><span class="nav-number">1.</span> <span class="nav-text">1.背景：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-常用指令"><span class="nav-number">2.</span> <span class="nav-text">2.常用指令</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-自定义指令"><span class="nav-number">3.</span> <span class="nav-text">3.自定义指令</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-带参数的自定义指令"><span class="nav-number">4.</span> <span class="nav-text">4.带参数的自定义指令</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Anderson Wu"
+      src="/images/2.png">
+  <p class="site-author-name" itemprop="name">Anderson Wu</p>
+  <div class="site-description" itemprop="description">Love is love</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">20</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Anderson Wu</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
 
 
 
@@ -239,6 +427,19 @@
 
 
 
-</body>
 
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
 </html>

@@ -1,163 +1,224 @@
 <!DOCTYPE html>
-
-<html lang="en">
-
+<html lang="zh-CN">
 <head>
-  
-  <title>Hexo</title>
   <meta charset="UTF-8">
-  <meta name="description" content="">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
-  
-  
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/2.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/1.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
 
-  <link rel="shortcut icon" href="/favicon.ico" type="image/png" />
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Gemini","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="Love is love">
+<meta property="og:type" content="website">
+<meta property="og:title" content="陪你度过漫长岁月">
 <meta property="og:url" content="http://yoursite.com/index.html">
-<meta property="og:site_name" content="Hexo">
-<meta property="og:locale" content="en_US">
-<meta property="article:author" content="John Doe">
+<meta property="og:site_name" content="陪你度过漫长岁月">
+<meta property="og:description" content="Love is love">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="Anderson Wu">
 <meta name="twitter:card" content="summary">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/combine/gh/nexmoe/nexmoe.github.io@latest/css/style.css,npm/highlight.js@9.15.8/styles/atom-one-dark.css,gh/nexmoe/nexmoe.github.io@latest/lib/mdui_043tiny/css/mdui.css,gh/nexmoe/nexmoe.github.io@latest/lib/iconfont/iconfont.css" crossorigin>
-  
-  <!--<link rel="stylesheet" href="/css/style.css?v=1585322669303">-->
 
-  
-<meta name="generator" content="Hexo 4.2.0"></head>
+<link rel="canonical" href="http://yoursite.com/">
 
-<body class="mdui-drawer-body-left">
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : true,
+    isPost : false,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>陪你度过漫长岁月</title>
   
-  <div id="nexmoe-background">
-    <div class="nexmoe-bg" style="background-image: url(https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/cover/5c3aec85a4343.jpg)"></div>
-    <div class="mdui-appbar mdui-shadow-0">
-      <div class="mdui-toolbar">
-        <a mdui-drawer="{target: '#drawer', swipe: true}" title="menu" class="mdui-btn mdui-btn-icon mdui-ripple"><i class="mdui-icon nexmoefont icon-menu"></i></a>
-        <div class="mdui-toolbar-spacer"></div>
-        <!--<a href="javascript:;" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">search</i></a>-->
-        <a href="/" title="John Doe" class="mdui-btn mdui-btn-icon"><img src="https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/avatar.png" alt="John Doe"></a>
-       </div>
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
     </div>
   </div>
-  <div id="nexmoe-header">
-      <div class="nexmoe-drawer mdui-drawer" id="drawer">
-    <div class="nexmoe-avatar mdui-ripple">
-        <a href="/" title="John Doe">
-            <img src="https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/avatar.png" alt="John Doe" alt="John Doe">
-        </a>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">陪你度过漫长岁月</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">To be yourself</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
     </div>
-    <div class="nexmoe-count">
-        <div><span>Articles</span>20</div>
-        <div><span>Tags</span>6</div>
-        <div><span>Categories</span>0</div>
-    </div>
-    <div class="nexmoe-list mdui-list" mdui-collapse="{accordion: true}">
-        
-        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/" title="回到首页">
-            <i class="mdui-list-item-icon nexmoefont icon-home"></i>
-            <div class="mdui-list-item-content">
-                回到首页
-            </div>
-        </a>
-        
-        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/about.html" title="关于博客">
-            <i class="mdui-list-item-icon nexmoefont icon-info-circle"></i>
-            <div class="mdui-list-item-content">
-                关于博客
-            </div>
-        </a>
-        
-        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/PY.html" title="我的朋友">
-            <i class="mdui-list-item-icon nexmoefont icon-unorderedlist"></i>
-            <div class="mdui-list-item-content">
-                我的朋友
-            </div>
-        </a>
-        
-    </div>
-    <aside id="nexmoe-sidebar">
-  
-  <div class="nexmoe-widget-wrap">
-    <div class="nexmoe-widget nexmoe-search">
-        <form id="search_form" action_e="https://cn.bing.com/search?q=site:nexmoe.com" onsubmit="return search();">
-            <label><input id="search_value" name="q" type="search" placeholder="Search"></label>
-        </form>
-    </div>
+  </div>
 </div>
-  
-  <div class="nexmoe-widget-wrap">
-    <h3 class="nexmoe-widget-title">Social</h3>
-    <div class="nexmoe-widget nexmoe-social">
-        <a class="mdui-ripple" href="https://space.bilibili.com/20238211" target="_blank" mdui-tooltip="{content: '哔哩哔哩'}" style="color: rgb(231, 106, 141);background-color: rgba(231, 106, 141, .15);">
-            <i class="nexmoefont icon-bilibili"></i>
-        </a><a class="mdui-ripple" href="https://github.com/nexmoe/" target="_blank" mdui-tooltip="{content: 'GitHub'}" style="color: rgb(25, 23, 23);background-color: rgba(25, 23, 23, .15);">
-            <i class="nexmoefont icon-github"></i>
-        </a>
-    </div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
 </div>
-  
-  
+    </header>
 
-  
-  
-  <div class="nexmoe-widget-wrap">
-    <h3 class="nexmoe-widget-title">Tag Cloud</h3>
-    <div id="randomtagcloud" class="nexmoe-widget tagcloud">
-      <a href="/tags/Algorithm/" style="font-size: 10px;">Algorithm</a> <a href="/tags/Cookie-seesion-Token/" style="font-size: 10px;">Cookie seesion Token</a> <a href="/tags/Element-UI/" style="font-size: 10px;">Element UI</a> <a href="/tags/SpringBoot/" style="font-size: 20px;">SpringBoot</a> <a href="/tags/Token-JWT-SpringBoot/" style="font-size: 10px;">Token JWT SpringBoot</a> <a href="/tags/Vue/" style="font-size: 10px;">Vue</a>
-    </div>
     
-  </div>
-
-  
-  
-  <div class="nexmoe-widget-wrap">
-    <h3 class="nexmoe-widget-title">Archive</h3>
-    <div class="nexmoe-widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li></ul>
-    </div>
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
   </div>
 
 
-  
-</aside>
-    <div class="nexmoe-copyright">
-        &copy; 2020 John Doe
-        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
-        & <a href="https://nexmoe.com/hexo-theme-nexmoe.html" target="_blank">Nexmoe</a>
-    </div>
-</div><!-- .nexmoe-drawer -->
-  </div>
-  <div id="nexmoe-content">
-    <div class="nexmoe-primary">
-        <section class="nexmoe-posts">
-    
-    <div class="nexmoe-post">
-        <a href="/2020/03/21/SpringBoot%E5%9F%BA%E7%A1%80%E4%BA%94/">
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content index">
             
-                <div class="nexmoe-post-cover mdui-ripple" style="padding-bottom: 66.66666666666666%;"> 
-                    <img data-src="https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/cover/5c3aec85a4343.jpg" data-sizes="auto" alt="SpringBoot基础五" class="lazyload">
-                    <h1>SpringBoot基础五</h1>
-                </div>
-            
-        </a>
 
-        <div class="nexmoe-post-meta">
-            <a><i class="nexmoefont icon-calendar-fill"></i>2020年03月21日</a>
-            <a><i class="nexmoefont icon-areachart"></i>3.8k 字</a>
-            <a><i class="nexmoefont icon-time-circle-fill"></i>大概 20 分钟</a>
+  <div class="posts-expand">
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/21/SpringBoot%E5%9F%BA%E7%A1%80%E4%BA%94/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/2.png">
+      <meta itemprop="name" content="Anderson Wu">
+      <meta itemprop="description" content="Love is love">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="陪你度过漫长岁月">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/03/21/SpringBoot%E5%9F%BA%E7%A1%80%E4%BA%94/" class="post-title-link" itemprop="url">SpringBoot基础五</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-03-21 19:37:58" itemprop="dateCreated datePublished" datetime="2020-03-21T19:37:58+08:00">2020-03-21</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-03-19 23:31:02" itemprop="dateModified" datetime="2020-03-19T23:31:02+08:00">2020-03-19</time>
+              </span>
+
+          
+
         </div>
+      </header>
 
-        <article>
-            
-                <h4 id="1-错误处理机制"><a href="#1-错误处理机制" class="headerlink" title="1. 错误处理机制"></a>1. 错误处理机制</h4><h5 id="1-1-SpringBoot默认处理机制"><a href="#1-1-SpringBoot默认处理机制" class="headerlink" title="1.1 SpringBoot默认处理机制"></a>1.1 SpringBoot默认处理机制</h5><p>默认效果：</p>
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="1-错误处理机制"><a href="#1-错误处理机制" class="headerlink" title="1. 错误处理机制"></a>1. 错误处理机制</h4><h5 id="1-1-SpringBoot默认处理机制"><a href="#1-1-SpringBoot默认处理机制" class="headerlink" title="1.1 SpringBoot默认处理机制"></a>1.1 SpringBoot默认处理机制</h5><p>默认效果：</p>
 <p>(1) 浏览器，相应默认的错误页面</p>
 <p>[][(SpringBoot基础五/1.png)]</p>
-<p><img data-sizes="auto" data-src="SpringBoot%E5%9F%BA%E7%A1%80%E4%BA%94/1.png" alt="" class="lazyload"></p>
+<p><img src="SpringBoot%E5%9F%BA%E7%A1%80%E4%BA%94/1.png" alt=""></p>
 <p>浏览器发送请求时请求头：</p>
-<p><img data-sizes="auto" data-src="SpringBoot%E5%9F%BA%E7%A1%80%E4%BA%94/3.png" alt="" class="lazyload"></p>
+<p><img src="SpringBoot%E5%9F%BA%E7%A1%80%E4%BA%94/3.png" alt=""></p>
 <p>（2）其他客户端，相应的是JSON数据</p>
-<p><img data-sizes="auto" data-src="SpringBoot%E5%9F%BA%E7%A1%80%E4%BA%94/2.png" alt="" class="lazyload"></p>
-<p><img data-sizes="auto" data-src="SpringBoot%E5%9F%BA%E7%A1%80%E4%BA%94/4.png" alt="" class="lazyload"></p>
+<p><img src="SpringBoot%E5%9F%BA%E7%A1%80%E4%BA%94/2.png" alt=""></p>
+<p><img src="SpringBoot%E5%9F%BA%E7%A1%80%E4%BA%94/4.png" alt=""></p>
 <p>底层原理：</p>
 <p>​    参考ErrorMvcAutoConfiguration； 错误处理的自动配置，向Spring容器中注入以下组件;</p>
 <ol>
@@ -237,7 +298,7 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyErrorAttributes</span> <span class="keyword">extends</span> <span class="title">DefaultErrorAttributes</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Map&lt;String, Object&gt; <span class="title">getErrorAttributes</span><span class="params">(WebRequest webRequest, </span></span></span><br><span class="line"><span class="function"><span class="params">                                                  <span class="keyword">boolean</span> includeStackTrace)</span> </span>&#123;</span><br><span class="line">        Map&lt;String, Object&gt; map = <span class="keyword">super</span>.getErrorAttributes(</span><br><span class="line">            webRequest, includeStackTrace);</span><br><span class="line">        map.put(<span class="string">"company"</span>, <span class="string">"OOCL"</span>);</span><br><span class="line">        Map&lt;String, Object&gt; ext = (Map&lt;String, Object&gt;) webRequest</span><br><span class="line">            												.getAttribute(<span class="string">"ext"</span>, <span class="number">0</span>);</span><br><span class="line">        map.put(<span class="string">"ext"</span>, ext);</span><br><span class="line">        <span class="keyword">return</span> map;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>最终的效果：响应是自适应的，可以通过定制ErrorAttributes改变需要返回的内容，</p>
-<p><img data-sizes="auto" data-src="SpringBoot%E5%9F%BA%E7%A1%80%E4%BA%94/5.png" alt="" class="lazyload"></p>
+<p><img src="SpringBoot%E5%9F%BA%E7%A1%80%E4%BA%94/5.png" alt=""></p>
 <h4 id="2-配置嵌入式Servlet容器"><a href="#2-配置嵌入式Servlet容器" class="headerlink" title="2. 配置嵌入式Servlet容器"></a>2. 配置嵌入式Servlet容器</h4><p>SpringBoot默认使用Tomcat作为嵌入式的Servlet容器。</p>
 <p>问题：</p>
 <h5 id="2-1-如何定制和修改Servlet容器的相关设置-ServerProperties-class"><a href="#2-1-如何定制和修改Servlet容器的相关设置-ServerProperties-class" class="headerlink" title="2.1 如何定制和修改Servlet容器的相关设置(ServerProperties.class)"></a>2.1 如何定制和修改Servlet容器的相关设置(ServerProperties.class)</h5><p>方法一：</p>
@@ -263,7 +324,7 @@
 <p>DispatcherServletAutoConfiguration中：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span>( proxyBeanMethods = <span class="keyword">false</span> )</span><br><span class="line"><span class="meta">@Conditional</span>(&#123;DispatcherServletAutoConfiguration.DispatcherServletRegistrationCondition<span class="class">.<span class="keyword">class</span>&#125;)</span></span><br><span class="line"><span class="class">@<span class="title">ConditionalOnClass</span>(</span>&#123;ServletRegistration<span class="class">.<span class="keyword">class</span>&#125;)</span></span><br><span class="line"><span class="class">@<span class="title">EnableConfigurationProperties</span>(</span>&#123;WebMvcProperties<span class="class">.<span class="keyword">class</span>&#125;)</span></span><br><span class="line"><span class="class">@<span class="title">Import</span>(</span>&#123;DispatcherServletAutoConfiguration.DispatcherServletConfiguration<span class="class">.<span class="keyword">class</span>&#125;)</span></span><br><span class="line"><span class="class"><span class="title">protected</span> <span class="title">static</span> <span class="title">class</span> <span class="title">DispatcherServletRegistrationConfiguration</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="title">DispatcherServletRegistrationConfiguration</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line">    <span class="meta">@Bean</span>(name = &#123;<span class="string">"dispatcherServletRegistration"</span>&#125;)</span><br><span class="line">    <span class="meta">@ConditionalOnBean</span>(</span><br><span class="line">        value = &#123;DispatcherServlet<span class="class">.<span class="keyword">class</span>&#125;,</span></span><br><span class="line"><span class="class">        <span class="title">name</span> </span>= &#123;<span class="string">"dispatcherServlet"</span>&#125;)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> DispatcherServletRegistrationBean <span class="title">dispatcherServletRegistration</span><span class="params">(  </span></span></span><br><span class="line"><span class="function"><span class="params">               DispatcherServlet dispatcherServlet, WebMvcProperties webMvcProperties, 	                        ObjectProvider&lt;MultipartConfigElement&gt; multipartConfig)</span> </span>&#123;</span><br><span class="line">        DispatcherServletRegistrationBean registration </span><br><span class="line">            = <span class="keyword">new</span> DispatcherServletRegistrationBean(</span><br><span class="line">            dispatcherServlet, webMvcProperties.getServlet().getPath());</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//默认拦截： “/” 所有请求，包括静态资源，不拦截jsp请求；</span></span><br><span class="line">		<span class="comment">//			“/*”会拦截jsp</span></span><br><span class="line">        registration.setName(<span class="string">"dispatcherServlet"</span>);</span><br><span class="line">        registration.setLoadOnStartup(webMvcProperties.getServlet().getLoadOnStartup());</span><br><span class="line">        multipartConfig.ifAvailable(registration::setMultipartConfig);</span><br><span class="line">        <span class="keyword">return</span>  ;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h5 id="2-3-替换成其他的嵌入式Servlet容器"><a href="#2-3-替换成其他的嵌入式Servlet容器" class="headerlink" title="2.3 替换成其他的嵌入式Servlet容器"></a>2.3 替换成其他的嵌入式Servlet容器</h5><p><img data-sizes="auto" data-src="SpringBoot%E5%9F%BA%E7%A1%80%E4%BA%94/7.png" alt="" class="lazyload"></p>
+<h5 id="2-3-替换成其他的嵌入式Servlet容器"><a href="#2-3-替换成其他的嵌入式Servlet容器" class="headerlink" title="2.3 替换成其他的嵌入式Servlet容器"></a>2.3 替换成其他的嵌入式Servlet容器</h5><p><img src="SpringBoot%E5%9F%BA%E7%A1%80%E4%BA%94/7.png" alt=""></p>
 <p>支持：</p>
 <p>Tomcat: 引入web模块默认就是使用嵌入式的Tomcat作为Servlet容器；</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-web<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
@@ -319,7 +380,7 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">WebServerFactoryCustomizerBeanPostProcessor</span> <span class="keyword">implements</span> <span class="title">BeanPostProcessor</span>, <span class="title">BeanFactoryAware</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">	<span class="keyword">private</span> Collection&lt;WebServerFactoryCustomizer&lt;?&gt;&gt; </span><br><span class="line">        getWebServerFactoryCustomizerBeans() &#123;</span><br><span class="line">	    <span class="keyword">return</span> <span class="keyword">this</span>.beanFactory.getBeansOfType(</span><br><span class="line">            WebServerFactoryCustomizer<span class="class">.<span class="keyword">class</span>, <span class="title">false</span>, <span class="title">false</span>).<span class="title">values</span>()</span>;</span><br><span class="line">	&#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">private</span> Collection&lt;WebServerFactoryCustomizer&lt;?&gt;&gt; getCustomizers() &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">this</span>.customizers == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">this</span>.customizers = <span class="keyword">new</span> ArrayList(</span><br><span class="line">                <span class="keyword">this</span>.getWebServerFactoryCustomizerBeans());</span><br><span class="line">            <span class="keyword">this</span>.customizers.sort(AnnotationAwareOrderComparator.INSTANCE);</span><br><span class="line">            <span class="keyword">this</span>.customizers = Collections.unmodifiableList(<span class="keyword">this</span>.customizers);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.customizers;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">postProcessBeforeInitialization</span><span class="params">(WebServerFactory webServerFactory)</span> </span>&#123;</span><br><span class="line">        ((Callbacks)LambdaSafe.callbacks(WebServerFactoryCustomizer<span class="class">.<span class="keyword">class</span>, </span></span><br><span class="line">                                         this.getCustomizers(), webServerFactory, new                            Object[0]).withLogger(</span><br><span class="line">                        WebServerFactoryCustomizerBeanPostProcessor</span><br><span class="line">                        <span class="class">.<span class="keyword">class</span>)).<span class="title">invoke</span>((<span class="title">customizer</span>)  -&gt; </span></span><br><span class="line"><span class="class">                                        </span>&#123;customizer.customize(webServerFactory);&#125;</span><br><span class="line">                         );</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>进行源码的调试，从<strong>IOC</strong>容器中获取到5个定制器，其中包含有前面创建的<strong>TomcatWebServerFactoryCustomizer</strong>定制器：</p>
-<p><img data-sizes="auto" data-src="SpringBoot%E5%9F%BA%E7%A1%80%E4%BA%94/8.png" alt="" class="lazyload"></p>
+<p><img src="SpringBoot%E5%9F%BA%E7%A1%80%E4%BA%94/8.png" alt=""></p>
 <p>获取到所有的定制器后，后置处理器调用定制器的<strong>customize()</strong>方法来给嵌入式的Servlet容器进行配置（默认或者自定义的配置）；</p>
 <p>由实现组件<strong>TomcatWebServerFactoryCustomizer</strong>定制器调用<strong>customize()</strong>定制方法，获取到Servlet容器相关配置类<strong>ServerProperties</strong>，进行自动配置：</p>
 <ol start="7">
@@ -347,29 +408,73 @@
 </li>
 </ul>
 
-            
-        </article>
+      
     </div>
+
     
-    <div class="nexmoe-post">
-        <a href="/2020/03/14/SpringBoot%E5%9F%BA%E7%A1%80%E5%9B%9B/">
-            
-                <div class="nexmoe-post-cover mdui-ripple" style="padding-bottom: 66.66666666666666%;"> 
-                    <img data-src="https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/cover/5c3aec85a4343.jpg" data-sizes="auto" alt="SpringBoot基础四" class="lazyload">
-                    <h1>SpringBoot基础四</h1>
-                </div>
-            
-        </a>
+    
+    
+	<div>
+		
+	</div>
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
 
-        <div class="nexmoe-post-meta">
-            <a><i class="nexmoefont icon-calendar-fill"></i>2020年03月14日</a>
-            <a><i class="nexmoefont icon-areachart"></i>3.9k 字</a>
-            <a><i class="nexmoefont icon-time-circle-fill"></i>大概 21 分钟</a>
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/14/SpringBoot%E5%9F%BA%E7%A1%80%E5%9B%9B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/2.png">
+      <meta itemprop="name" content="Anderson Wu">
+      <meta itemprop="description" content="Love is love">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="陪你度过漫长岁月">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/03/14/SpringBoot%E5%9F%BA%E7%A1%80%E5%9B%9B/" class="post-title-link" itemprop="url">SpringBoot基础四</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-03-14 19:37:58" itemprop="dateCreated datePublished" datetime="2020-03-14T19:37:58+08:00">2020-03-14</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-03-19 23:30:23" itemprop="dateModified" datetime="2020-03-19T23:30:23+08:00">2020-03-19</time>
+              </span>
+
+          
+
         </div>
+      </header>
 
-        <article>
-            
-                <h4 id="1-SpringBootMVC自动配置"><a href="#1-SpringBootMVC自动配置" class="headerlink" title="1. SpringBootMVC自动配置"></a>1. SpringBootMVC自动配置</h4><p><a href="https://docs.spring.io/spring-boot/docs/1.5.10.RELEASE/reference/htmlsingle/#boot-features-developing-web-applications" target="_blank" rel="noopener">SpringBootMVC Auto-configuration</a></p>
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="1-SpringBootMVC自动配置"><a href="#1-SpringBootMVC自动配置" class="headerlink" title="1. SpringBootMVC自动配置"></a>1. SpringBootMVC自动配置</h4><p><a href="https://docs.spring.io/spring-boot/docs/1.5.10.RELEASE/reference/htmlsingle/#boot-features-developing-web-applications" target="_blank" rel="noopener">SpringBootMVC Auto-configuration</a></p>
 <p>Spring Boot provides auto-configuration for Spring MVC that works well with most applications.</p>
 <p>The auto-configuration adds the following features on top of Spring’s defaults:</p>
 <ul>
@@ -455,7 +560,7 @@
 <ul>
 <li>编写国际化配置文件， 抽取页面需要显示的国际化信息</li>
 </ul>
-<p><img data-sizes="auto" data-src="SpringBoot%E5%9F%BA%E7%A1%80%E5%9B%9B/image-20200312211901983.png" alt="image-20200312211901983" class="lazyload"></p>
+<p><img src="SpringBoot%E5%9F%BA%E7%A1%80%E5%9B%9B/image-20200312211901983.png" alt="image-20200312211901983"></p>
 <ul>
 <li>SpringBoot 自动配置了管理国际化资源文件的组件；默认使用类路径下的messages.properties</li>
 </ul>
@@ -614,29 +719,67 @@
 
 
 
-            
-        </article>
+      
     </div>
+
     
-    <div class="nexmoe-post">
-        <a href="/2020/03/08/SpringBoot%E5%9F%BA%E7%A1%80%E4%B8%89/">
-            
-                <div class="nexmoe-post-cover mdui-ripple" style="padding-bottom: 66.66666666666666%;"> 
-                    <img data-src="https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/cover/5c3aec85a4343.jpg" data-sizes="auto" alt="SpringBoot基础三" class="lazyload">
-                    <h1>SpringBoot基础三</h1>
-                </div>
-            
-        </a>
+    
+    
+	<div>
+		
+	</div>
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
 
-        <div class="nexmoe-post-meta">
-            <a><i class="nexmoefont icon-calendar-fill"></i>2020年03月08日</a>
-            <a><i class="nexmoefont icon-areachart"></i>1.3k 字</a>
-            <a><i class="nexmoefont icon-time-circle-fill"></i>大概 7 分钟</a>
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/08/SpringBoot%E5%9F%BA%E7%A1%80%E4%B8%89/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/2.png">
+      <meta itemprop="name" content="Anderson Wu">
+      <meta itemprop="description" content="Love is love">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="陪你度过漫长岁月">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/03/08/SpringBoot%E5%9F%BA%E7%A1%80%E4%B8%89/" class="post-title-link" itemprop="url">SpringBoot基础三</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-03-08 19:37:58 / 修改时间：22:38:28" itemprop="dateCreated datePublished" datetime="2020-03-08T19:37:58+08:00">2020-03-08</time>
+            </span>
+
+          
+
         </div>
+      </header>
 
-        <article>
-            
-                <h4 id="1-SpringBoot静态资源的映射规则"><a href="#1-SpringBoot静态资源的映射规则" class="headerlink" title="1. SpringBoot静态资源的映射规则"></a>1. SpringBoot静态资源的映射规则</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@ConfigurationProperties</span>(prefix = <span class="string">"spring.resources"</span>,ignoreUnknownFields = <span class="keyword">false</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ResourceProperties</span> </span>&#123;</span><br><span class="line">    <span class="comment">//可以设置和静态资源相关的参数，缓存时间等</span></span><br></pre></td></tr></table></figure>
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="1-SpringBoot静态资源的映射规则"><a href="#1-SpringBoot静态资源的映射规则" class="headerlink" title="1. SpringBoot静态资源的映射规则"></a>1. SpringBoot静态资源的映射规则</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@ConfigurationProperties</span>(prefix = <span class="string">"spring.resources"</span>,ignoreUnknownFields = <span class="keyword">false</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ResourceProperties</span> </span>&#123;</span><br><span class="line">    <span class="comment">//可以设置和静态资源相关的参数，缓存时间等</span></span><br></pre></td></tr></table></figure>
 
 <p><strong>WebMvcAutoConfiguration.class</strong></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addResourceHandlers</span><span class="params">(ResourceHandlerRegistry registry)</span> </span>&#123;</span><br><span class="line">   <span class="keyword">if</span> (!<span class="keyword">this</span>.resourceProperties.isAddMappings()) &#123;</span><br><span class="line">       logger.debug(<span class="string">"Default resource handling disabled"</span>);</span><br><span class="line">   &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">       Duration cachePeriod = <span class="keyword">this</span>.resourceProperties.getCache().getPeriod();</span><br><span class="line">       CacheControl cacheControl = <span class="keyword">this</span>.resourceProperties.getCache()</span><br><span class="line">           .getCachecontrol().toHttpCacheControl();</span><br><span class="line">       <span class="keyword">if</span> (!registry.hasMappingForPattern(<span class="string">"/webjars/**"</span>)) &#123;</span><br><span class="line">           <span class="keyword">this</span>.customizeResourceHandlerRegistration(registry.addResourceHandler(</span><br><span class="line">           <span class="keyword">new</span> String[]&#123;<span class="string">"/webjars/**"</span>&#125;).addResourceLocations(<span class="keyword">new</span> String[]</span><br><span class="line">           &#123;<span class="string">"classpath:/META-INF/resources/webjars/"</span>&#125;)                     						   .setCachePeriod(<span class="keyword">this</span>.getSeconds(cachePeriod)).setCacheControl(cacheControl));</span><br><span class="line">       &#125;</span><br><span class="line">       String staticPathPattern = <span class="keyword">this</span>.mvcProperties.getStaticPathPattern();</span><br><span class="line">       <span class="keyword">if</span> (!registry.hasMappingForPattern(staticPathPattern)) &#123;</span><br><span class="line">           <span class="keyword">this</span>.customizeResourceHandlerRegistration(registry.addResourceHandler(<span class="keyword">new</span>                String[]&#123;staticPathPattern&#125;).addResourceLocations(WebMvcAutoConfiguration</span><br><span class="line">           .getResourceLocations(<span class="keyword">this</span>.resourceProperties.getStaticLocations()))                                           .setCachePeriod(<span class="keyword">this</span>.getSeconds(cachePeriod))</span><br><span class="line">                                                     .setCacheControl(cacheControl));</span><br><span class="line">        &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//配置欢迎页</span></span><br><span class="line"><span class="meta">@Bean</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> WelcomePageHandlerMapping <span class="title">welcomePageHandlerMapping</span><span class="params">(ApplicationContext applicationContext, FormattingConversionService mvcConversionService, ResourceUrlProvider mvcResourceUrlProvider)</span> </span>&#123;</span><br><span class="line">    WelcomePageHandlerMapping welcomePageHandlerMapping = <span class="keyword">new</span> WelcomePageHandlerMapping(</span><br><span class="line">    <span class="keyword">new</span> TemplateAvailabilityProviders(applicationContext),applicationContext,            <span class="keyword">this</span>.getWelcomePage(), <span class="keyword">this</span>.mvcProperties.getStaticPathPattern());          welcomePageHandlerMapping.setInterceptors(<span class="keyword">this</span>.getInterceptors(mvcConversionService,    mvcResourceUrlProvider));</span><br><span class="line">  <span class="keyword">return</span> welcomePageHandlerMapping;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -647,7 +790,7 @@
 </li>
 </ol>
 <p><a href="https://www.webjars.org/" target="_blank" rel="noopener">https://www.webjars.org/</a></p>
-<p><img data-sizes="auto" data-src="SpringBoot%E5%9F%BA%E7%A1%80%E4%B8%89/webjar.png" alt="" class="lazyload"></p>
+<p><img src="SpringBoot%E5%9F%BA%E7%A1%80%E4%B8%89/webjar.png" alt=""></p>
 <p>localhost:8081/webjars/jquery/3.4.1/jquery.js  =&gt; 映射  </p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.webjars<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>jquery<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.4.1<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
@@ -689,33 +832,71 @@
 <li>语法规则：</li>
 </ol>
 <p>（1）th:html任意属性  可以替换原生HTML的值<br>例如：<br>    th: text</p>
-<p><img data-sizes="auto" data-src="SpringBoot%E5%9F%BA%E7%A1%80%E4%B8%89/2018-02-04_123955.png" alt="" class="lazyload"></p>
+<p><img src="SpringBoot%E5%9F%BA%E7%A1%80%E4%B8%89/2018-02-04_123955.png" alt=""></p>
 <p>（2）表达式</p>
 <figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">Simple</span> <span class="string">expressions:（表达式语法）</span></span><br><span class="line">    <span class="attr">Variable</span> <span class="string">Expressions: $&#123;...&#125;：获取变量值；OGNL；</span></span><br><span class="line">    		<span class="attr">1）、获取对象的属性、调用方法</span></span><br><span class="line">    		<span class="attr">2）、使用内置的基本对象：</span></span><br><span class="line"><span class="comment">    			#ctx : the context object.</span></span><br><span class="line"><span class="comment">    			#vars: the context variables.</span></span><br><span class="line"><span class="comment">                #locale : the context locale.</span></span><br><span class="line"><span class="comment">                #request : (only in Web Contexts) the HttpServletRequest object.</span></span><br><span class="line"><span class="comment">                #response : (only in Web Contexts) the HttpServletResponse object.</span></span><br><span class="line"><span class="comment">                #session : (only in Web Contexts) the HttpSession object.</span></span><br><span class="line"><span class="comment">                #servletContext : (only in Web Contexts) the ServletContext object.</span></span><br><span class="line">                </span><br><span class="line">                <span class="attr">$&#123;session.foo&#125;</span></span><br><span class="line">            <span class="attr">3）、内置的一些工具对象：</span></span><br><span class="line"><span class="comment">#execInfo : information about the template being processed.</span></span><br><span class="line"><span class="comment">#messages : methods for obtaining externalized messages inside variables expressions, in the same way as they would be obtained using #&#123;…&#125; syntax.</span></span><br><span class="line"><span class="comment">#uris : methods for escaping parts of URLs/URIs</span></span><br><span class="line"><span class="comment">#conversions : methods for executing the configured conversion service (if any).</span></span><br><span class="line"><span class="comment">#dates : methods for java.util.Date objects: formatting, component extraction, etc.</span></span><br><span class="line"><span class="comment">#calendars : analogous to #dates , but for java.util.Calendar objects.</span></span><br><span class="line"><span class="comment">#numbers : methods for formatting numeric objects.</span></span><br><span class="line"><span class="comment">#strings : methods for String objects: contains, startsWith, prepending/appending, etc.</span></span><br><span class="line"><span class="comment">#objects : methods for objects in general.</span></span><br><span class="line"><span class="comment">#bools : methods for boolean evaluation.</span></span><br><span class="line"><span class="comment">#arrays : methods for arrays.</span></span><br><span class="line"><span class="comment">#lists : methods for lists.</span></span><br><span class="line"><span class="comment">#sets : methods for sets.</span></span><br><span class="line"><span class="comment">#maps : methods for maps.</span></span><br><span class="line"><span class="comment">#aggregates : methods for creating aggregates on arrays or collections.</span></span><br><span class="line"><span class="comment">#ids : methods for dealing with id attributes that might be repeated (for example, as a result of an iteration).</span></span><br><span class="line"></span><br><span class="line">    <span class="attr">Selection</span> <span class="string">Variable Expressions: *&#123;...&#125;：选择表达式：和$&#123;&#125;在功能上是一样；</span></span><br><span class="line">    	<span class="meta">补充：配合</span> <span class="string">th:object="$&#123;session.user&#125;：</span></span><br><span class="line">   <span class="meta">&lt;div</span> <span class="string">th:object="$&#123;session.user&#125;"&gt;</span></span><br><span class="line">    <span class="meta">&lt;p&gt;Name</span>: <span class="string">&lt;span th:text="*&#123;firstName&#125;"&gt;Sebastian&lt;/span&gt;.&lt;/p&gt;</span></span><br><span class="line">    <span class="meta">&lt;p&gt;Surname</span>: <span class="string">&lt;span th:text="*&#123;lastName&#125;"&gt;Pepper&lt;/span&gt;.&lt;/p&gt;</span></span><br><span class="line">    <span class="meta">&lt;p&gt;Nationality</span>: <span class="string">&lt;span th:text="*&#123;nationality&#125;"&gt;Saturn&lt;/span&gt;.&lt;/p&gt;</span></span><br><span class="line">    <span class="attr">&lt;/div&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="attr">Message</span> <span class="string">Expressions: #&#123;...&#125;：获取国际化内容</span></span><br><span class="line">    <span class="attr">Link</span> <span class="string">URL Expressions: @&#123;...&#125;：定义URL；</span></span><br><span class="line">    		<span class="meta">@&#123;/order/process(execId</span>=<span class="string">$&#123;execId&#125;,execType='FAST')&#125;</span></span><br><span class="line">    <span class="attr">Fragment</span> <span class="string">Expressions: ~&#123;...&#125;：片段引用表达式</span></span><br><span class="line">    		<span class="meta">&lt;div</span> <span class="string">th:insert="~&#123;commons :: main&#125;"&gt;...&lt;/div&gt;</span></span><br><span class="line">    		</span><br><span class="line"><span class="attr">Literals（字面量）</span></span><br><span class="line">      <span class="attr">Text</span> <span class="string">literals: 'one text' , 'Another one!' ,…</span></span><br><span class="line">      <span class="attr">Number</span> <span class="string">literals: 0 , 34 , 3.0 , 12.3 ,…</span></span><br><span class="line">      <span class="attr">Boolean</span> <span class="string">literals: true , false</span></span><br><span class="line">      <span class="attr">Null</span> <span class="string">literal: null</span></span><br><span class="line">      <span class="attr">Literal</span> <span class="string">tokens: one , sometext , main ,…</span></span><br><span class="line"><span class="attr">Text</span> <span class="string">operations:（文本操作）</span></span><br><span class="line">    <span class="attr">String</span> <span class="string">concatenation: +</span></span><br><span class="line">    <span class="attr">Literal</span> <span class="string">substitutions: |The name is $&#123;name&#125;|</span></span><br><span class="line"><span class="attr">Arithmetic</span> <span class="string">operations:（数学运算）</span></span><br><span class="line">    <span class="attr">Binary</span> <span class="string">operators: + , - , * , / , %</span></span><br><span class="line">    <span class="attr">Minus</span> <span class="string">sign (unary operator): -</span></span><br><span class="line"><span class="attr">Boolean</span> <span class="string">operations:（布尔运算）</span></span><br><span class="line">    <span class="attr">Binary</span> <span class="string">operators: and , or</span></span><br><span class="line">    <span class="attr">Boolean</span> <span class="string">negation (unary operator): ! , not</span></span><br><span class="line"><span class="attr">Comparisons</span> <span class="string">and equality:（比较运算）</span></span><br><span class="line">    <span class="attr">Comparators</span>: <span class="string">&gt; , &lt; , &gt;= , &lt;= ( gt , lt , ge , le )</span></span><br><span class="line">    <span class="attr">Equality</span> <span class="string">operators: == , != ( eq , ne )</span></span><br><span class="line"><span class="attr">Conditional</span> <span class="string">operators:条件运算（三元运算符）</span></span><br><span class="line">    <span class="meta">If-then</span>: <span class="string">(if) ? (then)</span></span><br><span class="line">    <span class="meta">If-then-else</span>: <span class="string">(if) ? (then) : (else)</span></span><br><span class="line">    <span class="attr">Default</span>: <span class="string">(value) ?: (defaultvalue)</span></span><br><span class="line"><span class="attr">Special</span> <span class="string">tokens:</span></span><br><span class="line">    <span class="meta">No-Operation</span>: <span class="string">_</span></span><br></pre></td></tr></table></figure>
 
-            
-        </article>
+      
     </div>
+
     
-    <div class="nexmoe-post">
-        <a href="/2020/02/27/SpringBoot%E5%9F%BA%E7%A1%80%E4%BA%8C/">
-            
-                <div class="nexmoe-post-cover mdui-ripple" style="padding-bottom: 66.66666666666666%;"> 
-                    <img data-src="https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/cover/5c3aec85a4343.jpg" data-sizes="auto" alt="SpringBoot基础二" class="lazyload">
-                    <h1>SpringBoot基础二</h1>
-                </div>
-            
-        </a>
+    
+    
+	<div>
+		
+	</div>
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
 
-        <div class="nexmoe-post-meta">
-            <a><i class="nexmoefont icon-calendar-fill"></i>2020年02月27日</a>
-            <a><i class="nexmoefont icon-areachart"></i>1.6k 字</a>
-            <a><i class="nexmoefont icon-time-circle-fill"></i>大概 7 分钟</a>
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/27/SpringBoot%E5%9F%BA%E7%A1%80%E4%BA%8C/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/2.png">
+      <meta itemprop="name" content="Anderson Wu">
+      <meta itemprop="description" content="Love is love">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="陪你度过漫长岁月">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/02/27/SpringBoot%E5%9F%BA%E7%A1%80%E4%BA%8C/" class="post-title-link" itemprop="url">SpringBoot基础二</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-02-27 19:37:58 / 修改时间：18:03:54" itemprop="dateCreated datePublished" datetime="2020-02-27T19:37:58+08:00">2020-02-27</time>
+            </span>
+
+          
+
         </div>
+      </header>
 
-        <article>
-            
-                <h4 id="1-日志框架"><a href="#1-日志框架" class="headerlink" title="1. 日志框架"></a>1. 日志框架</h4><p>当前热门的日志框架:</p>
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="1-日志框架"><a href="#1-日志框架" class="headerlink" title="1. 日志框架"></a>1. 日志框架</h4><p>当前热门的日志框架:</p>
 <p>JUL、JCL、Jboss-logging、logback、log4j、log4j2、slf4j….</p>
 <table>
 <thead>
@@ -739,12 +920,12 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> org.slf4j.Logger;</span><br><span class="line"><span class="keyword">import</span> org.slf4j.LoggerFactory;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloWorld</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    Logger logger = LoggerFactory.getLogger(HelloWorld<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line">    logger.info(<span class="string">"Hello World"</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>各日志框架系统的配置：</p>
-<p><img data-sizes="auto" data-src="SpringBoot%E5%9F%BA%E7%A1%80%E4%BA%8C/concrete-bindings.png" alt="" class="lazyload"></p>
+<p><img src="SpringBoot%E5%9F%BA%E7%A1%80%E4%BA%8C/concrete-bindings.png" alt=""></p>
 <p>每一个日志的实现框架都有自己的配置文件。</p>
 <p>如果使用slf4j，<strong>日志的配置文件应该使用日志实现框架自己本身的配置文件；</strong></p>
 <h5 id="2-2-Application中存在不同的日志框架"><a href="#2-2-Application中存在不同的日志框架" class="headerlink" title="2.2 Application中存在不同的日志框架"></a>2.2 Application中存在不同的日志框架</h5><p>app（slf4j+logback）: Spring（commons-logging）、Hibernate（jboss-logging）、MyBatis、xxxx</p>
 <p>统一日志记录，其他框架能否都统一使用slf4j进行输出？</p>
-<p><img data-sizes="auto" data-src="SpringBoot%E5%9F%BA%E7%A1%80%E4%BA%8C/legacy.png" alt="" class="lazyload"></p>
+<p><img src="SpringBoot%E5%9F%BA%E7%A1%80%E4%BA%8C/legacy.png" alt=""></p>
 <p>将application中所有的日志都统一到SLF4J:</p>
 <ul>
 <li>将application中其他日志框架排除</li>
@@ -756,9 +937,9 @@
 
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-logging<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
-<p><img data-sizes="auto" data-src="SpringBoot%E5%9F%BA%E7%A1%80%E4%BA%8C/SpringBootStarter.png" alt="" class="lazyload"></p>
+<p><img src="SpringBoot%E5%9F%BA%E7%A1%80%E4%BA%8C/SpringBootStarter.png" alt=""></p>
 <p>底层依赖：</p>
-<p><img data-sizes="auto" data-src="SpringBoot%E5%9F%BA%E7%A1%80%E4%BA%8C/SpringBoot_logging_instruction.png" alt="" class="lazyload"></p>
+<p><img src="SpringBoot%E5%9F%BA%E7%A1%80%E4%BA%8C/SpringBoot_logging_instruction.png" alt=""></p>
 <p><strong>步骤：</strong></p>
 <ul>
 <li>SpringBoot底层也是使用slf4j + logback的方式进行日志记录</li>
@@ -769,7 +950,7 @@
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@SuppressWarnings</span>(<span class="string">"rawtypes"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">LogFactory</span> </span>&#123;</span><br><span class="line">    <span class="keyword">static</span> String UNSUPPORTED_OPERATION_IN_JCL_OVER_SLF4J = <span class="string">"http://www.slf4j.org/codes.html#unsupported_operation_in_jcl_over_slf4j"</span>;</span><br><span class="line">    <span class="keyword">static</span> LogFactory logFactory = <span class="keyword">new</span> SLF4JLogFactory();</span><br></pre></td></tr></table></figure>
 
-<p><img data-sizes="auto" data-src="SpringBoot%E5%9F%BA%E7%A1%80%E4%BA%8C/%E4%B8%AD%E9%97%B4%E5%8C%85.png" alt="" class="lazyload"></p>
+<p><img src="SpringBoot%E5%9F%BA%E7%A1%80%E4%BA%8C/%E4%B8%AD%E9%97%B4%E5%8C%85.png" alt=""></p>
 <ul>
 <li><p>如果需要引入其他日志框架，一定要把该日志框架的默认日志依赖移除</p>
 <p>SpringBoot框架使用commons-logging;</p>
@@ -851,29 +1032,73 @@
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-web<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">exclusions</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">exclusion</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-logging<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;/<span class="name">exclusion</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">exclusions</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-log4j2<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 
-            
-        </article>
+      
     </div>
+
     
-    <div class="nexmoe-post">
-        <a href="/2020/02/10/SpringBoot%E5%9F%BA%E7%A1%80%E4%B8%80/">
-            
-                <div class="nexmoe-post-cover mdui-ripple" style="padding-bottom: 66.66666666666666%;"> 
-                    <img data-src="https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/cover/5c3aec85a4343.jpg" data-sizes="auto" alt="SpringBoot基础一" class="lazyload">
-                    <h1>SpringBoot基础一</h1>
-                </div>
-            
-        </a>
+    
+    
+	<div>
+		
+	</div>
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
 
-        <div class="nexmoe-post-meta">
-            <a><i class="nexmoefont icon-calendar-fill"></i>2020年02月10日</a>
-            <a><i class="nexmoefont icon-areachart"></i>4.7k 字</a>
-            <a><i class="nexmoefont icon-time-circle-fill"></i>大概 23 分钟</a>
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/10/SpringBoot%E5%9F%BA%E7%A1%80%E4%B8%80/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/2.png">
+      <meta itemprop="name" content="Anderson Wu">
+      <meta itemprop="description" content="Love is love">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="陪你度过漫长岁月">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/02/10/SpringBoot%E5%9F%BA%E7%A1%80%E4%B8%80/" class="post-title-link" itemprop="url">SpringBoot基础一</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-02-10 19:37:58" itemprop="dateCreated datePublished" datetime="2020-02-10T19:37:58+08:00">2020-02-10</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-02-25 19:02:22" itemprop="dateModified" datetime="2020-02-25T19:02:22+08:00">2020-02-25</time>
+              </span>
+
+          
+
         </div>
+      </header>
 
-        <article>
-            
-                <h4 id="1-主程序入口类"><a href="#1-主程序入口类" class="headerlink" title="1. 主程序入口类"></a>1. 主程序入口类</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@SpringBootApplication</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloWorldMainApplication</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span>  </span></span><br><span class="line"><span class="function">         SpringApplication.<span class="title">run</span><span class="params">(HelloWorldMainApplication.class,args)</span></span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="1-主程序入口类"><a href="#1-主程序入口类" class="headerlink" title="1. 主程序入口类"></a>1. 主程序入口类</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@SpringBootApplication</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloWorldMainApplication</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span>  </span></span><br><span class="line"><span class="function">         SpringApplication.<span class="title">run</span><span class="params">(HelloWorldMainApplication.class,args)</span></span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p><strong>@SpringBootApplication</strong>:   该注解作用在某个类上，说明这个类是SpringBoot的主配置类，SpringBoot就应该运行这个类的main方法来启动SpringBoot应用；</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Target</span>(&#123;ElementType.TYPE&#125;)</span><br><span class="line"><span class="meta">@Retention</span>(RetentionPolicy.RUNTIME)</span><br><span class="line"><span class="meta">@Documented</span></span><br><span class="line"><span class="meta">@Inherited</span></span><br><span class="line"><span class="meta">@SpringBootConfiguration</span></span><br><span class="line"><span class="meta">@EnableAutoConfiguration</span></span><br><span class="line"><span class="meta">@ComponentScan</span>(excludeFilters = &#123;</span><br><span class="line">    <span class="meta">@Filter</span>(type = FilterType.CUSTOM,classes = &#123;TypeExcludeFilter<span class="class">.<span class="keyword">class</span>&#125;), </span></span><br><span class="line"><span class="class">    @<span class="title">Filter</span>(<span class="title">type</span> </span>= FilterType.CUSTOM,classes = &#123;AutoConfigurationExcludeFilter<span class="class">.<span class="keyword">class</span>&#125;)</span></span><br><span class="line"><span class="class">&#125;)</span></span><br><span class="line"><span class="class"><span class="title">public</span> @<span class="title">interface</span> <span class="title">SpringBootApplication</span> </span>&#123;</span><br></pre></td></tr></table></figure>
@@ -888,7 +1113,7 @@
 <p>​                            将主配置类（@SpringBootConfiguration标注的类）所在包下的所有的子包中所有组件扫描到                            Spring容器中。</p>
 <p>​            <strong>@Import({AutoConfigurationImportSelector.class})</strong>: 给容器添加组件，具体是哪些？</p>
 <p>​                            <strong>AutoConfigurationImportSelector</strong>： 将所有需要导入的组件以全类名的方式返回；这些组件                            都是该场景下的自动配置类（xxxAutoConfiguration）；最总会被添加到容器中；</p>
-<p><img data-sizes="auto" data-src="SpringBoot%E5%9F%BA%E7%A1%80%E4%B8%80/1.png" alt="1" class="lazyload"></p>
+<p><img src="SpringBoot%E5%9F%BA%E7%A1%80%E4%B8%80/1.png" alt="1"></p>
 <p>这些自动配置类，省去手动编写配置文件注入功能组件</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SpringFactoriesLoader.loadFactoryNames(EnableAutoConfiguration<span class="class">.<span class="keyword">class</span>, <span class="title">beanClassLoader</span>)</span></span><br></pre></td></tr></table></figure>
 
@@ -1034,10 +1259,10 @@
 <pre><code>-  java -jar spring-boot-02-config-0.0.1-SNAPSHOT.jar --spring.profiles.active=dev；</code></pre><ul>
 <li><p>也可以直接在测试的时候，配置传入命令行参数</p>
 </li>
-<li><p><img data-sizes="auto" data-src="SpringBoot%E5%9F%BA%E7%A1%80%E4%B8%80/2.png" alt="2" class="lazyload"></p>
+<li><p><img src="SpringBoot%E5%9F%BA%E7%A1%80%E4%B8%80/2.png" alt="2"></p>
 <p>3、虚拟机参数： </p>
 <p>-Dspring.profiles.active=dev</p>
-<p><img data-sizes="auto" data-src="SpringBoot%E5%9F%BA%E7%A1%80%E4%B8%80/3.png" alt="3" class="lazyload"></p>
+<p><img src="SpringBoot%E5%9F%BA%E7%A1%80%E4%B8%80/3.png" alt="3"></p>
 </li>
 </ul>
 <h5 id="7-3-yml支持多文档块方式"><a href="#7-3-yml支持多文档块方式" class="headerlink" title="7.3 yml支持多文档块方式"></a>7.3 yml支持多文档块方式</h5><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">server:</span></span><br><span class="line">  <span class="attr">port:</span> <span class="number">8080</span></span><br><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">profiles:</span></span><br><span class="line">    <span class="attr">active:</span> <span class="string">prod</span></span><br><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">server:</span></span><br><span class="line">  <span class="attr">port:</span> <span class="number">8181</span></span><br><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">profiles:</span> <span class="string">dev</span></span><br><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">server:</span></span><br><span class="line">  <span class="attr">port:</span> <span class="number">8182</span></span><br><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">profiles:</span> <span class="string">prod</span></span><br></pre></td></tr></table></figure>
@@ -1179,29 +1404,73 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">=========================</span><br><span class="line">AUTO-CONFIGURATION REPORT</span><br><span class="line">=========================</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Positive matches:（自动配置类启用的）</span><br><span class="line">-----------------</span><br><span class="line"></span><br><span class="line">   DispatcherServletAutoConfiguration matched:</span><br><span class="line">      - <span class="meta">@ConditionalOnClass</span> found required <span class="class"><span class="keyword">class</span> '<span class="title">org</span>.<span class="title">springframework</span>.<span class="title">web</span>.<span class="title">servlet</span>.<span class="title">DispatcherServlet</span>'</span>; <span class="meta">@ConditionalOnMissingClass</span> <span class="function">did not find unwanted <span class="title">class</span> <span class="params">(OnClassCondition)</span></span></span><br><span class="line"><span class="function">      - @<span class="title">ConditionalOnWebApplication</span> <span class="params">(required)</span> found <span class="title">StandardServletEnvironment</span> <span class="params">(OnWebApplicationCondition)</span></span></span><br><span class="line"><span class="function">        </span></span><br><span class="line"><span class="function">    </span></span><br><span class="line"><span class="function">Negative matches:（没有启动，没有匹配成功的自动配置类）</span></span><br><span class="line"><span class="function">-----------------</span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">   ActiveMQAutoConfiguration:</span></span><br><span class="line"><span class="function">      Did not match:</span></span><br><span class="line"><span class="function">         - @ConditionalOnClass did not find required classes 'javax.jms.ConnectionFactory', 'org.apache.activemq.ActiveMQConnectionFactory' <span class="params">(OnClassCondition)</span></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">   AopAutoConfiguration:</span></span><br><span class="line"><span class="function">      Did not match:</span></span><br><span class="line"><span class="function">         - @ConditionalOnClass did not find required classes 'org.aspectj.lang.annotation.Aspect', 'org.aspectj.lang.reflect.Advice' <span class="params">(OnClassCondition)</span></span></span><br></pre></td></tr></table></figure>
 
 
-            
-        </article>
+      
     </div>
+
     
-    <div class="nexmoe-post">
-        <a href="/2019/12/14/LCS%E5%BA%94%E7%94%A8/">
-            
-                <div class="nexmoe-post-cover mdui-ripple" style="padding-bottom: 66.66666666666666%;"> 
-                    <img data-src="https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/cover/5c3aec85a4343.jpg" data-sizes="auto" alt="LCS求序列的父序列" class="lazyload">
-                    <h1>LCS求序列的父序列</h1>
-                </div>
-            
-        </a>
+    
+    
+	<div>
+		
+	</div>
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
 
-        <div class="nexmoe-post-meta">
-            <a><i class="nexmoefont icon-calendar-fill"></i>2019年12月14日</a>
-            <a><i class="nexmoefont icon-areachart"></i>908 字</a>
-            <a><i class="nexmoefont icon-time-circle-fill"></i>大概 3 分钟</a>
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/14/LCS%E5%BA%94%E7%94%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/2.png">
+      <meta itemprop="name" content="Anderson Wu">
+      <meta itemprop="description" content="Love is love">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="陪你度过漫长岁月">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/12/14/LCS%E5%BA%94%E7%94%A8/" class="post-title-link" itemprop="url">LCS求序列的父序列</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-12-14 19:37:58" itemprop="dateCreated datePublished" datetime="2019-12-14T19:37:58+08:00">2019-12-14</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-02-25 14:49:17" itemprop="dateModified" datetime="2020-02-25T14:49:17+08:00">2020-02-25</time>
+              </span>
+
+          
+
         </div>
+      </header>
 
-        <article>
-            
-                <h5 id="一、需求A"><a href="#一、需求A" class="headerlink" title="一、需求A"></a>一、需求A</h5><p>​        前几天，在task中有一个应用场景，求两个子序列的最短”父序列”，想到LCS得到两个序列的最长公共子序列，那在求最短”父序列”也可以应用到LCS。</p>
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h5 id="一、需求A"><a href="#一、需求A" class="headerlink" title="一、需求A"></a>一、需求A</h5><p>​        前几天，在task中有一个应用场景，求两个子序列的最短”父序列”，想到LCS得到两个序列的最长公共子序列，那在求最短”父序列”也可以应用到LCS。</p>
 <h5 id="二、基本概念"><a href="#二、基本概念" class="headerlink" title="二、基本概念"></a>二、基本概念</h5><p><strong>子序列(subsequence)：</strong></p>
 <p>​         一个特定序列的子序列就是将给定序列中零个或多个元素去掉后得到的结果(不改变元素间相对次序)。例如序列&lt;A,B,C,B,D,A,B&gt;的子序列有：&lt;A,B&gt;、&lt;B,C,A&gt;、&lt;A,B,C,D,A&gt;等。</p>
 <p><strong>公共子序列(common subsequence)：</strong></p>
@@ -1213,7 +1482,7 @@
 <p><strong>最短”父序列”：</strong></p>
 <p>​         两个子序列的最短”父序列”是指，同时包含两个子序列的最短序列，比如 ABCD和BCEF的最短”父序列”为 ABCEF。</p>
 <p>下图为子序列和字串的区别：</p>
-<p><img data-sizes="auto" data-src="LCS%E5%BA%94%E7%94%A8/1576420589811.png" alt="1576420589811" class="lazyload"></p>
+<p><img src="LCS%E5%BA%94%E7%94%A8/1576420589811.png" alt="1576420589811"></p>
 <h5 id="三、最短”父序列”求解过程"><a href="#三、最短”父序列”求解过程" class="headerlink" title="三、最短”父序列”求解过程"></a>三、最短”父序列”求解过程</h5><ul>
 <li>先求解两个序列的最长公共子序列</li>
 <li>将两个子序列合并成一个序列，得到合并序列</li>
@@ -1221,41 +1490,85 @@
 </ul>
 <h5 id="四、算法应用"><a href="#四、算法应用" class="headerlink" title="四、算法应用"></a>四、算法应用</h5><p><strong>递归算法：</strong></p>
 <p>设有字符串A[0…n]，B[0…m]，当数组A和B对应位置字符相同时，则直接求解下一个位置；当不同时取两种情况中的较大数值。递推公式如下：</p>
-<p><img data-sizes="auto" data-src="LCS%E5%BA%94%E7%94%A8/1576422186090.png" alt="1576422186090" class="lazyload"></p>
+<p><img src="LCS%E5%BA%94%E7%94%A8/1576422186090.png" alt="1576422186090"></p>
 <p>​         用递归的方法优点是编程简单，容易理解。缺点是效率不高，有大量的重复执行递归调用，而且只能求出最大公共子序列的长度，求不出具体的最大公共子序列。</p>
 <p><strong>动态规划算法：</strong></p>
 <p> 动态规划采用二维数组来标识中间计算结果，避免重复的计算来提高效率。</p>
 <p>　　设有字符串A[0…n]，B[0…m]，下面就是递推公式。字符串A对应的是二维数组c[ ][ ] 的行，字符串B对应的是二维数组c[ ][ ]的列。</p>
-<p><img data-sizes="auto" data-src="LCS%E5%BA%94%E7%94%A8/1576422548040.png" alt="1576422548040" class="lazyload"></p>
+<p><img src="LCS%E5%BA%94%E7%94%A8/1576422548040.png" alt="1576422548040"></p>
 <p>构建LCS的DP表，如下：</p>
-<p><img data-sizes="auto" data-src="LCS%E5%BA%94%E7%94%A8/1576422503595.png" alt="1576422503595" class="lazyload"></p>
+<p><img src="LCS%E5%BA%94%E7%94%A8/1576422503595.png" alt="1576422503595"></p>
 <p>按照指定的路径倒推回去，就可以得到LCS，其中棕色方格为相等元素，即LCS = {3,4,6,7,8}，这是其中一个结果。</p>
 <p>在倒推时，如果s1[i] == s2[j] 就跳转到c[i - 1][j - 1],如果s1[i] != s1[j], 就向前找或向上找（只能一个方向）。</p>
 <h5 id="五、总结"><a href="#五、总结" class="headerlink" title="五、总结"></a>五、总结</h5><p>求得两个序列的最长公共子序列，就可以通过合并两个子序列，再切割最长公共子序列，得到两个序列的最短”父序列”。</p>
 
-            
-        </article>
+      
     </div>
+
     
-    <div class="nexmoe-post">
-        <a href="/2019/11/02/element-ui%E4%BD%BF%E7%94%A8%E4%B8%AD%E7%9A%84%E7%96%91%E9%97%AE/">
-            
-                <div class="nexmoe-post-cover mdui-ripple" style="padding-bottom: 66.66666666666666%;"> 
-                    <img data-src="https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/cover/5c3aec85a4343.jpg" data-sizes="auto" alt="Element UI使用中的疑问" class="lazyload">
-                    <h1>Element UI使用中的疑问</h1>
-                </div>
-            
-        </a>
+    
+    
+	<div>
+		
+	</div>
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
 
-        <div class="nexmoe-post-meta">
-            <a><i class="nexmoefont icon-calendar-fill"></i>2019年11月02日</a>
-            <a><i class="nexmoefont icon-areachart"></i>883 字</a>
-            <a><i class="nexmoefont icon-time-circle-fill"></i>大概 4 分钟</a>
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/02/element-ui%E4%BD%BF%E7%94%A8%E4%B8%AD%E7%9A%84%E7%96%91%E9%97%AE/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/2.png">
+      <meta itemprop="name" content="Anderson Wu">
+      <meta itemprop="description" content="Love is love">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="陪你度过漫长岁月">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/11/02/element-ui%E4%BD%BF%E7%94%A8%E4%B8%AD%E7%9A%84%E7%96%91%E9%97%AE/" class="post-title-link" itemprop="url">Element UI使用中的疑问</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-11-02 10:02:19" itemprop="dateCreated datePublished" datetime="2019-11-02T10:02:19+08:00">2019-11-02</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-11-07 19:14:46" itemprop="dateModified" datetime="2019-11-07T19:14:46+08:00">2019-11-07</time>
+              </span>
+
+          
+
         </div>
+      </header>
 
-        <article>
-            
-                <p>这几天在使用Element-UI时，发现了几个需要注意的地方，特意记录一下。</p>
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>这几天在使用Element-UI时，发现了几个需要注意的地方，特意记录一下。</p>
 <h5 id="1-v-model-和-model区别"><a href="#1-v-model-和-model区别" class="headerlink" title="1.v-model 和 :model区别"></a>1.v-model 和 :model区别</h5><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">el-form</span> <span class="attr">ref</span>=<span class="string">"form"</span> <span class="attr">:model</span>=<span class="string">"sizeForm"</span> <span class="attr">label-width</span>=<span class="string">"80px"</span> <span class="attr">size</span>=<span class="string">"mini"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">el-form-item</span> <span class="attr">label</span>=<span class="string">"活动名称"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">el-input</span> <span class="attr">v-model</span>=<span class="string">"sizeForm.name"</span>&gt;</span><span class="tag">&lt;/<span class="name">el-input</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">el-form-item</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">el-form-item</span> <span class="attr">label</span>=<span class="string">"活动区域"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">el-select</span> <span class="attr">v-model</span>=<span class="string">"sizeForm.region"</span> <span class="attr">placeholder</span>=<span class="string">"请选择活动区域"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">el-option</span> <span class="attr">label</span>=<span class="string">"区域一"</span> <span class="attr">value</span>=<span class="string">"shanghai"</span>&gt;</span><span class="tag">&lt;/<span class="name">el-option</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">el-option</span> <span class="attr">label</span>=<span class="string">"区域二"</span> <span class="attr">value</span>=<span class="string">"beijing"</span>&gt;</span><span class="tag">&lt;/<span class="name">el-option</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">el-select</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">el-form-item</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">el-form-item</span> <span class="attr">label</span>=<span class="string">"活动时间"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">el-col</span> <span class="attr">:span</span>=<span class="string">"11"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">el-date-picker</span> <span class="attr">type</span>=<span class="string">"date"</span> <span class="attr">placeholder</span>=<span class="string">"选择日期"</span> <span class="attr">v-model</span>=<span class="string">"sizeForm.date1"</span> <span class="attr">style</span>=<span class="string">"width: 100%;"</span>&gt;</span><span class="tag">&lt;/<span class="name">el-date-picker</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">el-col</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">el-col</span> <span class="attr">class</span>=<span class="string">"line"</span> <span class="attr">:span</span>=<span class="string">"2"</span>&gt;</span>-<span class="tag">&lt;/<span class="name">el-col</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">el-col</span> <span class="attr">:span</span>=<span class="string">"11"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">el-time-picker</span> <span class="attr">placeholder</span>=<span class="string">"选择时间"</span> <span class="attr">v-model</span>=<span class="string">"sizeForm.date2"</span> <span class="attr">style</span>=<span class="string">"width: 100%;"</span>&gt;</span><span class="tag">&lt;/<span class="name">el-time-picker</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">el-col</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">el-form-item</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">el-form-item</span> <span class="attr">label</span>=<span class="string">"活动性质"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">el-checkbox-group</span> <span class="attr">v-model</span>=<span class="string">"sizeForm.type"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">el-checkbox-button</span> <span class="attr">label</span>=<span class="string">"美食/餐厅线上活动"</span> <span class="attr">name</span>=<span class="string">"type"</span>&gt;</span><span class="tag">&lt;/<span class="name">el-checkbox-button</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">el-checkbox-button</span> <span class="attr">label</span>=<span class="string">"地推活动"</span> <span class="attr">name</span>=<span class="string">"type"</span>&gt;</span><span class="tag">&lt;/<span class="name">el-checkbox-button</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">el-checkbox-button</span> <span class="attr">label</span>=<span class="string">"线下主题活动"</span> <span class="attr">name</span>=<span class="string">"type"</span>&gt;</span><span class="tag">&lt;/<span class="name">el-checkbox-button</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">el-checkbox-group</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">el-form-item</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">el-form-item</span> <span class="attr">label</span>=<span class="string">"特殊资源"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">el-radio-group</span> <span class="attr">v-model</span>=<span class="string">"sizeForm.resource"</span> <span class="attr">size</span>=<span class="string">"medium"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">el-radio</span> <span class="attr">border</span> <span class="attr">label</span>=<span class="string">"线上品牌商赞助"</span>&gt;</span><span class="tag">&lt;/<span class="name">el-radio</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">el-radio</span> <span class="attr">border</span> <span class="attr">label</span>=<span class="string">"线下场地免费"</span>&gt;</span><span class="tag">&lt;/<span class="name">el-radio</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">el-radio-group</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">el-form-item</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">el-form-item</span> <span class="attr">size</span>=<span class="string">"large"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">el-button</span> <span class="attr">type</span>=<span class="string">"primary"</span> @<span class="attr">click</span>=<span class="string">"onSubmit"</span>&gt;</span>立即创建<span class="tag">&lt;/<span class="name">el-button</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">el-button</span>&gt;</span>取消<span class="tag">&lt;/<span class="name">el-button</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">el-form-item</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">el-form</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">  <span class="keyword">export</span> <span class="keyword">default</span> &#123;</span></span><br><span class="line">    data() &#123;</span><br><span class="line"><span class="actionscript">      <span class="keyword">return</span> &#123;</span></span><br><span class="line">        sizeForm: &#123;</span><br><span class="line"><span class="actionscript">          name: <span class="string">''</span>,</span></span><br><span class="line"><span class="actionscript">          region: <span class="string">''</span>,</span></span><br><span class="line"><span class="actionscript">          date1: <span class="string">''</span>,</span></span><br><span class="line"><span class="actionscript">          date2: <span class="string">''</span>,</span></span><br><span class="line"><span class="actionscript">          delivery: <span class="literal">false</span>,</span></span><br><span class="line">          type: [],</span><br><span class="line"><span class="actionscript">          resource: <span class="string">''</span>,</span></span><br><span class="line"><span class="actionscript">          desc: <span class="string">''</span></span></span><br><span class="line">        &#125;</span><br><span class="line">      &#125;;</span><br><span class="line">    &#125;,</span><br><span class="line">    methods: &#123;</span><br><span class="line">      onSubmit() &#123;</span><br><span class="line"><span class="javascript">        <span class="built_in">console</span>.log(<span class="string">'submit!'</span>);</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <p>form表单中：</p>
@@ -1268,13 +1581,13 @@
 <p>也可以实现子组件到父组件数据的双向数据绑定。</p>
 </li>
 </ul>
-<h5 id="2-Element-UI的select下拉框设置初值后，不能重新选择。"><a href="#2-Element-UI的select下拉框设置初值后，不能重新选择。" class="headerlink" title="2. Element-UI的select下拉框设置初值后，不能重新选择。"></a>2. Element-UI的select下拉框设置初值后，不能重新选择。</h5><p><img data-sizes="auto" data-src="%5Celement-ui%E4%BD%BF%E7%94%A8%E4%B8%AD%E7%9A%84%E7%96%91%E9%97%AE%5Cselect.png" alt="" class="lazyload"></p>
+<h5 id="2-Element-UI的select下拉框设置初值后，不能重新选择。"><a href="#2-Element-UI的select下拉框设置初值后，不能重新选择。" class="headerlink" title="2. Element-UI的select下拉框设置初值后，不能重新选择。"></a>2. Element-UI的select下拉框设置初值后，不能重新选择。</h5><p><img src="%5Celement-ui%E4%BD%BF%E7%94%A8%E4%B8%AD%E7%9A%84%E7%96%91%E9%97%AE%5Cselect.png" alt=""></p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">el-col</span> <span class="attr">:span</span>=<span class="string">"6"</span>&gt;</span></span><br><span class="line">              <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">el-form-item</span> <span class="attr">label</span>=<span class="string">"民族:"</span> <span class="attr">prop</span>=<span class="string">"nationId"</span>&gt;</span></span><br><span class="line">                  <span class="tag">&lt;<span class="name">el-select</span> <span class="attr">v-model</span>=<span class="string">"emp.nationId"</span> <span class="attr">style</span>=<span class="string">"width: 150px"</span> <span class="attr">size</span>=<span class="string">"mini"</span> <span class="attr">placeholder</span>=<span class="string">"请选择民族"</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">el-option</span></span></span><br><span class="line"><span class="tag">                      <span class="attr">v-for</span>=<span class="string">"item in nations"</span></span></span><br><span class="line"><span class="tag">                      <span class="attr">:key</span>=<span class="string">"item.id"</span></span></span><br><span class="line"><span class="tag">                      <span class="attr">:label</span>=<span class="string">"item.name"</span></span></span><br><span class="line"><span class="tag">                      <span class="attr">:value</span>=<span class="string">"item.id"</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">el-option</span>&gt;</span></span><br><span class="line">                  <span class="tag">&lt;/<span class="name">el-select</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">el-form-item</span>&gt;</span></span><br><span class="line">              <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">el-col</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <p>解决方法： 在select event中，用$forceUpdate()强制更新视图。</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">el-select</span> <span class="attr">v-model</span>=<span class="string">"emp.nationId"</span> <span class="attr">style</span>=<span class="string">"width: 150px"</span> <span class="attr">size</span>=<span class="string">"mini"</span> <span class="attr">placeholder</span>=<span class="string">"请选择民族"</span> @<span class="attr">change</span>=<span class="string">"$forceUpdate()"</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
-<h5 id="3-由于双向绑定，点击取消和close-dialog时却修改了表单值"><a href="#3-由于双向绑定，点击取消和close-dialog时却修改了表单值" class="headerlink" title="3. 由于双向绑定，点击取消和close dialog时却修改了表单值"></a>3. 由于双向绑定，点击取消和close dialog时却修改了表单值</h5><p><img data-sizes="auto" data-src="%5Celement-ui%E4%BD%BF%E7%94%A8%E4%B8%AD%E7%9A%84%E7%96%91%E9%97%AE%5Cupdate.png" alt="" class="lazyload"></p>
+<h5 id="3-由于双向绑定，点击取消和close-dialog时却修改了表单值"><a href="#3-由于双向绑定，点击取消和close-dialog时却修改了表单值" class="headerlink" title="3. 由于双向绑定，点击取消和close dialog时却修改了表单值"></a>3. 由于双向绑定，点击取消和close dialog时却修改了表单值</h5><p><img src="%5Celement-ui%E4%BD%BF%E7%94%A8%E4%B8%AD%E7%9A%84%E7%96%91%E9%97%AE%5Cupdate.png" alt=""></p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">el-dialog</span></span></span><br><span class="line"><span class="tag">          <span class="attr">:title</span>=<span class="string">"dialogTitle"</span></span></span><br><span class="line"><span class="tag">          <span class="attr">style</span>=<span class="string">"padding: 0px;"</span></span></span><br><span class="line"><span class="tag">          <span class="attr">:close-on-click-modal</span>=<span class="string">"false"</span></span></span><br><span class="line"><span class="tag">          <span class="attr">:visible.sync</span>=<span class="string">"dialogVisible"</span></span></span><br><span class="line"><span class="tag">          <span class="attr">:before-close</span>=<span class="string">"cancelEidt"</span></span></span><br><span class="line"><span class="tag">          <span class="attr">width</span>=<span class="string">"77%"</span>&gt;</span></span><br><span class="line">    ......</span><br><span class="line"><span class="tag">&lt;<span class="name">el-button</span> <span class="attr">size</span>=<span class="string">"mini"</span> @<span class="attr">click</span>=<span class="string">"cancelEidt"</span>&gt;</span>取 消<span class="tag">&lt;/<span class="name">el-button</span>&gt;</span></span><br><span class="line">    ......</span><br><span class="line"><span class="tag">&lt;/<span class="name">el-dialog</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"> cancelEidt() &#123;</span><br><span class="line">          		.....</span><br><span class="line"><span class="actionscript">                <span class="keyword">this</span>.loadEmps();</span></span><br><span class="line">            &#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <p>Dialog 关闭时和点击取消按钮时回调时间loadEmps()。 </p>
@@ -1282,29 +1595,73 @@
 <p><a href="https://blog.csdn.net/u012155729/article/details/87857414" target="_blank" rel="noopener">https://blog.csdn.net/u012155729/article/details/87857414</a></p>
 <p> <a href="https://blog.csdn.net/Cynthia_Yue27/article/details/89920362" target="_blank" rel="noopener">https://blog.csdn.net/Cynthia_Yue27/article/details/89920362</a></p>
 
-            
-        </article>
+      
     </div>
+
     
-    <div class="nexmoe-post">
-        <a href="/2019/10/27/Vue%E4%B8%ADslot-scope%E7%9A%84%E7%90%86%E8%A7%A3/">
-            
-                <div class="nexmoe-post-cover mdui-ripple" style="padding-bottom: 66.66666666666666%;"> 
-                    <img data-src="https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/cover/5c3aec85a4343.jpg" data-sizes="auto" alt="Vue中slot-scope理解" class="lazyload">
-                    <h1>Vue中slot-scope理解</h1>
-                </div>
-            
-        </a>
+    
+    
+	<div>
+		
+	</div>
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
 
-        <div class="nexmoe-post-meta">
-            <a><i class="nexmoefont icon-calendar-fill"></i>2019年10月27日</a>
-            <a><i class="nexmoefont icon-areachart"></i>2.3k 字</a>
-            <a><i class="nexmoefont icon-time-circle-fill"></i>大概 11 分钟</a>
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/27/Vue%E4%B8%ADslot-scope%E7%9A%84%E7%90%86%E8%A7%A3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/2.png">
+      <meta itemprop="name" content="Anderson Wu">
+      <meta itemprop="description" content="Love is love">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="陪你度过漫长岁月">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/10/27/Vue%E4%B8%ADslot-scope%E7%9A%84%E7%90%86%E8%A7%A3/" class="post-title-link" itemprop="url">Vue中slot-scope理解</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-10-27 10:02:19" itemprop="dateCreated datePublished" datetime="2019-10-27T10:02:19+08:00">2019-10-27</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-10-30 23:41:58" itemprop="dateModified" datetime="2019-10-30T23:41:58+08:00">2019-10-30</time>
+              </span>
+
+          
+
         </div>
+      </header>
 
-        <article>
-            
-                <p>这段时间在学习开发一个人事管理系统，在使用vue开发前端时，发现需要使用slot，但是Vue官网文档对slot说明很简洁，我不太明白其用法和应用场景，所以仔细学习一下。</p>
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>这段时间在学习开发一个人事管理系统，在使用vue开发前端时，发现需要使用slot，但是Vue官网文档对slot说明很简洁，我不太明白其用法和应用场景，所以仔细学习一下。</p>
 <h5 id="1-slot"><a href="#1-slot" class="headerlink" title="1.slot"></a>1.slot</h5><p>​         slot，<strong>插槽</strong>，是<strong>组件的一块HTML模版</strong>，这块模版<strong>由使用组件者即父组件提供</strong>。可以说是子组件暴露的一个让父组件传入自定义内容的接口。slot允许用户拓展组件，去更好地复用组件和对其做定制化处理。</p>
 <h5 id="2-slot分类"><a href="#2-slot分类" class="headerlink" title="2.slot分类"></a>2.slot分类</h5><ul>
 <li>单个插槽 （默认插槽 | 匿名插槽）</li>
@@ -1323,7 +1680,7 @@
 
 <p>​            这里就可以看出，<strong>插槽就是在子组件里定义一个slot占位符，父组件调用子组件时，在slot对应的位置填充模板，因此插槽可以拓展组件，去更好地复用组件和对其做定制化处理。</strong></p>
 <p>结果图示：</p>
-<p><img data-sizes="auto" data-src="Vue%E4%B8%ADslot-scope%E7%9A%84%E7%90%86%E8%A7%A3/%E9%BB%98%E8%AE%A4%E6%8F%92%E6%A7%BD.PNG" alt="" class="lazyload"></p>
+<p><img src="Vue%E4%B8%ADslot-scope%E7%9A%84%E7%90%86%E8%A7%A3/%E9%BB%98%E8%AE%A4%E6%8F%92%E6%A7%BD.PNG" alt=""></p>
 <h6 id="3-2-具名插槽"><a href="#3-2-具名插槽" class="headerlink" title="3.2 具名插槽"></a>3.2 具名插槽</h6><p>​        相比于单个插槽，具名插槽拥有name属性，一个组件中可以使用多个具名插槽，使用name属性区分。</p>
 <p><strong>父组件：</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div class&#x3D;&quot;father&quot;&gt;</span><br><span class="line">    &lt;h3&gt;这里是父组件&lt;&#x2F;h3&gt;</span><br><span class="line">    &lt;SonSlot&gt;</span><br><span class="line">      &lt;div class&#x3D;&quot;tmpl&quot; slot&#x3D;&quot;up&quot;&gt;</span><br><span class="line">        &lt;span&gt;菜单1&lt;&#x2F;span&gt;</span><br><span class="line">        &lt;span&gt;菜单2&lt;&#x2F;span&gt;</span><br><span class="line">        &lt;span&gt;菜单3&lt;&#x2F;span&gt;</span><br><span class="line">        &lt;span&gt;菜单4&lt;&#x2F;span&gt;</span><br><span class="line">        &lt;span&gt;菜单5&lt;&#x2F;span&gt;</span><br><span class="line">        &lt;span&gt;菜单6&lt;&#x2F;span&gt;</span><br><span class="line">      &lt;&#x2F;div&gt;</span><br><span class="line">      &lt;div class&#x3D;&quot;tmpl&quot; slot&#x3D;&quot;down&quot;&gt;</span><br><span class="line">        &lt;span&gt;菜单-1&lt;&#x2F;span&gt;</span><br><span class="line">        &lt;span&gt;菜单-2&lt;&#x2F;span&gt;</span><br><span class="line">        &lt;span&gt;菜单-3&lt;&#x2F;span&gt;</span><br><span class="line">        &lt;span&gt;菜单-4&lt;&#x2F;span&gt;</span><br><span class="line">        &lt;span&gt;菜单-5&lt;&#x2F;span&gt;</span><br><span class="line">        &lt;span&gt;菜单-6&lt;&#x2F;span&gt;</span><br><span class="line">      &lt;&#x2F;div&gt;</span><br><span class="line">      &lt;div class&#x3D;&quot;tmpl&quot;&gt;</span><br><span class="line">        &lt;span&gt;菜单-&gt;1&lt;&#x2F;span&gt;</span><br><span class="line">        &lt;span&gt;菜单-&gt;2&lt;&#x2F;span&gt;</span><br><span class="line">        &lt;span&gt;菜单-&gt;3&lt;&#x2F;span&gt;</span><br><span class="line">        &lt;span&gt;菜单-&gt;4&lt;&#x2F;span&gt;</span><br><span class="line">        &lt;span&gt;菜单-&gt;5&lt;&#x2F;span&gt;</span><br><span class="line">        &lt;span&gt;菜单-&gt;6&lt;&#x2F;span&gt;</span><br><span class="line">      &lt;&#x2F;div&gt;</span><br><span class="line">    &lt;&#x2F;SonSlot&gt;</span><br><span class="line">  &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;template&gt;</span><br></pre></td></tr></table></figure>
@@ -1333,7 +1690,7 @@
 
 <p>​      实例中，子组件定义了两个<strong>具名插槽</strong>和<strong>单个插槽</strong>，三个插槽被父组件用同一套css样式显示了出来，不同的是内容上略有区别。因此得到结论：<strong>父组件通过html模板上的slot属性关联具名插槽。没有slot属性的html模板默认关联匿名插槽</strong>。</p>
 <p>图示：</p>
-<p><img data-sizes="auto" data-src="Vue%E4%B8%ADslot-scope%E7%9A%84%E7%90%86%E8%A7%A3/%E5%A4%9A%E6%8F%92%E6%A7%BD.png" alt="" class="lazyload"></p>
+<p><img src="Vue%E4%B8%ADslot-scope%E7%9A%84%E7%90%86%E8%A7%A3/%E5%A4%9A%E6%8F%92%E6%A7%BD.png" alt=""></p>
 <h6 id="3-3-作业用域插槽"><a href="#3-3-作业用域插槽" class="headerlink" title="3.3 作业用域插槽"></a>3.3 作业用域插槽</h6><p>​        定义两个组件，父组件调用子组件，子组件内部实现一个todolist列表。</p>
 <p><strong>父组件：</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;todo-list :todos&#x3D;&quot;todos&quot;&gt;</span><br><span class="line">    &lt;template slot-scope&#x3D;&quot;slotProps&quot;&gt;</span><br><span class="line">      &lt;span v-if&#x3D;&quot;slotProps.todo.isComplete&quot;&gt;✓&lt;&#x2F;span&gt;</span><br><span class="line">      &lt;span&gt;&#123;&#123;slotProps.todo.text&#125;&#125;&lt;&#x2F;span&gt;</span><br><span class="line">    &lt;&#x2F;template&gt;</span><br><span class="line">  &lt;&#x2F;todo-list&gt;</span><br><span class="line">&lt;&#x2F;template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">import todoList from &#39;.&#x2F;todoList&#39;</span><br><span class="line">export default &#123;</span><br><span class="line">  data () &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">      todos: [</span><br><span class="line">        &#123;</span><br><span class="line">          id: 0,</span><br><span class="line">          text: &#39;ziwei0&#39;,</span><br><span class="line">          isComplete: false</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">          text: &#39;ziwei1&#39;,</span><br><span class="line">          id: 1,</span><br><span class="line">          isComplete: true</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">          text: &#39;ziwei2&#39;,</span><br><span class="line">          id: 2,</span><br><span class="line">          isComplete: false</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">          text: &#39;ziwei3&#39;,</span><br><span class="line">          id: 3,</span><br><span class="line">          isComplete: false</span><br><span class="line">        &#125;</span><br><span class="line">      ]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  components: &#123;</span><br><span class="line">    todoList</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
@@ -1401,29 +1758,73 @@
 <p><a href="https://juejin.im/post/5cb0564e5188251acb530087" target="_blank" rel="noopener">https://juejin.im/post/5cb0564e5188251acb530087</a></p>
 <p><a href="https://segmentfault.com/a/1190000015884505?utm_source=tag-newest" target="_blank" rel="noopener">https://segmentfault.com/a/1190000015884505?utm_source=tag-newest</a></p>
 
-            
-        </article>
+      
     </div>
+
     
-    <div class="nexmoe-post">
-        <a href="/2019/10/13/SpringBoot-Token/">
-            
-                <div class="nexmoe-post-cover mdui-ripple" style="padding-bottom: 66.66666666666666%;"> 
-                    <img data-src="https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/cover/5c3aec85a4343.jpg" data-sizes="auto" alt="SpringBoot实现基于Token的用户身份验证" class="lazyload">
-                    <h1>SpringBoot实现基于Token的用户身份验证</h1>
-                </div>
-            
-        </a>
+    
+    
+	<div>
+		
+	</div>
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
 
-        <div class="nexmoe-post-meta">
-            <a><i class="nexmoefont icon-calendar-fill"></i>2019年10月13日</a>
-            <a><i class="nexmoefont icon-areachart"></i>3.6k 字</a>
-            <a><i class="nexmoefont icon-time-circle-fill"></i>大概 16 分钟</a>
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/13/SpringBoot-Token/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/2.png">
+      <meta itemprop="name" content="Anderson Wu">
+      <meta itemprop="description" content="Love is love">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="陪你度过漫长岁月">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/10/13/SpringBoot-Token/" class="post-title-link" itemprop="url">SpringBoot实现基于Token的用户身份验证</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-10-13 20:02:19" itemprop="dateCreated datePublished" datetime="2019-10-13T20:02:19+08:00">2019-10-13</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-10-16 23:31:20" itemprop="dateModified" datetime="2019-10-16T23:31:20+08:00">2019-10-16</time>
+              </span>
+
+          
+
         </div>
+      </header>
 
-        <article>
-            
-                <h5 id="1-本文涉及到的知识："><a href="#1-本文涉及到的知识：" class="headerlink" title="1.本文涉及到的知识："></a>1.本文涉及到的知识：</h5><ul>
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h5 id="1-本文涉及到的知识："><a href="#1-本文涉及到的知识：" class="headerlink" title="1.本文涉及到的知识："></a>1.本文涉及到的知识：</h5><ul>
 <li>Jwt</li>
 <li>Token，session和cookie区别</li>
 </ul>
@@ -1432,7 +1833,7 @@
 <h5 id="3-Token？为什么需要Token？"><a href="#3-Token？为什么需要Token？" class="headerlink" title="3.Token？为什么需要Token？"></a>3.Token？为什么需要Token？</h5><p>可以参考<a href="https://andersonblog.github.io/2019/09/27/浅析cookie-session-token/" target="_blank" rel="noopener">cookie, session和token区别</a>，以及为什么使用token。</p>
 <h5 id="4-JWT"><a href="#4-JWT" class="headerlink" title="4. JWT"></a>4. JWT</h5><p>​       <strong>Json web token (JWT)</strong>, 是为了在网络应用环境间传递声明而执行的一种基于<code>JSON</code>的开放标准（(RFC 7519).<strong>定义了一种简洁的，自包含的方法用于通信双方之间以JSON对象的形式安全的传递信息。</strong>因为数字签名的存在，这些信息是可信的，<strong>JWT可以使用HMAC算法或者是RSA的公私秘钥对进行签名。</strong></p>
 <p>JWT请求流程：</p>
-<p><img data-sizes="auto" data-src="SpringBoot-Token/jwt.png" alt="" class="lazyload"></p>
+<p><img src="SpringBoot-Token/jwt.png" alt=""></p>
 <ol>
 <li>用户使用账号和面发出post请求；</li>
 <li>服务器使用私钥创建一个jwt；</li>
@@ -1516,7 +1917,7 @@
 </li>
 </ul>
 <p>​        这个部分需要base64加密后的header和base64加密后的payload使用 . 连接组成的字符串，然后通过header中声明的加密方式进行加盐secret组合加密，然后就构成了jwt的第三部分。<br>密钥secret是保存在服务端的，服务端会根据这个密钥进行生成token和进行验证，所以需要保护好。</p>
-<h5 id="5-项目"><a href="#5-项目" class="headerlink" title="5.项目"></a>5.项目</h5><h6 id="项目结构"><a href="#项目结构" class="headerlink" title="项目结构"></a>项目结构</h6><p><img data-sizes="auto" data-src="SpringBoot-Token/%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84.PNG" alt="" class="lazyload"></p>
+<h5 id="5-项目"><a href="#5-项目" class="headerlink" title="5.项目"></a>5.项目</h5><h6 id="项目结构"><a href="#项目结构" class="headerlink" title="项目结构"></a>项目结构</h6><p><img src="SpringBoot-Token/%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84.PNG" alt=""></p>
 <h6 id="项目依赖："><a href="#项目依赖：" class="headerlink" title="项目依赖："></a>项目依赖：</h6><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.auth0<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>java-jwt<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">version</span>&gt;</span>3.4.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>mysql<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mysql-connector-java<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">scope</span>&gt;</span>runtime<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">version</span>&gt;</span>5.1.37<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.mybatis.spring.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mybatis-spring-boot-starter<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">version</span>&gt;</span>1.3.2<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.alibaba<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>fastjson<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">version</span>&gt;</span>1.2.47<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.projectlombok<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>lombok<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">version</span>&gt;</span>1.16.22<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <h5 id="6-实现步骤"><a href="#6-实现步骤" class="headerlink" title="6.实现步骤"></a>6.实现步骤</h5><h6 id="6-1-自定义两个注解"><a href="#6-1-自定义两个注解" class="headerlink" title="6.1 自定义两个注解"></a>6.1 自定义两个注解</h6><p><strong>用来跳过验证的PassToken</strong></p>
@@ -1594,9 +1995,9 @@
 <p><strong>UserMapper.xml</strong></p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version='1.0' encoding='UTF-8' ?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">mapper</span> <span class="meta-keyword">PUBLIC</span> <span class="meta-string">"-//mybatis.org//DTD Mapper 3.0//EN"</span> <span class="meta-string">"http://mybatis.org/dtd/mybatis-3-mapper.dtd"</span> &gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">mapper</span> <span class="attr">namespace</span>=<span class="string">"com.wu.springBootToken.mapper.UserMapper"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"findByUserNameAndPasswd"</span> <span class="attr">resultType</span>=<span class="string">"com.wu.springBootToken.entity.User"</span>&gt;</span></span><br><span class="line">        select * from user</span><br><span class="line">        where username=#&#123;username&#125; and password=#&#123;userpasswd&#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">mapper</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
-<h5 id="7-测试"><a href="#7-测试" class="headerlink" title="7. 测试"></a>7. 测试</h5><h6 id="7-1-在没token的情况下访问-getMessage接口"><a href="#7-1-在没token的情况下访问-getMessage接口" class="headerlink" title="7.1 在没token的情况下访问/getMessage接口"></a>7.1 在没token的情况下访问/getMessage接口</h6><p><img data-sizes="auto" data-src="SpringBoot-Token/getMessageNoToken.PNG" alt="" class="lazyload"></p>
-<h6 id="7-2-用户名和密码登录"><a href="#7-2-用户名和密码登录" class="headerlink" title="7.2 用户名和密码登录"></a>7.2 用户名和密码登录</h6><p><img data-sizes="auto" data-src="SpringBoot-Token/login.PNG" alt="" class="lazyload"></p>
-<h6 id="7-3-请求头携带token的情况下访问-getMessage接口"><a href="#7-3-请求头携带token的情况下访问-getMessage接口" class="headerlink" title="7.3 请求头携带token的情况下访问/getMessage接口"></a>7.3 请求头携带token的情况下访问/getMessage接口</h6><p><img data-sizes="auto" data-src="SpringBoot-Token/getMessageWithToken.PNG" alt="" class="lazyload"></p>
+<h5 id="7-测试"><a href="#7-测试" class="headerlink" title="7. 测试"></a>7. 测试</h5><h6 id="7-1-在没token的情况下访问-getMessage接口"><a href="#7-1-在没token的情况下访问-getMessage接口" class="headerlink" title="7.1 在没token的情况下访问/getMessage接口"></a>7.1 在没token的情况下访问/getMessage接口</h6><p><img src="SpringBoot-Token/getMessageNoToken.PNG" alt=""></p>
+<h6 id="7-2-用户名和密码登录"><a href="#7-2-用户名和密码登录" class="headerlink" title="7.2 用户名和密码登录"></a>7.2 用户名和密码登录</h6><p><img src="SpringBoot-Token/login.PNG" alt=""></p>
+<h6 id="7-3-请求头携带token的情况下访问-getMessage接口"><a href="#7-3-请求头携带token的情况下访问-getMessage接口" class="headerlink" title="7.3 请求头携带token的情况下访问/getMessage接口"></a>7.3 请求头携带token的情况下访问/getMessage接口</h6><p><img src="SpringBoot-Token/getMessageWithToken.PNG" alt=""></p>
 <h5 id="8-相关连接"><a href="#8-相关连接" class="headerlink" title="8.相关连接"></a>8.相关连接</h5><p><a href="https://github.com/AndersonBlog/springBootToken.git" target="_blank" rel="noopener">项目链接</a></p>
 <p>参考资料：</p>
 <p><a href="https://blog.csdn.net/FindHuni/article/details/94451136" target="_blank" rel="noopener">https://blog.csdn.net/FindHuni/article/details/94451136</a>       </p>
@@ -1604,29 +2005,73 @@
 <p><a href="https://www.jianshu.com/p/e88d3f8151db" target="_blank" rel="noopener">https://www.jianshu.com/p/e88d3f8151db</a></p>
 <p>​        </p>
 
-            
-        </article>
+      
     </div>
+
     
-    <div class="nexmoe-post">
-        <a href="/2019/09/27/%E6%B5%85%E6%9E%90cookie-session-token/">
-            
-                <div class="nexmoe-post-cover mdui-ripple" style="padding-bottom: 66.66666666666666%;"> 
-                    <img data-src="https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/cover/5c3aec85a4343.jpg" data-sizes="auto" alt="浅析cookie，session和token" class="lazyload">
-                    <h1>浅析cookie，session和token</h1>
-                </div>
-            
-        </a>
+    
+    
+	<div>
+		
+	</div>
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
 
-        <div class="nexmoe-post-meta">
-            <a><i class="nexmoefont icon-calendar-fill"></i>2019年09月27日</a>
-            <a><i class="nexmoefont icon-areachart"></i>2k 字</a>
-            <a><i class="nexmoefont icon-time-circle-fill"></i>大概 8 分钟</a>
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/27/%E6%B5%85%E6%9E%90cookie-session-token/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/2.png">
+      <meta itemprop="name" content="Anderson Wu">
+      <meta itemprop="description" content="Love is love">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="陪你度过漫长岁月">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/09/27/%E6%B5%85%E6%9E%90cookie-session-token/" class="post-title-link" itemprop="url">浅析cookie，session和token</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-09-27 19:37:58" itemprop="dateCreated datePublished" datetime="2019-09-27T19:37:58+08:00">2019-09-27</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-10-13 22:34:38" itemprop="dateModified" datetime="2019-10-13T22:34:38+08:00">2019-10-13</time>
+              </span>
+
+          
+
         </div>
+      </header>
 
-        <article>
-            
-                <h5 id="一、发展史"><a href="#一、发展史" class="headerlink" title="一、发展史"></a>一、发展史</h5><p>​            以前，Web应用基本都是文档浏览，在浏览过程中，服务器无需记录哪位用户浏览了哪些文档，所以每次请求都是新的HTTP协议（请求和响应）。</p>
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h5 id="一、发展史"><a href="#一、发展史" class="headerlink" title="一、发展史"></a>一、发展史</h5><p>​            以前，Web应用基本都是文档浏览，在浏览过程中，服务器无需记录哪位用户浏览了哪些文档，所以每次请求都是新的HTTP协议（请求和响应）。</p>
 <p>​            当我们用浏览器打开一个网页，用到的是HTTP协议，它是无状态的，当前请求和上一次请求是没有任何关系的，互不关联。但是这种无状态的的好处是快速。所以就会带来一个问题就是，当几个请求的页面要有关联，比如：我在<a href="http://www.a.com/login.php里面登陆了，我在www.a.com/index.php" target="_blank" rel="noopener">www.a.com/login.php里面登陆了，我在www.a.com/index.php</a> 也希望是登陆状态，但是，这是2个不同的页面，也就是2个不同的HTTP请求，这2个HTTP请求是无状态的，也就是无关联的，所以无法单纯的在index.php中读取到它在login.php中已经登陆了！</p>
 <p>​            因为不可能这2个页面都去登陆一次或者2个页面都去查询数据库，如果有登陆状态，就判断是登陆的了。这种查询数据库的方案虽然可行，但是每次都要去查询数据库，会造成数据库的压力。 </p>
 <p>​            为了解决以上问题，一种新的客户端存储数据方式出现了：cookie。cookie是把少量的信息存储在用户自己的电脑上，它在一个域名下是一个全局的，只要设置它的存储路径在域名<a href="http://www.a.com下" target="_blank" rel="noopener">www.a.com下</a> ，那么当用户用浏览器访问时，php就可以从这个域名的任意页面读取cookie中的信息。所以就很好的解决了我在<a href="http://www.a.com/login.php页面登陆了，我也可以在www.a.com/index.php获取到这个登陆信息了。同时又不用反复去查询数据库。" target="_blank" rel="noopener">www.a.com/login.php页面登陆了，我也可以在www.a.com/index.php获取到这个登陆信息了。同时又不用反复去查询数据库。</a></p>
@@ -1650,7 +2095,7 @@
 <li><p>服务器把验证结果返回客户端</p>
 </li>
 </ul>
-<p><img data-sizes="auto" data-src="%E6%B5%85%E6%9E%90cookie-session-token/1.png" alt="" class="lazyload"></p>
+<p><img src="%E6%B5%85%E6%9E%90cookie-session-token/1.png" alt=""></p>
 <blockquote>
 <p>session存在问题：</p>
 <p>1、session保存在服务端，当客户访问量增加时，服务端就需要存储大量的session会话，对服务器有很大的考验；<br>2、当服务端为集群时，用户登陆其中一台服务器，会将session保存到该服务器的内存中，但是当用户的访问到其他服务器时，会无法访问，通常采用缓存一致性技术来保证可以共享，或者采用第三方缓存来保存session，不方便。</p>
@@ -1667,7 +2112,7 @@
 <p><strong>Toeken存放：</strong></p>
 <p>Token在客户端一般存放于localStorage，cookie，或sessionStorage中。在服务器一般存于数据库中.</p>
 <p><strong>Token过程:</strong><br>1、客户端向服务器请求，发送用户名和密码<br>2、服务器根据用户信息通过加密生成token，用户信息包括账号，token过期时间等，具体由服务器自定义。<br>3、服务器返回token给客户端<br>4、客户端用cookie存储token，以后的请求都带上这个token<br>5、服务器把token解密，确认用户信息是否正确，如经过正确就说明验证通过。<br>6、服务器把验证结果返回客户端</p>
-<p><img data-sizes="auto" data-src="%E6%B5%85%E6%9E%90cookie-session-token/2.png" alt="" class="lazyload"></p>
+<p><img src="%E6%B5%85%E6%9E%90cookie-session-token/2.png" alt=""></p>
 <h5 id="五、Cookie与session区别："><a href="#五、Cookie与session区别：" class="headerlink" title="五、Cookie与session区别："></a>五、Cookie与session区别：</h5><p>1、cookie数据存放在客户的浏览器上，session数据放在服务器上。<br>2、cookie不是很安全，别人可以分析存放在本地的cookie并进行cookie欺骗,考虑到安全应当使用session。</p>
 <p>3、session会在一定时间内保存在服务器上。当访问增多，会比较占用你服务器的性能,考虑到减轻服务器性能方面，应当使用cookie。</p>
 <p>4、单个cookie保存的数据不能超过4K，很多浏览器都限制一个站点最多保存20个cookie。</p>
@@ -1682,24 +2127,164 @@
 <li>token也类似一个令牌，无状态，用户信息都被加密到token中，服务器收到token后解密就可知道是哪个用户。需要开发者手动添加。</li>
 </ol>
 
-            
-        </article>
+      
     </div>
+
     
-</section>
-
-    <nav class="nexmoe-page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="nexmoefont icon-right"></i></a>
-    </nav>
+    
+    
+	<div>
+		
+	</div>
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
   
-    </div>
+  
+  
+
   </div>
-  <script src="https://cdn.jsdelivr.net/combine/npm/lazysizes@5.1.0/lazysizes.min.js,gh/highlightjs/cdn-release@9.15.8/build/highlight.min.js,npm/mdui@0.4.3/dist/js/mdui.min.js,gh/nexmoe/nexmoe.github.io@latest/js/app.js"></script>
-<script>hljs.initHighlightingOnLoad();</script>
-<!--<script src="/js/app.js?v=1585322669306"></script>-->
+
+  
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
 
 
-    <script src="https://cdn.jsdelivr.net/gh/xtaodada/xtaodada.github.io@0.0.2/copy.js"></script>
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Anderson Wu"
+      src="/images/2.png">
+  <p class="site-author-name" itemprop="name">Anderson Wu</p>
+  <div class="site-description" itemprop="description">Love is love</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">20</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Anderson Wu</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
 
 
 
@@ -1708,7 +2293,20 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
 
 </body>
-
 </html>

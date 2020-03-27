@@ -1,24 +1,32 @@
 <!DOCTYPE html>
-
-<html lang="en">
-
+<html lang="zh-CN">
 <head>
-  
-  <title>SpringBoot实现基于Token的用户身份验证 - Hexo</title>
   <meta charset="UTF-8">
-  <meta name="description" content="">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
-  
-  
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/2.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/1.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
 
-  <link rel="shortcut icon" href="/favicon.ico" type="image/png" />
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Gemini","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
   <meta name="description" content="1.本文涉及到的知识： Jwt Token，session和cookie区别  2.无状态HTTP协议​        由于HTTP是一种没有状态的通信协议，服务器无法记录客户端的登录状态信息，当客户端重新登录服务器需要再一次进行身份认证，这样带来不好的用户体验。 ​        用户的登录状态信息可以保存在服务器或客户端， 3.Token？为什么需要Token？可以参考cookie, sess">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SpringBoot实现基于Token的用户身份验证">
 <meta property="og:url" content="http://yoursite.com/2019/10/13/SpringBoot-Token/index.html">
-<meta property="og:site_name" content="Hexo">
+<meta property="og:site_name" content="陪你度过漫长岁月">
 <meta property="og:description" content="1.本文涉及到的知识： Jwt Token，session和cookie区别  2.无状态HTTP协议​        由于HTTP是一种没有状态的通信协议，服务器无法记录客户端的登录状态信息，当客户端重新登录服务器需要再一次进行身份认证，这样带来不好的用户体验。 ​        用户的登录状态信息可以保存在服务器或客户端， 3.Token？为什么需要Token？可以参考cookie, sess">
-<meta property="og:locale" content="en_US">
+<meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://yoursite.com/2019/10/13/SpringBoot-Token/SpringBoot-Token/jwt.png">
 <meta property="og:image" content="http://yoursite.com/2019/10/13/SpringBoot-Token/SpringBoot-Token/%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84.PNG">
 <meta property="og:image" content="http://yoursite.com/2019/10/13/SpringBoot-Token/SpringBoot-Token/getMessageNoToken.PNG">
@@ -26,140 +34,191 @@
 <meta property="og:image" content="http://yoursite.com/2019/10/13/SpringBoot-Token/SpringBoot-Token/getMessageWithToken.PNG">
 <meta property="article:published_time" content="2019-10-13T12:02:19.000Z">
 <meta property="article:modified_time" content="2019-10-16T15:31:20.866Z">
-<meta property="article:author" content="John Doe">
+<meta property="article:author" content="Anderson Wu">
 <meta property="article:tag" content="Token JWT SpringBoot">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://yoursite.com/2019/10/13/SpringBoot-Token/SpringBoot-Token/jwt.png">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/combine/gh/nexmoe/nexmoe.github.io@latest/css/style.css,npm/highlight.js@9.15.8/styles/atom-one-dark.css,gh/nexmoe/nexmoe.github.io@latest/lib/mdui_043tiny/css/mdui.css,gh/nexmoe/nexmoe.github.io@latest/lib/iconfont/iconfont.css" crossorigin>
-  
-  <!--<link rel="stylesheet" href="/css/style.css?v=1585322669225">-->
 
-  
-<meta name="generator" content="Hexo 4.2.0"></head>
+<link rel="canonical" href="http://yoursite.com/2019/10/13/SpringBoot-Token/">
 
-<body class="mdui-drawer-body-left">
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>SpringBoot实现基于Token的用户身份验证 | 陪你度过漫长岁月</title>
   
-  <div id="nexmoe-background">
-    <div class="nexmoe-bg" style="background-image: url(https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/cover/5c3aec85a4343.jpg)"></div>
-    <div class="mdui-appbar mdui-shadow-0">
-      <div class="mdui-toolbar">
-        <a mdui-drawer="{target: '#drawer', swipe: true}" title="menu" class="mdui-btn mdui-btn-icon mdui-ripple"><i class="mdui-icon nexmoefont icon-menu"></i></a>
-        <div class="mdui-toolbar-spacer"></div>
-        <!--<a href="javascript:;" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">search</i></a>-->
-        <a href="/" title="John Doe" class="mdui-btn mdui-btn-icon"><img src="https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/avatar.png" alt="John Doe"></a>
-       </div>
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
     </div>
   </div>
-  <div id="nexmoe-header">
-      <div class="nexmoe-drawer mdui-drawer" id="drawer">
-    <div class="nexmoe-avatar mdui-ripple">
-        <a href="/" title="John Doe">
-            <img src="https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/avatar.png" alt="John Doe" alt="John Doe">
-        </a>
-    </div>
-    <div class="nexmoe-count">
-        <div><span>Articles</span>20</div>
-        <div><span>Tags</span>6</div>
-        <div><span>Categories</span>0</div>
-    </div>
-    <div class="nexmoe-list mdui-list" mdui-collapse="{accordion: true}">
-        
-        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/" title="回到首页">
-            <i class="mdui-list-item-icon nexmoefont icon-home"></i>
-            <div class="mdui-list-item-content">
-                回到首页
-            </div>
-        </a>
-        
-        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/about.html" title="关于博客">
-            <i class="mdui-list-item-icon nexmoefont icon-info-circle"></i>
-            <div class="mdui-list-item-content">
-                关于博客
-            </div>
-        </a>
-        
-        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/PY.html" title="我的朋友">
-            <i class="mdui-list-item-icon nexmoefont icon-unorderedlist"></i>
-            <div class="mdui-list-item-content">
-                我的朋友
-            </div>
-        </a>
-        
-    </div>
-    <aside id="nexmoe-sidebar">
-  
-  <div class="nexmoe-widget-wrap">
-    <div class="nexmoe-widget nexmoe-search">
-        <form id="search_form" action_e="https://cn.bing.com/search?q=site:nexmoe.com" onsubmit="return search();">
-            <label><input id="search_value" name="q" type="search" placeholder="Search"></label>
-        </form>
-    </div>
-</div>
-  
-  <div class="nexmoe-widget-wrap">
-    <h3 class="nexmoe-widget-title">Social</h3>
-    <div class="nexmoe-widget nexmoe-social">
-        <a class="mdui-ripple" href="https://space.bilibili.com/20238211" target="_blank" mdui-tooltip="{content: '哔哩哔哩'}" style="color: rgb(231, 106, 141);background-color: rgba(231, 106, 141, .15);">
-            <i class="nexmoefont icon-bilibili"></i>
-        </a><a class="mdui-ripple" href="https://github.com/nexmoe/" target="_blank" mdui-tooltip="{content: 'GitHub'}" style="color: rgb(25, 23, 23);background-color: rgba(25, 23, 23, .15);">
-            <i class="nexmoefont icon-github"></i>
-        </a>
-    </div>
-</div>
-  
-  
 
-  
-  
-  <div class="nexmoe-widget-wrap">
-    <h3 class="nexmoe-widget-title">Tag Cloud</h3>
-    <div id="randomtagcloud" class="nexmoe-widget tagcloud">
-      <a href="/tags/Algorithm/" style="font-size: 10px;">Algorithm</a> <a href="/tags/Cookie-seesion-Token/" style="font-size: 10px;">Cookie seesion Token</a> <a href="/tags/Element-UI/" style="font-size: 10px;">Element UI</a> <a href="/tags/SpringBoot/" style="font-size: 20px;">SpringBoot</a> <a href="/tags/Token-JWT-SpringBoot/" style="font-size: 10px;">Token JWT SpringBoot</a> <a href="/tags/Vue/" style="font-size: 10px;">Vue</a>
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">陪你度过漫长岁月</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">To be yourself</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
     </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
     
-  </div>
-
-  
-  
-  <div class="nexmoe-widget-wrap">
-    <h3 class="nexmoe-widget-title">Archive</h3>
-    <div class="nexmoe-widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li></ul>
-    </div>
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
   </div>
 
 
-  
-</aside>
-    <div class="nexmoe-copyright">
-        &copy; 2020 John Doe
-        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
-        & <a href="https://nexmoe.com/hexo-theme-nexmoe.html" target="_blank">Nexmoe</a>
-    </div>
-</div><!-- .nexmoe-drawer -->
-  </div>
-  <div id="nexmoe-content">
-    <div class="nexmoe-primary">
-        <div class="nexmoe-post">
-  
-      <div class="nexmoe-post-cover" style="padding-bottom: 66.66666666666666%;"> 
-          <img data-src="https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/cover/5c3aec85a4343.jpg" data-sizes="auto" alt="SpringBoot实现基于Token的用户身份验证" class="lazyload">
-          <h1>SpringBoot实现基于Token的用户身份验证</h1>
-      </div>
-  
-  
-  <div class="nexmoe-post-meta" style="margin:10px 0!important;">
-    <a><i class="nexmoefont icon-calendar-fill"></i>2019年10月13日</a>
-    <a><i class="nexmoefont icon-areachart"></i>3.6k 字</a>
-    <a><i class="nexmoefont icon-time-circle-fill"></i>大概 16 分钟</a>
-</div>
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
 
-  <div class="nexmoe-post-right">
+          <div class="content post">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/13/SpringBoot-Token/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/2.png">
+      <meta itemprop="name" content="Anderson Wu">
+      <meta itemprop="description" content="Love is love">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="陪你度过漫长岁月">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          SpringBoot实现基于Token的用户身份验证
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-10-13 20:02:19" itemprop="dateCreated datePublished" datetime="2019-10-13T20:02:19+08:00">2019-10-13</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-10-16 23:31:20" itemprop="dateModified" datetime="2019-10-16T23:31:20+08:00">2019-10-16</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
     
-  </div>
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
-  <article>
-    <h5 id="1-本文涉及到的知识："><a href="#1-本文涉及到的知识：" class="headerlink" title="1.本文涉及到的知识："></a>1.本文涉及到的知识：</h5><ul>
+      
+        <h5 id="1-本文涉及到的知识："><a href="#1-本文涉及到的知识：" class="headerlink" title="1.本文涉及到的知识："></a>1.本文涉及到的知识：</h5><ul>
 <li>Jwt</li>
 <li>Token，session和cookie区别</li>
 </ul>
@@ -168,7 +227,7 @@
 <h5 id="3-Token？为什么需要Token？"><a href="#3-Token？为什么需要Token？" class="headerlink" title="3.Token？为什么需要Token？"></a>3.Token？为什么需要Token？</h5><p>可以参考<a href="https://andersonblog.github.io/2019/09/27/浅析cookie-session-token/" target="_blank" rel="noopener">cookie, session和token区别</a>，以及为什么使用token。</p>
 <h5 id="4-JWT"><a href="#4-JWT" class="headerlink" title="4. JWT"></a>4. JWT</h5><p>​       <strong>Json web token (JWT)</strong>, 是为了在网络应用环境间传递声明而执行的一种基于<code>JSON</code>的开放标准（(RFC 7519).<strong>定义了一种简洁的，自包含的方法用于通信双方之间以JSON对象的形式安全的传递信息。</strong>因为数字签名的存在，这些信息是可信的，<strong>JWT可以使用HMAC算法或者是RSA的公私秘钥对进行签名。</strong></p>
 <p>JWT请求流程：</p>
-<p><img data-sizes="auto" data-src="SpringBoot-Token/jwt.png" alt="" class="lazyload"></p>
+<p><img src="SpringBoot-Token/jwt.png" alt=""></p>
 <ol>
 <li>用户使用账号和面发出post请求；</li>
 <li>服务器使用私钥创建一个jwt；</li>
@@ -252,7 +311,7 @@
 </li>
 </ul>
 <p>​        这个部分需要base64加密后的header和base64加密后的payload使用 . 连接组成的字符串，然后通过header中声明的加密方式进行加盐secret组合加密，然后就构成了jwt的第三部分。<br>密钥secret是保存在服务端的，服务端会根据这个密钥进行生成token和进行验证，所以需要保护好。</p>
-<h5 id="5-项目"><a href="#5-项目" class="headerlink" title="5.项目"></a>5.项目</h5><h6 id="项目结构"><a href="#项目结构" class="headerlink" title="项目结构"></a>项目结构</h6><p><img data-sizes="auto" data-src="SpringBoot-Token/%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84.PNG" alt="" class="lazyload"></p>
+<h5 id="5-项目"><a href="#5-项目" class="headerlink" title="5.项目"></a>5.项目</h5><h6 id="项目结构"><a href="#项目结构" class="headerlink" title="项目结构"></a>项目结构</h6><p><img src="SpringBoot-Token/%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84.PNG" alt=""></p>
 <h6 id="项目依赖："><a href="#项目依赖：" class="headerlink" title="项目依赖："></a>项目依赖：</h6><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.auth0<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>java-jwt<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">version</span>&gt;</span>3.4.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>mysql<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mysql-connector-java<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">scope</span>&gt;</span>runtime<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">version</span>&gt;</span>5.1.37<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.mybatis.spring.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mybatis-spring-boot-starter<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">version</span>&gt;</span>1.3.2<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.alibaba<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>fastjson<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">version</span>&gt;</span>1.2.47<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.projectlombok<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>lombok<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">version</span>&gt;</span>1.16.22<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <h5 id="6-实现步骤"><a href="#6-实现步骤" class="headerlink" title="6.实现步骤"></a>6.实现步骤</h5><h6 id="6-1-自定义两个注解"><a href="#6-1-自定义两个注解" class="headerlink" title="6.1 自定义两个注解"></a>6.1 自定义两个注解</h6><p><strong>用来跳过验证的PassToken</strong></p>
@@ -330,9 +389,9 @@
 <p><strong>UserMapper.xml</strong></p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version='1.0' encoding='UTF-8' ?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">mapper</span> <span class="meta-keyword">PUBLIC</span> <span class="meta-string">"-//mybatis.org//DTD Mapper 3.0//EN"</span> <span class="meta-string">"http://mybatis.org/dtd/mybatis-3-mapper.dtd"</span> &gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">mapper</span> <span class="attr">namespace</span>=<span class="string">"com.wu.springBootToken.mapper.UserMapper"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"findByUserNameAndPasswd"</span> <span class="attr">resultType</span>=<span class="string">"com.wu.springBootToken.entity.User"</span>&gt;</span></span><br><span class="line">        select * from user</span><br><span class="line">        where username=#&#123;username&#125; and password=#&#123;userpasswd&#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">mapper</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
-<h5 id="7-测试"><a href="#7-测试" class="headerlink" title="7. 测试"></a>7. 测试</h5><h6 id="7-1-在没token的情况下访问-getMessage接口"><a href="#7-1-在没token的情况下访问-getMessage接口" class="headerlink" title="7.1 在没token的情况下访问/getMessage接口"></a>7.1 在没token的情况下访问/getMessage接口</h6><p><img data-sizes="auto" data-src="SpringBoot-Token/getMessageNoToken.PNG" alt="" class="lazyload"></p>
-<h6 id="7-2-用户名和密码登录"><a href="#7-2-用户名和密码登录" class="headerlink" title="7.2 用户名和密码登录"></a>7.2 用户名和密码登录</h6><p><img data-sizes="auto" data-src="SpringBoot-Token/login.PNG" alt="" class="lazyload"></p>
-<h6 id="7-3-请求头携带token的情况下访问-getMessage接口"><a href="#7-3-请求头携带token的情况下访问-getMessage接口" class="headerlink" title="7.3 请求头携带token的情况下访问/getMessage接口"></a>7.3 请求头携带token的情况下访问/getMessage接口</h6><p><img data-sizes="auto" data-src="SpringBoot-Token/getMessageWithToken.PNG" alt="" class="lazyload"></p>
+<h5 id="7-测试"><a href="#7-测试" class="headerlink" title="7. 测试"></a>7. 测试</h5><h6 id="7-1-在没token的情况下访问-getMessage接口"><a href="#7-1-在没token的情况下访问-getMessage接口" class="headerlink" title="7.1 在没token的情况下访问/getMessage接口"></a>7.1 在没token的情况下访问/getMessage接口</h6><p><img src="SpringBoot-Token/getMessageNoToken.PNG" alt=""></p>
+<h6 id="7-2-用户名和密码登录"><a href="#7-2-用户名和密码登录" class="headerlink" title="7.2 用户名和密码登录"></a>7.2 用户名和密码登录</h6><p><img src="SpringBoot-Token/login.PNG" alt=""></p>
+<h6 id="7-3-请求头携带token的情况下访问-getMessage接口"><a href="#7-3-请求头携带token的情况下访问-getMessage接口" class="headerlink" title="7.3 请求头携带token的情况下访问/getMessage接口"></a>7.3 请求头携带token的情况下访问/getMessage接口</h6><p><img src="SpringBoot-Token/getMessageWithToken.PNG" alt=""></p>
 <h5 id="8-相关连接"><a href="#8-相关连接" class="headerlink" title="8.相关连接"></a>8.相关连接</h5><p><a href="https://github.com/AndersonBlog/springBootToken.git" target="_blank" rel="noopener">项目链接</a></p>
 <p>参考资料：</p>
 <p><a href="https://blog.csdn.net/FindHuni/article/details/94451136" target="_blank" rel="noopener">https://blog.csdn.net/FindHuni/article/details/94451136</a>       </p>
@@ -340,54 +399,184 @@
 <p><a href="https://www.jianshu.com/p/e88d3f8151db" target="_blank" rel="noopener">https://www.jianshu.com/p/e88d3f8151db</a></p>
 <p>​        </p>
 
-  </article>
-
-  <div class="nexmoe-post-meta">
-    
-    
-        <a class="nexmoefont icon-tag-fill -link" href="/tags/Token-JWT-SpringBoot/" rel="tag">Token JWT SpringBoot</a>
-    
-</div>
-
-  <div class="nexmoe-post-footer">
-    
-      
-  <div class="nexmoe-post-copyright">
-    <strong>Author：</strong>John Doe<br>
-    <strong>Link：</strong><a href="http://yoursite.com/2019/10/13/SpringBoot-Token/" title="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;10&#x2F;13&#x2F;SpringBoot-Token&#x2F;" target="_blank" rel="noopener">http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;10&#x2F;13&#x2F;SpringBoot-Token&#x2F;</a><br>
-    
-      <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可
-    
-  </div>
-
-
-    
-    <section class="nexmoe-comment">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.5.0/dist/gitalk.min.css">
-<div id="gitalk"></div>
-<script src="https://cdn.jsdelivr.net/npm/gitalk@1.5.0/dist/gitalk.min.js"></script>
-<script type="text/javascript">
-    var gitalk = new Gitalk({
-        clientID: '80b2453b6d5f37ad6225',
-        clientSecret: '43e99fa852795c9a7b3eb924b2558c64b84bbdeb',
-        id: window.location.pathname,
-        repo: 'nexmoe.github.io',
-        owner: 'nexmoe',
-        admin: 'nexmoe'
-    })
-    gitalk.render('gitalk')
-</script>
-</section>
-  </div>
-</div>
     </div>
+
+    
+    
+    
+	<div>
+		
+		<div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+
+		
+	</div>
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Token-JWT-SpringBoot/" rel="tag"># Token JWT SpringBoot</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019/09/27/%E6%B5%85%E6%9E%90cookie-session-token/" rel="prev" title="浅析cookie，session和token">
+      <i class="fa fa-chevron-left"></i> 浅析cookie，session和token
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2019/10/27/Vue%E4%B8%ADslot-scope%E7%9A%84%E7%90%86%E8%A7%A3/" rel="next" title="Vue中slot-scope理解">
+      Vue中slot-scope理解 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
   </div>
-  <script src="https://cdn.jsdelivr.net/combine/npm/lazysizes@5.1.0/lazysizes.min.js,gh/highlightjs/cdn-release@9.15.8/build/highlight.min.js,npm/mdui@0.4.3/dist/js/mdui.min.js,gh/nexmoe/nexmoe.github.io@latest/js/app.js"></script>
-<script>hljs.initHighlightingOnLoad();</script>
-<!--<script src="/js/app.js?v=1585322669227"></script>-->
 
 
-    <script src="https://cdn.jsdelivr.net/gh/xtaodada/xtaodada.github.io@0.0.2/copy.js"></script>
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-本文涉及到的知识："><span class="nav-number">1.</span> <span class="nav-text">1.本文涉及到的知识：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-无状态HTTP协议"><span class="nav-number">2.</span> <span class="nav-text">2.无状态HTTP协议</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-Token？为什么需要Token？"><span class="nav-number">3.</span> <span class="nav-text">3.Token？为什么需要Token？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-JWT"><span class="nav-number">4.</span> <span class="nav-text">4. JWT</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-项目"><span class="nav-number">5.</span> <span class="nav-text">5.项目</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#项目结构"><span class="nav-number">5.1.</span> <span class="nav-text">项目结构</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#项目依赖："><span class="nav-number">5.2.</span> <span class="nav-text">项目依赖：</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#6-实现步骤"><span class="nav-number">6.</span> <span class="nav-text">6.实现步骤</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#6-1-自定义两个注解"><span class="nav-number">6.1.</span> <span class="nav-text">6.1 自定义两个注解</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#6-2-实体类"><span class="nav-number">6.2.</span> <span class="nav-text">6.2 实体类</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#6-3-返回体"><span class="nav-number">6.3.</span> <span class="nav-text">6.3 返回体</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#6-4创建一个拦截器配置，用于拦截前端请求，实现-WebMvcConfigurer-接口"><span class="nav-number">6.4.</span> <span class="nav-text">6.4创建一个拦截器配置，用于拦截前端请求，实现 WebMvcConfigurer 接口</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#6-5-创建一个拦截器，继承HandlerInterception接口，实现拦截还是放通的逻辑，拦截后需要获取token并校验"><span class="nav-number">6.5.</span> <span class="nav-text">6.5 创建一个拦截器，继承HandlerInterception接口，实现拦截还是放通的逻辑，拦截后需要获取token并校验</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#6-6-controller层加入登录操作注解"><span class="nav-number">6.6.</span> <span class="nav-text">6.6 controller层加入登录操作注解</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#6-7-service层"><span class="nav-number">6.7.</span> <span class="nav-text">6.7 service层</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#6-8-Dao层"><span class="nav-number">6.8.</span> <span class="nav-text">6.8 Dao层</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#7-测试"><span class="nav-number">7.</span> <span class="nav-text">7. 测试</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#7-1-在没token的情况下访问-getMessage接口"><span class="nav-number">7.1.</span> <span class="nav-text">7.1 在没token的情况下访问&#x2F;getMessage接口</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#7-2-用户名和密码登录"><span class="nav-number">7.2.</span> <span class="nav-text">7.2 用户名和密码登录</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#7-3-请求头携带token的情况下访问-getMessage接口"><span class="nav-number">7.3.</span> <span class="nav-text">7.3 请求头携带token的情况下访问&#x2F;getMessage接口</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#8-相关连接"><span class="nav-number">8.</span> <span class="nav-text">8.相关连接</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Anderson Wu"
+      src="/images/2.png">
+  <p class="site-author-name" itemprop="name">Anderson Wu</p>
+  <div class="site-description" itemprop="description">Love is love</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">20</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Anderson Wu</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
 
 
 
@@ -397,6 +586,19 @@
 
 
 
-</body>
 
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
 </html>
