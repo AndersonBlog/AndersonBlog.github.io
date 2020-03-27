@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+  
+  <title>搭建Hadoop完全分布式 - Hexo</title>
+  <meta charset="UTF-8">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+  
+  
+
+  <link rel="shortcut icon" href="/favicon.ico" type="image/png" />
+  <meta name="description" content="搭建hadoop完全分布式详细教程链接：https:&#x2F;&#x2F;www.cnblogs.com&#x2F;frankdeng&#x2F;p&#x2F;9047698.html https:&#x2F;&#x2F;blog.csdn.net&#x2F;nbjjy&#x2F;article&#x2F;details&#x2F;803391871.  克隆虚拟机2.  修改4台克隆机的IP为固定IP、主机名和IP-主机名的映射   ip 主机名    192.168.183.31 CentOS01">
+<meta property="og:type" content="article">
+<meta property="og:title" content="搭建Hadoop完全分布式">
+<meta property="og:url" content="http://yoursite.com/2019/08/11/Hadoop/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="搭建hadoop完全分布式详细教程链接：https:&#x2F;&#x2F;www.cnblogs.com&#x2F;frankdeng&#x2F;p&#x2F;9047698.html https:&#x2F;&#x2F;blog.csdn.net&#x2F;nbjjy&#x2F;article&#x2F;details&#x2F;803391871.  克隆虚拟机2.  修改4台克隆机的IP为固定IP、主机名和IP-主机名的映射   ip 主机名    192.168.183.31 CentOS01">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://yoursite.com/2019/08/11/Hadoop/Hadoop/1536298122980.png">
+<meta property="og:image" content="http://yoursite.com/2019/08/11/Hadoop/Hadoop/1536592271984.png">
+<meta property="og:image" content="http://yoursite.com/2019/08/11/Hadoop/Hadoop/1536631101469.png">
+<meta property="og:image" content="http://yoursite.com/2019/08/11/Hadoop/Hadoop/1536631136357.png">
+<meta property="og:image" content="http://yoursite.com/2019/08/11/Hadoop/Hadoop/1536631230133.png">
+<meta property="og:image" content="http://yoursite.com/2019/08/11/Hadoop/Hadoop/1536631748114.png">
+<meta property="og:image" content="http://yoursite.com/2019/08/11/Hadoop/Hadoop/1536632279086.png">
+<meta property="og:image" content="http://yoursite.com/2019/08/11/Hadoop/Hadoop/1536632767416.png">
+<meta property="og:image" content="http://yoursite.com/2019/08/11/Hadoop/Hadoop/1536638914434.png">
+<meta property="og:image" content="http://yoursite.com/2019/08/11/Hadoop/Hadoop/1536634555321.png">
+<meta property="og:image" content="http://yoursite.com/2019/08/11/Hadoop/Hadoop/1536634575950.png">
+<meta property="og:image" content="http://yoursite.com/2019/08/11/Hadoop/Hadoop/1536634606672.png">
+<meta property="og:image" content="http://yoursite.com/2019/08/11/Hadoop/Hadoop/1536634685208.png">
+<meta property="og:image" content="http://yoursite.com/2019/08/11/Hadoop/Hadoop/1536634722606.png">
+<meta property="og:image" content="http://yoursite.com/2019/08/11/Hadoop/Hadoop/1536634739647.png">
+<meta property="og:image" content="http://yoursite.com/2019/08/11/Hadoop/Hadoop/1536639126431.png">
+<meta property="og:image" content="http://yoursite.com/2019/08/11/Hadoop/Hadoop/1536639214615.png">
+<meta property="article:published_time" content="2019-08-11T15:32:20.000Z">
+<meta property="article:modified_time" content="2019-09-26T14:03:57.663Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/2019/08/11/Hadoop/Hadoop/1536298122980.png">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/combine/gh/nexmoe/nexmoe.github.io@latest/css/style.css,npm/highlight.js@9.15.8/styles/atom-one-dark.css,gh/nexmoe/nexmoe.github.io@latest/lib/mdui_043tiny/css/mdui.css,gh/nexmoe/nexmoe.github.io@latest/lib/iconfont/iconfont.css" crossorigin>
+  
+  <!--<link rel="stylesheet" href="/css/style.css?v=1585311044904">-->
+
+  
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body class="mdui-drawer-body-left">
+  
+  <div id="nexmoe-background">
+    <div class="nexmoe-bg" style="background-image: url(https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/cover/5c3aec85a4343.jpg)"></div>
+    <div class="mdui-appbar mdui-shadow-0">
+      <div class="mdui-toolbar">
+        <a mdui-drawer="{target: '#drawer', swipe: true}" title="menu" class="mdui-btn mdui-btn-icon mdui-ripple"><i class="mdui-icon nexmoefont icon-menu"></i></a>
+        <div class="mdui-toolbar-spacer"></div>
+        <!--<a href="javascript:;" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">search</i></a>-->
+        <a href="/" title="John Doe" class="mdui-btn mdui-btn-icon"><img src="https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/avatar.png" alt="John Doe"></a>
+       </div>
+    </div>
+  </div>
+  <div id="nexmoe-header">
+      <div class="nexmoe-drawer mdui-drawer" id="drawer">
+    <div class="nexmoe-avatar mdui-ripple">
+        <a href="/" title="John Doe">
+            <img src="https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/avatar.png" alt="John Doe" alt="John Doe">
+        </a>
+    </div>
+    <div class="nexmoe-count">
+        <div><span>Articles</span>21</div>
+        <div><span>Tags</span>6</div>
+        <div><span>Categories</span>0</div>
+    </div>
+    <div class="nexmoe-list mdui-list" mdui-collapse="{accordion: true}">
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/" title="回到首页">
+            <i class="mdui-list-item-icon nexmoefont icon-home"></i>
+            <div class="mdui-list-item-content">
+                回到首页
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/about.html" title="关于博客">
+            <i class="mdui-list-item-icon nexmoefont icon-info-circle"></i>
+            <div class="mdui-list-item-content">
+                关于博客
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/PY.html" title="我的朋友">
+            <i class="mdui-list-item-icon nexmoefont icon-unorderedlist"></i>
+            <div class="mdui-list-item-content">
+                我的朋友
+            </div>
+        </a>
+        
+    </div>
+    <aside id="nexmoe-sidebar">
+  
+  <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-search">
+        <form id="search_form" action_e="https://cn.bing.com/search?q=site:nexmoe.com" onsubmit="return search();">
+            <label><input id="search_value" name="q" type="search" placeholder="Search"></label>
+        </form>
+    </div>
+</div>
+  
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">Social</h3>
+    <div class="nexmoe-widget nexmoe-social">
+        <a class="mdui-ripple" href="https://space.bilibili.com/20238211" target="_blank" mdui-tooltip="{content: '哔哩哔哩'}" style="color: rgb(231, 106, 141);background-color: rgba(231, 106, 141, .15);">
+            <i class="nexmoefont icon-bilibili"></i>
+        </a><a class="mdui-ripple" href="https://github.com/nexmoe/" target="_blank" mdui-tooltip="{content: 'GitHub'}" style="color: rgb(25, 23, 23);background-color: rgba(25, 23, 23, .15);">
+            <i class="nexmoefont icon-github"></i>
+        </a>
+    </div>
+</div>
+  
+  
+
+  
+  
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">Tag Cloud</h3>
+    <div id="randomtagcloud" class="nexmoe-widget tagcloud">
+      <a href="/tags/Algorithm/" style="font-size: 10px;">Algorithm</a> <a href="/tags/Cookie-seesion-Token/" style="font-size: 10px;">Cookie seesion Token</a> <a href="/tags/Element-UI/" style="font-size: 10px;">Element UI</a> <a href="/tags/SpringBoot/" style="font-size: 20px;">SpringBoot</a> <a href="/tags/Token-JWT-SpringBoot/" style="font-size: 10px;">Token JWT SpringBoot</a> <a href="/tags/Vue/" style="font-size: 10px;">Vue</a>
+    </div>
+    
+  </div>
+
+  
+  
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">Archive</h3>
+    <div class="nexmoe-widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+</aside>
+    <div class="nexmoe-copyright">
+        &copy; 2020 John Doe
+        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+        & <a href="https://nexmoe.com/hexo-theme-nexmoe.html" target="_blank">Nexmoe</a>
+    </div>
+</div><!-- .nexmoe-drawer -->
+  </div>
+  <div id="nexmoe-content">
+    <div class="nexmoe-primary">
+        <div class="nexmoe-post">
+  
+      <div class="nexmoe-post-cover" style="padding-bottom: 66.66666666666666%;"> 
+          <img data-src="https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/cover/5c3aec85a4343.jpg" data-sizes="auto" alt="搭建Hadoop完全分布式" class="lazyload">
+          <h1>搭建Hadoop完全分布式</h1>
+      </div>
+  
+  
+  <div class="nexmoe-post-meta" style="margin:10px 0!important;">
+    <a><i class="nexmoefont icon-calendar-fill"></i>2019年08月11日</a>
+    <a><i class="nexmoefont icon-areachart"></i>4.8k 字</a>
+    <a><i class="nexmoefont icon-time-circle-fill"></i>大概 22 分钟</a>
+</div>
+
+  <div class="nexmoe-post-right">
+    
+  </div>
+
+  <article>
+    <h3 id="搭建hadoop完全分布式详细教程"><a href="#搭建hadoop完全分布式详细教程" class="headerlink" title="搭建hadoop完全分布式详细教程"></a>搭建hadoop完全分布式详细教程</h3><p>链接：<a href="https://www.cnblogs.com/frankdeng/p/9047698.html" target="_blank" rel="noopener">https://www.cnblogs.com/frankdeng/p/9047698.html</a></p>
+<pre><code>https://blog.csdn.net/nbjjy/article/details/80339187</code></pre><h3 id="1-克隆虚拟机"><a href="#1-克隆虚拟机" class="headerlink" title="1.  克隆虚拟机"></a>1.  克隆虚拟机</h3><h3 id="2-修改4台克隆机的IP为固定IP、主机名和IP-主机名的映射"><a href="#2-修改4台克隆机的IP为固定IP、主机名和IP-主机名的映射" class="headerlink" title="2.  修改4台克隆机的IP为固定IP、主机名和IP-主机名的映射"></a>2.  修改4台克隆机的IP为固定IP、主机名和IP-主机名的映射</h3><table>
+<thead>
+<tr>
+<th>ip</th>
+<th>主机名</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>192.168.183.31</td>
+<td>CentOS01</td>
+</tr>
+<tr>
+<td>192.168.183.32</td>
+<td>CentOS02</td>
+</tr>
+<tr>
+<td>192.168.183.33</td>
+<td>CentOS03</td>
+</tr>
+<tr>
+<td>192.168.183.34</td>
+<td>CentOS04</td>
+</tr>
+<tr>
+<td>192.168.183.35</td>
+<td>CentOS05</td>
+</tr>
+</tbody></table>
+<p>临时修改：</p>
+<blockquote>
+<p>hostname CentOS0X</p>
+</blockquote>
+<p>永久修改：</p>
+<blockquote>
+<p>vim /etc/sysconfig/network  </p>
+<p>HOSTNAME=CentOS0X</p>
+</blockquote>
+<h3 id="3-检查虚拟机的防火墙状态"><a href="#3-检查虚拟机的防火墙状态" class="headerlink" title="3.  检查虚拟机的防火墙状态"></a>3.  检查虚拟机的防火墙状态</h3><blockquote>
+<p>service iptables status</p>
+</blockquote>
+<h3 id="4-检查虚拟机是否开启SSH"><a href="#4-检查虚拟机是否开启SSH" class="headerlink" title="4.  检查虚拟机是否开启SSH"></a>4.  检查虚拟机是否开启SSH</h3><p>命令：ps -e|grep ssh </p>
+<blockquote>
+<p>root@ubuntu:/etc$ sudo ps -e | grep ssh</p>
+<p>1529 ?        00:00:00 ssh-agent————对应客户端</p>
+<p>3366 ?        00:00:00 sshd——对应服务器端</p>
+</blockquote>
+<ul>
+<li>开启了SSH，就可以在NameNode远程登录克隆机，并把host文件发给克隆机</li>
+</ul>
+<h3 id="5-检查hadoop和JDk是否安装"><a href="#5-检查hadoop和JDk是否安装" class="headerlink" title="5.  检查hadoop和JDk是否安装"></a>5.  检查hadoop和JDk是否安装</h3><blockquote>
+<p>hadoop version</p>
+<p>java -version</p>
+</blockquote>
+<ul>
+<li>如果发现命令执行不了，重新读入环境配置文件</li>
+</ul>
+<blockquote>
+<p>source /etc/profile 保存并让配置立即生效</p>
+</blockquote>
+<h3 id="6-格式化文件系统"><a href="#6-格式化文件系统" class="headerlink" title="6.  格式化文件系统"></a>6.  格式化文件系统</h3><ul>
+<li><p>因为克隆之前没格式化，所以这里要给<del>5台虚拟机格式化一下</del>只需给namenode节点格式化！！</p>
+<p>由于配置了·hadoop的环境变量，可以在任何目录下执行：<br>hadoop namenode -format<br>若没有配置该环境变量，需要到 hadoop安装目录的bin目录下执行，其中./不能省略。<br> ./hadoop namenode -format</p>
+<p>如果出现如下标识，代表格式化成功。。。<br>18/09/10 13:56:09 INFO common.Storage: Storage directory /tmp/hadoop-root/dfs/name has been successfully formatted.</p>
+</li>
+</ul>
+<h3 id="7-远程复制hosts文件"><a href="#7-远程复制hosts文件" class="headerlink" title="7.  远程复制hosts文件"></a>7.  远程复制hosts文件</h3><blockquote>
+<p>例：scp root@ubuntu02:/etc/hosts root@ubuntu03:/etc/</p>
+<p>[root@CentOS01 Desktop]# scp /etc/hosts root@CentOS02:/etc/</p>
+<p>源主机用户名@源主机名:目录下的文件  目的主机登陆的用户名@目的主机名:粘贴的目录    </p>
+</blockquote>
+<h3 id="8-SSH免密登录"><a href="#8-SSH免密登录" class="headerlink" title="8.  SSH免密登录"></a>8.  SSH免密登录</h3><ul>
+<li>这里只需实现NameNode免密登录其他四个结点，所以把CentOS01的公钥发给其他的四台虚拟机</li>
+</ul>
+<p>在各个虚拟机中的任意目录下，执行：（我一直都是使用root身份，生成密钥）</p>
+<blockquote>
+<p>ssh-keygen -t rsa     //  -t 指定加密算法  -p指定密码  -f指定存放的目录</p>
+</blockquote>
+<p>然后一直回车，直到：</p>
+<p><img data-sizes="auto" data-src="Hadoop/1536298122980.png" alt="" class="lazyload"></p>
+<p>成功后，在/root/.ssh/下会生成：</p>
+<blockquote>
+<p>drwx—— 2 root root 4096 Sep  6 22:26 .<br>drwx—— 7 root root 4096 Sep  6 19:53 ..<br><strong><em>==-rw——- 1 root root 1675 Sep  6 22:26 id_rsa==</em></strong><br><strong><em>==-rw-r–r– 1 root root  395 Sep  6 22:26 id_rsa.pub==</em></strong><br>-rw-r–r– 1 root root  444 Sep  6 19:53 known_hosts</p>
+</blockquote>
+<p>在CentOS01中的/root/.ssh/下，执行：</p>
+<blockquote>
+<p>[root@CentOS01 ~]# scp /root/.ssh/id_rsa.pub root@CentOS02:/root/.ssh/id_rsa.pub.CentOS01</p>
+<p>​                                      源文件       目标用户@目标主机:目标目录/目标文件的新命名（为了与其自身的公钥区）</p>
+</blockquote>
+<p>在ubuntu02中的/root/.ssh/目录下，把接收到的ubuntu01的公钥拼接到认证库中。</p>
+<blockquote>
+<p>root@CentOS02:~/.ssh# cat id_rsa.pub.CentOS01 &gt;&gt; authorized_keys</p>
+</blockquote>
+<p>回到ubunt01，ssh登录ubuntu02：</p>
+<blockquote>
+<p>ssh CentOS02</p>
+</blockquote>
+<p>成功！！！！</p>
+<h3 id="9-安装zookeeper"><a href="#9-安装zookeeper" class="headerlink" title="9.  安装zookeeper"></a>9.  安装zookeeper</h3><p>教程：<a href="https://www.cnblogs.com/wuxl360/p/5817489.html" target="_blank" rel="noopener">https://www.cnblogs.com/wuxl360/p/5817489.html</a></p>
+<pre><code> https://blog.csdn.net/ron03129596/article/details/68962448
+
+http://cailin.iteye.com/blog/2014486</code></pre><p><strong>集群节点分配：</strong></p>
+<table>
+<thead>
+<tr>
+<th align="center">CentOS01</th>
+<th align="center">CentOS02</th>
+<th align="center">CentOS03</th>
+<th align="center">CentOS04</th>
+<th align="center">CentOS05</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">zookeeper</td>
+<td align="center">zookeeper</td>
+<td align="center">-</td>
+<td align="center">-</td>
+<td align="center">-</td>
+</tr>
+<tr>
+<td align="center">NameNode</td>
+<td align="center">NameNode (standby)</td>
+<td align="center">DataNode</td>
+<td align="center">DataNode</td>
+<td align="center">DataNode</td>
+</tr>
+<tr>
+<td align="center">ResourceManager</td>
+<td align="center">ResourceM(standby)</td>
+<td align="center">NodeManager</td>
+<td align="center">NodeManager</td>
+<td align="center">NodeManager</td>
+</tr>
+</tbody></table>
+<p>由于5台虚拟主机中，CentOS01和CentOS02为名称结点，所以只需在它们上安装zookeeper。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">ZooKeeper是一个分布式的，开放源码的分布式应用程序协调服务，是Google的Chubby一个开源的实现，是Hadoop和Hbase的重要组件。它是一个为分布式应用提供一致性服务的软件，提供的功能包括：配置维护、域名服务、分布式同步、组服务等。</span><br><span class="line">ZooKeeper的基本运转流程：</span><br><span class="line">1、选举Leader。</span><br><span class="line">2、同步数据。</span><br><span class="line">3、选举Leader过程中算法有很多，但要达到的选举标准是一致的。</span><br><span class="line">4、Leader要具有最高的执行ID，类似root权限。</span><br><span class="line">5、集群中大多数的机器得到响应并follow选出的Leader。</span><br><span class="line">目前阿里开源的dubbo分布式服务框架推荐的注册中心。</span><br><span class="line">其更详细原理可以参考：http:&#x2F;&#x2F;cailin.iteye.com&#x2F;blog&#x2F;2014486&#x2F;</span><br></pre></td></tr></table></figure>
+
+<p>接下来我们进入zookeeper的安装环节，zookeeper的安装总的来说比较简单，这里我准备了3台linux虚拟机，模拟集群环境，有条件的同学可以自己装3台（最少），其实集群和单机的区别不是太大，但是集群时节点数量一定是奇数（2n+1如3,5,7）。<br> 工具： CentOS.7，zookeeper-3.4.6，Xshell5</p>
+<p><em>注：zookeeper本身由java编写，运行在java环境，故同学们必须先装好java环境，才可以继续zookeeper的安装，这里我对java环境不做讲解</em></p>
+<h4 id="9-1-安装包下载或上传"><a href="#9-1-安装包下载或上传" class="headerlink" title="9.1  安装包下载或上传"></a>9.1  安装包下载或上传</h4><p><strong>教程：</strong>首先使用grid用户登录CentOS7_64_1，将zookeeper-3.4.6的安装包下载传至/home/grid目目录下<br> http下载路径: <a href="http://apache.fayea.com/zookeeper/" target="_blank" rel="noopener">http://apache.fayea.com/zookeeper/</a><br> linux命令下载：$ wget<br>  <a href="http://apache.fayea.com/zookeeper/zookeeper-3.4.6/zookeeper-3.4.6.tar.gz" target="_blank" rel="noopener">http://apache.fayea.com/zookeeper/zookeeper-3.4.6/zookeeper-3.4.6.tar.gz</a></p>
+<p><strong>上传：</strong></p>
+<p>使用filezilla把zookeeper上传到/home/work/software，用户名：root，密码：wuhuipei</p>
+<h4 id="9-2-解压到上一节目录："><a href="#9-2-解压到上一节目录：" class="headerlink" title="9.2  解压到上一节目录："></a>9.2  解压到上一节目录：</h4><blockquote>
+<p>tar -xvf zookeeper-3.4.7.tar.gz -C ../</p>
+</blockquote>
+<p>f压缩包位置 v打印每一步信息</p>
+<h4 id="9-3-创建data和logs目录"><a href="#9-3-创建data和logs目录" class="headerlink" title="9.3  创建data和logs目录"></a>9.3  创建data和logs目录</h4><p>解压后进入zookeeper-3.4.7目录，创建data目录和logs目录，zookeeper默认是不带这两个目录的，需要用户自行创建并指定。 </p>
+<blockquote>
+<p>[root@CentOS01 zookeeper-3.4.7]# mkdir data<br>[root@CentOS01 zookeeper-3.4.7]# mkdir logs</p>
+</blockquote>
+<h4 id="9-4-创建myid文件"><a href="#9-4-创建myid文件" class="headerlink" title="9.4  创建myid文件"></a>9.4  创建myid文件</h4><p>在dataDir=/home/work/zookeeper-3.4.7/data下创建myid文件   </p>
+<p>编辑myid文件，并在对应的IP的机器上输入对应的编号。如在第一台zookeeper上，我们给该myid文件内容指定就是1。如果只在单点上进行安装配置，那么只有一个server，后面讲集群的时候会有多态server故会有2,3,4…等等。  </p>
+<blockquote>
+<p>[root@CentOS01 data]# vim myid</p>
+<p>1</p>
+</blockquote>
+<h4 id="9-5-复制修改配置文件"><a href="#9-5-复制修改配置文件" class="headerlink" title="9.5  复制修改配置文件"></a>9.5  复制修改配置文件</h4><p>接着进入zookeeper-3.4.6/conf目录下，将zoo_sample.cfg文件复制一份取名zoo.cfg  </p>
+<blockquote>
+<p>[root@CentOS01 conf]# cp zoo_sample.cfg zoo.cfg</p>
+</blockquote>
+<p><em>注：之所以取名zoo.cfg是因为这是启动时默认约定读取的</em> </p>
+<p>修改zoo.cfg配置文件，如下：</p>
+<p><img data-sizes="auto" data-src="Hadoop/1536592271984.png" alt="1536592271984" class="lazyload"></p>
+<blockquote>
+<p>dataDir=/home/work/zookeeper-3.4.7/data<br>dataLogDir=/home/work/zookeeper-3.4.7/logs<br>server.1=CentOS01:2888:3888</p>
+</blockquote>
+<p><strong>server.1=h1:2888:3888的解释如下：</strong></p>
+<p>1是指一个数字，与前面创建的myid对应即可，标志这是第几台机器，CentOS01是我配置的映射名，大家可以直接将CentOS01改为自己的ip，如server.1=192.168.183.31:2888:3888； </p>
+<p>2888 表示的是这个服务器与集群中的 Leader 服务器交换信息的端口，2888端口简单来说就是zookeeper服务之间的通信端口；    3888端口是与其他应用程序通信的端口 ，比如：leader掉线后，重新选举zookeeper</p>
+<p> <strong>其他cfg参数说明：</strong></p>
+<p><strong>tickTime=2000</strong>   </p>
+<p>tickTime这个时间是作为Zookeeper服务器之间或客户端与服务器之间维持心跳的时间间隔,也就是每个tickTime时间就会发送一个心跳。 </p>
+<p><strong>initLimit=10</strong><br> initLimit这个配置项是用来配置Zookeeper接受客户端（这里所说的客户端不是用户连接Zookeeper服务器的客户端,而是Zookeeper服务器集群中连接到Leader的Follower  服务器）初始化连接时最长能忍受多少个心跳时间间隔数。当已经超过10个心跳的时间（也就是tickTime）长度后Zookeeper  服务器还没有收到客户端的返回信息,那么表明这个客户端连接失败。总的时间长度就是10*2000=20 秒。</p>
+<p><strong>syncLimit=5</strong><br> syncLimit这个配置项标识Leader与Follower之间发送消息,请求和应答时间长度,最长不能超过多少个tickTime的时间长度,总的时间长度就是5*2000=10秒。</p>
+<p><strong>dataDir=/home/work/zookeeper-3.4.7/data</strong><br> dataDir顾名思义就是Zookeeper保存数据的目录,默认情况下Zookeeper将写数据的日志文件也保存在这个目录里。</p>
+<p><strong>clientPort=2181</strong><br> clientPort这个端口就是客户端（应用程序）连接Zookeeper服务器的端口,Zookeeper会监听这个端口接受客户端的访问请求</p>
+<h4 id="9-6-添加环境变量"><a href="#9-6-添加环境变量" class="headerlink" title="9.6  添加环境变量"></a>9.6  添加环境变量</h4><p>修改该用户下的.bash_profile文件，此文件默认为隐藏的   （这里只是为该用户配置全局变量，更好的选择是直接配置/etc/profile，为所有用户配置环境变量）</p>
+<p>方一：</p>
+<blockquote>
+<p>[root@CentOS01 ~]# vim /root/.bash_profile，增加内容如下： </p>
+<p>export ZOOKEEPER_HOME=/home/grid/zookeeper-3.4.6   </p>
+<p>export PATH=$ZOOKEEPER_HOME/bin:$PATH   </p>
+</blockquote>
+<p>使配置文件生效：  </p>
+<blockquote>
+<p>[root@CentOS01 ~]# source /root/.bash_profile </p>
+</blockquote>
+<p>方二：</p>
+<blockquote>
+<p>[root@CentOS01 etc]# vim /etc/profile</p>
+<p>JAVA_HOME=/home/work/jdk1.8.0_65<br>HADOOP_HOME=/home/work/hadoop-2.7.1<br>ZOOKEEPER_HOME=/home/work/zookeeper-3.4.7</p>
+<p>PATH=$JAVA_HOME/bin:$PATH:$HADOOP_HOME/bin:$HADOOP_HOME/sbin:$ZOOKEEPER_HOME/bin<br>export JAVA_HOME PATH HADOOP_HOME ZOOKEEPER_HOME</p>
+</blockquote>
+<p>使配置文件生效：  </p>
+<blockquote>
+<p>[root@CentOS01 ~]# source /etc/profile </p>
+</blockquote>
+<p><strong>启动</strong>ZooKeeper的Server：zkServer.sh start；<strong>关闭</strong>ZooKeeper的Server：zkServer.sh stop </p>
+<h4 id="9-7-防火墙配置"><a href="#9-7-防火墙配置" class="headerlink" title="9.7  防火墙配置"></a>9.7  防火墙配置</h4><p>在防火墙中打开要用到的端口，一般默认是开放了22端口，所以我们才能使用远程工具使用22进行连接，现在我们去配置2181 2888 3888端口，</p>
+<p>使用root用户执行如下命令   chkconfig iptables on设置开机启动   </p>
+<p>service iptables start 启动防火墙   <strong>我这里设置时就报错了，报错咱就得解决</strong> </p>
+<p><img data-sizes="auto" data-src="Hadoop/1536631101469.png" alt="1536631101469" class="lazyload"></p>
+<p><strong>解决方案</strong>：执行yum install iptables-services下载安装插件  </p>
+<p><img data-sizes="auto" data-src="Hadoop/1536631136357.png" alt="1536631136357" class="lazyload"></p>
+<p>安装完成后再次执行chkconfig iptables on，service iptables start命令  </p>
+<p><img data-sizes="auto" data-src="Hadoop/1536631230133.png" alt="1536631230133" class="lazyload"></p>
+<p><strong>我前面没有出错，所以直接到开放防火墙端口：</strong></p>
+<p>接下来继续开放防火墙端口<br>[root@CentOS01 zookeeper-3.4.7]# vim /etc/sysconfig/iptables</p>
+<p>复制22端口那一行3次，然后将端口修改为需要开放的3个，如下： </p>
+<p><img data-sizes="auto" data-src="Hadoop/1536631748114.png" alt="1536631748114" class="lazyload"></p>
+<blockquote>
+<p>#zookeeper-2018-09-11-ron<br>-A INPUT -m state –state NEW -m tcp -p tcp –dport 2181 -j ACCEPT</p>
+<p>-A INPUT -m state –state NEW -m tcp -p tcp –dport 2888 -j ACCEPT</p>
+<p>-A INPUT -m state –state NEW -m tcp -p tcp –dport 3888 -j ACCEPT</p>
+</blockquote>
+<h4 id="9-8-重启防火墙"><a href="#9-8-重启防火墙" class="headerlink" title="9.8  重启防火墙"></a>9.8  重启防火墙</h4><ul>
+<li><strong>不需要重启虚拟机</strong></li>
+</ul>
+<blockquote>
+<p>[root@CentOS01 ~]# service iptables restart</p>
+</blockquote>
+<h4 id="9-9-开启zookeeper服务"><a href="#9-9-开启zookeeper服务" class="headerlink" title="9.9  开启zookeeper服务"></a>9.9  开启zookeeper服务</h4><p>启动并测试zookeeper（当初使用root用户解压安装的，所以需要使用root用户启动），在zookeeper目录的bin下面执行   </p>
+<p>[root@CentOS01 bin]# ./zkServer.sh start</p>
+<p>** 因为没配置环境变量，所以需要加上当前目录  ./  ，当初就是进了这个坑** </p>
+<p>执行jps查看状态，其中QuorumPeerMain是zookeeper进程，启动正常  </p>
+<p><img data-sizes="auto" data-src="Hadoop/1536632279086.png" alt="1536632279086" class="lazyload"></p>
+<p>查看zookeeper服务输出信息，其日志信息文件在   /home/work/zookeeper-3.4.7/bin/zookeeper.out   tail -222f zookeeper.out查看 ，ctrl +  z  退出</p>
+<h4 id="9-10-设置服务为开机启动"><a href="#9-10-设置服务为开机启动" class="headerlink" title="9.10  设置服务为开机启动"></a>9.10  设置服务为开机启动</h4><p>教程：<a href="https://blog.csdn.net/u012453843/article/details/70162796/" target="_blank" rel="noopener">https://blog.csdn.net/u012453843/article/details/70162796/</a></p>
+<p>例子：</p>
+<!--配置zookeeper为grid用户开机启动，不然在生产环境会很麻烦--> 
+
+<p><img data-sizes="auto" data-src="Hadoop/1536632767416.png" alt="1536632767416" class="lazyload"></p>
+<!--编辑/etc/rc.local文件，加入：--> 
+<p> su - grid -c ‘/home/grid/zookeeper-3.4.6/bin/zkServer.sh start’</p>
+<!--**注：su -- grid是指切换到grid用户，-c是指调用后面命令**-->
+
+<p><strong>两种方法：</strong></p>
+<p>*<em>方法一：直接修改/etc/rc.d/rc.local文件 *</em></p>
+<p>在/etc/rc.d/rc.local文件中需要输入两行，其中export JAVA_HOME=/home/work/jdk1.8.0_65是必须要有的，否则开机启动不成功，大家根据自己JDK安装的位置自行更改。另一行/home/work/zookeeper-3.4.7/bin/zkServer.sh start则是我们zookeeper的启动命令。配置好之后，重启虚拟机，会发现已经可以开机自启了。 </p>
+<p><img data-sizes="auto" data-src="Hadoop/1536638914434.png" alt="1536638914434" class="lazyload"></p>
+<h4 id="拓展："><a href="#拓展：" class="headerlink" title="拓展："></a>拓展：</h4><p><strong>CentOS 中设置服务开机自启：</strong></p>
+<p>教程：<a href="https://blog.csdn.net/jack_nichao/article/details/54093394" target="_blank" rel="noopener">https://blog.csdn.net/jack_nichao/article/details/54093394</a></p>
+<p><strong>方法一：ln -s 建立软连接</strong></p>
+<p>在CentOS中总共有7中运行级别，可以在/etc/inittab文件中进行设置，7种运行级别对应着/etc/rc.d/rc[0-6].d 这7个目录 </p>
+<p><img data-sizes="auto" data-src="Hadoop/1536634555321.png" alt="1536634555321" class="lazyload"></p>
+<p><strong>ps: 你可能也发现了在/etc下也有同样的7个文件夹即 /etc/rc[0-6].d ，通过查看发现/etc/rc[0-6].d其实就是/etc/rc.d/rc[0-6].d的软连接，只是为了保持和Unix的兼容性</strong> </p>
+<p><img data-sizes="auto" data-src="Hadoop/1536634575950.png" alt="1536634575950" class="lazyload"></p>
+<p>这7个目录对应着7种不同运行级别，也就是说在每一个目录下的内容表示在该运行级别下应该启动或者关闭的服务。例如我们看一下/etc/rc.d/rc5.d目录下的内容 </p>
+<p><img data-sizes="auto" data-src="Hadoop/1536634606672.png" alt="1536634606672" class="lazyload"></p>
+<p>当然你可能也发现了，这些文件是按照如下格式命名的 <strong>[KS][1-100]servicename</strong> ，它表示当系统的运行级别为5时，它会关掉以K开头的所有服务，并启动所有以S开头的服务，其实，这些服务都是/etc/init.d/中某个服务的软连接，所以真正启动的服务是/etc/init.d目录中的某一个服务，而以K/S开头建立软连接是为了表明在对应级别下应该采取的行为，K/S后面紧跟的数字表示开/关服务的优先级。</p>
+<p>因此，如果我们自己写了一个脚本代码 如<strong>cleanupd</strong>，需要在开机级别为3的时候自启动的话，那么我们只需要把可执行的<strong>cleanupd</strong>脚本文件放到 /etc/init.d目录下，并在对应的运行级别目录下 如/etc/rc.d/rc3.d/ 建立一个以S开头后加数字的软连接到/etc/init.d/cleanupd即可，如</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@nichao ~]# ln -s &#x2F;etc&#x2F;init.d&#x2F;cleanupd &#x2F;etc&#x2F;rc.d&#x2F;rc3.d&#x2F;S95cleanup1</span><br></pre></td></tr></table></figure>
+
+<p>显然，这样的设置方式比较繁琐，仅仅适合于我们想DIY的脚本服务。</p>
+<p>** 方法二：chkconfig**</p>
+<p>鉴于上面的手工操作比较繁琐，在CentOS中专门提供了chkconfig 命令来设置或者取消开机自启动服务。 </p>
+<p><img data-sizes="auto" data-src="Hadoop/1536634685208.png" alt="1536634685208" class="lazyload"></p>
+<p>使用chkconfig  或者 chkconfig –list就可以看出当前系统已经设置的各个服务在各个运行级别下的开闭状态。如果我们想设置某个服务自启动或者关闭的话，那么只需要按照下面的格式使用即可</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chkconfig servicename on&#x2F;off</span><br></pre></td></tr></table></figure>
+
+<p><img data-sizes="auto" data-src="Hadoop/1536634722606.png" alt="1536634722606" class="lazyload"></p>
+<p>如上图可以看到，我们设置sshd服务开机自启，但是它的缺省自启的运行级别是在2345上的，我们可以在设置的时候加上–level 参数来明确表明需要在哪些级别上自启。   如：chkconfig –level 35 sshd on  表示在级别3和5上开机自启动 </p>
+<p><img data-sizes="auto" data-src="Hadoop/1536634739647.png" alt="1536634739647" class="lazyload"></p>
+<p>如图所示，在级别为3 5的时候，sshd服务被设置为启动状态，而2 4 级别则设置为关闭状态。 </p>
+<h4 id="9-11-两台虚拟机完成以上操作"><a href="#9-11-两台虚拟机完成以上操作" class="headerlink" title="9.11  两台虚拟机完成以上操作"></a>9.11  两台虚拟机完成以上操作</h4><h4 id="9-12-修改防火墙端口"><a href="#9-12-修改防火墙端口" class="headerlink" title="9.12  修改防火墙端口"></a>9.12  修改防火墙端口</h4><p>接下来配置2台服务器的端口，防火墙那一块改为下面对应的端口 </p>
+<blockquote>
+<p>[root@CentOS01 zookeeper-3.4.7]# vim /etc/sysconfig/iptables</p>
+</blockquote>
+<p><strong>机器1—端口：2181,2881,3881</strong> </p>
+<p><img data-sizes="auto" data-src="Hadoop/1536639126431.png" alt="1536639126431" class="lazyload"></p>
+<p><strong>机器2—端口：2182,2882,3882</strong> </p>
+<p><img data-sizes="auto" data-src="Hadoop/1536639214615.png" alt="1536639214615" class="lazyload"></p>
+<p><strong>机器3—端口：2183,2883,3883</strong> </p>
+<ul>
+<li><strong>不需要重启虚拟机</strong></li>
+</ul>
+<blockquote>
+<p>[root@CentOS01 ~]# service iptables restart</p>
+</blockquote>
+<h4 id="9-13-zookeeper配置"><a href="#9-13-zookeeper配置" class="headerlink" title="9.13  zookeeper配置"></a>9.13  zookeeper配置</h4><blockquote>
+<p>[root@CentOS02 sysconfig]# cd /home/work/zookeeper-3.4.7/conf/<br>[root@CentOS02 conf]# vim zoo.cfg       3台机器注意注意<strong>端口号</strong>参数  </p>
+</blockquote>
+<p><strong>centOS01:</strong></p>
+<blockquote>
+<p>dataDir=/home/work/zookeeper-3.4.7/data<br>dataLogDir=/home/work/zookeeper-3.4.7/logs</p>
+<p>server.1=CentOS01:2881:3881<br>server.2=CentOS02:2882:3882</p>
+<p>server.3=CentOS03:2883:3883</p>
+<p>clientPort=2181</p>
+</blockquote>
+<p><strong>CentOS02:</strong></p>
+<blockquote>
+<p>dataDir=/home/work/zookeeper-3.4.7/data<br>dataLogDir=/home/work/zookeeper-3.4.7/logs<br>server.1=CentOS01:2881:3881<br>server.2=CentOS02:2882:3882</p>
+<p>server.3=CentOS03:2883:3883</p>
+<p>clientPort=2182</p>
+</blockquote>
+<p><strong>CentOS03:</strong></p>
+<blockquote>
+<p>dataDir=/home/work/zookeeper-3.4.7/data<br>dataLogDir=/home/work/zookeeper-3.4.7/logs<br>server.1=CentOS01:2881:3881<br>server.2=CentOS02:2882:3882</p>
+<p>server.3=CentOS03:2883:3883</p>
+<p>clientPort=2183</p>
+</blockquote>
+<p><strong>server.A=B：C：D</strong></p>
+<p>A：其中 A 是一个数字，表示这个是服务器的编号；<br>B：是这个服务器的 ip 地址；<br>C：Leader选举的端口；<br>D：Zookeeper服务器之间的通信端口</p>
+<p><strong>在dataDir=/home/work/zookeeper-3.4.7/data下，修改data文件夹下的myid文件的值，</strong></p>
+<p><strong>分别对应的值为1，2，3</strong></p>
+<h4 id="9-14-启动zookeeper"><a href="#9-14-启动zookeeper" class="headerlink" title="9.14  启动zookeeper"></a>9.14  启动zookeeper</h4><p><strong>启动</strong>ZooKeeper的Server：zkServer.sh start；<strong>关闭</strong>ZooKeeper的Server：zkServer.sh stop </p>
+<p><strong>发现问题：</strong></p>
+<p>启动zkServer.sh start 后显示是启动了，jps下也是有线程 ,说明线程启动成功，并没有端口占用的问题，但是在我 zkServer.sh status 就会出现It is probably not running的错误。  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">[root@CentOS01 conf]# jps</span><br><span class="line"></span><br><span class="line">2631 Jps</span><br><span class="line"></span><br><span class="line">2536 QuorumPeerMain</span><br><span class="line"></span><br><span class="line">[root@CentOS01 conf]# zkServer.sh status</span><br><span class="line"></span><br><span class="line">ZooKeeper JMX enabled by default</span><br><span class="line"></span><br><span class="line">Using config: &#x2F;home&#x2F;work&#x2F;zookeeper-3.4.7&#x2F;bin&#x2F;..&#x2F;conf&#x2F;zoo.cfg</span><br><span class="line"></span><br><span class="line">Error contacting service. It is probably not running.</span><br></pre></td></tr></table></figure>
+
+<p>解决方法：</p>
+<ol>
+<li>查看liunx系统的防火墙是否关闭，查看防火墙状态 service iptables status 如果没有关闭，就 service iptables stop 关闭防火墙，然后重新启动zookeeper 看是否启用成功。  </li>
+</ol>
+<ol start="2">
+<li><p>zoo.cfg里面配置数据，对应需要改的数据根据自身的需求改，然后在zookeeper中创建相应data和log文件，一定别忘了在data目录下创建myid.  </p>
+<p><strong>创建数据目录,也就是在你zoo.cfg配置文件里dataDir指定的那个目录下创建myid文件,并且指定id,改id为你zoo.cfg文件server.1=localhost:2888:3888中的    1.只要在myid头部写入1即可.</strong>   </p>
+<p>注:在我第二次安装的时候，没有将myid文件创建在dataDir指定的那个目录下，也报了该错误。之后在dataDir指定的那个目录下创建myid文件就没有报错。 </p>
+</li>
+<li><p>最后一点也是最重要的一点，出错后一点要查看zookeeper.out文件，进行错误排查，这样才能知道自己到底出的是什么错误，好对症下药。 </p>
+<p>查看zookeeper服务输出信息，其日志信息文件在   /home/work/zookeeper-3.4.7/bin/zookeeper.out   tail -222f zookeeper.out查看 ，ctrl +  z  退出</p>
+</li>
+</ol>
+<p><strong>zookeeper搭建集群，需要虚拟机最少3台，给3台虚拟机配置好zookeeper，问题解决！！！！</strong></p>
+<p>按照步骤，一个一个排查就可以了。</p>
+<h3 id="10-配置CentOS01节点的hadoop"><a href="#10-配置CentOS01节点的hadoop" class="headerlink" title="10.  配置CentOS01节点的hadoop"></a>10.  配置CentOS01节点的hadoop</h3><h4 id="10-1-配置hadoop-env-sh"><a href="#10-1-配置hadoop-env-sh" class="headerlink" title="10.1  配置hadoop-env.sh"></a>10.1  配置hadoop-env.sh</h4><ol>
+<li>进入/home/work/hadoop-2.7.1/etc/hadoop</li>
+<li>打开hadoop-env.sh，vim hadoop-env.sh</li>
+<li>配置jdk安装所在目录</li>
+<li>配置hadoop文件所在目录</li>
+</ol>
+<blockquote>
+<p>export JAVA_HOME=/home/work/jdk1.8.0_65</p>
+<p>export HADOOP_CONF_DIR=/home/work/hadoop-2.7.1/etc/hadoop</p>
+</blockquote>
+<h4 id="10-2-配置core-site-xml"><a href="#10-2-配置core-site-xml" class="headerlink" title="10.2  配置core-site.xml"></a>10.2  配置core-site.xml</h4><blockquote>
+<configuration>
+     <!--用来指定hdfs的老大，ns为固定属性名，表示两个namenode-->
+     <property>
+             <name>fs.defaultFS</name>
+             <value>hdfs://ns</value>
+     </property>
+     <!--用来指定hadoop运行时产生文件的存放目录-->
+     <property>
+             <name>hadoop.tmp.dir</name>
+             <value>/home/work/hadoop-2.7.1/tmp</value>
+     </property>
+     <!--执行zookeeper地址-->
+     <property>
+             <name>ha.zookeeper.quorum</name>
+             <value>CentOS01:2181,CentOS02:2182,CentOS03:2183</value>
+     </property>
+</configuration>
+</blockquote>
+<h4 id="10-3-配置hdfs-site-xml"><a href="#10-3-配置hdfs-site-xml" class="headerlink" title="10.3  配置hdfs-site.xml"></a>10.3  配置hdfs-site.xml</h4><blockquote>
+<configuration>
+     <!--执行hdfs的nameservice为ns,和core-site.xml保持一致-->
+     <property>
+             <name>dfs.nameservices</name>
+             <value>ns</value>
+     </property>
+     <!--ns下有两个namenode,分别是nn1,nn2-->
+     <property>
+             <name>dfs.ha.namenodes.ns</name>
+             <value>nn1,nn2</value>
+     </property>
+     <!--nn1的RPC通信地址-->
+     <property>
+             <name>dfs.namenode.rpc-address.ns.nn1</name>
+             <value>CentOS01:9000</value>
+     </property>
+     <!--nn1的http通信地址-->
+             <value>nn1,nn2</value>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;&#x2F;property&gt;</span><br><span class="line">&lt;!--nn1的RPC通信地址--&gt;</span><br><span class="line">&lt;property&gt;</span><br><span class="line">        &lt;name&gt;dfs.namenode.rpc-address.ns.nn1&lt;&#x2F;name&gt;</span><br><span class="line">        &lt;value&gt;CentOS01:9000&lt;&#x2F;value&gt;</span><br><span class="line">&lt;&#x2F;property&gt;</span><br><span class="line">&lt;!--nn1的http通信地址--&gt;</span><br><span class="line">&lt;property&gt;</span><br><span class="line">        &lt;name&gt;dfs.namenode.http-address.ns.nn1&lt;&#x2F;name&gt;</span><br><span class="line">        &lt;value&gt;CentOS01:50070&lt;&#x2F;value&gt;</span><br><span class="line">&lt;&#x2F;property&gt;</span><br><span class="line">&lt;!--nn2的RPC通信地址--&gt;</span><br><span class="line">&lt;property&gt;</span><br><span class="line">        &lt;name&gt;dfs.namenode.rpc-address.ns.nn2&lt;&#x2F;name&gt;</span><br><span class="line">        &lt;value&gt;CentOS02:9000&lt;&#x2F;value&gt;</span><br><span class="line">&lt;&#x2F;property&gt;</span><br></pre></td></tr></table></figure>
+
+<p>​    <!--nn2的http通信地址--><br>​     <property><br>​             <name>dfs.namenode.http-address.ns.nn2</name><br>​             <value>CentOS02:50070</value><br>​     </property><br>​     <!--指定namenode的元数据在JournalNode上的存放位置,这样，namenode2可以 从jn集群里获取
+​               最新的namenode的信息，达到热备的效果--><br>​     <property><br>​             <name>dfs.namenode.shared.edits.dir</name><br>​             <value> qjournal://CentOS03:8485;CentOS04:8485;CentOS05:8485/ns</value><br>​     </property><br>​     <!--指定JournalNode存放数据的位置--><br>​     <property><br>​             <name>dfs.journalnode.edits.dir</name><br>​             <value>/home/work/hadoop-2.7.1/journal</value><br>​     </property><br>​     <!--开启 namenode 故障时自动切换--><br>​     <property></p>
+<p>​            <name>dfs.ha.automatic-failover.enabled</name><br>​             <value>true</value><br>​     </property><br>​     <!--配置切换的实现方式--><br>​     <property><br>​             <name>dfs.client.failover.proxy.provider.ns</name><br>​             <value> org.apache.hadoop.hdfs.server.namenode.ha.ConfiguredFailoverProxyProv ider</value><br>​     </property><br>​     <!--配置隔离机制--><br>​     <property><br>​             <name>dfs.ha.fencing.methods</name><br>​             <value>sshfence</value><br>​     </property><br>​     <!--配置隔离机制的ssh登录秘钥所在的位置--><br>​     <property><br>​             <name>dfs.ha.fencing.ssh.private-key-files</name></p>
+<p>​            <value>/root/.ssh/id_rsa</value><br>​     </property><br>​     <!--配置namenode数据存放的位置,可以不配置，如果不配置，默认用的是
+​               core-site.xml里配置的hadoop.tmp.dir的路径--><br>​     <property><br>​             <name>dfs.namenode.name.dir</name><br>​             <value>file:///home/work/hadoop-2.7.1/tmp/namenode</value><br>​     </property><br>​     <!--配置datanode数据存放的位置,可以不配置，如果不配置，默认用的是
+​            core-site.xml里配置的hadoop.tmp.dir的路径--><br>​     <property><br>​             <name>dfs.datanode.data.dir</name><br>​             <value>file:///home/work/hadoop-2.7.1/tmp/datanode</value><br>​     </property><br>​     <!--配置block副本数量--><br>​     <property><br>​             <name>dfs.replication</name><br>​             <value>3</value></p>
+<p>​    </property><br>​     <!--设置 hdfs 的操作权限， false 表示任何用户都可以在 hdfs 上操作文件--><br>​     <property><br>​             <name>dfs.permissions</name><br>​             <value>false</value><br>​     </property><br></configuration></p>
+</blockquote>
+<h4 id="10-4-配置mapred-site-xml"><a href="#10-4-配置mapred-site-xml" class="headerlink" title="10.4  配置mapred-site.xml"></a>10.4  配置mapred-site.xml</h4><p>先把mapred-site.xml.template复制一份，并命名mapred-site.xml</p>
+<blockquote>
+<configuration>
+     <property>
+     <!--指定mapreduce运行在yarn上-->
+             <name>mapreduce.framework.name</name>
+             <value>yarn</value>
+     </property>
+</configuration>
+</blockquote>
+<h4 id="10-5-配置yarn-site-xml"><a href="#10-5-配置yarn-site-xml" class="headerlink" title="10.5  配置yarn-site.xml"></a>10.5  配置yarn-site.xml</h4><blockquote>
+<configuration>
+     <!-- Site specific YARN configuration properties -->
+     <!--开启YARN HA -->
+     <property>
+             <name>yarn.resourcemanager.ha.enabled</name>
+             <value>true</value>
+     </property>
+     <!--指定两个 resourcemanager 的名称-->
+     <property>
+             <name>yarn.resourcemanager.ha.rm-ids</name>
+             <value>rm1,rm2</value>
+     </property>
+     <!--配置rm1，rm2的主机-->
+     <property>
+             <name>yarn.resourcemanager.hostname.rm1</name>
+             <value>CentOS01</value>
+      </property>
+         <property>
+                 <name>yarn.resourcemanager.hostname.rm2</name>
+                 <value>CentOS02</value>
+         </property>
+         <!--开启yarn恢复机制-->
+         <property>
+                 <name>yarn.resourcemanager.recovery.enabled</name>
+                 <value>true</value>
+         </property>
+         <!--执行rm恢复机制实现类-->
+         <property>
+                 <name>yarn.resourcemanager.store.class</name>
+                 <value>org.apache.hadoop.yarn.server.resourcemanager.recovery.ZKRMStateStore </value>
+         </property>
+         <!--配置zookeeper的地址-->
+         <property>
+                 <name>yarn.resourcemanager.zk-address</name>
+ <value>CentOS01:2181,CentOS02:2182,CentOS03:2183</value>
+                 <description>For multiple zk services, separate them with comma</description>
+         </property>
+         <!--指定YARN HA的名称-->
+         <property>
+                 <name>yarn.resourcemanager.cluster-id</name>
+                 <value>yarn-ha</value>
+         </property>
+         <property>
+         <!--指定yarn的老大resoucemanager的地址-->
+                 <name>yarn.resourcemanager.hostname</name>
+                 <value>CentOS02</value>
+         </property>
+         <property>
+         <!--NodeManager 获取数据的方式-->
+                 <name>yarn.nodemanager.aux-services</name>
+                 <value>mapreduce_shuffle</value>
+         </property>
+ </configuration>
+</blockquote>
+<h4 id="10-6-配置slaves文件"><a href="#10-6-配置slaves文件" class="headerlink" title="10.6  配置slaves文件"></a>10.6  配置slaves文件</h4><blockquote>
+<p>CentOS03<br>CentOS04<br>CentOS05</p>
+</blockquote>
+<h4 id="10-7-配置hadoop环境变量-已经配好了"><a href="#10-7-配置hadoop环境变量-已经配好了" class="headerlink" title="10.7  配置hadoop环境变量(已经配好了)"></a>10.7  配置hadoop环境变量(已经配好了)</h4><h4 id="10-8-根据配置文件，创建相关文件夹，用于存放对应数据"><a href="#10-8-根据配置文件，创建相关文件夹，用于存放对应数据" class="headerlink" title="10.8  根据配置文件，创建相关文件夹，用于存放对应数据"></a>10.8  根据配置文件，创建相关文件夹，用于存放对应数据</h4><p>在hadoop-2.7.1目录下创建:</p>
+<p>①journal目录</p>
+<p>②创建tmp目录</p>
+<p>③在tmp目录下，分别创建namenode目录和datanode目录</p>
+<h4 id="10-9-通过scp命令，将hadoop安装目录远程copy到其他4台主机上"><a href="#10-9-通过scp命令，将hadoop安装目录远程copy到其他4台主机上" class="headerlink" title="10.9  通过scp命令，将hadoop安装目录远程copy到其他4台主机上"></a>10.9  通过scp命令，将hadoop安装目录远程copy到其他4台主机上</h4><blockquote>
+<p>scp -r hadoop-2.7.1/ root@CentOS05:/home/work/</p>
+</blockquote>
+<h3 id="一般在那么node配置好hadoop配置文件，再发给各个节点！！"><a href="#一般在那么node配置好hadoop配置文件，再发给各个节点！！" class="headerlink" title="一般在那么node配置好hadoop配置文件，再发给各个节点！！"></a>一般在那么node配置好hadoop配置文件，再发给各个节点！！</h3>
+  </article>
+
+  <div class="nexmoe-post-meta">
+    
+    
+</div>
+
+  <div class="nexmoe-post-footer">
+    
+      
+  <div class="nexmoe-post-copyright">
+    <strong>Author：</strong>John Doe<br>
+    <strong>Link：</strong><a href="http://yoursite.com/2019/08/11/Hadoop/" title="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;08&#x2F;11&#x2F;Hadoop&#x2F;" target="_blank" rel="noopener">http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;08&#x2F;11&#x2F;Hadoop&#x2F;</a><br>
+    
+      <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可
+    
+  </div>
+
+
+    
+    <section class="nexmoe-comment">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.5.0/dist/gitalk.min.css">
+<div id="gitalk"></div>
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.5.0/dist/gitalk.min.js"></script>
+<script type="text/javascript">
+    var gitalk = new Gitalk({
+        clientID: '80b2453b6d5f37ad6225',
+        clientSecret: '43e99fa852795c9a7b3eb924b2558c64b84bbdeb',
+        id: window.location.pathname,
+        repo: 'nexmoe.github.io',
+        owner: 'nexmoe',
+        admin: 'nexmoe'
+    })
+    gitalk.render('gitalk')
+</script>
+</section>
+  </div>
+</div>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/combine/npm/lazysizes@5.1.0/lazysizes.min.js,gh/highlightjs/cdn-release@9.15.8/build/highlight.min.js,npm/mdui@0.4.3/dist/js/mdui.min.js,gh/nexmoe/nexmoe.github.io@latest/js/app.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+<!--<script src="/js/app.js?v=1585311044906"></script>-->
+
+
+    <script src="https://cdn.jsdelivr.net/gh/xtaodada/xtaodada.github.io@0.0.2/copy.js"></script>
+
+
+
+  
+
+
+
+
+
+</body>
+
+</html>

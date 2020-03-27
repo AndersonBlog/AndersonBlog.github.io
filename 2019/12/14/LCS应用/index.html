@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+  
+  <title>LCS求序列的父序列 - Hexo</title>
+  <meta charset="UTF-8">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+  
+  
+
+  <link rel="shortcut icon" href="/favicon.ico" type="image/png" />
+  <meta name="description" content="一、需求A​        前几天，在task中有一个应用场景，求两个子序列的最短”父序列”，想到LCS得到两个序列的最长公共子序列，那在求最短”父序列”也可以应用到LCS。 二、基本概念子序列(subsequence)： ​         一个特定序列的子序列就是将给定序列中零个或多个元素去掉后得到的结果(不改变元素间相对次序)。例如序列&lt;A,B,C,B,D,A,B&gt;的子序列有：&amp;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LCS求序列的父序列">
+<meta property="og:url" content="http://yoursite.com/2019/12/14/LCS%E5%BA%94%E7%94%A8/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="一、需求A​        前几天，在task中有一个应用场景，求两个子序列的最短”父序列”，想到LCS得到两个序列的最长公共子序列，那在求最短”父序列”也可以应用到LCS。 二、基本概念子序列(subsequence)： ​         一个特定序列的子序列就是将给定序列中零个或多个元素去掉后得到的结果(不改变元素间相对次序)。例如序列&lt;A,B,C,B,D,A,B&gt;的子序列有：&amp;">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://yoursite.com/2019/12/14/LCS%E5%BA%94%E7%94%A8/LCS%E5%BA%94%E7%94%A8/1576420589811.png">
+<meta property="og:image" content="http://yoursite.com/2019/12/14/LCS%E5%BA%94%E7%94%A8/LCS%E5%BA%94%E7%94%A8/1576422186090.png">
+<meta property="og:image" content="http://yoursite.com/2019/12/14/LCS%E5%BA%94%E7%94%A8/LCS%E5%BA%94%E7%94%A8/1576422548040.png">
+<meta property="og:image" content="http://yoursite.com/2019/12/14/LCS%E5%BA%94%E7%94%A8/LCS%E5%BA%94%E7%94%A8/1576422503595.png">
+<meta property="article:published_time" content="2019-12-14T11:37:58.000Z">
+<meta property="article:modified_time" content="2020-02-25T06:49:17.039Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="Algorithm">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/2019/12/14/LCS%E5%BA%94%E7%94%A8/LCS%E5%BA%94%E7%94%A8/1576420589811.png">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/combine/gh/nexmoe/nexmoe.github.io@latest/css/style.css,npm/highlight.js@9.15.8/styles/atom-one-dark.css,gh/nexmoe/nexmoe.github.io@latest/lib/mdui_043tiny/css/mdui.css,gh/nexmoe/nexmoe.github.io@latest/lib/iconfont/iconfont.css" crossorigin>
+  
+  <!--<link rel="stylesheet" href="/css/style.css?v=1585311044847">-->
+
+  
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body class="mdui-drawer-body-left">
+  
+  <div id="nexmoe-background">
+    <div class="nexmoe-bg" style="background-image: url(https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/cover/5c3aec85a4343.jpg)"></div>
+    <div class="mdui-appbar mdui-shadow-0">
+      <div class="mdui-toolbar">
+        <a mdui-drawer="{target: '#drawer', swipe: true}" title="menu" class="mdui-btn mdui-btn-icon mdui-ripple"><i class="mdui-icon nexmoefont icon-menu"></i></a>
+        <div class="mdui-toolbar-spacer"></div>
+        <!--<a href="javascript:;" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">search</i></a>-->
+        <a href="/" title="John Doe" class="mdui-btn mdui-btn-icon"><img src="https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/avatar.png" alt="John Doe"></a>
+       </div>
+    </div>
+  </div>
+  <div id="nexmoe-header">
+      <div class="nexmoe-drawer mdui-drawer" id="drawer">
+    <div class="nexmoe-avatar mdui-ripple">
+        <a href="/" title="John Doe">
+            <img src="https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/avatar.png" alt="John Doe" alt="John Doe">
+        </a>
+    </div>
+    <div class="nexmoe-count">
+        <div><span>Articles</span>21</div>
+        <div><span>Tags</span>6</div>
+        <div><span>Categories</span>0</div>
+    </div>
+    <div class="nexmoe-list mdui-list" mdui-collapse="{accordion: true}">
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/" title="回到首页">
+            <i class="mdui-list-item-icon nexmoefont icon-home"></i>
+            <div class="mdui-list-item-content">
+                回到首页
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/about.html" title="关于博客">
+            <i class="mdui-list-item-icon nexmoefont icon-info-circle"></i>
+            <div class="mdui-list-item-content">
+                关于博客
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/PY.html" title="我的朋友">
+            <i class="mdui-list-item-icon nexmoefont icon-unorderedlist"></i>
+            <div class="mdui-list-item-content">
+                我的朋友
+            </div>
+        </a>
+        
+    </div>
+    <aside id="nexmoe-sidebar">
+  
+  <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-search">
+        <form id="search_form" action_e="https://cn.bing.com/search?q=site:nexmoe.com" onsubmit="return search();">
+            <label><input id="search_value" name="q" type="search" placeholder="Search"></label>
+        </form>
+    </div>
+</div>
+  
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">Social</h3>
+    <div class="nexmoe-widget nexmoe-social">
+        <a class="mdui-ripple" href="https://space.bilibili.com/20238211" target="_blank" mdui-tooltip="{content: '哔哩哔哩'}" style="color: rgb(231, 106, 141);background-color: rgba(231, 106, 141, .15);">
+            <i class="nexmoefont icon-bilibili"></i>
+        </a><a class="mdui-ripple" href="https://github.com/nexmoe/" target="_blank" mdui-tooltip="{content: 'GitHub'}" style="color: rgb(25, 23, 23);background-color: rgba(25, 23, 23, .15);">
+            <i class="nexmoefont icon-github"></i>
+        </a>
+    </div>
+</div>
+  
+  
+
+  
+  
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">Tag Cloud</h3>
+    <div id="randomtagcloud" class="nexmoe-widget tagcloud">
+      <a href="/tags/Algorithm/" style="font-size: 10px;">Algorithm</a> <a href="/tags/Cookie-seesion-Token/" style="font-size: 10px;">Cookie seesion Token</a> <a href="/tags/Element-UI/" style="font-size: 10px;">Element UI</a> <a href="/tags/SpringBoot/" style="font-size: 20px;">SpringBoot</a> <a href="/tags/Token-JWT-SpringBoot/" style="font-size: 10px;">Token JWT SpringBoot</a> <a href="/tags/Vue/" style="font-size: 10px;">Vue</a>
+    </div>
+    
+  </div>
+
+  
+  
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">Archive</h3>
+    <div class="nexmoe-widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+</aside>
+    <div class="nexmoe-copyright">
+        &copy; 2020 John Doe
+        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+        & <a href="https://nexmoe.com/hexo-theme-nexmoe.html" target="_blank">Nexmoe</a>
+    </div>
+</div><!-- .nexmoe-drawer -->
+  </div>
+  <div id="nexmoe-content">
+    <div class="nexmoe-primary">
+        <div class="nexmoe-post">
+  
+      <div class="nexmoe-post-cover" style="padding-bottom: 66.66666666666666%;"> 
+          <img data-src="https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/cover/5c3aec85a4343.jpg" data-sizes="auto" alt="LCS求序列的父序列" class="lazyload">
+          <h1>LCS求序列的父序列</h1>
+      </div>
+  
+  
+  <div class="nexmoe-post-meta" style="margin:10px 0!important;">
+    <a><i class="nexmoefont icon-calendar-fill"></i>2019年12月14日</a>
+    <a><i class="nexmoefont icon-areachart"></i>908 字</a>
+    <a><i class="nexmoefont icon-time-circle-fill"></i>大概 3 分钟</a>
+</div>
+
+  <div class="nexmoe-post-right">
+    
+  </div>
+
+  <article>
+    <h5 id="一、需求A"><a href="#一、需求A" class="headerlink" title="一、需求A"></a>一、需求A</h5><p>​        前几天，在task中有一个应用场景，求两个子序列的最短”父序列”，想到LCS得到两个序列的最长公共子序列，那在求最短”父序列”也可以应用到LCS。</p>
+<h5 id="二、基本概念"><a href="#二、基本概念" class="headerlink" title="二、基本概念"></a>二、基本概念</h5><p><strong>子序列(subsequence)：</strong></p>
+<p>​         一个特定序列的子序列就是将给定序列中零个或多个元素去掉后得到的结果(不改变元素间相对次序)。例如序列&lt;A,B,C,B,D,A,B&gt;的子序列有：&lt;A,B&gt;、&lt;B,C,A&gt;、&lt;A,B,C,D,A&gt;等。</p>
+<p><strong>公共子序列(common subsequence)：</strong></p>
+<p>​          给定序列X和Y，序列Z是X的子序列，也是Y的子序列，则Z是X和Y的公共子序列。例如X=[A,B,C,B,D,A,B]，Y=[B,D,C,A,B,A[，那么序列Z=[B,C,A]为X和Y的公共子序列，其长度为3。但Z不是X和Y的最长公共子序列，而序列[B,C,B,A]和[B,D,A,B]也均为X和Y的最长公共子序列，长度为4，而X和Y不存在长度大于等于5的公共子序列。对于序列[A,B,C]和序列[E,F,G]的公共子序列只有空序列[]。</p>
+<p><strong>最长公共子序列：</strong></p>
+<p>​            给定序列X和Y，从它们的所有公共子序列中选出长度最长的那一个或几个。</p>
+<p><strong>字串：</strong></p>
+<p>​         将一个序列从最前或最后或同时删掉零个或几个字符构成的新系列。区别与子序列，子序列是可以从中间抠掉字符的。cnblogs这个字符串中子序列有多少个呢？很显然有27个，比如其中的cb,cgs等等都是其子序列。</p>
+<p><strong>最短”父序列”：</strong></p>
+<p>​         两个子序列的最短”父序列”是指，同时包含两个子序列的最短序列，比如 ABCD和BCEF的最短”父序列”为 ABCEF。</p>
+<p>下图为子序列和字串的区别：</p>
+<p><img data-sizes="auto" data-src="LCS%E5%BA%94%E7%94%A8/1576420589811.png" alt="1576420589811" class="lazyload"></p>
+<h5 id="三、最短”父序列”求解过程"><a href="#三、最短”父序列”求解过程" class="headerlink" title="三、最短”父序列”求解过程"></a>三、最短”父序列”求解过程</h5><ul>
+<li>先求解两个序列的最长公共子序列</li>
+<li>将两个子序列合并成一个序列，得到合并序列</li>
+<li>合并序列切除最长公共子序列，得到最短”父序列”。</li>
+</ul>
+<h5 id="四、算法应用"><a href="#四、算法应用" class="headerlink" title="四、算法应用"></a>四、算法应用</h5><p><strong>递归算法：</strong></p>
+<p>设有字符串A[0…n]，B[0…m]，当数组A和B对应位置字符相同时，则直接求解下一个位置；当不同时取两种情况中的较大数值。递推公式如下：</p>
+<p><img data-sizes="auto" data-src="LCS%E5%BA%94%E7%94%A8/1576422186090.png" alt="1576422186090" class="lazyload"></p>
+<p>​         用递归的方法优点是编程简单，容易理解。缺点是效率不高，有大量的重复执行递归调用，而且只能求出最大公共子序列的长度，求不出具体的最大公共子序列。</p>
+<p><strong>动态规划算法：</strong></p>
+<p> 动态规划采用二维数组来标识中间计算结果，避免重复的计算来提高效率。</p>
+<p>　　设有字符串A[0…n]，B[0…m]，下面就是递推公式。字符串A对应的是二维数组c[ ][ ] 的行，字符串B对应的是二维数组c[ ][ ]的列。</p>
+<p><img data-sizes="auto" data-src="LCS%E5%BA%94%E7%94%A8/1576422548040.png" alt="1576422548040" class="lazyload"></p>
+<p>构建LCS的DP表，如下：</p>
+<p><img data-sizes="auto" data-src="LCS%E5%BA%94%E7%94%A8/1576422503595.png" alt="1576422503595" class="lazyload"></p>
+<p>按照指定的路径倒推回去，就可以得到LCS，其中棕色方格为相等元素，即LCS = {3,4,6,7,8}，这是其中一个结果。</p>
+<p>在倒推时，如果s1[i] == s2[j] 就跳转到c[i - 1][j - 1],如果s1[i] != s1[j], 就向前找或向上找（只能一个方向）。</p>
+<h5 id="五、总结"><a href="#五、总结" class="headerlink" title="五、总结"></a>五、总结</h5><p>求得两个序列的最长公共子序列，就可以通过合并两个子序列，再切割最长公共子序列，得到两个序列的最短”父序列”。</p>
+
+  </article>
+
+  <div class="nexmoe-post-meta">
+    
+    
+        <a class="nexmoefont icon-tag-fill -link" href="/tags/Algorithm/" rel="tag">Algorithm</a>
+    
+</div>
+
+  <div class="nexmoe-post-footer">
+    
+      
+  <div class="nexmoe-post-copyright">
+    <strong>Author：</strong>John Doe<br>
+    <strong>Link：</strong><a href="http://yoursite.com/2019/12/14/LCS%E5%BA%94%E7%94%A8/" title="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;14&#x2F;LCS%E5%BA%94%E7%94%A8&#x2F;" target="_blank" rel="noopener">http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;14&#x2F;LCS%E5%BA%94%E7%94%A8&#x2F;</a><br>
+    
+      <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/deed.zh" target="_blank">CC BY-NC-SA 3.0 CN</a> 协议进行许可
+    
+  </div>
+
+
+    
+    <section class="nexmoe-comment">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.5.0/dist/gitalk.min.css">
+<div id="gitalk"></div>
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.5.0/dist/gitalk.min.js"></script>
+<script type="text/javascript">
+    var gitalk = new Gitalk({
+        clientID: '80b2453b6d5f37ad6225',
+        clientSecret: '43e99fa852795c9a7b3eb924b2558c64b84bbdeb',
+        id: window.location.pathname,
+        repo: 'nexmoe.github.io',
+        owner: 'nexmoe',
+        admin: 'nexmoe'
+    })
+    gitalk.render('gitalk')
+</script>
+</section>
+  </div>
+</div>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/combine/npm/lazysizes@5.1.0/lazysizes.min.js,gh/highlightjs/cdn-release@9.15.8/build/highlight.min.js,npm/mdui@0.4.3/dist/js/mdui.min.js,gh/nexmoe/nexmoe.github.io@latest/js/app.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+<!--<script src="/js/app.js?v=1585311044851"></script>-->
+
+
+    <script src="https://cdn.jsdelivr.net/gh/xtaodada/xtaodada.github.io@0.0.2/copy.js"></script>
+
+
+
+  
+
+
+
+
+
+</body>
+
+</html>

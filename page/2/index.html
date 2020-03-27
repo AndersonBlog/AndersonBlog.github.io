@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+  
+  <title>Hexo</title>
+  <meta charset="UTF-8">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+  
+  
+
+  <link rel="shortcut icon" href="/favicon.ico" type="image/png" />
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/page/2/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/combine/gh/nexmoe/nexmoe.github.io@latest/css/style.css,npm/highlight.js@9.15.8/styles/atom-one-dark.css,gh/nexmoe/nexmoe.github.io@latest/lib/mdui_043tiny/css/mdui.css,gh/nexmoe/nexmoe.github.io@latest/lib/iconfont/iconfont.css" crossorigin>
+  
+  <!--<link rel="stylesheet" href="/css/style.css?v=1585311044939">-->
+
+  
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body class="mdui-drawer-body-left">
+  
+  <div id="nexmoe-background">
+    <div class="nexmoe-bg" style="background-image: url(https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/cover/5c3aec85a4343.jpg)"></div>
+    <div class="mdui-appbar mdui-shadow-0">
+      <div class="mdui-toolbar">
+        <a mdui-drawer="{target: '#drawer', swipe: true}" title="menu" class="mdui-btn mdui-btn-icon mdui-ripple"><i class="mdui-icon nexmoefont icon-menu"></i></a>
+        <div class="mdui-toolbar-spacer"></div>
+        <!--<a href="javascript:;" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">search</i></a>-->
+        <a href="/" title="John Doe" class="mdui-btn mdui-btn-icon"><img src="https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/avatar.png" alt="John Doe"></a>
+       </div>
+    </div>
+  </div>
+  <div id="nexmoe-header">
+      <div class="nexmoe-drawer mdui-drawer" id="drawer">
+    <div class="nexmoe-avatar mdui-ripple">
+        <a href="/" title="John Doe">
+            <img src="https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/avatar.png" alt="John Doe" alt="John Doe">
+        </a>
+    </div>
+    <div class="nexmoe-count">
+        <div><span>Articles</span>21</div>
+        <div><span>Tags</span>6</div>
+        <div><span>Categories</span>0</div>
+    </div>
+    <div class="nexmoe-list mdui-list" mdui-collapse="{accordion: true}">
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/" title="回到首页">
+            <i class="mdui-list-item-icon nexmoefont icon-home"></i>
+            <div class="mdui-list-item-content">
+                回到首页
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/about.html" title="关于博客">
+            <i class="mdui-list-item-icon nexmoefont icon-info-circle"></i>
+            <div class="mdui-list-item-content">
+                关于博客
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/PY.html" title="我的朋友">
+            <i class="mdui-list-item-icon nexmoefont icon-unorderedlist"></i>
+            <div class="mdui-list-item-content">
+                我的朋友
+            </div>
+        </a>
+        
+    </div>
+    <aside id="nexmoe-sidebar">
+  
+  <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-search">
+        <form id="search_form" action_e="https://cn.bing.com/search?q=site:nexmoe.com" onsubmit="return search();">
+            <label><input id="search_value" name="q" type="search" placeholder="Search"></label>
+        </form>
+    </div>
+</div>
+  
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">Social</h3>
+    <div class="nexmoe-widget nexmoe-social">
+        <a class="mdui-ripple" href="https://space.bilibili.com/20238211" target="_blank" mdui-tooltip="{content: '哔哩哔哩'}" style="color: rgb(231, 106, 141);background-color: rgba(231, 106, 141, .15);">
+            <i class="nexmoefont icon-bilibili"></i>
+        </a><a class="mdui-ripple" href="https://github.com/nexmoe/" target="_blank" mdui-tooltip="{content: 'GitHub'}" style="color: rgb(25, 23, 23);background-color: rgba(25, 23, 23, .15);">
+            <i class="nexmoefont icon-github"></i>
+        </a>
+    </div>
+</div>
+  
+  
+
+  
+  
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">Tag Cloud</h3>
+    <div id="randomtagcloud" class="nexmoe-widget tagcloud">
+      <a href="/tags/Algorithm/" style="font-size: 10px;">Algorithm</a> <a href="/tags/Cookie-seesion-Token/" style="font-size: 10px;">Cookie seesion Token</a> <a href="/tags/Element-UI/" style="font-size: 10px;">Element UI</a> <a href="/tags/SpringBoot/" style="font-size: 20px;">SpringBoot</a> <a href="/tags/Token-JWT-SpringBoot/" style="font-size: 10px;">Token JWT SpringBoot</a> <a href="/tags/Vue/" style="font-size: 10px;">Vue</a>
+    </div>
+    
+  </div>
+
+  
+  
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">Archive</h3>
+    <div class="nexmoe-widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+</aside>
+    <div class="nexmoe-copyright">
+        &copy; 2020 John Doe
+        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+        & <a href="https://nexmoe.com/hexo-theme-nexmoe.html" target="_blank">Nexmoe</a>
+    </div>
+</div><!-- .nexmoe-drawer -->
+  </div>
+  <div id="nexmoe-content">
+    <div class="nexmoe-primary">
+        <section class="nexmoe-posts">
+    
+    <div class="nexmoe-post">
+        <a href="/2019/09/27/%E6%B5%85%E6%9E%90cookie-session-token/">
+            
+                <div class="nexmoe-post-cover mdui-ripple" style="padding-bottom: 66.66666666666666%;"> 
+                    <img data-src="https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/cover/5c3aec85a4343.jpg" data-sizes="auto" alt="浅析cookie，session和token" class="lazyload">
+                    <h1>浅析cookie，session和token</h1>
+                </div>
+            
+        </a>
+
+        <div class="nexmoe-post-meta">
+            <a><i class="nexmoefont icon-calendar-fill"></i>2019年09月27日</a>
+            <a><i class="nexmoefont icon-areachart"></i>2k 字</a>
+            <a><i class="nexmoefont icon-time-circle-fill"></i>大概 8 分钟</a>
+        </div>
+
+        <article>
+            
+                <h5 id="一、发展史"><a href="#一、发展史" class="headerlink" title="一、发展史"></a>一、发展史</h5><p>​            以前，Web应用基本都是文档浏览，在浏览过程中，服务器无需记录哪位用户浏览了哪些文档，所以每次请求都是新的HTTP协议（请求和响应）。</p>
+<p>​            当我们用浏览器打开一个网页，用到的是HTTP协议，它是无状态的，当前请求和上一次请求是没有任何关系的，互不关联。但是这种无状态的的好处是快速。所以就会带来一个问题就是，当几个请求的页面要有关联，比如：我在<a href="http://www.a.com/login.php里面登陆了，我在www.a.com/index.php" target="_blank" rel="noopener">www.a.com/login.php里面登陆了，我在www.a.com/index.php</a> 也希望是登陆状态，但是，这是2个不同的页面，也就是2个不同的HTTP请求，这2个HTTP请求是无状态的，也就是无关联的，所以无法单纯的在index.php中读取到它在login.php中已经登陆了！</p>
+<p>​            因为不可能这2个页面都去登陆一次或者2个页面都去查询数据库，如果有登陆状态，就判断是登陆的了。这种查询数据库的方案虽然可行，但是每次都要去查询数据库，会造成数据库的压力。 </p>
+<p>​            为了解决以上问题，一种新的客户端存储数据方式出现了：cookie。cookie是把少量的信息存储在用户自己的电脑上，它在一个域名下是一个全局的，只要设置它的存储路径在域名<a href="http://www.a.com下" target="_blank" rel="noopener">www.a.com下</a> ，那么当用户用浏览器访问时，php就可以从这个域名的任意页面读取cookie中的信息。所以就很好的解决了我在<a href="http://www.a.com/login.php页面登陆了，我也可以在www.a.com/index.php获取到这个登陆信息了。同时又不用反复去查询数据库。" target="_blank" rel="noopener">www.a.com/login.php页面登陆了，我也可以在www.a.com/index.php获取到这个登陆信息了。同时又不用反复去查询数据库。</a></p>
+<p>​            虽然这种方案很不错，也很快速方便，但是由于cookie 是存在用户端，而且它本身存储的尺寸大小也有限，最关键是用户可以是可见的，并可以随意的修改，很不安全。那如何又要安全，又可以方便的全局读取信息呢？于是，这个时候，一种新的存储会话机制：session 诞生了。</p>
+<h5 id="二、cookie"><a href="#二、cookie" class="headerlink" title="二、cookie"></a>二、cookie</h5><p>​            cookie是浏览器里面能永久存储的数据，仅仅是浏览器实现的一种数据存储功能。</p>
+<p>​             cookie由服务器生成，发送给浏览器，浏览器把cookie以k-v形式保存到某个目录下的文本文件内，下一次请求同一网站时会把该cookie发送给服务器。由于cookie是存在客户端上的，所以浏览器加入了一些限制确保cookie不会被恶意使用，同时不会占据太多磁盘空间，所以每个域的cookie数量是有限的。</p>
+<h5 id="三、session"><a href="#三、session" class="headerlink" title="三、session"></a>三、session</h5><p>​            Session 就是在一次会话中解决2次HTTP的请求的关联，让它们产生联系，让2两个页面都能读取到找个这个全局的session信息。session信息存在于服务器端，所以也就很好的解决了安全问题。</p>
+<p>​            Session的中文翻译是“会话”，当用户打开某个web应用时，便与web服务器产生一次session。服务器使用session把用户的信息临时保存在了服务器上，用户离开网站后session会被销毁。这种用户信息存储方式相对cookie来说更安全，可是session有一个缺陷：如果web服务器做了负载均衡，那么下一个操作请求到了另一台服务器的时候session会丢失。</p>
+<p><strong>session请求过程：</strong></p>
+<ul>
+<li><p>客户端向服务器请求，发送用户名和密码</p>
+</li>
+<li><p>服务器生成sessionId，绑定用户数据存储在数据库</p>
+</li>
+<li><p>服务器返回sessionId给客户端</p>
+</li>
+<li><p>客户端存储sessionId，以后的请求都带上这个sessionId</p>
+</li>
+<li><p>服务器如果收到这个sessionId，那么就去数据库查找用户数据，如果找到了说明验证通过</p>
+</li>
+<li><p>服务器把验证结果返回客户端</p>
+</li>
+</ul>
+<p><img data-sizes="auto" data-src="%E6%B5%85%E6%9E%90cookie-session-token/1.png" alt="" class="lazyload"></p>
+<blockquote>
+<p>session存在问题：</p>
+<p>1、session保存在服务端，当客户访问量增加时，服务端就需要存储大量的session会话，对服务器有很大的考验；<br>2、当服务端为集群时，用户登陆其中一台服务器，会将session保存到该服务器的内存中，但是当用户的访问到其他服务器时，会无法访问，通常采用缓存一致性技术来保证可以共享，或者采用第三方缓存来保存session，不方便。</p>
+</blockquote>
+<h5 id="四、Token"><a href="#四、Token" class="headerlink" title="四、Token"></a>四、Token</h5><p>​            Token是服务端生成的一串字符串，以作客户端进行请求的一个令牌，当第一次登录后，服务器生成一个Token便将此Token返回给客户端，以后客户端只需带上这个Token前来请求数据即可，无需再次带上用户名和密码。</p>
+<p>​            Token 的认证方式类似于<strong>临时的证书签名</strong>, 并且是一种服务端无状态的认证方式, 非常适合于 REST API 的场景. 所谓无状态就是服务端并不会保存身份认证相关的数据。</p>
+<p><strong>Token组成：</strong></p>
+<ul>
+<li>uid: 用户唯一身份标识</li>
+<li>time: 当前时间的时间戳</li>
+<li>sign: 签名, 使用 hash/encrypt 压缩成定长的十六进制字符串，以防止第三方恶意拼接</li>
+<li>固定参数(可选): 将一些常用的固定参数加入到 token 中是为了避免重复查库</li>
+</ul>
+<p><strong>Toeken存放：</strong></p>
+<p>Token在客户端一般存放于localStorage，cookie，或sessionStorage中。在服务器一般存于数据库中.</p>
+<p><strong>Token过程:</strong><br>1、客户端向服务器请求，发送用户名和密码<br>2、服务器根据用户信息通过加密生成token，用户信息包括账号，token过期时间等，具体由服务器自定义。<br>3、服务器返回token给客户端<br>4、客户端用cookie存储token，以后的请求都带上这个token<br>5、服务器把token解密，确认用户信息是否正确，如经过正确就说明验证通过。<br>6、服务器把验证结果返回客户端</p>
+<p><img data-sizes="auto" data-src="%E6%B5%85%E6%9E%90cookie-session-token/2.png" alt="" class="lazyload"></p>
+<h5 id="五、Cookie与session区别："><a href="#五、Cookie与session区别：" class="headerlink" title="五、Cookie与session区别："></a>五、Cookie与session区别：</h5><p>1、cookie数据存放在客户的浏览器上，session数据放在服务器上。<br>2、cookie不是很安全，别人可以分析存放在本地的cookie并进行cookie欺骗,考虑到安全应当使用session。</p>
+<p>3、session会在一定时间内保存在服务器上。当访问增多，会比较占用你服务器的性能,考虑到减轻服务器性能方面，应当使用cookie。</p>
+<p>4、单个cookie保存的数据不能超过4K，很多浏览器都限制一个站点最多保存20个cookie。</p>
+<h5 id="六、Token与session区别"><a href="#六、Token与session区别" class="headerlink" title="六、Token与session区别"></a>六、Token与session区别</h5><ol>
+<li>token就是令牌，比如你授权（登录）一个程序时，他就是个依据，判断你是否已经授权该软件，Token的状态是存储在客户端。</li>
+<li>cookie就是写在客户端的一个txt文件，里面包括你登录信息之类的，这样你下次在登录某个网站，就会自动调用cookie自动登录用户名；</li>
+<li>session是写在服务器端的文件，也需要在客户端写入cookie文件，但是文件里是你的浏览器编号.Session的状态是存储在服务器端，客户端只有session id；</li>
+</ol>
+<h5 id="七、小结"><a href="#七、小结" class="headerlink" title="七、小结"></a>七、小结</h5><ol>
+<li>session存储于服务器，可以理解为一个状态列表，拥有一个唯一识别符号sessionId，通常存放于cookie中。服务器收到cookie后解析出sessionId，再去session列表中查找，才能找到相应session。依赖cookie</li>
+<li>cookie类似一个令牌，装有sessionId，存储在客户端，浏览器通常会自动添加。</li>
+<li>token也类似一个令牌，无状态，用户信息都被加密到token中，服务器收到token后解密就可知道是哪个用户。需要开发者手动添加。</li>
+</ol>
+
+            
+        </article>
+    </div>
+    
+    <div class="nexmoe-post">
+        <a href="/2019/09/26/%E5%8D%9A%E5%AE%A2%E7%BC%96%E5%86%99%E6%AD%A5%E9%AA%A4/">
+            
+                <div class="nexmoe-post-cover mdui-ripple" style="padding-bottom: 66.66666666666666%;"> 
+                    <img data-src="https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/cover/5c3aec85a4343.jpg" data-sizes="auto" alt="博客更新" class="lazyload">
+                    <h1>博客更新</h1>
+                </div>
+            
+        </a>
+
+        <div class="nexmoe-post-meta">
+            <a><i class="nexmoefont icon-calendar-fill"></i>2019年09月26日</a>
+            <a><i class="nexmoefont icon-areachart"></i>63 字</a>
+            <a><i class="nexmoefont icon-time-circle-fill"></i>大概 1 分钟</a>
+        </div>
+
+        <article>
+            
+                <h5 id="更换环境操作"><a href="#更换环境操作" class="headerlink" title="更换环境操作"></a>更换环境操作</h5><ul>
+<li><p>git clone yourBlogAddresss.github.io.git 拷贝仓库；</p>
+</li>
+<li><p>在本地yourBlogAddresss.github.io.git文件夹下通过Git bash依次执行</p>
+<ul>
+<li>npm install </li>
+<li>git add .</li>
+<li>git commit -m ‘xxxx’</li>
+<li>git push origin hexo</li>
+<li>hexo  g -d</li>
+</ul>
+</li>
+</ul>
+<p>  参考：</p>
+<p>  <a href="https://www.zhihu.com/question/21193762" target="_blank" rel="noopener">https://www.zhihu.com/question/21193762</a></p>
+<p>  <a href="https://www.jianshu.com/p/0b1fccce74e0" target="_blank" rel="noopener">https://www.jianshu.com/p/0b1fccce74e0</a></p>
+
+            
+        </article>
+    </div>
+    
+    <div class="nexmoe-post">
+        <a href="/2019/09/22/vue%E4%BD%BF%E7%94%A8prop%E6%95%B0%E6%8D%AE%E7%BB%91%E5%AE%9A%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/">
+            
+                <div class="nexmoe-post-cover mdui-ripple" style="padding-bottom: 66.66666666666666%;"> 
+                    <img data-src="https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/cover/5c3aec85a4343.jpg" data-sizes="auto" alt="vue使用props数据绑定异常" class="lazyload">
+                    <h1>vue使用props数据绑定异常</h1>
+                </div>
+            
+        </a>
+
+        <div class="nexmoe-post-meta">
+            <a><i class="nexmoefont icon-calendar-fill"></i>2019年09月22日</a>
+            <a><i class="nexmoefont icon-areachart"></i>402 字</a>
+            <a><i class="nexmoefont icon-time-circle-fill"></i>大概 2 分钟</a>
+        </div>
+
+        <article>
+            
+                <h5 id="1-业务场景"><a href="#1-业务场景" class="headerlink" title="1.业务场景"></a>1.业务场景</h5><p>通过点击信息框，计算点击的次数。（商品信息为一个组件）</p>
+<p><img data-sizes="auto" data-src="vue%E4%BD%BF%E7%94%A8prop%E6%95%B0%E6%8D%AE%E7%BB%91%E5%AE%9A%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/1.png" alt="" class="lazyload"></p>
+<p>子组件GlobalComponents.vue:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;div v-on:click=<span class="string">'increaseClcikTime'</span>&gt;clickTimes:&#123;&#123;<span class="keyword">this</span>.clickTime&#125;&#125;&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">  &lt;/</span>div&gt;</span><br><span class="line">&lt;<span class="regexp">/template&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">&lt;script&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">export default &#123;</span></span><br><span class="line"><span class="regexp">  name: "GlobalComponents",</span></span><br><span class="line"><span class="regexp">  props:&#123;</span></span><br><span class="line"><span class="regexp">    name: String,</span></span><br><span class="line"><span class="regexp">    clickTime: String    </span></span><br><span class="line"><span class="regexp">  &#125;,</span></span><br><span class="line"><span class="regexp">  components: &#123;</span></span><br><span class="line"><span class="regexp">  &#125;,</span></span><br><span class="line"><span class="regexp">  methods: &#123;</span></span><br><span class="line"><span class="regexp">    increaseClcikTime: function()&#123;</span></span><br><span class="line"><span class="regexp">      this.clickTime ++</span></span><br><span class="line"><span class="regexp">    &#125;</span></span><br><span class="line"><span class="regexp">  &#125;</span></span><br><span class="line"><span class="regexp">&#125;;</span></span><br><span class="line"><span class="regexp">&lt;/</span>script&gt;</span><br></pre></td></tr></table></figure>
+
+<p>父组件：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">GlobalComponents</span> <span class="attr">clickTime</span>=<span class="string">'10'</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>控制台报错：</p>
+<blockquote>
+<p>vue.js?ba4c:634 [Vue warn]: Avoid mutating a prop directly since the value will be overwritten whenever the parent component re-renders. Instead, use a data or computed property based on the prop’s value. Prop being mutated: “clickTime”</p>
+</blockquote>
+<h5 id="2-单向数据流"><a href="#2-单向数据流" class="headerlink" title="2.单向数据流"></a>2.单向数据流</h5><p>​          props 都使得其父子 组件之间形成了一个<strong>单向下行绑定</strong>：父级 prop 的更新会向下流动到子组件中，但是反过来则不行。这样会防止从子组件意外改变父级组件的状态，从而导致你的应用的数据流向难以理解。</p>
+<p>​         每次父级组件发生更新时，子组件中所有的 prop 都将会刷新为最新的值。这意味着你<strong>不</strong>应该在一个子组件内部改变 prop。如果你这样做了，Vue 会在浏览器的控制台中发出警告。</p>
+<h5 id="3-解决方案"><a href="#3-解决方案" class="headerlink" title="3.解决方案"></a>3.解决方案</h5><p>  在子组件中定义一个变量接收prop值</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;div v-on:click=<span class="string">'increaseClcikTime'</span>&gt;clickTimes:&#123;&#123;<span class="keyword">this</span>.time&#125;&#125;&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">  &lt;/</span>div&gt;</span><br><span class="line">&lt;<span class="regexp">/template&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">&lt;script&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">export default &#123;</span></span><br><span class="line"><span class="regexp">  name: "GlobalComponents",</span></span><br><span class="line"><span class="regexp">  props:&#123;</span></span><br><span class="line"><span class="regexp">    name: String,</span></span><br><span class="line"><span class="regexp">    clickTime: String    </span></span><br><span class="line"><span class="regexp">  &#125;,</span></span><br><span class="line"><span class="regexp">  components: &#123;</span></span><br><span class="line"><span class="regexp">  &#125;,</span></span><br><span class="line"><span class="regexp">  data()&#123;</span></span><br><span class="line"><span class="regexp">    return &#123;</span></span><br><span class="line"><span class="regexp">      time: Number(this.clickTime)</span></span><br><span class="line"><span class="regexp">    &#125;;</span></span><br><span class="line"><span class="regexp">  &#125;,</span></span><br><span class="line"><span class="regexp">  methods: &#123;</span></span><br><span class="line"><span class="regexp">    increaseClcikTime: function()&#123;</span></span><br><span class="line"><span class="regexp">      this.time ++</span></span><br><span class="line"><span class="regexp">    &#125;</span></span><br><span class="line"><span class="regexp">  &#125;</span></span><br><span class="line"><span class="regexp">&#125;;</span></span><br><span class="line"><span class="regexp">&lt;/</span>script&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+<p><a href="https://www.jianshu.com/p/54cfaa2f5d5b" target="_blank" rel="noopener">参考资料</a></p>
+
+            
+        </article>
+    </div>
+    
+    <div class="nexmoe-post">
+        <a href="/2019/09/22/vue%E5%85%A8%E5%B1%80%E5%92%8C%E5%B1%80%E9%83%A8%E7%BB%84%E4%BB%B6%E6%B3%A8%E5%86%8C/">
+            
+                <div class="nexmoe-post-cover mdui-ripple" style="padding-bottom: 66.66666666666666%;"> 
+                    <img data-src="https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/cover/5c3aec85a4343.jpg" data-sizes="auto" alt="vue组件注册" class="lazyload">
+                    <h1>vue组件注册</h1>
+                </div>
+            
+        </a>
+
+        <div class="nexmoe-post-meta">
+            <a><i class="nexmoefont icon-calendar-fill"></i>2019年09月22日</a>
+            <a><i class="nexmoefont icon-areachart"></i>716 字</a>
+            <a><i class="nexmoefont icon-time-circle-fill"></i>大概 3 分钟</a>
+        </div>
+
+        <article>
+            
+                <h5 id="1-组件"><a href="#1-组件" class="headerlink" title="1.组件"></a>1.组件</h5><p>​         Vue中的组件提供可复用的实例，组件是一个对象，包含data, computed, watch, methods, filters以及vue组件生命周期钩子等成员属性。</p>
+<p>​         当前使用的Vue版本：3.11        </p>
+<h5 id="2-组件注册"><a href="#2-组件注册" class="headerlink" title="2.组件注册"></a>2.组件注册</h5><p>定义一个组件：</p>
+<p>MyComponent.vue</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span>&gt;</span>CustomerComponent----vue--------CustomerComponent<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span></span><br><span class="line">  components: &#123;&#125;,</span><br><span class="line">  data() &#123;&#125;,</span><br><span class="line">  methods: &#123;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h6 id="2-1-局部组件"><a href="#2-1-局部组件" class="headerlink" title="2.1 局部组件"></a>2.1 局部组件</h6><p>ParentComponent.vue</p>
+<ul>
+<li>方式一： 组件引入局部组件</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">MyComponent</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"> </span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript"><span class="keyword">import</span> MyComponent <span class="keyword">from</span> <span class="string">'./components/MyComponent.vue'</span>;</span></span><br><span class="line"><span class="javascript"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span></span><br><span class="line">  components: &#123;MyComponent&#125;, </span><br><span class="line">  data() &#123;&#125;,</span><br><span class="line">  methods: &#123;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"> </span><br><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>方式二：组件注册局部组件:</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">child-component</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"> </span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="actionscript"><span class="keyword">var</span> Child = &#123;</span></span><br><span class="line"><span class="handlebars"><span class="xml">  template: '<span class="tag">&lt;<span class="name">h1</span>&gt;</span>我是局部组件<span class="tag">&lt;/<span class="name">h1</span>&gt;</span>'</span></span></span><br><span class="line">&#125;</span><br><span class="line"><span class="javascript"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span></span><br><span class="line"><span class="actionscript">  components: &#123; <span class="string">"child-component"</span>:child&#125;, </span></span><br><span class="line">  data() &#123;&#125;,</span><br><span class="line">  methods: &#123;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"> </span><br><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>​            通过这种方式注册局部组件，报错：You are using the runtime-only build of Vue where the template compiler is not available. Either pre-compile the templates into render functions, or use the compiler-included build.</p>
+<p>Vue项目运行环境配置有两种版本：Compiler和Runtime。两者的区别：</p>
+<ul>
+<li>当对template模板内容编译是需要对字符串进行模板渲染或者可以绑定的html对象作为模板进行渲染的方式，就需要使用Compiler版本。</li>
+<li>如果使用vue-loader加载.vue文件时（组件文件），webpack在打包对模板进行了渲染，就需要Runtime版本。</li>
+</ul>
+<p><strong>解决方案：</strong></p>
+<ul>
+<li>可以通过在<strong>webpack.config.js</strong>文件中添加</li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">resolve: &#123; alias: &#123; vue: 'vue/dist/vue.js' &#125; &#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>引用vue时，直接写成如下即可</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue/dist/vue.js'</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>以上两种方法都是通过引入vue.esm.js文件作为vue对象，配置成 compiler运行模式。</p>
+<p>​          其实，Vue 最早会打包生成三个文件，一个是 runtime only 的文件 vue.common.js，一个是 compiler only 的文件 compiler.js，一个是 runtime + compiler 的文件 vue.js。</p>
+<p>​            而<strong>vue.js = vue.common.js + compiler.js</strong>，而如果要使用 <strong>template</strong> 这个属性的话就一定要用 <strong>compiler.js</strong>，那么，引入 <strong>vue.js</strong> 是最恰当的。</p>
+<p>​            vue模块的package.json的main字段默认为runtime模式， 指向了”dist/vue.runtime.common.js”位置。因此在组件中注册局部组件，需要对template模板内容时，应该引入<strong>vue/dist/vue.js</strong></p>
+<p><a href="https://jiongks.name/blog/code-review-for-vue-next/" target="_blank" rel="noopener">参考教程</a></p>
+<p>注意：<strong>局部注册的组件在其子组件中不可用</strong> </p>
+<h6 id="2-2全局组件"><a href="#2-2全局组件" class="headerlink" title="2.2全局组件"></a>2.2全局组件</h6><p>全局组件需要在项目的main.js中进行注册：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> CustPor <span class="keyword">from</span> <span class="string">'./components/MyComponent.vue'</span></span><br><span class="line"></span><br><span class="line">Vue.component(<span class="string">'GlobalComponents'</span>,CustPor)</span><br></pre></td></tr></table></figure>
+
+<p>然后在任意其他组件都使用该全局组件，不需要在vue实例选项components上在次定义，也不需要再次导入文件路径：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">GlobalComponents</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>相关参考：</p>
+<p><a href="https://segmentfault.com/a/1190000011465462" target="_blank" rel="noopener">https://segmentfault.com/a/1190000011465462</a></p>
+<p><a href="https://www.php.cn/js-tutorial-403100.html" target="_blank" rel="noopener">https://www.php.cn/js-tutorial-403100.html</a></p>
+
+            
+        </article>
+    </div>
+    
+    <div class="nexmoe-post">
+        <a href="/2019/09/15/vue%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8C%87%E4%BB%A4/">
+            
+                <div class="nexmoe-post-cover mdui-ripple" style="padding-bottom: 66.66666666666666%;"> 
+                    <img data-src="https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/cover/5c3aec85a4343.jpg" data-sizes="auto" alt="vue自定义指令" class="lazyload">
+                    <h1>vue自定义指令</h1>
+                </div>
+            
+        </a>
+
+        <div class="nexmoe-post-meta">
+            <a><i class="nexmoefont icon-calendar-fill"></i>2019年09月15日</a>
+            <a><i class="nexmoefont icon-areachart"></i>566 字</a>
+            <a><i class="nexmoefont icon-time-circle-fill"></i>大概 2 分钟</a>
+        </div>
+
+        <article>
+            
+                <h5 id="1-背景："><a href="#1-背景：" class="headerlink" title="1.背景："></a>1.背景：</h5><p>​         这周差不多一周没有正式写代码，成为一名“数据分析师”，回想起之前学习的前端框架vue，我好像对vue的自定义指定不熟悉，决定学习这一部分内容。</p>
+<h5 id="2-常用指令"><a href="#2-常用指令" class="headerlink" title="2.常用指令"></a>2.常用指令</h5><p>​        vue有很多常用指令，比如v-on添加监听事件，v-bind做属性绑定，v-if进行控制切换一个元素是否显示，v-for指令可以绑定数组的数据来渲染一个项目列表。</p>
+<h5 id="3-自定义指令"><a href="#3-自定义指令" class="headerlink" title="3.自定义指令"></a>3.自定义指令</h5><p>​        利用之前ThoughtWorks老师教的“需求驱动学习法”，首先确定一个小需求：给文字添加粉红色。当然，直接添加样式就可以实现该需求，但使用自定义指令同样可以。</p>
+<p>自定义属性实现该需求步骤：</p>
+<ul>
+<li>使用Vue.directive 注册一个全局自定义指令</li>
+<li>第一个参数就是 指令名称 pink</li>
+<li>el 表示当前的html dom对象</li>
+<li>在方法体内可以通过 innerHTML style.color 操控当前元素，添加样式。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Vue.directive(<span class="string">'pink'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">el</span>) </span>&#123;</span><br><span class="line">	el.innerHTML = el.innerHTML + <span class="string">' ( x-pink ) '</span></span><br><span class="line">	el.style.color = <span class="string">'pink'</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>源代码为：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"http://how2j.cn/study/vue.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"> </span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"div1"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">v-pink</span>&gt;</span> 好好学习，天天向上 <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"> </span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"> </span><br><span class="line"><span class="actionscript">Vue.directive(<span class="string">'pink'</span>, <span class="function"><span class="keyword">function</span> <span class="params">(el)</span> </span>&#123;</span></span><br><span class="line"><span class="actionscript">    el.innerHTML = el.innerHTML + <span class="string">' ( 使用自定义指令x-pink ) '</span></span></span><br><span class="line"><span class="actionscript">    el.style.color = <span class="string">'pink'</span></span></span><br><span class="line">    el.font-weight:bold</span><br><span class="line">&#125;)</span><br><span class="line"> </span><br><span class="line"><span class="actionscript"><span class="keyword">new</span> Vue(&#123;</span></span><br><span class="line"><span class="actionscript">  el: <span class="string">'#div1'</span></span></span><br><span class="line">&#125;)</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>效果：</p>
+<p><img data-sizes="auto" data-src="vue%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8C%87%E4%BB%A4/define1.PNG" alt="" class="lazyload"></p>
+<h5 id="4-带参数的自定义指令"><a href="#4-带参数的自定义指令" class="headerlink" title="4.带参数的自定义指令"></a>4.带参数的自定义指令</h5><p>​        自定义指令可以获取视图中的json对象的值。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Vue.directive(<span class="string">'xart'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">el,binding</span>) </span>&#123;</span><br><span class="line">	el.innerHTML = el.innerHTML + <span class="string">'( '</span> + binding.value.text + <span class="string">' )'</span></span><br><span class="line">	el.style.color = binding.value.color</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">v-xart</span>=<span class="string">"&#123;color:'red',text:'best learning video'&#125;"</span>&gt;</span> 好好学习，天天向上 <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>​        xart为自定义指令的名称，el为Dom对象，binding.value 指令中的json对象，可以通过 .color 或 .text 获取对应的值。</p>
+<p>源代码：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"http://how2j.cn/study/vue.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"> </span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"div1"</span>&gt;</span></span><br><span class="line">     </span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">v-xart</span>=<span class="string">"&#123;color:'red',text:'best learning video'&#125;"</span>&gt;</span> 好好学习，天天向上 <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">     </span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"> </span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"> </span><br><span class="line"><span class="actionscript">Vue.directive(<span class="string">'xart'</span>, <span class="function"><span class="keyword">function</span> <span class="params">(el,binding)</span> </span>&#123;</span></span><br><span class="line"><span class="actionscript">    el.innerHTML = el.innerHTML + <span class="string">'( '</span> + binding.value.text + <span class="string">' )'</span></span></span><br><span class="line">    el.style.color = binding.value.color</span><br><span class="line">&#125;)</span><br><span class="line"> </span><br><span class="line"><span class="actionscript"><span class="keyword">new</span> Vue(&#123;</span></span><br><span class="line"><span class="actionscript">  el: <span class="string">'#div1'</span></span></span><br><span class="line">&#125;)</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>效果：</p>
+<p><img data-sizes="auto" data-src="vue%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8C%87%E4%BB%A4/define2.PNG" alt="" class="lazyload"></p>
+
+            
+        </article>
+    </div>
+    
+    <div class="nexmoe-post">
+        <a href="/2019/09/08/Toplink/">
+            
+                <div class="nexmoe-post-cover mdui-ripple" style="padding-bottom: 66.66666666666666%;"> 
+                    <img data-src="https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/cover/5c3aec85a4343.jpg" data-sizes="auto" alt="TopLink和Hibernate区别" class="lazyload">
+                    <h1>TopLink和Hibernate区别</h1>
+                </div>
+            
+        </a>
+
+        <div class="nexmoe-post-meta">
+            <a><i class="nexmoefont icon-calendar-fill"></i>2019年09月08日</a>
+            <a><i class="nexmoefont icon-areachart"></i>1k 字</a>
+            <a><i class="nexmoefont icon-time-circle-fill"></i>大概 5 分钟</a>
+        </div>
+
+        <article>
+            
+                <h5 id="1-背景："><a href="#1-背景：" class="headerlink" title="1.背景："></a>1.背景：</h5><p>​        近期开发的SI项目中，使用的是TopLink持久化框架，将对象关系映射到oracle表。但是当我们准备将数据结构复杂的表单提交到后台时，我们发现当类属性是一个接口类型，在类的构造函数中，用接口的实现类赋值给该属性，而实现类中包含了一个Object属性，用set方法赋值具体的数据类，TopLink总是无法映射该数据类到指定表中。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ShippingInstructionBase</span></span>&#123;</span><br><span class="line">   <span class="keyword">private</span> ValueHolderInterface route;</span><br><span class="line">    </span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="title">ShippingInstructionBase</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.route = <span class="keyword">new</span> ValueHolder();</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="function"><span class="keyword">public</span> ShippingInstructionRoute <span class="title">getRoute</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    	<span class="keyword">return</span> (ShippingInstructionRoute) <span class="keyword">this</span>.route.getValue();</span><br><span class="line">   &#125; </span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setRoute</span><span class="params">(ShippingInstructionRoute route)</span> </span>&#123;</span><br><span class="line">    	<span class="keyword">this</span>.route.setValue(route);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">ValueHolderInterface</span> </span>&#123;</span><br><span class="line">    <span class="function">Object <span class="title">getValue</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">setValue</span><span class="params">(Object var1)</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ValueHolder</span> <span class="keyword">implements</span> <span class="title">ValueHolderInterface</span></span>&#123;</span><br><span class="line">    <span class="keyword">protected</span> Object value;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">ValueHolder</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">ValueHolder</span><span class="params">(Object var1)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.value = var1;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> Object <span class="title">getValue</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.value;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setValue</span><span class="params">(Object var1)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.value = var1;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>​        问题：数据类ShippingInstructionRoute无法映射成表数据。</p>
+<h5 id="2-关于Toplink"><a href="#2-关于Toplink" class="headerlink" title="2.关于Toplink"></a>2.关于Toplink</h5><p>​        TopLink是Oracle旗下优秀的对象关系映射持久层解决方案，TopLink性能优异，功能强大，并且提供了独特的查询过滤器机制，以及对关系的处理和查询。最大的关系数据库厂商Oracle将其收购，发展成强大的对象映射中间件，但是最初TopLink并未开源，而另外以一种开源的O/R Mapping框架凭借着强大的功能，Java反射API进行对象的映射，和方便的关系查询，成为主流的JPA实现方式。</p>
+<h5 id="3-Hibernate-JPA和Toplink-JPA"><a href="#3-Hibernate-JPA和Toplink-JPA" class="headerlink" title="3.Hibernate JPA和Toplink JPA"></a>3.Hibernate JPA和Toplink JPA</h5><p>​         比较两者区别首先需要了解JPA：</p>
+<p>​        JPA(Java Persistence API)是Sun的官方Java持久性规范。它为Java开发人员提供了一个对象/关系映射工具来管理Java应用程序中的关系数据。</p>
+<p>​         JPA具有以下三种特点:</p>
+<ul>
+<li><p>ORM映射成元数据</p>
+<p>JPA支持XML和JDK5.0注释两种元数据（描述对象和表之间的映射关系）形式，将实体类对象持久化到数据库表中。</p>
+</li>
+<li><p>Java持久化API</p>
+<p>JPA实现了对实体对象执行CRUD操作，开发者可以减少重复繁琐的JDBC和SQL。</p>
+</li>
+<li><p>查询语言</p>
+<p>JPA支持通过面向对象的查询方式，查询数据，从而避免程序的SQL语句紧密耦合。</p>
+</li>
+</ul>
+<p>关于Hibernate JPA和Toplink JPA的比较博客，能找的资料不多，可能是由于TopLink开源以来并没有广泛的推广，具体的比较如下：</p>
+<p><img data-sizes="auto" data-src="Toplink/compare1.PNG" alt="" class="lazyload"></p>
+<p><img data-sizes="auto" data-src="Toplink/compare2PNG.PNG" alt="" class="lazyload"></p>
+<p><a href="https://www.jumpingbean.co.za/blogs/mark/hibernate-toplink-jpa-differences" target="_blank" rel="noopener">参考资料</a></p>
+<h5 id="4-哪个更优秀？"><a href="#4-哪个更优秀？" class="headerlink" title="4.哪个更优秀？"></a>4.哪个更优秀？</h5><p>关于两者优劣，一直是众说纷纭，以下为一篇文章中的总结：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">TopLink is fast, nimbly maps complex relationships, and provides both EJB-like and nearly transparent Java models. But Oracle recently acquired TopLink, and Oracle is regrettably both a database vendor and an application server vendor. </span><br><span class="line">If you&#39;re a WebLogic customer or use a non-Oracle database, you&#39;re going to want to think long and hard before buying TopLink. It&#39;s still a great product for pure Oracle customers, but others simply must protect themselves against a potential change in direction of TopLink. Of course, you may choose to buy another proprietary OR mapper instead. </span><br><span class="line">The problem is that you&#39;d then be buying a proprietary product with less-than-compelling market share. You&#39;d have to pay more for training, experienced developers, and aftermarket tools. While TopLink has been king for a day, many customers will want to look away from the proprietary relational mappers</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Hibernate is the open-source darling</span><br><span class="line">	If you&#39;re looking for a good persistence framework and you like open-source software, you owe it to yourself to check out Hibernate. It&#39;s a lightweight persistence framework that&#39;s gathered quite a following. Like JDO, it works well with WebLogic, with or without EJB. It has several fundamental strengths:</span><br><span class="line">- Hibernate uses Java reflection instead of byte code enhancement to achieve transparency.</span><br><span class="line"></span><br><span class="line">- Hibernate performance is surprisingly good because it is such a lightweight framework.</span><br><span class="line"></span><br><span class="line">- The mapping flexibility is outstanding. It has good support for several relational </span><br><span class="line">databases, with complex relationships ranging from one-to-one to many-to-many.</span><br><span class="line">	Hibernate too has some disadvantages. It puts some limitations on your object model. (For example, one persistent class cannot map to more than one table.) The combination of a proprietary interface and smaller market share is also disconcerting, but Hibernate seems to have mitigated that risk by establishing good momentum. Other open-source persistence frameworks exist as well, but none with the momentum of Hibernate.</span><br></pre></td></tr></table></figure>
+
+<p>​            总的来说，在TopLink开源前，Hibernate凭借其轻量级和映射的灵活性，而更加广泛使用，而TopLink开源后，和Oracle数据库相结合，性能更加优越。</p>
+<p><strong>相关：</strong><a href="https://blog.csdn.net/zcy860511/article/details/38521595" target="_blank" rel="noopener">关于Hibernate和TopLink在插入和查询数据上的性能比较</a></p>
+
+            
+        </article>
+    </div>
+    
+    <div class="nexmoe-post">
+        <a href="/2019/09/01/event/">
+            
+                <div class="nexmoe-post-cover mdui-ripple" style="padding-bottom: 66.66666666666666%;"> 
+                    <img data-src="https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/cover/5c3aec85a4343.jpg" data-sizes="auto" alt="表单脚本" class="lazyload">
+                    <h1>表单脚本</h1>
+                </div>
+            
+        </a>
+
+        <div class="nexmoe-post-meta">
+            <a><i class="nexmoefont icon-calendar-fill"></i>2019年09月01日</a>
+            <a><i class="nexmoefont icon-areachart"></i>1.4k 字</a>
+            <a><i class="nexmoefont icon-time-circle-fill"></i>大概 5 分钟</a>
+        </div>
+
+        <article>
+            
+                <h5 id="一、表单"><a href="#一、表单" class="headerlink" title="一、表单"></a>一、表单</h5><p>一个表单主要有三部分组成：</p>
+<ul>
+<li>表单标签：这里面包含了处理表单数据所用CGI程序的URL以及数据提交到服务器的方法。 </li>
+<li>表单域：包含了文本框、密码框、隐藏域、多行文本框、复选框、单选框、下拉选择框和文件上传框等。 </li>
+<li>表单按钮：包括提交按钮、复位按钮和一般按钮；用于将数据传送到服务器上的CGI脚本或者取消输入，还可以用表单按钮来控制其他定义了处理脚本的处理工作。</li>
+</ul>
+<p>​        HTML 表单用于搜集不同类型的用户输入。可以使用<code>&lt;form&gt;</code> 元素来定义。在 JavaScript 中，表单对应的是 HTMLFormElement 类型。 HTMLFormElement 继承了 HTMLElement ，因而与其他 HTML 元素具有相同的默认属性。此外，HTMLFormElement 还具有独特的属性和方法。</p>
+<blockquote>
+<ul>
+<li>acceptCharset ：服务器能够处理的字符集；等价于 HTML 中的 accept-charset 特性。</li>
+<li>action ：接受请求的 URL；等价于 HTML 中的 action 特性。</li>
+<li>elements ：表单中所有控件的集合（ HTMLCollection ）。</li>
+<li>enctype ：请求的编码类型；等价于 HTML 中的 enctype 特性。</li>
+<li>length ：表单中控件的数量。</li>
+<li>method ：要发送的 HTTP 请求类型，通常是 “get” 或 “post” ；等价于 HTML 的 method 特性。</li>
+<li>name ：表单的名称；等价于 HTML 的 name 特性。</li>
+<li>reset() ：将所有表单域重置为默认值。</li>
+<li>submit() ：提交表单。</li>
+<li>target ：用于发送请求和接收响应的窗口名称；等价于 HTML 的 target 特性。</li>
+</ul>
+</blockquote>
+<p>​            获取得<code>&lt;form&gt;</code> 元素引用的方式最直接的方式就是将它看成与其他元素一样，并为其添加 id 特性，然后再像下面这样使用 getElementById() 方法找到它。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> form = <span class="built_in">document</span>.getElementById(<span class="string">"form1"</span>);</span><br></pre></td></tr></table></figure>
+
+<p>​        其次，通过 document.forms 可以取得页面中所有的表单。在这个集合中，可以通过数值索引或name 值来取得特定的表单。</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> firstForm = <span class="built_in">document</span>.forms[<span class="number">0</span>]; <span class="comment">//取得页面中的第一个表单</span></span><br><span class="line"><span class="keyword">var</span> myForm = <span class="built_in">document</span>.forms[<span class="string">"form2"</span>]; <span class="comment">//取得页面中名称为"form2"的表单</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="二、提交表单"><a href="#二、提交表单" class="headerlink" title="二、提交表单"></a>二、提交表单</h5><p>​        用户单击提交按钮或图像按钮时，就会提交表单。使用<code>&lt;input&gt;</code>或 <code>&lt;button&gt;</code> 都可以定义提交按钮，只要将其 type 特性的值设置为 “submit” 即可，而图像按钮则是通过将 <code>&lt;input&gt;</code> 的 type 特性值设置为”image” 来定义的。因此，只要我们单击以下代码生成的按钮，就可以提交表单。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 通用提交按钮 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">value</span>=<span class="string">"Submit Form"</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 自定义提交按钮 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">"submit"</span>&gt;</span>Submit Form<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 图像按钮 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"image"</span> <span class="attr">src</span>=<span class="string">"graphic.gif"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>​        只要表单中存在以上任何一种按钮，那么在相应的表单控件中拥有焦点的情况下，按回车就可提交表单，textArea例外。</p>
+<p>​         以这种方式提交表单时，浏览器会在将请求发送给服务器之前触发 submit 事件。这样，我们就有机会验证表单数据，并据以决定是否允许表单提交。阻止这个事件的默认行为就可以取消表单提交。以下为阻止表单提交方式。</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> form = document.getElementById(<span class="string">"myForm"</span>);</span><br><span class="line">EventUtil.addHandler(form, <span class="string">"submit"</span>, function(<span class="keyword">event</span>)&#123;</span><br><span class="line">    <span class="comment">//取得事件对象</span></span><br><span class="line">    <span class="keyword">event</span> = EventUtil.getEvent(<span class="keyword">event</span>);</span><br><span class="line">    <span class="comment">//阻止默认事件</span></span><br><span class="line">    EventUtil.preventDefault(<span class="keyword">event</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>​        在 JavaScript 中，以编程方式调用 submit() 方法也可以提交表单。而且，这种方式无需表单包含提交按钮，任何时候都可以正常提交表单。</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> form = <span class="built_in">document</span>.getElementById(<span class="string">"myForm"</span>);</span><br><span class="line"><span class="comment">// 提交表单</span></span><br><span class="line">form.submit();</span><br></pre></td></tr></table></figure>
+
+<p>​         以调用 submit() 方法的形式提交表单时，不会触发 submit 事件，因此要记得在调用此方法之前先验证表单数据。</p>
+<p>​        提交表单可能遇到最大的问题是：重复提交表单。当第一次提交表单时，如果反应时间很长，用户可能会变得不耐烦，而反复点击提交按钮，而重复提交表单。</p>
+<p>​        解决重复提交表单的办法有两个：在第一次提交表单后就禁用提交按钮，或者利用 onsubmit 事件处理程序取消后续的表单提交操作。</p>
+<h5 id="三、重置表单"><a href="#三、重置表单" class="headerlink" title="三、重置表单"></a>三、重置表单</h5><p>​        在用户单击重置按钮时，表单会被重置。使用 type 特性值为 “reset” 的 <input> 或 <button> 都可以创建重置按钮，实例如下：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 通用重置按钮 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"reset"</span> <span class="attr">value</span>=<span class="string">"Reset Form"</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 自定义重置按钮 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">"reset"</span>&gt;</span>Reset Form<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>​        在重置表单时，所有表单字段都会恢复到页面刚加载完毕时的初始值。如果某个字段的初始值为空，就会恢复为空；而带有默认值的字段，也会恢复为默认值。</p>
+<p>​         用户单击重置按钮重置表单时，会触发 reset 事件。</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> form = document.getElementById(<span class="string">"myForm"</span>);</span><br><span class="line">EventUtil.addHandler(form, <span class="string">"reset"</span>, function(<span class="keyword">event</span>)&#123;</span><br><span class="line">    <span class="comment">//取得事件对象</span></span><br><span class="line">    <span class="keyword">event</span> = EventUtil.getEvent(<span class="keyword">event</span>);</span><br><span class="line">    <span class="comment">//阻止表单重置</span></span><br><span class="line">    EventUtil.preventDefault(<span class="keyword">event</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>​           也可以通过 JavaScript 来重置表单，如下：</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> form = <span class="built_in">document</span>.getElementById(<span class="string">"myForm"</span>);</span><br><span class="line"><span class="comment">// 重置表单</span></span><br><span class="line">form.reset();</span><br></pre></td></tr></table></figure>
+
+<p>​          调用 reset() 方法会像单击重置按钮一样触发 reset 事件。</p>
+<p><strong>提示：</strong>事实上，重置表单的需求是很少见的。更常见的做法是提供一个取消按钮，让用户能够回到前一个页面，而不是不分青红皂白地重置表单中的所有值。</p>
+
+            
+        </article>
+    </div>
+    
+    <div class="nexmoe-post">
+        <a href="/2019/08/25/creat-object-JS/">
+            
+                <div class="nexmoe-post-cover mdui-ripple" style="padding-bottom: 66.66666666666666%;"> 
+                    <img data-src="https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/cover/5c3aec85a4343.jpg" data-sizes="auto" alt="JS中如何创建对象" class="lazyload">
+                    <h1>JS中如何创建对象</h1>
+                </div>
+            
+        </a>
+
+        <div class="nexmoe-post-meta">
+            <a><i class="nexmoefont icon-calendar-fill"></i>2019年08月25日</a>
+            <a><i class="nexmoefont icon-areachart"></i>1.1k 字</a>
+            <a><i class="nexmoefont icon-time-circle-fill"></i>大概 4 分钟</a>
+        </div>
+
+        <article>
+            
+                <h4 id="JS创建对象方式"><a href="#JS创建对象方式" class="headerlink" title="JS创建对象方式"></a>JS创建对象方式</h4><h5 id="一、工厂模式"><a href="#一、工厂模式" class="headerlink" title="一、工厂模式"></a>一、工厂模式</h5><p>JS中的工厂模式与Java中创建对象相似，都是通过抽象创建对象的具体过程，用函数来封装一个接口创建对象的细节，比如：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">creationPerson</span>(<span class="params">name,age,job</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">var</span> o = <span class="keyword">new</span> <span class="built_in">Object</span>();</span><br><span class="line">	o.name = name;</span><br><span class="line">	o.age = age;</span><br><span class="line">	o.job = job;</span><br><span class="line">	o.sayName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">		alert(<span class="keyword">this</span>.name);</span><br><span class="line">	&#125;;</span><br><span class="line">	<span class="keyword">return</span> o;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> person1 = createPerson(<span class="string">"Tip"</span>, <span class="number">29</span>, <span class="string">"programer"</span>);</span><br><span class="line"><span class="keyword">var</span> person2 = createPerson(<span class="string">"Wusi"</span>, <span class="number">32</span>, <span class="string">"Doctor"</span>);</span><br></pre></td></tr></table></figure>
+
+<p><strong>优点：</strong></p>
+<p>​          函数creatPerson()可以根据接受的参数来构建一个包含所有必要信息的Person对象，每次调用该函数都可以返回一个包含三个属性和一个方法的对象。</p>
+<p><strong>缺点：</strong></p>
+<p>​         没有解决对象识别的问题，无法确认得到的就是一个对象类型。</p>
+<h5 id="二、构造函数模式"><a href="#二、构造函数模式" class="headerlink" title="二、构造函数模式"></a>二、构造函数模式</h5><p>​       使用构建函数创建对象，代码如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name,age,family</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name;</span><br><span class="line">    <span class="keyword">this</span>.age = age;</span><br><span class="line">    <span class="keyword">this</span>.family = family;</span><br><span class="line">    <span class="keyword">this</span>.say = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        alert(<span class="keyword">this</span>.name);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> person1 = <span class="keyword">new</span> Person(<span class="string">"lisi"</span>,<span class="number">21</span>,[<span class="string">"lida"</span>,<span class="string">"lier"</span>,<span class="string">"wangwu"</span>]);</span><br><span class="line"><span class="keyword">var</span> person2 = <span class="keyword">new</span> Person(<span class="string">"lisi"</span>,<span class="number">21</span>,[<span class="string">"lida"</span>,<span class="string">"lier"</span>,<span class="string">"lisi"</span>]);</span><br><span class="line"><span class="built_in">console</span>.log(person1 <span class="keyword">instanceof</span> <span class="built_in">Object</span>); <span class="comment">//true</span></span><br><span class="line"><span class="built_in">console</span>.log(person1 <span class="keyword">instanceof</span> Person); <span class="comment">//true</span></span><br><span class="line"><span class="built_in">console</span>.log(person2 <span class="keyword">instanceof</span> <span class="built_in">Object</span>); <span class="comment">//true</span></span><br><span class="line"><span class="built_in">console</span>.log(person2 <span class="keyword">instanceof</span> Person); <span class="comment">//true</span></span><br></pre></td></tr></table></figure>
+
+<p>​        比较构建函数和工厂模式，发现两者相似，但又不同，在构建函数模式中：</p>
+<ul>
+<li>没有显示地创建对象，只有当真正需要对象时，才创建。</li>
+<li>直接将属性和方法赋给this对象。</li>
+<li>不需要return语句</li>
+</ul>
+<p>构造函数和普通函数的区别：</p>
+<ul>
+<li>构造函数，本身就是一个函数</li>
+<li>构造函数的函数名首字母大写</li>
+<li>构造函数可以创建对象，而一般函数不能。</li>
+</ul>
+<p>在以上代码中，要创建person的实例，必须使用new操作符，这种方式调用构造函数实际上会经历4个步骤：<br>1、创建一个新对象<br>2、将构造函数的作用域赋给新对象 （this对象指向该新对象）<br>3、执行构造函数中的代码 （为该新对象添加属性）<br>4、返回新对象<br>创建自定义的构造函数可以将它的实例标识为一种特定的类型。<br><strong>构造函数的缺点：</strong><br>          每个方法都有在每个实例上重新创建一遍。person1和person2都有一个sayName()的方法，但两个方法不是同一个Function实例。不同实例上的同名函数是不相等的。<br>创建两个完成同样任务的Function实例没有必要，而且还有this对象在，不需要在执行代码前就把函数绑定在特定对象上，可以像下面这样。 </p>
+  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name,age,family</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name;</span><br><span class="line">    <span class="keyword">this</span>.age = age;</span><br><span class="line">    <span class="keyword">this</span>.family = family;</span><br><span class="line">    <span class="keyword">this</span>.say = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        alert(<span class="keyword">this</span>.name);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sayName</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="keyword">this</span>);</span><br><span class="line">	alert(<span class="keyword">this</span>.name);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>​        把sayName属性设置成全局的sayName函数，这样，由于sayName包含的是一个指向函数的指针，因此person1和person2对象就共享了同一个函数。 </p>
+<p>​        而这种情况又会引发另一种情况，当对象需要定义很多方法，那么就要定义很多全局函数，自定义的引用类型也没有封装可言了，原型模式可以解决这个问题。</p>
+<h5 id="三、原型模式"><a href="#三、原型模式" class="headerlink" title="三、原型模式"></a>三、原型模式</h5><pre><code>在JS中，每一个函数都有一个prototype（原型）属性，该属性是一个指针，指向一个对象，在这对象中包含了可以由特定类型的所有实例共享的属性和方法。那么可以通过使用原型对象的方法让所有的对象实例共享所包含的属性和方法，而不用在构造方法中定义对象实例的信息，可以把这些信息直接添加到原型的对象中。</code></pre><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">&#125;</span><br><span class="line">　　Person.prototype.name = <span class="string">'Nicholas'</span>;</span><br><span class="line">　　Person.prototype.age = <span class="number">29</span>;</span><br><span class="line">　　Person.prototype.job = <span class="string">'Software Engineer'</span>;</span><br><span class="line">　　Person.prototype.sayName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">　　　　alert(<span class="keyword">this</span>.name);</span><br><span class="line">　　&#125;</span><br><span class="line">　　<span class="keyword">var</span> person1 = <span class="keyword">new</span> Person();</span><br><span class="line">　　person1.sayName();<span class="comment">//"Nicholas"</span></span><br><span class="line"></span><br><span class="line">　　<span class="keyword">var</span> person2 = <span class="keyword">new</span> Person(); </span><br><span class="line">　　person2.sayName(); <span class="comment">//"Nicholas" </span></span><br><span class="line"></span><br><span class="line">　　alert(person1.sayName == person2.sayName); <span class="comment">//true</span></span><br></pre></td></tr></table></figure>
+
+<p>​        在以上例子中，sayName( ) 方法和所有的属性直接添加到Person类的prototype属性中，构造函数是一个空的函数，可以通过调用构造函数来创建新的对象，在新的对象中具有相同的属性和方法，这与构造函数模式不同，新的对象中所有属性和方法都是所有实例共享的，即person1和person2访问的都是同一组属性和同一个sayName( ) 函数。</p>
+
+            
+        </article>
+    </div>
+    
+    <div class="nexmoe-post">
+        <a href="/2019/08/18/SpringBoot-Websocket/">
+            
+                <div class="nexmoe-post-cover mdui-ripple" style="padding-bottom: 66.66666666666666%;"> 
+                    <img data-src="https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/cover/5c3aec85a4343.jpg" data-sizes="auto" alt="SpringBoot利用websocket实现实时聊天" class="lazyload">
+                    <h1>SpringBoot利用websocket实现实时聊天</h1>
+                </div>
+            
+        </a>
+
+        <div class="nexmoe-post-meta">
+            <a><i class="nexmoefont icon-calendar-fill"></i>2019年08月18日</a>
+            <a><i class="nexmoefont icon-areachart"></i>3k 字</a>
+            <a><i class="nexmoefont icon-time-circle-fill"></i>大概 13 分钟</a>
+        </div>
+
+        <article>
+            
+                <h3 id="一、什么是websocket-为什么需要它"><a href="#一、什么是websocket-为什么需要它" class="headerlink" title="一、什么是websocket?为什么需要它?"></a>一、什么是websocket?为什么需要它?</h3><p>​         WebSocket是一种计算机通信<strong>协议</strong>，可以通过单个TCP连接提供<strong>全双工</strong>(允许通信双方同时传输数据)通信通道。</p>
+<p>通过HTTP也可以进行客户端和服务器之间的通信，为什么还需要websocket呢？</p>
+<p>HTTP会具有以下特点或缺陷：</p>
+<ul>
+<li><strong>传统的HTTP请求是单向的 -</strong> 在传统的客户端服务器通信中，客户端始终发起请求。</li>
+<li><strong>半双工 -</strong> 用户对资源的请求，然后服务器将其提供给客户端。响应仅在请求后发送。因此，一次只发生一个请求。</li>
+<li><strong>多个TCP连接 -</strong> 对于每个请求，需要建立新的TCPsession，然后在收到响应后关闭。因此，如果不使用WebSockets，我们将有多个会话。</li>
+<li><strong>重量级</strong> 正常HTTP请求和响应需要在客户端和服务器之间交换额外数据。</li>
+</ul>
+<p><img data-sizes="auto" data-src="SpringBoot-Websocket/boot-32_4.jpg" alt="img" class="lazyload"></p>
+<p>​        </p>
+<p>​         其实HTTP协议其实也能实现啊，比如用 Ajax 轮询或者Comet。轮询是指浏览器通过JavaScript启动一个定时器，然后以固定的间隔给服务器发请求，询问服务器有没有新消息。这个机制的缺点一是实时性不够，二是频繁的请求会给服务器带来极大的压力。</p>
+<p>Comet本质上也是轮询，但是在没有消息的情况下，服务器先拖一段时间，等到有消息了再回复。这个机制暂时地解决了实时性问题，但是它带来了新的问题：以多线程模式运行的服务器会让大部分线程大部分时间都处于挂起状态，极大地浪费服务器资源。另外，一个HTTP连接在长时间没有数据传输的情况下，链路上的任何一个网关都可能关闭这个连接，而网关是我们不可控的，这就要求Comet连接必须定期发一些ping数据表示连接“正常工作”。</p>
+<p>以上两种机制都治标不治本，所以，HTML5推出了WebSocket标准，让浏览器和服务器之间可以建立无限制的全双工通信，任何一方都可以主动发消息给对方，从而解决了实时通信的问题。</p>
+<p><img data-sizes="auto" data-src="SpringBoot-Websocket/ws.png" alt="img" class="lazyload"></p>
+<p>websocket具有以下特点：</p>
+<ul>
+<li><strong>WebSocket是双向的 -</strong>使用WebSocket客户端或服务器可以发起发送消息。</li>
+<li><strong>WebSocket是全双工 -</strong>客户端和服务器通信彼此独立。</li>
+<li><strong>单个TCP连接 -</strong>初始连接使用HTTP，然后此连接升级到基于套接字的连接。然后，该单个连接用于所有未来的通信</li>
+<li><strong>轻量级</strong>与http相比，WebSocket消息数据交换要轻得多。</li>
+</ul>
+<p><img data-sizes="auto" data-src="SpringBoot-Websocket/boot-32_5.jpg" alt="img" class="lazyload"></p>
+<p>WebSocket 使得客户端和服务器之间的数据交换变得更加简单，允许服务端主动向客户端推送数据。在 WebSocket API 中，浏览器和服务器只需要完成一次握手，两者之间就直接可以创建持久性的连接，并进行双向数据传输。</p>
+<p>​       从通信效率来看， WebSocket 协议，能更好的节省服务器资源和带宽，并且能够更实时地进行通讯。</p>
+<h3 id="二、websocket协议特点"><a href="#二、websocket协议特点" class="headerlink" title="二、websocket协议特点"></a>二、websocket协议特点</h3><p>websocket协议利用了HTTP协议来建立连接，由服务器发起连接，因此websocket请求是一个标准的HTTP请求，格式如下：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">GET ws://localhost:3000/ws/chat HTTP/1.1</span><br><span class="line">Host: localhost</span><br><span class="line">Upgrade: websocket</span><br><span class="line">Connection: Upgrade</span><br><span class="line">Origin: http://localhost:3000</span><br><span class="line">Sec-WebSocket-Key: client-random-string</span><br><span class="line">Sec-WebSocket-Version: 13</span><br></pre></td></tr></table></figure>
+
+<p>该请求和普通的HTTP请求有几点不同：</p>
+<ol>
+<li>GET请求的地址不是类似<code>/path/</code>，而是以<code>ws://</code>开头的地址；</li>
+<li>请求头<code>Upgrade: websocket</code>和<code>Connection: Upgrade</code>表示这个连接将要被转换为WebSocket连接；</li>
+<li><code>Sec-WebSocket-Key</code>是用于标识这个连接，并非用于加密数据；</li>
+<li><code>Sec-WebSocket-Version</code>指定了WebSocket的协议版本。</li>
+</ol>
+<p>随后，服务器如果接受该请求，就会返回如下响应：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">HTTP/1.1 101 Switching Protocols</span><br><span class="line">Upgrade: websocket</span><br><span class="line">Connection: Upgrade</span><br><span class="line">Sec-WebSocket-Accept: server-random-string</span><br></pre></td></tr></table></figure>
+
+<p>该响应代码<code>101</code>表示本次连接的HTTP协议即将被更改，更改后的协议就是<code>Upgrade: websocket</code>指定的WebSocket协议。</p>
+<p>版本号和子协议规定了双方能理解的数据格式，以及是否支持压缩等等。如果仅使用WebSocket的API，就不需要关心这些，方法如下</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> Socket = <span class="keyword">new</span> WebSocket(url, [protocol] );</span><br></pre></td></tr></table></figure>
+
+<p>现在，一个WebSocket连接就建立成功，浏览器和服务器就可以随时主动发送消息给对方。消息有两种，一种是文本，一种是二进制数据。通常，可以发送JSON格式的文本，这样，在浏览器处理起来就十分容易。</p>
+<p>为什么WebSocket连接可以实现全双工通信而HTTP连接不行呢？实际上HTTP协议是建立在TCP协议之上的，TCP协议本身就实现了全双工通信，但是HTTP协议的请求－应答机制限制了全双工通信。WebSocket连接建立以后，其实只是简单规定了一下：接下来，咱们通信就不使用HTTP协议了，直接互相发数据吧。</p>
+<h3 id="三、Websocket的属性、事件和方法"><a href="#三、Websocket的属性、事件和方法" class="headerlink" title="三、Websocket的属性、事件和方法"></a>三、Websocket的属性、事件和方法</h3><ul>
+<li>属性</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Socket.readyState</td>
+<td align="left">只读属性 <strong>readyState</strong> 表示连接状态，可以是以下值：<br>0 - 表示连接尚未建立。<br>1 - 表示连接已建立，可以进行通信。<br>2 - 表示连接正在进行关闭。<br>3 - 表示连接已经关闭或者连接不能打开。</td>
+</tr>
+<tr>
+<td align="left">Socket.bufferedAmount</td>
+<td align="left">只读属性 <strong>bufferedAmount</strong> 已被 send() 放入正在队列中等待传输，但是还没有发出的 UTF-8 文本字节数。</td>
+</tr>
+</tbody></table>
+<ul>
+<li>事件</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="left">事件</th>
+<th align="left">事件处理程序</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">open</td>
+<td align="left">Socket.onopen</td>
+<td align="left">连接建立时触发</td>
+</tr>
+<tr>
+<td align="left">message</td>
+<td align="left">Socket.onmessage</td>
+<td align="left">客户端接收服务端数据时触发</td>
+</tr>
+<tr>
+<td align="left">error</td>
+<td align="left">Socket.onerror</td>
+<td align="left">通信发生错误时触发</td>
+</tr>
+<tr>
+<td align="left">close</td>
+<td align="left">Socket.onclose</td>
+<td align="left">连接关闭时触发</td>
+</tr>
+</tbody></table>
+<ul>
+<li>方法</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="left">方法</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Socket.send()</td>
+<td align="left">使用连接发送数据</td>
+</tr>
+<tr>
+<td align="left">Socket.close()</td>
+<td align="left">关闭连接</td>
+</tr>
+</tbody></table>
+<h3 id="四、SpringBoot-Websocket实现聊天室"><a href="#四、SpringBoot-Websocket实现聊天室" class="headerlink" title="四、SpringBoot+ Websocket实现聊天室"></a>四、SpringBoot+ Websocket实现聊天室</h3><h4 id="1、搭建SpringBoot环境"><a href="#1、搭建SpringBoot环境" class="headerlink" title="1、搭建SpringBoot环境"></a>1、搭建SpringBoot环境</h4><p><strong>（1）新建项目，选择Spring Initializr，点击next：</strong></p>
+<p><img data-sizes="auto" data-src="SpringBoot-Websocket/Create2.png" alt="" class="lazyload"></p>
+<p><img data-sizes="auto" data-src="SpringBoot-Websocket/create3.png" alt="" class="lazyload"></p>
+<p>上面的信息可自行修改，其他默认就行，之后next：</p>
+<p><strong>（2）如图所示，添加web依赖，右上角Springboot版本号可自行选择。之后点击next：</strong></p>
+<p><img data-sizes="auto" data-src="SpringBoot-Websocket/create4.png" alt="" class="lazyload"></p>
+<p><strong>（4）点击Finish完成项目创建。进入到主界面后，maven会下载一些依赖包，可能会需要一段时间，整体目录如下：</strong></p>
+<p><img data-sizes="auto" data-src="SpringBoot-Websocket/create5.png" alt="" class="lazyload"></p>
+<p><img data-sizes="auto" data-src="SpringBoot-Websocket/create6.png" alt="" class="lazyload"></p>
+<p><strong>（5）测试</strong></p>
+<p><img data-sizes="auto" data-src="SpringBoot-Websocket/create7.png" alt="" class="lazyload"></p>
+<p><img data-sizes="auto" data-src="SpringBoot-Websocket/create8.png" alt="" class="lazyload"></p>
+<p><strong>快速搭建SpringBoot项目的方法：</strong></p>
+<p>访问官网：<a href="https://start.spring.io/" target="_blank" rel="noopener">SpringBoot Initializr</a>，如下：</p>
+<p><img data-sizes="auto" data-src="SpringBoot-Websocket/create9.png" alt="" class="lazyload"></p>
+<p>解压后导入IDEA，即可。</p>
+<h4 id="2、功能实现"><a href="#2、功能实现" class="headerlink" title="2、功能实现"></a>2、功能实现</h4><h5 id="（1）、引入依赖"><a href="#（1）、引入依赖" class="headerlink" title="（1）、引入依赖"></a>（1）、引入依赖</h5><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--websocket依赖--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-websocket<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="（2）、编写一个WebSocketConfig配置类"><a href="#（2）、编写一个WebSocketConfig配置类" class="headerlink" title="（2）、编写一个WebSocketConfig配置类"></a>（2）、编写一个WebSocketConfig配置类</h5><p><img data-sizes="auto" data-src="SpringBoot-Websocket/Code1.png" alt="" class="lazyload"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">WebSocketConfig</span> </span>&#123;</span><br><span class="line">   <span class="meta">@Bean</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> ServerEndpointExporter <span class="title">serverEndpointExporter</span><span class="params">()</span></span>&#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">new</span> ServerEndpointExporter();</span><br><span class="line">   &#125;</span><br><span class="line">   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>向容器注入对象ServerEndpointExporter，该bean会自动注册使用了<strong>@ServerEndpoint</strong>注解声明的Websocket endpoint</p>
+<h5 id="（3）编写Websocket的实现类"><a href="#（3）编写Websocket的实现类" class="headerlink" title="（3）编写Websocket的实现类"></a>（3）编写Websocket的实现类</h5><p><img data-sizes="auto" data-src="SpringBoot-Websocket/Code2.png" alt="" class="lazyload"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@ServerEndpoint</span>(value = <span class="string">"/websocket"</span>)</span><br><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyWebSocket</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//用来存放每个客户端对应的MyWebSocket对象。</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> CopyOnWriteArraySet&lt;MyWebSocket&gt; webSocketSet = <span class="keyword">new</span> CopyOnWriteArraySet&lt;MyWebSocket&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="comment">//与某个客户端的连接会话，需要通过它来给客户端发送数据</span></span><br><span class="line">    <span class="keyword">private</span> Session session;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@OnOpen</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onOpen</span><span class="params">(Session session)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.session = session;</span><br><span class="line">        webSocketSet.add(<span class="keyword">this</span>);</span><br><span class="line">        System.out.println(<span class="string">"有新连接加入！当前在线人数为"</span> + webSocketSet.size());</span><br><span class="line">        <span class="keyword">this</span>.session.getAsyncRemote().sendText(<span class="string">"恭喜您成功连接上WebSocket--&gt;当前在线人数为："</span> + webSocketSet.size());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     *      * 连接关闭调用的方法</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@OnClose</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClose</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        webSocketSet.remove(<span class="keyword">this</span>);<span class="comment">//从set中删除</span></span><br><span class="line">        System.out.println(<span class="string">"有一连接关闭！当前在线人数为"</span> + webSocketSet.size());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     *      * 收到客户端消息后调用的方法</span></span><br><span class="line"><span class="comment">     *      *</span></span><br><span class="line"><span class="comment">     *      * <span class="doctag">@param</span> message 客户端发送过来的消息</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@OnMessage</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onMessage</span><span class="params">(String message, Session session)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"来自客户端的消息:"</span> + message);</span><br><span class="line">        <span class="comment">//群发消息</span></span><br><span class="line">        broadcast(message);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     *  发生错误时调用</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@OnError</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onError</span><span class="params">(Session session, Throwable error)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"发生错误"</span>);</span><br><span class="line">        error.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     *  群发自定义消息 </span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">broadcast</span><span class="params">(String message)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (MyWebSocket item : webSocketSet) &#123;</span><br><span class="line">            <span class="comment">//this.session.getBasicRemote().sendText(message);</span></span><br><span class="line">            item.session.getAsyncRemote().sendText(message);<span class="comment">//异步发送消息.</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>​        webSocketSet是保存用户session的集合，当出现用户加入群聊时，把该用户的session添加到session集合中，但用户退出群聊时，删除对应的session。</p>
+<p>​        其中，broadcast()方法，将所有用户session中的消息以广播的形式发送，发送的形式有：</p>
+<ul>
+<li><p>getBasicRemote()同步</p>
+</li>
+<li><p>getAsyncRemote()异步</p>
+<p>那两种发送方式有什么区别呢？参考<a href="https://blogs.oracle.com/pavelbucek/is-websocket-session-really-thread-safe" target="_blank" rel="noopener">websocket的同步和异步发送区别</a></p>
+</li>
+</ul>
+<p>大致可以总结为：</p>
+<p>​        一般情况，推荐使用getAsyncRemote()。由于getBasicRemote()的同步特性，并且它支持部分消息的发送即sendText(xxx,boolean isLast)， isLast的值表示是否一次发送消息中的部分消息，对于如下情况:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">session.getBasicRemote().sendText(message, <span class="keyword">false</span>); </span><br><span class="line"></span><br><span class="line">session.getBasicRemote().sendBinary(data);</span><br><span class="line"></span><br><span class="line">session.getBasicRemote().sendText(message, <span class="keyword">true</span>);</span><br></pre></td></tr></table></figure>
+
+<p>由于同步特性，第二行的消息必须等待第一行的发送完成才能进行，而第一行的剩余部分消息要等第二行发送完才能继续发送，所以在第二行会抛出IllegalStateException异常。如果要使用getBasicRemote()同步发送消息，则避免尽量一次发送全部消息，使用部分消息来发送。</p>
+<h5 id="（4）编写页面webSocketTest-html-放到static目录下"><a href="#（4）编写页面webSocketTest-html-放到static目录下" class="headerlink" title="（4）编写页面webSocketTest.html(放到static目录下)"></a>（4）编写页面webSocketTest.html(放到static目录下)</h5><p><img data-sizes="auto" data-src="SpringBoot-Websocket/Code3.png" alt="" class="lazyload"></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">HTML</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">title</span>&gt;</span>My WebSocket<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="css">        <span class="selector-id">#message</span> &#123;</span></span><br><span class="line">            margin-top: 40px;</span><br><span class="line">            border: 1px solid gray;</span><br><span class="line">            padding: 20px;</span><br><span class="line">        &#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">onclick</span>=<span class="string">"conectWebSocket()"</span>&gt;</span>连接WebSocket<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">onclick</span>=<span class="string">"closeWebSocket()"</span>&gt;</span>断开连接<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">hr</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">br</span>/&gt;</span></span><br><span class="line">消息：<span class="tag">&lt;<span class="name">input</span> <span class="attr">id</span>=<span class="string">"text"</span> <span class="attr">type</span>=<span class="string">"text"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">onclick</span>=<span class="string">"send()"</span>&gt;</span>发送消息<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"message"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span></span><br><span class="line"><span class="actionscript">    <span class="keyword">var</span> websocket = <span class="literal">null</span>;</span></span><br><span class="line"></span><br><span class="line"><span class="actionscript">    <span class="function"><span class="keyword">function</span> <span class="title">conectWebSocket</span><span class="params">()</span> </span>&#123;</span></span><br><span class="line"><span class="actionscript">        <span class="comment">//判断当前浏览器是否支持WebSocket</span></span></span><br><span class="line"><span class="javascript">        <span class="keyword">if</span> (<span class="string">'WebSocket'</span> <span class="keyword">in</span> <span class="built_in">window</span>) &#123;</span></span><br><span class="line"><span class="actionscript">            websocket = <span class="keyword">new</span> WebSocket(<span class="string">"ws://localhost:8080/websocket"</span>);</span></span><br><span class="line"><span class="actionscript">        &#125; <span class="keyword">else</span> &#123;</span></span><br><span class="line"><span class="actionscript">            alert(<span class="string">'Not support websocket'</span>)</span></span><br><span class="line">        &#125;</span><br><span class="line"><span class="actionscript">        <span class="comment">//连接发生错误的回调方法</span></span></span><br><span class="line"><span class="actionscript">        websocket.onerror = <span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>&#123;</span></span><br><span class="line"><span class="actionscript">            setMessageInnerHTML(<span class="string">"error"</span>);</span></span><br><span class="line">        &#125;;</span><br><span class="line"><span class="actionscript">        <span class="comment">//连接成功建立的回调方法</span></span></span><br><span class="line"><span class="actionscript">        websocket.onopen = <span class="function"><span class="keyword">function</span> <span class="params">(event)</span> </span>&#123;</span></span><br><span class="line"><span class="actionscript">            setMessageInnerHTML(<span class="string">"Loc MSG: 成功建立连接"</span>);</span></span><br><span class="line">        &#125;</span><br><span class="line"><span class="actionscript">        <span class="comment">//接收到消息的回调方法</span></span></span><br><span class="line"><span class="actionscript">        websocket.onmessage = <span class="function"><span class="keyword">function</span> <span class="params">(event)</span> </span>&#123;</span></span><br><span class="line">            setMessageInnerHTML(event.data);</span><br><span class="line">        &#125;</span><br><span class="line"><span class="actionscript">        <span class="comment">//连接关闭的回调方法</span></span></span><br><span class="line"><span class="actionscript">        websocket.onclose = <span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>&#123;</span></span><br><span class="line"><span class="actionscript">            setMessageInnerHTML(<span class="string">"Loc MSG:关闭连接"</span>);</span></span><br><span class="line">        &#125;</span><br><span class="line"><span class="actionscript">        <span class="comment">//监听窗口关闭事件，当窗口关闭时，主动去关闭websocket连接，防止连接还没断开就关闭窗口，server端会抛异常。</span></span></span><br><span class="line"><span class="javascript">        <span class="built_in">window</span>.onbeforeunload = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></span><br><span class="line">            websocket.close();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="actionscript">    <span class="comment">//将消息显示在网页上</span></span></span><br><span class="line"><span class="actionscript">    <span class="function"><span class="keyword">function</span> <span class="title">setMessageInnerHTML</span><span class="params">(innerHTML)</span> </span>&#123;</span></span><br><span class="line"><span class="javascript">        <span class="built_in">document</span>.getElementById(<span class="string">'message'</span>).innerHTML += innerHTML + <span class="string">'&lt;br/&gt;'</span>;</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="actionscript">    <span class="comment">//关闭连接</span></span></span><br><span class="line"><span class="actionscript">    <span class="function"><span class="keyword">function</span> <span class="title">closeWebSocket</span><span class="params">()</span> </span>&#123;</span></span><br><span class="line">        websocket.close();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="actionscript">    <span class="comment">//发送消息</span></span></span><br><span class="line"><span class="actionscript">    <span class="function"><span class="keyword">function</span> <span class="title">send</span><span class="params">()</span> </span>&#123;</span></span><br><span class="line"><span class="javascript">        <span class="keyword">var</span> message = <span class="built_in">document</span>.getElementById(<span class="string">'text'</span>).value;</span></span><br><span class="line">        websocket.send(message);</span><br><span class="line">    &#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="（5）测试"><a href="#（5）测试" class="headerlink" title="（5）测试"></a>（5）测试</h5><p>访问url:  localhost:8080/webSocketTest.html，点击【连接WebSocket】，发送消息。</p>
+<p><img data-sizes="auto" data-src="SpringBoot-Websocket/Test1.png" alt="" class="lazyload"></p>
+<p><img data-sizes="auto" data-src="SpringBoot-Websocket/Test2.png" alt="" class="lazyload"></p>
+<h5 id="（6）存在问题"><a href="#（6）存在问题" class="headerlink" title="（6）存在问题"></a>（6）存在问题</h5><p>当前消息无法显示是哪位用户发送的，可阅读性差，需要改进。</p>
+<h4 id="3、改进"><a href="#3、改进" class="headerlink" title="3、改进"></a>3、改进</h4><p><strong>前端页面的改进</strong></p>
+<h5 id="（1）连接时，输入用户昵称"><a href="#（1）连接时，输入用户昵称" class="headerlink" title="（1）连接时，输入用户昵称"></a>（1）连接时，输入用户昵称</h5><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">input type="text" id="nickname"/&gt;</span><br><span class="line"><span class="tag">&lt;<span class="name">button</span> ο<span class="attr">nclick</span>=<span class="string">"conectWebSocket()"</span>&gt;</span>连接WebSocket<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="（2）连接前的校验"><a href="#（2）连接前的校验" class="headerlink" title="（2）连接前的校验"></a>（2）连接前的校验</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> nickname = <span class="built_in">document</span>.getElementById(<span class="string">"nickname"</span>).value;</span><br><span class="line"><span class="keyword">if</span>(nickname===<span class="string">""</span>)&#123;</span><br><span class="line">    alert(<span class="string">"请输入昵称"</span>);</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="（3）显示昵称"><a href="#（3）显示昵称" class="headerlink" title="（3）显示昵称"></a>（3）显示昵称</h5><p>修改客户端的连接方式：</p>
+<ul>
+<li>Js代码，修改页面webSocketTest.html中连接服务器的URL</li>
+</ul>
+  <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">websocket = <span class="keyword">new</span> WebSocket(<span class="string">"ws://localhost:8080/websocket/"</span>+nickname);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Java代码，在MyWebSocket类中，添加属性nickname，使得每个方法都可以获取该参数。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@ServerEndpoint</span>(value = <span class="string">"/websocket/&#123;nickname&#125;"</span>)  </span><br><span class="line"><span class="meta">@Component</span>  </span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyWebSocket</span> </span>&#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>添加属性：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> String nickname;</span><br></pre></td></tr></table></figure>
+
+<p>修改建立连接和发送消息的方法参数：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@OnOpen</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onOpen</span><span class="params">(Session session,@PathParam(<span class="string">"nickname"</span>)</span> String nickname) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.session = session;</span><br><span class="line">    <span class="keyword">this</span>.nickname=nickname;</span><br><span class="line">    webSocketSet.add(<span class="keyword">this</span>);     <span class="comment">//加入set中</span></span><br><span class="line">    System.out.println(<span class="string">"有新连接加入:"</span>+nickname+<span class="string">",当前在线人数为"</span> + webSocketSet.size());</span><br><span class="line">    <span class="keyword">this</span>.session.getAsyncRemote().sendText(<span class="string">"恭喜您成功连接上WebSocket--&gt;当前在线人数为："</span>+webSocketSet.size());</span><br><span class="line"></span><br><span class="line"><span class="meta">@OnMessage</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onMessage</span><span class="params">(String message, Session session,@PathParam(<span class="string">"nickname"</span>)</span> String nickname) </span>&#123;</span><br><span class="line">    System.out.println(<span class="string">"来自客户端的消息--&gt;"</span>+nickname+<span class="string">": "</span> + message);</span><br><span class="line">    <span class="comment">//群发消息</span></span><br><span class="line">    broadcast(nickname+<span class="string">": "</span>+message);</span><br></pre></td></tr></table></figure>
+
+<h5 id="（4）测试"><a href="#（4）测试" class="headerlink" title="（4）测试"></a>（4）测试</h5><p>访问url:  localhost:8080/webSocketTest.html，点击【连接WebSocket】，发送消息。</p>
+<p><img data-sizes="auto" data-src="SpringBoot-Websocket/Test2-1.png" alt="" class="lazyload"></p>
+<p><img data-sizes="auto" data-src="SpringBoot-Websocket/Test2-2.png" alt="" class="lazyload"></p>
+<h4 id="4、完成！"><a href="#4、完成！" class="headerlink" title="4、完成！"></a>4、完成！</h4><p><a href="https://github.com/AndersonBlog/SpringBootWebsocketDemo.git" target="_blank" rel="noopener">源码地址</a></p>
+<h5 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h5><p><a href="https://www.runoob.com/html/html5-websocket.html" target="_blank" rel="noopener">https://www.runoob.com/html/html5-websocket.html</a></p>
+<p><a href="https://www.javainuse.com/spring/boot-websocket" target="_blank" rel="noopener">https://www.javainuse.com/spring/boot-websocket</a></p>
+<p><a href="https://www.liaoxuefeng.com/wiki/1022910821149312/1103303693824096" target="_blank" rel="noopener">https://www.liaoxuefeng.com/wiki/1022910821149312/1103303693824096</a></p>
+
+            
+        </article>
+    </div>
+    
+    <div class="nexmoe-post">
+        <a href="/2019/08/12/Targets/">
+            
+                <div class="nexmoe-post-cover mdui-ripple" style="padding-bottom: 66.66666666666666%;"> 
+                    <img data-src="https://cdn.jsdelivr.net/gh/nexmoe/nexmoe.github.io@latest/images/cover/5c3aec85a4343.jpg" data-sizes="auto" alt="Anderson未来一个半月的可量化目标" class="lazyload">
+                    <h1>Anderson未来一个半月的可量化目标</h1>
+                </div>
+            
+        </a>
+
+        <div class="nexmoe-post-meta">
+            <a><i class="nexmoefont icon-calendar-fill"></i>2019年08月12日</a>
+            <a><i class="nexmoefont icon-areachart"></i>232 字</a>
+            <a><i class="nexmoefont icon-time-circle-fill"></i>大概 1 分钟</a>
+        </div>
+
+        <article>
+            
+                <h3 id="未来一个半月的可量化目标"><a href="#未来一个半月的可量化目标" class="headerlink" title="未来一个半月的可量化目标"></a>未来一个半月的可量化目标</h3><h4 id="生命不息，学习不止"><a href="#生命不息，学习不止" class="headerlink" title="生命不息，学习不止"></a><strong>生命不息，学习不止</strong></h4><p>回顾过去一个月的学习，我基本了解自己前后端的技术栈的能力水平，java基础一般，SpringBoot框架有一定的应用能力，前端知识欠缺，沟通表达能力一般，团队协作能力一般，为了全面平衡可持续发展，我决定指定一个可量化的学习目标，对未来一个半月的学习内容进行规划安排，如下：</p>
+<ol>
+<li>学习《JavaScript高级程序设计》前50%的内容，并总结出三篇学习总结博客</li>
+<li>学习Java整合WebSocket实现实时消息推送，总结出一篇博客</li>
+<li>学习Springboot利用token进行身份认证，总结出一篇博客</li>
+</ol>
+<p>以上的学习计划，按优先级先后排序，还有学习组内各位大佬的博客，及时反思和回顾。</p>
+
+            
+        </article>
+    </div>
+    
+</section>
+
+    <nav class="nexmoe-page-nav">
+      <a class="extend prev" rel="prev" href="/"><i class="nexmoefont icon-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/"><i class="nexmoefont icon-right"></i></a>
+    </nav>
+  
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/combine/npm/lazysizes@5.1.0/lazysizes.min.js,gh/highlightjs/cdn-release@9.15.8/build/highlight.min.js,npm/mdui@0.4.3/dist/js/mdui.min.js,gh/nexmoe/nexmoe.github.io@latest/js/app.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+<!--<script src="/js/app.js?v=1585311044941"></script>-->
+
+
+    <script src="https://cdn.jsdelivr.net/gh/xtaodada/xtaodada.github.io@0.0.2/copy.js"></script>
+
+
+
+  
+
+
+
+
+
+</body>
+
+</html>
