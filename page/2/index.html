@@ -17,7 +17,7 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Gemini","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Gemini","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
   <meta name="description" content="Love is love">
@@ -165,6 +165,137 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/27/%E6%B5%85%E6%9E%90cookie-session-token/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/self.png">
+      <meta itemprop="name" content="Anderson Wu">
+      <meta itemprop="description" content="Love is love">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="陪你度过漫长岁月">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/09/27/%E6%B5%85%E6%9E%90cookie-session-token/" class="post-title-link" itemprop="url">浅析cookie，session和token</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-09-27 19:37:58" itemprop="dateCreated datePublished" datetime="2019-09-27T19:37:58+08:00">2019-09-27</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-03-28 17:09:26" itemprop="dateModified" datetime="2020-03-28T17:09:26+08:00">2020-03-28</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Cookie-seesion-Token/" itemprop="url" rel="index"><span itemprop="name">Cookie seesion Token</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h5 id="一、发展史"><a href="#一、发展史" class="headerlink" title="一、发展史"></a>一、发展史</h5><p>​            以前，Web应用基本都是文档浏览，在浏览过程中，服务器无需记录哪位用户浏览了哪些文档，所以每次请求都是新的HTTP协议（请求和响应）。</p>
+<p>​            当我们用浏览器打开一个网页，用到的是HTTP协议，它是无状态的，当前请求和上一次请求是没有任何关系的，互不关联。但是这种无状态的的好处是快速。所以就会带来一个问题就是，当几个请求的页面要有关联，比如：我在<a href="http://www.a.com/login.php里面登陆了，我在www.a.com/index.php" target="_blank" rel="noopener">www.a.com/login.php里面登陆了，我在www.a.com/index.php</a> 也希望是登陆状态，但是，这是2个不同的页面，也就是2个不同的HTTP请求，这2个HTTP请求是无状态的，也就是无关联的，所以无法单纯的在index.php中读取到它在login.php中已经登陆了！</p>
+<p>​            因为不可能这2个页面都去登陆一次或者2个页面都去查询数据库，如果有登陆状态，就判断是登陆的了。这种查询数据库的方案虽然可行，但是每次都要去查询数据库，会造成数据库的压力。 </p>
+<p>​            为了解决以上问题，一种新的客户端存储数据方式出现了：cookie。cookie是把少量的信息存储在用户自己的电脑上，它在一个域名下是一个全局的，只要设置它的存储路径在域名<a href="http://www.a.com下" target="_blank" rel="noopener">www.a.com下</a> ，那么当用户用浏览器访问时，php就可以从这个域名的任意页面读取cookie中的信息。所以就很好的解决了我在<a href="http://www.a.com/login.php页面登陆了，我也可以在www.a.com/index.php获取到这个登陆信息了。同时又不用反复去查询数据库。" target="_blank" rel="noopener">www.a.com/login.php页面登陆了，我也可以在www.a.com/index.php获取到这个登陆信息了。同时又不用反复去查询数据库。</a></p>
+<p>​            虽然这种方案很不错，也很快速方便，但是由于cookie 是存在用户端，而且它本身存储的尺寸大小也有限，最关键是用户可以是可见的，并可以随意的修改，很不安全。那如何又要安全，又可以方便的全局读取信息呢？于是，这个时候，一种新的存储会话机制：session 诞生了。</p>
+<h5 id="二、cookie"><a href="#二、cookie" class="headerlink" title="二、cookie"></a>二、cookie</h5><p>​            cookie是浏览器里面能永久存储的数据，仅仅是浏览器实现的一种数据存储功能。</p>
+<p>​             cookie由服务器生成，发送给浏览器，浏览器把cookie以k-v形式保存到某个目录下的文本文件内，下一次请求同一网站时会把该cookie发送给服务器。由于cookie是存在客户端上的，所以浏览器加入了一些限制确保cookie不会被恶意使用，同时不会占据太多磁盘空间，所以每个域的cookie数量是有限的。</p>
+<h5 id="三、session"><a href="#三、session" class="headerlink" title="三、session"></a>三、session</h5><p>​            Session 就是在一次会话中解决2次HTTP的请求的关联，让它们产生联系，让2两个页面都能读取到找个这个全局的session信息。session信息存在于服务器端，所以也就很好的解决了安全问题。</p>
+<p>​            Session的中文翻译是“会话”，当用户打开某个web应用时，便与web服务器产生一次session。服务器使用session把用户的信息临时保存在了服务器上，用户离开网站后session会被销毁。这种用户信息存储方式相对cookie来说更安全，可是session有一个缺陷：如果web服务器做了负载均衡，那么下一个操作请求到了另一台服务器的时候session会丢失。</p>
+<p><strong>session请求过程：</strong></p>
+<ul>
+<li><p>客户端向服务器请求，发送用户名和密码</p>
+</li>
+<li><p>服务器生成sessionId，绑定用户数据存储在数据库</p>
+</li>
+<li><p>服务器返回sessionId给客户端</p>
+</li>
+<li><p>客户端存储sessionId，以后的请求都带上这个sessionId</p>
+</li>
+<li><p>服务器如果收到这个sessionId，那么就去数据库查找用户数据，如果找到了说明验证通过</p>
+</li>
+<li><p>服务器把验证结果返回客户端</p>
+</li>
+</ul>
+<p><img src="%E6%B5%85%E6%9E%90cookie-session-token/1.png" alt=""></p>
+<blockquote>
+<p>session存在问题：</p>
+<p>1、session保存在服务端，当客户访问量增加时，服务端就需要存储大量的session会话，对服务器有很大的考验；<br>2、当服务端为集群时，用户登陆其中一台服务器，会将session保存到该服务器的内存中，但是当用户的访问到其他服务器时，会无法访问，通常采用缓存一致性技术来保证可以共享，或者采用第三方缓存来保存session，不方便。</p>
+</blockquote>
+<h5 id="四、Token"><a href="#四、Token" class="headerlink" title="四、Token"></a>四、Token</h5><p>​            Token是服务端生成的一串字符串，以作客户端进行请求的一个令牌，当第一次登录后，服务器生成一个Token便将此Token返回给客户端，以后客户端只需带上这个Token前来请求数据即可，无需再次带上用户名和密码。</p>
+<p>​            Token 的认证方式类似于<strong>临时的证书签名</strong>, 并且是一种服务端无状态的认证方式, 非常适合于 REST API 的场景. 所谓无状态就是服务端并不会保存身份认证相关的数据。</p>
+<p><strong>Token组成：</strong></p>
+<ul>
+<li>uid: 用户唯一身份标识</li>
+<li>time: 当前时间的时间戳</li>
+<li>sign: 签名, 使用 hash/encrypt 压缩成定长的十六进制字符串，以防止第三方恶意拼接</li>
+<li>固定参数(可选): 将一些常用的固定参数加入到 token 中是为了避免重复查库</li>
+</ul>
+<p><strong>Toeken存放：</strong></p>
+<p>Token在客户端一般存放于localStorage，cookie，或sessionStorage中。在服务器一般存于数据库中.</p>
+<p><strong>Token过程:</strong><br>1、客户端向服务器请求，发送用户名和密码<br>2、服务器根据用户信息通过加密生成token，用户信息包括账号，token过期时间等，具体由服务器自定义。<br>3、服务器返回token给客户端<br>4、客户端用cookie存储token，以后的请求都带上这个token<br>5、服务器把token解密，确认用户信息是否正确，如经过正确就说明验证通过。<br>6、服务器把验证结果返回客户端</p>
+<p><img src="%E6%B5%85%E6%9E%90cookie-session-token/2.png" alt=""></p>
+<h5 id="五、Cookie与session区别："><a href="#五、Cookie与session区别：" class="headerlink" title="五、Cookie与session区别："></a>五、Cookie与session区别：</h5><p>1、cookie数据存放在客户的浏览器上，session数据放在服务器上。<br>2、cookie不是很安全，别人可以分析存放在本地的cookie并进行cookie欺骗,考虑到安全应当使用session。</p>
+<p>3、session会在一定时间内保存在服务器上。当访问增多，会比较占用你服务器的性能,考虑到减轻服务器性能方面，应当使用cookie。</p>
+<p>4、单个cookie保存的数据不能超过4K，很多浏览器都限制一个站点最多保存20个cookie。</p>
+<h5 id="六、Token与session区别"><a href="#六、Token与session区别" class="headerlink" title="六、Token与session区别"></a>六、Token与session区别</h5><ol>
+<li>token就是令牌，比如你授权（登录）一个程序时，他就是个依据，判断你是否已经授权该软件，Token的状态是存储在客户端。</li>
+<li>cookie就是写在客户端的一个txt文件，里面包括你登录信息之类的，这样你下次在登录某个网站，就会自动调用cookie自动登录用户名；</li>
+<li>session是写在服务器端的文件，也需要在客户端写入cookie文件，但是文件里是你的浏览器编号.Session的状态是存储在服务器端，客户端只有session id；</li>
+</ol>
+<h5 id="七、小结"><a href="#七、小结" class="headerlink" title="七、小结"></a>七、小结</h5><ol>
+<li>session存储于服务器，可以理解为一个状态列表，拥有一个唯一识别符号sessionId，通常存放于cookie中。服务器收到cookie后解析出sessionId，再去session列表中查找，才能找到相应session。依赖cookie</li>
+<li>cookie类似一个令牌，装有sessionId，存储在客户端，浏览器通常会自动添加。</li>
+<li>token也类似一个令牌，无状态，用户信息都被加密到token中，服务器收到token后解密就可知道是哪个用户。需要开发者手动添加。</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+	<div>
+		
+	</div>
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/26/%E5%8D%9A%E5%AE%A2%E7%BC%96%E5%86%99%E6%AD%A5%E9%AA%A4/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -188,9 +319,24 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2019-09-26 20:02:19 / 修改时间：22:06:48" itemprop="dateCreated datePublished" datetime="2019-09-26T20:02:19+08:00">2019-09-26</time>
+              <time title="创建时间：2019-09-26 20:02:19" itemprop="dateCreated datePublished" datetime="2019-09-26T20:02:19+08:00">2019-09-26</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-03-28 17:08:39" itemprop="dateModified" datetime="2020-03-28T17:08:39+08:00">2020-03-28</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/hexo/" itemprop="url" rel="index"><span itemprop="name">hexo</span></a>
+                </span>
             </span>
 
           
@@ -242,6 +388,102 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/22/vue%E4%BD%BF%E7%94%A8prop%E6%95%B0%E6%8D%AE%E7%BB%91%E5%AE%9A%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/self.png">
+      <meta itemprop="name" content="Anderson Wu">
+      <meta itemprop="description" content="Love is love">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="陪你度过漫长岁月">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/09/22/vue%E4%BD%BF%E7%94%A8prop%E6%95%B0%E6%8D%AE%E7%BB%91%E5%AE%9A%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/" class="post-title-link" itemprop="url">vue使用props数据绑定异常</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-09-22 10:02:19" itemprop="dateCreated datePublished" datetime="2019-09-22T10:02:19+08:00">2019-09-22</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-03-28 17:07:31" itemprop="dateModified" datetime="2020-03-28T17:07:31+08:00">2020-03-28</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Vue/" itemprop="url" rel="index"><span itemprop="name">Vue</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h5 id="1-业务场景"><a href="#1-业务场景" class="headerlink" title="1.业务场景"></a>1.业务场景</h5><p>通过点击信息框，计算点击的次数。（商品信息为一个组件）</p>
+<p><img src="vue%E4%BD%BF%E7%94%A8prop%E6%95%B0%E6%8D%AE%E7%BB%91%E5%AE%9A%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/1.png" alt=""></p>
+<p>子组件GlobalComponents.vue:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;div v-on:click=<span class="string">'increaseClcikTime'</span>&gt;clickTimes:&#123;&#123;<span class="keyword">this</span>.clickTime&#125;&#125;&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">  &lt;/</span>div&gt;</span><br><span class="line">&lt;<span class="regexp">/template&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">&lt;script&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">export default &#123;</span></span><br><span class="line"><span class="regexp">  name: "GlobalComponents",</span></span><br><span class="line"><span class="regexp">  props:&#123;</span></span><br><span class="line"><span class="regexp">    name: String,</span></span><br><span class="line"><span class="regexp">    clickTime: String    </span></span><br><span class="line"><span class="regexp">  &#125;,</span></span><br><span class="line"><span class="regexp">  components: &#123;</span></span><br><span class="line"><span class="regexp">  &#125;,</span></span><br><span class="line"><span class="regexp">  methods: &#123;</span></span><br><span class="line"><span class="regexp">    increaseClcikTime: function()&#123;</span></span><br><span class="line"><span class="regexp">      this.clickTime ++</span></span><br><span class="line"><span class="regexp">    &#125;</span></span><br><span class="line"><span class="regexp">  &#125;</span></span><br><span class="line"><span class="regexp">&#125;;</span></span><br><span class="line"><span class="regexp">&lt;/</span>script&gt;</span><br></pre></td></tr></table></figure>
+
+<p>父组件：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">GlobalComponents</span> <span class="attr">clickTime</span>=<span class="string">'10'</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>控制台报错：</p>
+<blockquote>
+<p>vue.js?ba4c:634 [Vue warn]: Avoid mutating a prop directly since the value will be overwritten whenever the parent component re-renders. Instead, use a data or computed property based on the prop’s value. Prop being mutated: “clickTime”</p>
+</blockquote>
+<h5 id="2-单向数据流"><a href="#2-单向数据流" class="headerlink" title="2.单向数据流"></a>2.单向数据流</h5><p>​          props 都使得其父子 组件之间形成了一个<strong>单向下行绑定</strong>：父级 prop 的更新会向下流动到子组件中，但是反过来则不行。这样会防止从子组件意外改变父级组件的状态，从而导致你的应用的数据流向难以理解。</p>
+<p>​         每次父级组件发生更新时，子组件中所有的 prop 都将会刷新为最新的值。这意味着你<strong>不</strong>应该在一个子组件内部改变 prop。如果你这样做了，Vue 会在浏览器的控制台中发出警告。</p>
+<h5 id="3-解决方案"><a href="#3-解决方案" class="headerlink" title="3.解决方案"></a>3.解决方案</h5><p>  在子组件中定义一个变量接收prop值</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;div v-on:click=<span class="string">'increaseClcikTime'</span>&gt;clickTimes:&#123;&#123;<span class="keyword">this</span>.time&#125;&#125;&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">  &lt;/</span>div&gt;</span><br><span class="line">&lt;<span class="regexp">/template&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">&lt;script&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">export default &#123;</span></span><br><span class="line"><span class="regexp">  name: "GlobalComponents",</span></span><br><span class="line"><span class="regexp">  props:&#123;</span></span><br><span class="line"><span class="regexp">    name: String,</span></span><br><span class="line"><span class="regexp">    clickTime: String    </span></span><br><span class="line"><span class="regexp">  &#125;,</span></span><br><span class="line"><span class="regexp">  components: &#123;</span></span><br><span class="line"><span class="regexp">  &#125;,</span></span><br><span class="line"><span class="regexp">  data()&#123;</span></span><br><span class="line"><span class="regexp">    return &#123;</span></span><br><span class="line"><span class="regexp">      time: Number(this.clickTime)</span></span><br><span class="line"><span class="regexp">    &#125;;</span></span><br><span class="line"><span class="regexp">  &#125;,</span></span><br><span class="line"><span class="regexp">  methods: &#123;</span></span><br><span class="line"><span class="regexp">    increaseClcikTime: function()&#123;</span></span><br><span class="line"><span class="regexp">      this.time ++</span></span><br><span class="line"><span class="regexp">    &#125;</span></span><br><span class="line"><span class="regexp">  &#125;</span></span><br><span class="line"><span class="regexp">&#125;;</span></span><br><span class="line"><span class="regexp">&lt;/</span>script&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+<p><a href="https://www.jianshu.com/p/54cfaa2f5d5b" target="_blank" rel="noopener">参考资料</a></p>
+
+      
+    </div>
+
+    
+    
+    
+	<div>
+		
+	</div>
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/22/vue%E5%85%A8%E5%B1%80%E5%92%8C%E5%B1%80%E9%83%A8%E7%BB%84%E4%BB%B6%E6%B3%A8%E5%86%8C/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -265,9 +507,24 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2019-09-22 10:02:19 / 修改时间：21:38:07" itemprop="dateCreated datePublished" datetime="2019-09-22T10:02:19+08:00">2019-09-22</time>
+              <time title="创建时间：2019-09-22 10:02:19" itemprop="dateCreated datePublished" datetime="2019-09-22T10:02:19+08:00">2019-09-22</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-03-28 17:07:09" itemprop="dateModified" datetime="2020-03-28T17:07:09+08:00">2020-03-28</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Vue/" itemprop="url" rel="index"><span itemprop="name">Vue</span></a>
+                </span>
             </span>
 
           
@@ -353,87 +610,6 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/22/vue%E4%BD%BF%E7%94%A8prop%E6%95%B0%E6%8D%AE%E7%BB%91%E5%AE%9A%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/self.png">
-      <meta itemprop="name" content="Anderson Wu">
-      <meta itemprop="description" content="Love is love">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="陪你度过漫长岁月">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/09/22/vue%E4%BD%BF%E7%94%A8prop%E6%95%B0%E6%8D%AE%E7%BB%91%E5%AE%9A%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/" class="post-title-link" itemprop="url">vue使用props数据绑定异常</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2019-09-22 10:02:19 / 修改时间：22:09:48" itemprop="dateCreated datePublished" datetime="2019-09-22T10:02:19+08:00">2019-09-22</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h5 id="1-业务场景"><a href="#1-业务场景" class="headerlink" title="1.业务场景"></a>1.业务场景</h5><p>通过点击信息框，计算点击的次数。（商品信息为一个组件）</p>
-<p><img src="vue%E4%BD%BF%E7%94%A8prop%E6%95%B0%E6%8D%AE%E7%BB%91%E5%AE%9A%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/1.png" alt=""></p>
-<p>子组件GlobalComponents.vue:</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;div v-on:click=<span class="string">'increaseClcikTime'</span>&gt;clickTimes:&#123;&#123;<span class="keyword">this</span>.clickTime&#125;&#125;&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">  &lt;/</span>div&gt;</span><br><span class="line">&lt;<span class="regexp">/template&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">&lt;script&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">export default &#123;</span></span><br><span class="line"><span class="regexp">  name: "GlobalComponents",</span></span><br><span class="line"><span class="regexp">  props:&#123;</span></span><br><span class="line"><span class="regexp">    name: String,</span></span><br><span class="line"><span class="regexp">    clickTime: String    </span></span><br><span class="line"><span class="regexp">  &#125;,</span></span><br><span class="line"><span class="regexp">  components: &#123;</span></span><br><span class="line"><span class="regexp">  &#125;,</span></span><br><span class="line"><span class="regexp">  methods: &#123;</span></span><br><span class="line"><span class="regexp">    increaseClcikTime: function()&#123;</span></span><br><span class="line"><span class="regexp">      this.clickTime ++</span></span><br><span class="line"><span class="regexp">    &#125;</span></span><br><span class="line"><span class="regexp">  &#125;</span></span><br><span class="line"><span class="regexp">&#125;;</span></span><br><span class="line"><span class="regexp">&lt;/</span>script&gt;</span><br></pre></td></tr></table></figure>
-
-<p>父组件：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">GlobalComponents</span> <span class="attr">clickTime</span>=<span class="string">'10'</span>/&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>控制台报错：</p>
-<blockquote>
-<p>vue.js?ba4c:634 [Vue warn]: Avoid mutating a prop directly since the value will be overwritten whenever the parent component re-renders. Instead, use a data or computed property based on the prop’s value. Prop being mutated: “clickTime”</p>
-</blockquote>
-<h5 id="2-单向数据流"><a href="#2-单向数据流" class="headerlink" title="2.单向数据流"></a>2.单向数据流</h5><p>​          props 都使得其父子 组件之间形成了一个<strong>单向下行绑定</strong>：父级 prop 的更新会向下流动到子组件中，但是反过来则不行。这样会防止从子组件意外改变父级组件的状态，从而导致你的应用的数据流向难以理解。</p>
-<p>​         每次父级组件发生更新时，子组件中所有的 prop 都将会刷新为最新的值。这意味着你<strong>不</strong>应该在一个子组件内部改变 prop。如果你这样做了，Vue 会在浏览器的控制台中发出警告。</p>
-<h5 id="3-解决方案"><a href="#3-解决方案" class="headerlink" title="3.解决方案"></a>3.解决方案</h5><p>  在子组件中定义一个变量接收prop值</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;div v-on:click=<span class="string">'increaseClcikTime'</span>&gt;clickTimes:&#123;&#123;<span class="keyword">this</span>.time&#125;&#125;&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">  &lt;/</span>div&gt;</span><br><span class="line">&lt;<span class="regexp">/template&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">&lt;script&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">export default &#123;</span></span><br><span class="line"><span class="regexp">  name: "GlobalComponents",</span></span><br><span class="line"><span class="regexp">  props:&#123;</span></span><br><span class="line"><span class="regexp">    name: String,</span></span><br><span class="line"><span class="regexp">    clickTime: String    </span></span><br><span class="line"><span class="regexp">  &#125;,</span></span><br><span class="line"><span class="regexp">  components: &#123;</span></span><br><span class="line"><span class="regexp">  &#125;,</span></span><br><span class="line"><span class="regexp">  data()&#123;</span></span><br><span class="line"><span class="regexp">    return &#123;</span></span><br><span class="line"><span class="regexp">      time: Number(this.clickTime)</span></span><br><span class="line"><span class="regexp">    &#125;;</span></span><br><span class="line"><span class="regexp">  &#125;,</span></span><br><span class="line"><span class="regexp">  methods: &#123;</span></span><br><span class="line"><span class="regexp">    increaseClcikTime: function()&#123;</span></span><br><span class="line"><span class="regexp">      this.time ++</span></span><br><span class="line"><span class="regexp">    &#125;</span></span><br><span class="line"><span class="regexp">  &#125;</span></span><br><span class="line"><span class="regexp">&#125;;</span></span><br><span class="line"><span class="regexp">&lt;/</span>script&gt;</span><br></pre></td></tr></table></figure>
-
-
-
-<p><a href="https://www.jianshu.com/p/54cfaa2f5d5b" target="_blank" rel="noopener">参考资料</a></p>
-
-      
-    </div>
-
-    
-    
-    
-	<div>
-		
-	</div>
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/15/vue%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8C%87%E4%BB%A4/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -465,8 +641,17 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-09-22 14:31:01" itemprop="dateModified" datetime="2019-09-22T14:31:01+08:00">2019-09-22</time>
+                <time title="修改时间：2020-03-28 17:08:17" itemprop="dateModified" datetime="2020-03-28T17:08:17+08:00">2020-03-28</time>
               </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Vue/" itemprop="url" rel="index"><span itemprop="name">Vue</span></a>
+                </span>
+            </span>
 
           
 
@@ -560,8 +745,17 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-09-09 08:28:00" itemprop="dateModified" datetime="2019-09-09T08:28:00+08:00">2019-09-09</time>
+                <time title="修改时间：2020-03-28 17:06:53" itemprop="dateModified" datetime="2020-03-28T17:06:53+08:00">2020-03-28</time>
               </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Oracle/" itemprop="url" rel="index"><span itemprop="name">Oracle</span></a>
+                </span>
+            </span>
 
           
 
@@ -598,9 +792,9 @@
 <p><img src="Toplink/compare2PNG.PNG" alt=""></p>
 <p><a href="https://www.jumpingbean.co.za/blogs/mark/hibernate-toplink-jpa-differences" target="_blank" rel="noopener">参考资料</a></p>
 <h5 id="4-哪个更优秀？"><a href="#4-哪个更优秀？" class="headerlink" title="4.哪个更优秀？"></a>4.哪个更优秀？</h5><p>关于两者优劣，一直是众说纷纭，以下为一篇文章中的总结：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">TopLink is fast, nimbly maps complex relationships, and provides both EJB-like and nearly transparent Java models. But Oracle recently acquired TopLink, and Oracle is regrettably both a database vendor and an application server vendor. </span><br><span class="line">If you&#39;re a WebLogic customer or use a non-Oracle database, you&#39;re going to want to think long and hard before buying TopLink. It&#39;s still a great product for pure Oracle customers, but others simply must protect themselves against a potential change in direction of TopLink. Of course, you may choose to buy another proprietary OR mapper instead. </span><br><span class="line">The problem is that you&#39;d then be buying a proprietary product with less-than-compelling market share. You&#39;d have to pay more for training, experienced developers, and aftermarket tools. While TopLink has been king for a day, many customers will want to look away from the proprietary relational mappers</span><br></pre></td></tr></table></figure>
+<figure class="highlight vbnet"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">TopLink <span class="keyword">is</span> fast, nimbly maps complex relationships, <span class="keyword">and</span> provides both EJB-<span class="keyword">like</span> <span class="keyword">and</span> nearly transparent Java models. But Oracle recently acquired TopLink, <span class="keyword">and</span> Oracle <span class="keyword">is</span> regrettably both a database vendor <span class="keyword">and</span> an application server vendor. </span><br><span class="line"><span class="keyword">If</span> you<span class="comment">'re a WebLogic customer or use a non-Oracle database, you're going to want to think long and hard before buying TopLink. It's still a great product for pure Oracle customers, but others simply must protect themselves against a potential change in direction of TopLink. Of course, you may choose to buy another proprietary OR mapper instead. </span></span><br><span class="line">The problem <span class="keyword">is</span> that you<span class="comment">'d then be buying a proprietary product with less-than-compelling market share. You'd have to pay more for training, experienced developers, and aftermarket tools. While TopLink has been king for a day, many customers will want to look away from the proprietary relational mappers</span></span><br></pre></td></tr></table></figure>
 
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Hibernate is the open-source darling</span><br><span class="line">	If you&#39;re looking for a good persistence framework and you like open-source software, you owe it to yourself to check out Hibernate. It&#39;s a lightweight persistence framework that&#39;s gathered quite a following. Like JDO, it works well with WebLogic, with or without EJB. It has several fundamental strengths:</span><br><span class="line">- Hibernate uses Java reflection instead of byte code enhancement to achieve transparency.</span><br><span class="line"></span><br><span class="line">- Hibernate performance is surprisingly good because it is such a lightweight framework.</span><br><span class="line"></span><br><span class="line">- The mapping flexibility is outstanding. It has good support for several relational </span><br><span class="line">databases, with complex relationships ranging from one-to-one to many-to-many.</span><br><span class="line">	Hibernate too has some disadvantages. It puts some limitations on your object model. (For example, one persistent class cannot map to more than one table.) The combination of a proprietary interface and smaller market share is also disconcerting, but Hibernate seems to have mitigated that risk by establishing good momentum. Other open-source persistence frameworks exist as well, but none with the momentum of Hibernate.</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Hibernate is the open-source darling</span><br><span class="line">	If you're looking for a good persistence framework and you like open-source software, you owe it to yourself to <span class="keyword">check</span> <span class="keyword">out</span> Hibernate. It<span class="string">'s a lightweight persistence framework that'</span>s gathered quite a following. <span class="keyword">Like</span> JDO, it works well <span class="keyword">with</span> WebLogic, <span class="keyword">with</span> <span class="keyword">or</span> <span class="keyword">without</span> EJB. It has several fundamental strengths:</span><br><span class="line">- Hibernate uses <span class="keyword">Java</span> reflection instead <span class="keyword">of</span> <span class="keyword">byte</span> code enhancement <span class="keyword">to</span> achieve transparency.</span><br><span class="line"></span><br><span class="line">- Hibernate <span class="keyword">performance</span> <span class="keyword">is</span> surprisingly good because it <span class="keyword">is</span> such a lightweight framework.</span><br><span class="line"></span><br><span class="line">- The <span class="keyword">mapping</span> flexibility <span class="keyword">is</span> outstanding. It has good support <span class="keyword">for</span> several <span class="keyword">relational</span> </span><br><span class="line"><span class="keyword">databases</span>, <span class="keyword">with</span> complex relationships ranging <span class="keyword">from</span> one-<span class="keyword">to</span>-one <span class="keyword">to</span> many-<span class="keyword">to</span>-many.</span><br><span class="line">	Hibernate too has <span class="keyword">some</span> disadvantages. It puts <span class="keyword">some</span> limitations <span class="keyword">on</span> your <span class="keyword">object</span> model. (<span class="keyword">For</span> example, one persistent <span class="keyword">class</span> cannot <span class="keyword">map</span> <span class="keyword">to</span> more <span class="keyword">than</span> one table.) The combination <span class="keyword">of</span> a proprietary <span class="keyword">interface</span> <span class="keyword">and</span> smaller market <span class="keyword">share</span> <span class="keyword">is</span> also disconcerting, but Hibernate seems <span class="keyword">to</span> have mitigated that risk <span class="keyword">by</span> establishing good momentum. Other <span class="keyword">open</span>-<span class="keyword">source</span> persistence frameworks exist <span class="keyword">as</span> well, but <span class="keyword">none</span> <span class="keyword">with</span> the momentum <span class="keyword">of</span> Hibernate.</span><br></pre></td></tr></table></figure>
 
 <p>​            总的来说，在TopLink开源前，Hibernate凭借其轻量级和映射的灵活性，而更加广泛使用，而TopLink开源后，和Oracle数据库相结合，性能更加优越。</p>
 <p><strong>相关：</strong><a href="https://blog.csdn.net/zcy860511/article/details/38521595" target="_blank" rel="noopener">关于Hibernate和TopLink在插入和查询数据上的性能比较</a></p>
@@ -649,10 +843,16 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2019-09-01 19:37:58 / 修改时间：22:28:22" itemprop="dateCreated datePublished" datetime="2019-09-01T19:37:58+08:00">2019-09-01</time>
+              <time title="创建时间：2019-09-01 19:37:58" itemprop="dateCreated datePublished" datetime="2019-09-01T19:37:58+08:00">2019-09-01</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-03-28 17:04:04" itemprop="dateModified" datetime="2020-03-28T17:04:04+08:00">2020-03-28</time>
+              </span>
 
           
 
@@ -770,7 +970,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-09-01 20:58:52" itemprop="dateModified" datetime="2019-09-01T20:58:52+08:00">2019-09-01</time>
+                <time title="修改时间：2020-03-28 17:03:42" itemprop="dateModified" datetime="2020-03-28T17:03:42+08:00">2020-03-28</time>
               </span>
 
           
@@ -867,8 +1067,17 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-08-27 12:07:16" itemprop="dateModified" datetime="2019-08-27T12:07:16+08:00">2019-08-27</time>
+                <time title="修改时间：2020-03-28 17:05:12" itemprop="dateModified" datetime="2020-03-28T17:05:12+08:00">2020-03-28</time>
               </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/SpringBoot/" itemprop="url" rel="index"><span itemprop="name">SpringBoot</span></a>
+                </span>
+            </span>
 
           
 
@@ -1123,7 +1332,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-08-27 12:07:48" itemprop="dateModified" datetime="2019-08-27T12:07:48+08:00">2019-08-27</time>
+                <time title="修改时间：2020-03-28 17:06:32" itemprop="dateModified" datetime="2020-03-28T17:06:32+08:00">2020-03-28</time>
               </span>
 
           
@@ -1162,537 +1371,11 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/11/Hadoop/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/self.png">
-      <meta itemprop="name" content="Anderson Wu">
-      <meta itemprop="description" content="Love is love">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="陪你度过漫长岁月">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/08/11/Hadoop/" class="post-title-link" itemprop="url">搭建Hadoop完全分布式</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-08-11 23:32:20" itemprop="dateCreated datePublished" datetime="2019-08-11T23:32:20+08:00">2019-08-11</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-09-26 22:03:57" itemprop="dateModified" datetime="2019-09-26T22:03:57+08:00">2019-09-26</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="搭建hadoop完全分布式详细教程"><a href="#搭建hadoop完全分布式详细教程" class="headerlink" title="搭建hadoop完全分布式详细教程"></a>搭建hadoop完全分布式详细教程</h3><p>链接：<a href="https://www.cnblogs.com/frankdeng/p/9047698.html" target="_blank" rel="noopener">https://www.cnblogs.com/frankdeng/p/9047698.html</a></p>
-<pre><code>https://blog.csdn.net/nbjjy/article/details/80339187</code></pre><h3 id="1-克隆虚拟机"><a href="#1-克隆虚拟机" class="headerlink" title="1.  克隆虚拟机"></a>1.  克隆虚拟机</h3><h3 id="2-修改4台克隆机的IP为固定IP、主机名和IP-主机名的映射"><a href="#2-修改4台克隆机的IP为固定IP、主机名和IP-主机名的映射" class="headerlink" title="2.  修改4台克隆机的IP为固定IP、主机名和IP-主机名的映射"></a>2.  修改4台克隆机的IP为固定IP、主机名和IP-主机名的映射</h3><table>
-<thead>
-<tr>
-<th>ip</th>
-<th>主机名</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>192.168.183.31</td>
-<td>CentOS01</td>
-</tr>
-<tr>
-<td>192.168.183.32</td>
-<td>CentOS02</td>
-</tr>
-<tr>
-<td>192.168.183.33</td>
-<td>CentOS03</td>
-</tr>
-<tr>
-<td>192.168.183.34</td>
-<td>CentOS04</td>
-</tr>
-<tr>
-<td>192.168.183.35</td>
-<td>CentOS05</td>
-</tr>
-</tbody></table>
-<p>临时修改：</p>
-<blockquote>
-<p>hostname CentOS0X</p>
-</blockquote>
-<p>永久修改：</p>
-<blockquote>
-<p>vim /etc/sysconfig/network  </p>
-<p>HOSTNAME=CentOS0X</p>
-</blockquote>
-<h3 id="3-检查虚拟机的防火墙状态"><a href="#3-检查虚拟机的防火墙状态" class="headerlink" title="3.  检查虚拟机的防火墙状态"></a>3.  检查虚拟机的防火墙状态</h3><blockquote>
-<p>service iptables status</p>
-</blockquote>
-<h3 id="4-检查虚拟机是否开启SSH"><a href="#4-检查虚拟机是否开启SSH" class="headerlink" title="4.  检查虚拟机是否开启SSH"></a>4.  检查虚拟机是否开启SSH</h3><p>命令：ps -e|grep ssh </p>
-<blockquote>
-<p>root@ubuntu:/etc$ sudo ps -e | grep ssh</p>
-<p>1529 ?        00:00:00 ssh-agent————对应客户端</p>
-<p>3366 ?        00:00:00 sshd——对应服务器端</p>
-</blockquote>
-<ul>
-<li>开启了SSH，就可以在NameNode远程登录克隆机，并把host文件发给克隆机</li>
-</ul>
-<h3 id="5-检查hadoop和JDk是否安装"><a href="#5-检查hadoop和JDk是否安装" class="headerlink" title="5.  检查hadoop和JDk是否安装"></a>5.  检查hadoop和JDk是否安装</h3><blockquote>
-<p>hadoop version</p>
-<p>java -version</p>
-</blockquote>
-<ul>
-<li>如果发现命令执行不了，重新读入环境配置文件</li>
-</ul>
-<blockquote>
-<p>source /etc/profile 保存并让配置立即生效</p>
-</blockquote>
-<h3 id="6-格式化文件系统"><a href="#6-格式化文件系统" class="headerlink" title="6.  格式化文件系统"></a>6.  格式化文件系统</h3><ul>
-<li><p>因为克隆之前没格式化，所以这里要给<del>5台虚拟机格式化一下</del>只需给namenode节点格式化！！</p>
-<p>由于配置了·hadoop的环境变量，可以在任何目录下执行：<br>hadoop namenode -format<br>若没有配置该环境变量，需要到 hadoop安装目录的bin目录下执行，其中./不能省略。<br> ./hadoop namenode -format</p>
-<p>如果出现如下标识，代表格式化成功。。。<br>18/09/10 13:56:09 INFO common.Storage: Storage directory /tmp/hadoop-root/dfs/name has been successfully formatted.</p>
-</li>
-</ul>
-<h3 id="7-远程复制hosts文件"><a href="#7-远程复制hosts文件" class="headerlink" title="7.  远程复制hosts文件"></a>7.  远程复制hosts文件</h3><blockquote>
-<p>例：scp root@ubuntu02:/etc/hosts root@ubuntu03:/etc/</p>
-<p>[root@CentOS01 Desktop]# scp /etc/hosts root@CentOS02:/etc/</p>
-<p>源主机用户名@源主机名:目录下的文件  目的主机登陆的用户名@目的主机名:粘贴的目录    </p>
-</blockquote>
-<h3 id="8-SSH免密登录"><a href="#8-SSH免密登录" class="headerlink" title="8.  SSH免密登录"></a>8.  SSH免密登录</h3><ul>
-<li>这里只需实现NameNode免密登录其他四个结点，所以把CentOS01的公钥发给其他的四台虚拟机</li>
-</ul>
-<p>在各个虚拟机中的任意目录下，执行：（我一直都是使用root身份，生成密钥）</p>
-<blockquote>
-<p>ssh-keygen -t rsa     //  -t 指定加密算法  -p指定密码  -f指定存放的目录</p>
-</blockquote>
-<p>然后一直回车，直到：</p>
-<p><img src="Hadoop/1536298122980.png" alt=""></p>
-<p>成功后，在/root/.ssh/下会生成：</p>
-<blockquote>
-<p>drwx—— 2 root root 4096 Sep  6 22:26 .<br>drwx—— 7 root root 4096 Sep  6 19:53 ..<br><strong><em>==-rw——- 1 root root 1675 Sep  6 22:26 id_rsa==</em></strong><br><strong><em>==-rw-r–r– 1 root root  395 Sep  6 22:26 id_rsa.pub==</em></strong><br>-rw-r–r– 1 root root  444 Sep  6 19:53 known_hosts</p>
-</blockquote>
-<p>在CentOS01中的/root/.ssh/下，执行：</p>
-<blockquote>
-<p>[root@CentOS01 ~]# scp /root/.ssh/id_rsa.pub root@CentOS02:/root/.ssh/id_rsa.pub.CentOS01</p>
-<p>​                                      源文件       目标用户@目标主机:目标目录/目标文件的新命名（为了与其自身的公钥区）</p>
-</blockquote>
-<p>在ubuntu02中的/root/.ssh/目录下，把接收到的ubuntu01的公钥拼接到认证库中。</p>
-<blockquote>
-<p>root@CentOS02:~/.ssh# cat id_rsa.pub.CentOS01 &gt;&gt; authorized_keys</p>
-</blockquote>
-<p>回到ubunt01，ssh登录ubuntu02：</p>
-<blockquote>
-<p>ssh CentOS02</p>
-</blockquote>
-<p>成功！！！！</p>
-<h3 id="9-安装zookeeper"><a href="#9-安装zookeeper" class="headerlink" title="9.  安装zookeeper"></a>9.  安装zookeeper</h3><p>教程：<a href="https://www.cnblogs.com/wuxl360/p/5817489.html" target="_blank" rel="noopener">https://www.cnblogs.com/wuxl360/p/5817489.html</a></p>
-<pre><code> https://blog.csdn.net/ron03129596/article/details/68962448
-
-http://cailin.iteye.com/blog/2014486</code></pre><p><strong>集群节点分配：</strong></p>
-<table>
-<thead>
-<tr>
-<th align="center">CentOS01</th>
-<th align="center">CentOS02</th>
-<th align="center">CentOS03</th>
-<th align="center">CentOS04</th>
-<th align="center">CentOS05</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">zookeeper</td>
-<td align="center">zookeeper</td>
-<td align="center">-</td>
-<td align="center">-</td>
-<td align="center">-</td>
-</tr>
-<tr>
-<td align="center">NameNode</td>
-<td align="center">NameNode (standby)</td>
-<td align="center">DataNode</td>
-<td align="center">DataNode</td>
-<td align="center">DataNode</td>
-</tr>
-<tr>
-<td align="center">ResourceManager</td>
-<td align="center">ResourceM(standby)</td>
-<td align="center">NodeManager</td>
-<td align="center">NodeManager</td>
-<td align="center">NodeManager</td>
-</tr>
-</tbody></table>
-<p>由于5台虚拟主机中，CentOS01和CentOS02为名称结点，所以只需在它们上安装zookeeper。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">ZooKeeper是一个分布式的，开放源码的分布式应用程序协调服务，是Google的Chubby一个开源的实现，是Hadoop和Hbase的重要组件。它是一个为分布式应用提供一致性服务的软件，提供的功能包括：配置维护、域名服务、分布式同步、组服务等。</span><br><span class="line">ZooKeeper的基本运转流程：</span><br><span class="line">1、选举Leader。</span><br><span class="line">2、同步数据。</span><br><span class="line">3、选举Leader过程中算法有很多，但要达到的选举标准是一致的。</span><br><span class="line">4、Leader要具有最高的执行ID，类似root权限。</span><br><span class="line">5、集群中大多数的机器得到响应并follow选出的Leader。</span><br><span class="line">目前阿里开源的dubbo分布式服务框架推荐的注册中心。</span><br><span class="line">其更详细原理可以参考：http:&#x2F;&#x2F;cailin.iteye.com&#x2F;blog&#x2F;2014486&#x2F;</span><br></pre></td></tr></table></figure>
-
-<p>接下来我们进入zookeeper的安装环节，zookeeper的安装总的来说比较简单，这里我准备了3台linux虚拟机，模拟集群环境，有条件的同学可以自己装3台（最少），其实集群和单机的区别不是太大，但是集群时节点数量一定是奇数（2n+1如3,5,7）。<br> 工具： CentOS.7，zookeeper-3.4.6，Xshell5</p>
-<p><em>注：zookeeper本身由java编写，运行在java环境，故同学们必须先装好java环境，才可以继续zookeeper的安装，这里我对java环境不做讲解</em></p>
-<h4 id="9-1-安装包下载或上传"><a href="#9-1-安装包下载或上传" class="headerlink" title="9.1  安装包下载或上传"></a>9.1  安装包下载或上传</h4><p><strong>教程：</strong>首先使用grid用户登录CentOS7_64_1，将zookeeper-3.4.6的安装包下载传至/home/grid目目录下<br> http下载路径: <a href="http://apache.fayea.com/zookeeper/" target="_blank" rel="noopener">http://apache.fayea.com/zookeeper/</a><br> linux命令下载：$ wget<br>  <a href="http://apache.fayea.com/zookeeper/zookeeper-3.4.6/zookeeper-3.4.6.tar.gz" target="_blank" rel="noopener">http://apache.fayea.com/zookeeper/zookeeper-3.4.6/zookeeper-3.4.6.tar.gz</a></p>
-<p><strong>上传：</strong></p>
-<p>使用filezilla把zookeeper上传到/home/work/software，用户名：root，密码：wuhuipei</p>
-<h4 id="9-2-解压到上一节目录："><a href="#9-2-解压到上一节目录：" class="headerlink" title="9.2  解压到上一节目录："></a>9.2  解压到上一节目录：</h4><blockquote>
-<p>tar -xvf zookeeper-3.4.7.tar.gz -C ../</p>
-</blockquote>
-<p>f压缩包位置 v打印每一步信息</p>
-<h4 id="9-3-创建data和logs目录"><a href="#9-3-创建data和logs目录" class="headerlink" title="9.3  创建data和logs目录"></a>9.3  创建data和logs目录</h4><p>解压后进入zookeeper-3.4.7目录，创建data目录和logs目录，zookeeper默认是不带这两个目录的，需要用户自行创建并指定。 </p>
-<blockquote>
-<p>[root@CentOS01 zookeeper-3.4.7]# mkdir data<br>[root@CentOS01 zookeeper-3.4.7]# mkdir logs</p>
-</blockquote>
-<h4 id="9-4-创建myid文件"><a href="#9-4-创建myid文件" class="headerlink" title="9.4  创建myid文件"></a>9.4  创建myid文件</h4><p>在dataDir=/home/work/zookeeper-3.4.7/data下创建myid文件   </p>
-<p>编辑myid文件，并在对应的IP的机器上输入对应的编号。如在第一台zookeeper上，我们给该myid文件内容指定就是1。如果只在单点上进行安装配置，那么只有一个server，后面讲集群的时候会有多态server故会有2,3,4…等等。  </p>
-<blockquote>
-<p>[root@CentOS01 data]# vim myid</p>
-<p>1</p>
-</blockquote>
-<h4 id="9-5-复制修改配置文件"><a href="#9-5-复制修改配置文件" class="headerlink" title="9.5  复制修改配置文件"></a>9.5  复制修改配置文件</h4><p>接着进入zookeeper-3.4.6/conf目录下，将zoo_sample.cfg文件复制一份取名zoo.cfg  </p>
-<blockquote>
-<p>[root@CentOS01 conf]# cp zoo_sample.cfg zoo.cfg</p>
-</blockquote>
-<p><em>注：之所以取名zoo.cfg是因为这是启动时默认约定读取的</em> </p>
-<p>修改zoo.cfg配置文件，如下：</p>
-<p><img src="Hadoop/1536592271984.png" alt="1536592271984"></p>
-<blockquote>
-<p>dataDir=/home/work/zookeeper-3.4.7/data<br>dataLogDir=/home/work/zookeeper-3.4.7/logs<br>server.1=CentOS01:2888:3888</p>
-</blockquote>
-<p><strong>server.1=h1:2888:3888的解释如下：</strong></p>
-<p>1是指一个数字，与前面创建的myid对应即可，标志这是第几台机器，CentOS01是我配置的映射名，大家可以直接将CentOS01改为自己的ip，如server.1=192.168.183.31:2888:3888； </p>
-<p>2888 表示的是这个服务器与集群中的 Leader 服务器交换信息的端口，2888端口简单来说就是zookeeper服务之间的通信端口；    3888端口是与其他应用程序通信的端口 ，比如：leader掉线后，重新选举zookeeper</p>
-<p> <strong>其他cfg参数说明：</strong></p>
-<p><strong>tickTime=2000</strong>   </p>
-<p>tickTime这个时间是作为Zookeeper服务器之间或客户端与服务器之间维持心跳的时间间隔,也就是每个tickTime时间就会发送一个心跳。 </p>
-<p><strong>initLimit=10</strong><br> initLimit这个配置项是用来配置Zookeeper接受客户端（这里所说的客户端不是用户连接Zookeeper服务器的客户端,而是Zookeeper服务器集群中连接到Leader的Follower  服务器）初始化连接时最长能忍受多少个心跳时间间隔数。当已经超过10个心跳的时间（也就是tickTime）长度后Zookeeper  服务器还没有收到客户端的返回信息,那么表明这个客户端连接失败。总的时间长度就是10*2000=20 秒。</p>
-<p><strong>syncLimit=5</strong><br> syncLimit这个配置项标识Leader与Follower之间发送消息,请求和应答时间长度,最长不能超过多少个tickTime的时间长度,总的时间长度就是5*2000=10秒。</p>
-<p><strong>dataDir=/home/work/zookeeper-3.4.7/data</strong><br> dataDir顾名思义就是Zookeeper保存数据的目录,默认情况下Zookeeper将写数据的日志文件也保存在这个目录里。</p>
-<p><strong>clientPort=2181</strong><br> clientPort这个端口就是客户端（应用程序）连接Zookeeper服务器的端口,Zookeeper会监听这个端口接受客户端的访问请求</p>
-<h4 id="9-6-添加环境变量"><a href="#9-6-添加环境变量" class="headerlink" title="9.6  添加环境变量"></a>9.6  添加环境变量</h4><p>修改该用户下的.bash_profile文件，此文件默认为隐藏的   （这里只是为该用户配置全局变量，更好的选择是直接配置/etc/profile，为所有用户配置环境变量）</p>
-<p>方一：</p>
-<blockquote>
-<p>[root@CentOS01 ~]# vim /root/.bash_profile，增加内容如下： </p>
-<p>export ZOOKEEPER_HOME=/home/grid/zookeeper-3.4.6   </p>
-<p>export PATH=$ZOOKEEPER_HOME/bin:$PATH   </p>
-</blockquote>
-<p>使配置文件生效：  </p>
-<blockquote>
-<p>[root@CentOS01 ~]# source /root/.bash_profile </p>
-</blockquote>
-<p>方二：</p>
-<blockquote>
-<p>[root@CentOS01 etc]# vim /etc/profile</p>
-<p>JAVA_HOME=/home/work/jdk1.8.0_65<br>HADOOP_HOME=/home/work/hadoop-2.7.1<br>ZOOKEEPER_HOME=/home/work/zookeeper-3.4.7</p>
-<p>PATH=$JAVA_HOME/bin:$PATH:$HADOOP_HOME/bin:$HADOOP_HOME/sbin:$ZOOKEEPER_HOME/bin<br>export JAVA_HOME PATH HADOOP_HOME ZOOKEEPER_HOME</p>
-</blockquote>
-<p>使配置文件生效：  </p>
-<blockquote>
-<p>[root@CentOS01 ~]# source /etc/profile </p>
-</blockquote>
-<p><strong>启动</strong>ZooKeeper的Server：zkServer.sh start；<strong>关闭</strong>ZooKeeper的Server：zkServer.sh stop </p>
-<h4 id="9-7-防火墙配置"><a href="#9-7-防火墙配置" class="headerlink" title="9.7  防火墙配置"></a>9.7  防火墙配置</h4><p>在防火墙中打开要用到的端口，一般默认是开放了22端口，所以我们才能使用远程工具使用22进行连接，现在我们去配置2181 2888 3888端口，</p>
-<p>使用root用户执行如下命令   chkconfig iptables on设置开机启动   </p>
-<p>service iptables start 启动防火墙   <strong>我这里设置时就报错了，报错咱就得解决</strong> </p>
-<p><img src="Hadoop/1536631101469.png" alt="1536631101469"></p>
-<p><strong>解决方案</strong>：执行yum install iptables-services下载安装插件  </p>
-<p><img src="Hadoop/1536631136357.png" alt="1536631136357"></p>
-<p>安装完成后再次执行chkconfig iptables on，service iptables start命令  </p>
-<p><img src="Hadoop/1536631230133.png" alt="1536631230133"></p>
-<p><strong>我前面没有出错，所以直接到开放防火墙端口：</strong></p>
-<p>接下来继续开放防火墙端口<br>[root@CentOS01 zookeeper-3.4.7]# vim /etc/sysconfig/iptables</p>
-<p>复制22端口那一行3次，然后将端口修改为需要开放的3个，如下： </p>
-<p><img src="Hadoop/1536631748114.png" alt="1536631748114"></p>
-<blockquote>
-<p>#zookeeper-2018-09-11-ron<br>-A INPUT -m state –state NEW -m tcp -p tcp –dport 2181 -j ACCEPT</p>
-<p>-A INPUT -m state –state NEW -m tcp -p tcp –dport 2888 -j ACCEPT</p>
-<p>-A INPUT -m state –state NEW -m tcp -p tcp –dport 3888 -j ACCEPT</p>
-</blockquote>
-<h4 id="9-8-重启防火墙"><a href="#9-8-重启防火墙" class="headerlink" title="9.8  重启防火墙"></a>9.8  重启防火墙</h4><ul>
-<li><strong>不需要重启虚拟机</strong></li>
-</ul>
-<blockquote>
-<p>[root@CentOS01 ~]# service iptables restart</p>
-</blockquote>
-<h4 id="9-9-开启zookeeper服务"><a href="#9-9-开启zookeeper服务" class="headerlink" title="9.9  开启zookeeper服务"></a>9.9  开启zookeeper服务</h4><p>启动并测试zookeeper（当初使用root用户解压安装的，所以需要使用root用户启动），在zookeeper目录的bin下面执行   </p>
-<p>[root@CentOS01 bin]# ./zkServer.sh start</p>
-<p>** 因为没配置环境变量，所以需要加上当前目录  ./  ，当初就是进了这个坑** </p>
-<p>执行jps查看状态，其中QuorumPeerMain是zookeeper进程，启动正常  </p>
-<p><img src="Hadoop/1536632279086.png" alt="1536632279086"></p>
-<p>查看zookeeper服务输出信息，其日志信息文件在   /home/work/zookeeper-3.4.7/bin/zookeeper.out   tail -222f zookeeper.out查看 ，ctrl +  z  退出</p>
-<h4 id="9-10-设置服务为开机启动"><a href="#9-10-设置服务为开机启动" class="headerlink" title="9.10  设置服务为开机启动"></a>9.10  设置服务为开机启动</h4><p>教程：<a href="https://blog.csdn.net/u012453843/article/details/70162796/" target="_blank" rel="noopener">https://blog.csdn.net/u012453843/article/details/70162796/</a></p>
-<p>例子：</p>
-<!--配置zookeeper为grid用户开机启动，不然在生产环境会很麻烦--> 
-
-<p><img src="Hadoop/1536632767416.png" alt="1536632767416"></p>
-<!--编辑/etc/rc.local文件，加入：--> 
-<p> su - grid -c ‘/home/grid/zookeeper-3.4.6/bin/zkServer.sh start’</p>
-<!--**注：su -- grid是指切换到grid用户，-c是指调用后面命令**-->
-
-<p><strong>两种方法：</strong></p>
-<p>*<em>方法一：直接修改/etc/rc.d/rc.local文件 *</em></p>
-<p>在/etc/rc.d/rc.local文件中需要输入两行，其中export JAVA_HOME=/home/work/jdk1.8.0_65是必须要有的，否则开机启动不成功，大家根据自己JDK安装的位置自行更改。另一行/home/work/zookeeper-3.4.7/bin/zkServer.sh start则是我们zookeeper的启动命令。配置好之后，重启虚拟机，会发现已经可以开机自启了。 </p>
-<p><img src="Hadoop/1536638914434.png" alt="1536638914434"></p>
-<h4 id="拓展："><a href="#拓展：" class="headerlink" title="拓展："></a>拓展：</h4><p><strong>CentOS 中设置服务开机自启：</strong></p>
-<p>教程：<a href="https://blog.csdn.net/jack_nichao/article/details/54093394" target="_blank" rel="noopener">https://blog.csdn.net/jack_nichao/article/details/54093394</a></p>
-<p><strong>方法一：ln -s 建立软连接</strong></p>
-<p>在CentOS中总共有7中运行级别，可以在/etc/inittab文件中进行设置，7种运行级别对应着/etc/rc.d/rc[0-6].d 这7个目录 </p>
-<p><img src="Hadoop/1536634555321.png" alt="1536634555321"></p>
-<p><strong>ps: 你可能也发现了在/etc下也有同样的7个文件夹即 /etc/rc[0-6].d ，通过查看发现/etc/rc[0-6].d其实就是/etc/rc.d/rc[0-6].d的软连接，只是为了保持和Unix的兼容性</strong> </p>
-<p><img src="Hadoop/1536634575950.png" alt="1536634575950"></p>
-<p>这7个目录对应着7种不同运行级别，也就是说在每一个目录下的内容表示在该运行级别下应该启动或者关闭的服务。例如我们看一下/etc/rc.d/rc5.d目录下的内容 </p>
-<p><img src="Hadoop/1536634606672.png" alt="1536634606672"></p>
-<p>当然你可能也发现了，这些文件是按照如下格式命名的 <strong>[KS][1-100]servicename</strong> ，它表示当系统的运行级别为5时，它会关掉以K开头的所有服务，并启动所有以S开头的服务，其实，这些服务都是/etc/init.d/中某个服务的软连接，所以真正启动的服务是/etc/init.d目录中的某一个服务，而以K/S开头建立软连接是为了表明在对应级别下应该采取的行为，K/S后面紧跟的数字表示开/关服务的优先级。</p>
-<p>因此，如果我们自己写了一个脚本代码 如<strong>cleanupd</strong>，需要在开机级别为3的时候自启动的话，那么我们只需要把可执行的<strong>cleanupd</strong>脚本文件放到 /etc/init.d目录下，并在对应的运行级别目录下 如/etc/rc.d/rc3.d/ 建立一个以S开头后加数字的软连接到/etc/init.d/cleanupd即可，如</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@nichao ~]# ln -s &#x2F;etc&#x2F;init.d&#x2F;cleanupd &#x2F;etc&#x2F;rc.d&#x2F;rc3.d&#x2F;S95cleanup1</span><br></pre></td></tr></table></figure>
-
-<p>显然，这样的设置方式比较繁琐，仅仅适合于我们想DIY的脚本服务。</p>
-<p>** 方法二：chkconfig**</p>
-<p>鉴于上面的手工操作比较繁琐，在CentOS中专门提供了chkconfig 命令来设置或者取消开机自启动服务。 </p>
-<p><img src="Hadoop/1536634685208.png" alt="1536634685208"></p>
-<p>使用chkconfig  或者 chkconfig –list就可以看出当前系统已经设置的各个服务在各个运行级别下的开闭状态。如果我们想设置某个服务自启动或者关闭的话，那么只需要按照下面的格式使用即可</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chkconfig servicename on&#x2F;off</span><br></pre></td></tr></table></figure>
-
-<p><img src="Hadoop/1536634722606.png" alt="1536634722606"></p>
-<p>如上图可以看到，我们设置sshd服务开机自启，但是它的缺省自启的运行级别是在2345上的，我们可以在设置的时候加上–level 参数来明确表明需要在哪些级别上自启。   如：chkconfig –level 35 sshd on  表示在级别3和5上开机自启动 </p>
-<p><img src="Hadoop/1536634739647.png" alt="1536634739647"></p>
-<p>如图所示，在级别为3 5的时候，sshd服务被设置为启动状态，而2 4 级别则设置为关闭状态。 </p>
-<h4 id="9-11-两台虚拟机完成以上操作"><a href="#9-11-两台虚拟机完成以上操作" class="headerlink" title="9.11  两台虚拟机完成以上操作"></a>9.11  两台虚拟机完成以上操作</h4><h4 id="9-12-修改防火墙端口"><a href="#9-12-修改防火墙端口" class="headerlink" title="9.12  修改防火墙端口"></a>9.12  修改防火墙端口</h4><p>接下来配置2台服务器的端口，防火墙那一块改为下面对应的端口 </p>
-<blockquote>
-<p>[root@CentOS01 zookeeper-3.4.7]# vim /etc/sysconfig/iptables</p>
-</blockquote>
-<p><strong>机器1—端口：2181,2881,3881</strong> </p>
-<p><img src="Hadoop/1536639126431.png" alt="1536639126431"></p>
-<p><strong>机器2—端口：2182,2882,3882</strong> </p>
-<p><img src="Hadoop/1536639214615.png" alt="1536639214615"></p>
-<p><strong>机器3—端口：2183,2883,3883</strong> </p>
-<ul>
-<li><strong>不需要重启虚拟机</strong></li>
-</ul>
-<blockquote>
-<p>[root@CentOS01 ~]# service iptables restart</p>
-</blockquote>
-<h4 id="9-13-zookeeper配置"><a href="#9-13-zookeeper配置" class="headerlink" title="9.13  zookeeper配置"></a>9.13  zookeeper配置</h4><blockquote>
-<p>[root@CentOS02 sysconfig]# cd /home/work/zookeeper-3.4.7/conf/<br>[root@CentOS02 conf]# vim zoo.cfg       3台机器注意注意<strong>端口号</strong>参数  </p>
-</blockquote>
-<p><strong>centOS01:</strong></p>
-<blockquote>
-<p>dataDir=/home/work/zookeeper-3.4.7/data<br>dataLogDir=/home/work/zookeeper-3.4.7/logs</p>
-<p>server.1=CentOS01:2881:3881<br>server.2=CentOS02:2882:3882</p>
-<p>server.3=CentOS03:2883:3883</p>
-<p>clientPort=2181</p>
-</blockquote>
-<p><strong>CentOS02:</strong></p>
-<blockquote>
-<p>dataDir=/home/work/zookeeper-3.4.7/data<br>dataLogDir=/home/work/zookeeper-3.4.7/logs<br>server.1=CentOS01:2881:3881<br>server.2=CentOS02:2882:3882</p>
-<p>server.3=CentOS03:2883:3883</p>
-<p>clientPort=2182</p>
-</blockquote>
-<p><strong>CentOS03:</strong></p>
-<blockquote>
-<p>dataDir=/home/work/zookeeper-3.4.7/data<br>dataLogDir=/home/work/zookeeper-3.4.7/logs<br>server.1=CentOS01:2881:3881<br>server.2=CentOS02:2882:3882</p>
-<p>server.3=CentOS03:2883:3883</p>
-<p>clientPort=2183</p>
-</blockquote>
-<p><strong>server.A=B：C：D</strong></p>
-<p>A：其中 A 是一个数字，表示这个是服务器的编号；<br>B：是这个服务器的 ip 地址；<br>C：Leader选举的端口；<br>D：Zookeeper服务器之间的通信端口</p>
-<p><strong>在dataDir=/home/work/zookeeper-3.4.7/data下，修改data文件夹下的myid文件的值，</strong></p>
-<p><strong>分别对应的值为1，2，3</strong></p>
-<h4 id="9-14-启动zookeeper"><a href="#9-14-启动zookeeper" class="headerlink" title="9.14  启动zookeeper"></a>9.14  启动zookeeper</h4><p><strong>启动</strong>ZooKeeper的Server：zkServer.sh start；<strong>关闭</strong>ZooKeeper的Server：zkServer.sh stop </p>
-<p><strong>发现问题：</strong></p>
-<p>启动zkServer.sh start 后显示是启动了，jps下也是有线程 ,说明线程启动成功，并没有端口占用的问题，但是在我 zkServer.sh status 就会出现It is probably not running的错误。  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">[root@CentOS01 conf]# jps</span><br><span class="line"></span><br><span class="line">2631 Jps</span><br><span class="line"></span><br><span class="line">2536 QuorumPeerMain</span><br><span class="line"></span><br><span class="line">[root@CentOS01 conf]# zkServer.sh status</span><br><span class="line"></span><br><span class="line">ZooKeeper JMX enabled by default</span><br><span class="line"></span><br><span class="line">Using config: &#x2F;home&#x2F;work&#x2F;zookeeper-3.4.7&#x2F;bin&#x2F;..&#x2F;conf&#x2F;zoo.cfg</span><br><span class="line"></span><br><span class="line">Error contacting service. It is probably not running.</span><br></pre></td></tr></table></figure>
-
-<p>解决方法：</p>
-<ol>
-<li>查看liunx系统的防火墙是否关闭，查看防火墙状态 service iptables status 如果没有关闭，就 service iptables stop 关闭防火墙，然后重新启动zookeeper 看是否启用成功。  </li>
-</ol>
-<ol start="2">
-<li><p>zoo.cfg里面配置数据，对应需要改的数据根据自身的需求改，然后在zookeeper中创建相应data和log文件，一定别忘了在data目录下创建myid.  </p>
-<p><strong>创建数据目录,也就是在你zoo.cfg配置文件里dataDir指定的那个目录下创建myid文件,并且指定id,改id为你zoo.cfg文件server.1=localhost:2888:3888中的    1.只要在myid头部写入1即可.</strong>   </p>
-<p>注:在我第二次安装的时候，没有将myid文件创建在dataDir指定的那个目录下，也报了该错误。之后在dataDir指定的那个目录下创建myid文件就没有报错。 </p>
-</li>
-<li><p>最后一点也是最重要的一点，出错后一点要查看zookeeper.out文件，进行错误排查，这样才能知道自己到底出的是什么错误，好对症下药。 </p>
-<p>查看zookeeper服务输出信息，其日志信息文件在   /home/work/zookeeper-3.4.7/bin/zookeeper.out   tail -222f zookeeper.out查看 ，ctrl +  z  退出</p>
-</li>
-</ol>
-<p><strong>zookeeper搭建集群，需要虚拟机最少3台，给3台虚拟机配置好zookeeper，问题解决！！！！</strong></p>
-<p>按照步骤，一个一个排查就可以了。</p>
-<h3 id="10-配置CentOS01节点的hadoop"><a href="#10-配置CentOS01节点的hadoop" class="headerlink" title="10.  配置CentOS01节点的hadoop"></a>10.  配置CentOS01节点的hadoop</h3><h4 id="10-1-配置hadoop-env-sh"><a href="#10-1-配置hadoop-env-sh" class="headerlink" title="10.1  配置hadoop-env.sh"></a>10.1  配置hadoop-env.sh</h4><ol>
-<li>进入/home/work/hadoop-2.7.1/etc/hadoop</li>
-<li>打开hadoop-env.sh，vim hadoop-env.sh</li>
-<li>配置jdk安装所在目录</li>
-<li>配置hadoop文件所在目录</li>
-</ol>
-<blockquote>
-<p>export JAVA_HOME=/home/work/jdk1.8.0_65</p>
-<p>export HADOOP_CONF_DIR=/home/work/hadoop-2.7.1/etc/hadoop</p>
-</blockquote>
-<h4 id="10-2-配置core-site-xml"><a href="#10-2-配置core-site-xml" class="headerlink" title="10.2  配置core-site.xml"></a>10.2  配置core-site.xml</h4><blockquote>
-<configuration>
-     <!--用来指定hdfs的老大，ns为固定属性名，表示两个namenode-->
-     <property>
-             <name>fs.defaultFS</name>
-             <value>hdfs://ns</value>
-     </property>
-     <!--用来指定hadoop运行时产生文件的存放目录-->
-     <property>
-             <name>hadoop.tmp.dir</name>
-             <value>/home/work/hadoop-2.7.1/tmp</value>
-     </property>
-     <!--执行zookeeper地址-->
-     <property>
-             <name>ha.zookeeper.quorum</name>
-             <value>CentOS01:2181,CentOS02:2182,CentOS03:2183</value>
-     </property>
-</configuration>
-</blockquote>
-<h4 id="10-3-配置hdfs-site-xml"><a href="#10-3-配置hdfs-site-xml" class="headerlink" title="10.3  配置hdfs-site.xml"></a>10.3  配置hdfs-site.xml</h4><blockquote>
-<configuration>
-     <!--执行hdfs的nameservice为ns,和core-site.xml保持一致-->
-     <property>
-             <name>dfs.nameservices</name>
-             <value>ns</value>
-     </property>
-     <!--ns下有两个namenode,分别是nn1,nn2-->
-     <property>
-             <name>dfs.ha.namenodes.ns</name>
-             <value>nn1,nn2</value>
-     </property>
-     <!--nn1的RPC通信地址-->
-     <property>
-             <name>dfs.namenode.rpc-address.ns.nn1</name>
-             <value>CentOS01:9000</value>
-     </property>
-     <!--nn1的http通信地址-->
-             <value>nn1,nn2</value>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;&#x2F;property&gt;</span><br><span class="line">&lt;!--nn1的RPC通信地址--&gt;</span><br><span class="line">&lt;property&gt;</span><br><span class="line">        &lt;name&gt;dfs.namenode.rpc-address.ns.nn1&lt;&#x2F;name&gt;</span><br><span class="line">        &lt;value&gt;CentOS01:9000&lt;&#x2F;value&gt;</span><br><span class="line">&lt;&#x2F;property&gt;</span><br><span class="line">&lt;!--nn1的http通信地址--&gt;</span><br><span class="line">&lt;property&gt;</span><br><span class="line">        &lt;name&gt;dfs.namenode.http-address.ns.nn1&lt;&#x2F;name&gt;</span><br><span class="line">        &lt;value&gt;CentOS01:50070&lt;&#x2F;value&gt;</span><br><span class="line">&lt;&#x2F;property&gt;</span><br><span class="line">&lt;!--nn2的RPC通信地址--&gt;</span><br><span class="line">&lt;property&gt;</span><br><span class="line">        &lt;name&gt;dfs.namenode.rpc-address.ns.nn2&lt;&#x2F;name&gt;</span><br><span class="line">        &lt;value&gt;CentOS02:9000&lt;&#x2F;value&gt;</span><br><span class="line">&lt;&#x2F;property&gt;</span><br></pre></td></tr></table></figure>
-
-<p>​    <!--nn2的http通信地址--><br>​     <property><br>​             <name>dfs.namenode.http-address.ns.nn2</name><br>​             <value>CentOS02:50070</value><br>​     </property><br>​     <!--指定namenode的元数据在JournalNode上的存放位置,这样，namenode2可以 从jn集群里获取
-​               最新的namenode的信息，达到热备的效果--><br>​     <property><br>​             <name>dfs.namenode.shared.edits.dir</name><br>​             <value> qjournal://CentOS03:8485;CentOS04:8485;CentOS05:8485/ns</value><br>​     </property><br>​     <!--指定JournalNode存放数据的位置--><br>​     <property><br>​             <name>dfs.journalnode.edits.dir</name><br>​             <value>/home/work/hadoop-2.7.1/journal</value><br>​     </property><br>​     <!--开启 namenode 故障时自动切换--><br>​     <property></p>
-<p>​            <name>dfs.ha.automatic-failover.enabled</name><br>​             <value>true</value><br>​     </property><br>​     <!--配置切换的实现方式--><br>​     <property><br>​             <name>dfs.client.failover.proxy.provider.ns</name><br>​             <value> org.apache.hadoop.hdfs.server.namenode.ha.ConfiguredFailoverProxyProv ider</value><br>​     </property><br>​     <!--配置隔离机制--><br>​     <property><br>​             <name>dfs.ha.fencing.methods</name><br>​             <value>sshfence</value><br>​     </property><br>​     <!--配置隔离机制的ssh登录秘钥所在的位置--><br>​     <property><br>​             <name>dfs.ha.fencing.ssh.private-key-files</name></p>
-<p>​            <value>/root/.ssh/id_rsa</value><br>​     </property><br>​     <!--配置namenode数据存放的位置,可以不配置，如果不配置，默认用的是
-​               core-site.xml里配置的hadoop.tmp.dir的路径--><br>​     <property><br>​             <name>dfs.namenode.name.dir</name><br>​             <value>file:///home/work/hadoop-2.7.1/tmp/namenode</value><br>​     </property><br>​     <!--配置datanode数据存放的位置,可以不配置，如果不配置，默认用的是
-​            core-site.xml里配置的hadoop.tmp.dir的路径--><br>​     <property><br>​             <name>dfs.datanode.data.dir</name><br>​             <value>file:///home/work/hadoop-2.7.1/tmp/datanode</value><br>​     </property><br>​     <!--配置block副本数量--><br>​     <property><br>​             <name>dfs.replication</name><br>​             <value>3</value></p>
-<p>​    </property><br>​     <!--设置 hdfs 的操作权限， false 表示任何用户都可以在 hdfs 上操作文件--><br>​     <property><br>​             <name>dfs.permissions</name><br>​             <value>false</value><br>​     </property><br></configuration></p>
-</blockquote>
-<h4 id="10-4-配置mapred-site-xml"><a href="#10-4-配置mapred-site-xml" class="headerlink" title="10.4  配置mapred-site.xml"></a>10.4  配置mapred-site.xml</h4><p>先把mapred-site.xml.template复制一份，并命名mapred-site.xml</p>
-<blockquote>
-<configuration>
-     <property>
-     <!--指定mapreduce运行在yarn上-->
-             <name>mapreduce.framework.name</name>
-             <value>yarn</value>
-     </property>
-</configuration>
-</blockquote>
-<h4 id="10-5-配置yarn-site-xml"><a href="#10-5-配置yarn-site-xml" class="headerlink" title="10.5  配置yarn-site.xml"></a>10.5  配置yarn-site.xml</h4><blockquote>
-<configuration>
-     <!-- Site specific YARN configuration properties -->
-     <!--开启YARN HA -->
-     <property>
-             <name>yarn.resourcemanager.ha.enabled</name>
-             <value>true</value>
-     </property>
-     <!--指定两个 resourcemanager 的名称-->
-     <property>
-             <name>yarn.resourcemanager.ha.rm-ids</name>
-             <value>rm1,rm2</value>
-     </property>
-     <!--配置rm1，rm2的主机-->
-     <property>
-             <name>yarn.resourcemanager.hostname.rm1</name>
-             <value>CentOS01</value>
-      </property>
-         <property>
-                 <name>yarn.resourcemanager.hostname.rm2</name>
-                 <value>CentOS02</value>
-         </property>
-         <!--开启yarn恢复机制-->
-         <property>
-                 <name>yarn.resourcemanager.recovery.enabled</name>
-                 <value>true</value>
-         </property>
-         <!--执行rm恢复机制实现类-->
-         <property>
-                 <name>yarn.resourcemanager.store.class</name>
-                 <value>org.apache.hadoop.yarn.server.resourcemanager.recovery.ZKRMStateStore </value>
-         </property>
-         <!--配置zookeeper的地址-->
-         <property>
-                 <name>yarn.resourcemanager.zk-address</name>
- <value>CentOS01:2181,CentOS02:2182,CentOS03:2183</value>
-                 <description>For multiple zk services, separate them with comma</description>
-         </property>
-         <!--指定YARN HA的名称-->
-         <property>
-                 <name>yarn.resourcemanager.cluster-id</name>
-                 <value>yarn-ha</value>
-         </property>
-         <property>
-         <!--指定yarn的老大resoucemanager的地址-->
-                 <name>yarn.resourcemanager.hostname</name>
-                 <value>CentOS02</value>
-         </property>
-         <property>
-         <!--NodeManager 获取数据的方式-->
-                 <name>yarn.nodemanager.aux-services</name>
-                 <value>mapreduce_shuffle</value>
-         </property>
- </configuration>
-</blockquote>
-<h4 id="10-6-配置slaves文件"><a href="#10-6-配置slaves文件" class="headerlink" title="10.6  配置slaves文件"></a>10.6  配置slaves文件</h4><blockquote>
-<p>CentOS03<br>CentOS04<br>CentOS05</p>
-</blockquote>
-<h4 id="10-7-配置hadoop环境变量-已经配好了"><a href="#10-7-配置hadoop环境变量-已经配好了" class="headerlink" title="10.7  配置hadoop环境变量(已经配好了)"></a>10.7  配置hadoop环境变量(已经配好了)</h4><h4 id="10-8-根据配置文件，创建相关文件夹，用于存放对应数据"><a href="#10-8-根据配置文件，创建相关文件夹，用于存放对应数据" class="headerlink" title="10.8  根据配置文件，创建相关文件夹，用于存放对应数据"></a>10.8  根据配置文件，创建相关文件夹，用于存放对应数据</h4><p>在hadoop-2.7.1目录下创建:</p>
-<p>①journal目录</p>
-<p>②创建tmp目录</p>
-<p>③在tmp目录下，分别创建namenode目录和datanode目录</p>
-<h4 id="10-9-通过scp命令，将hadoop安装目录远程copy到其他4台主机上"><a href="#10-9-通过scp命令，将hadoop安装目录远程copy到其他4台主机上" class="headerlink" title="10.9  通过scp命令，将hadoop安装目录远程copy到其他4台主机上"></a>10.9  通过scp命令，将hadoop安装目录远程copy到其他4台主机上</h4><blockquote>
-<p>scp -r hadoop-2.7.1/ root@CentOS05:/home/work/</p>
-</blockquote>
-<h3 id="一般在那么node配置好hadoop配置文件，再发给各个节点！！"><a href="#一般在那么node配置好hadoop配置文件，再发给各个节点！！" class="headerlink" title="一般在那么node配置好hadoop配置文件，再发给各个节点！！"></a>一般在那么node配置好hadoop配置文件，再发给各个节点！！</h3>
-      
-    </div>
-
-    
-    
-    
-	<div>
-		
-	</div>
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -1760,16 +1443,35 @@ http://cailin.iteye.com/blog/2014486</code></pre><p><strong>集群节点分配�
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">20</span>
+          <span class="site-state-item-count">21</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">6</span>
-        <span class="site-state-item-name">标签</span>
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
 </div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/AndersonBlog" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;AndersonBlog" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:anderson992@163.com" title="E-Mail → mailto:anderson992@163.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/publicdomain/zero/1.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-zero.svg" alt="Creative Commons"></a>
+  </div>
 
 
 
@@ -1794,12 +1496,17 @@ http://cailin.iteye.com/blog/2014486</code></pre><p><strong>集群节点分配�
   &copy; 
   <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
-    <i class="fa fa-user"></i>
+    <i class="fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">Anderson Wu</span>
+  <span class="author" itemprop="copyrightHolder">Anderson</span>
+<script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
   </div>
+
+
+
+
 
         
 

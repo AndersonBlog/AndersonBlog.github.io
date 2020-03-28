@@ -17,7 +17,7 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Gemini","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Gemini","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
   <meta name="description" content="这几天在使用Element-UI时，发现了几个需要注意的地方，特意记录一下。 1.v-model 和 :model区别12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061&lt;el-form ref&#x3D;&quot;form&quot; :mode">
@@ -257,6 +257,23 @@
 
 		
 	</div>
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Anderson Wu
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://yoursite.com/2019/11/02/element-ui%E4%BD%BF%E7%94%A8%E4%B8%AD%E7%9A%84%E7%96%91%E9%97%AE/" title="Element UI使用中的疑问">http://yoursite.com/2019/11/02/element-ui使用中的疑问/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/publicdomain/zero/1.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>ZERO</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
 
       <footer class="post-footer">
           <div class="post-tags">
@@ -335,7 +352,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-v-model-和-model区别"><span class="nav-number">1.</span> <span class="nav-text">1.v-model 和 :model区别</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-Element-UI的select下拉框设置初值后，不能重新选择。"><span class="nav-number">2.</span> <span class="nav-text">2. Element-UI的select下拉框设置初值后，不能重新选择。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-由于双向绑定，点击取消和close-dialog时却修改了表单值"><span class="nav-number">3.</span> <span class="nav-text">3. 由于双向绑定，点击取消和close dialog时却修改了表单值</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-v-model-和-model区别"><span class="nav-text">1.v-model 和 :model区别</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-Element-UI的select下拉框设置初值后，不能重新选择。"><span class="nav-text">2. Element-UI的select下拉框设置初值后，不能重新选择。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-由于双向绑定，点击取消和close-dialog时却修改了表单值"><span class="nav-text">3. 由于双向绑定，点击取消和close dialog时却修改了表单值</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -351,16 +368,35 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">20</span>
+          <span class="site-state-item-count">21</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">6</span>
-        <span class="site-state-item-name">标签</span>
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
 </div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/AndersonBlog" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;AndersonBlog" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:anderson992@163.com" title="E-Mail → mailto:anderson992@163.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/publicdomain/zero/1.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-zero.svg" alt="Creative Commons"></a>
+  </div>
 
 
 
@@ -385,12 +421,17 @@
   &copy; 
   <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
-    <i class="fa fa-user"></i>
+    <i class="fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">Anderson Wu</span>
+  <span class="author" itemprop="copyrightHolder">Anderson</span>
+<script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
   </div>
+
+
+
+
 
         
 

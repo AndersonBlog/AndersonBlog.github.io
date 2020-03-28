@@ -17,7 +17,7 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Gemini","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Gemini","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
   <meta name="description" content="Love is love">
@@ -165,6 +165,261 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/28/SpringBoot%E5%9F%BA%E7%A1%80%E5%85%AD/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/self.png">
+      <meta itemprop="name" content="Anderson Wu">
+      <meta itemprop="description" content="Love is love">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="陪你度过漫长岁月">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/03/28/SpringBoot%E5%9F%BA%E7%A1%80%E5%85%AD/" class="post-title-link" itemprop="url">SpringBoot基础六</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-03-28 19:37:58 / 修改时间：17:06:08" itemprop="dateCreated datePublished" datetime="2020-03-28T19:37:58+08:00">2020-03-28</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/SpringBoot/" itemprop="url" rel="index"><span itemprop="name">SpringBoot</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="1-Docker"><a href="#1-Docker" class="headerlink" title="1. Docker"></a>1. Docker</h4><h5 id="1-1-简介"><a href="#1-1-简介" class="headerlink" title="1.1 简介"></a>1.1 简介</h5><p><strong>Docker</strong>是一个开源的应用容器引擎；是一个轻量级容器技术；</p>
+<p>Docker支持将软件编译成一个镜像；然后在镜像中各种软件做好配置，将镜像发布出去，其他使用者可以直接使用这个镜像；</p>
+<p>运行中的这个镜像称为容器，容器启动是非常快速的。</p>
+<p><img src="SpringBoot%E5%9F%BA%E7%A1%80%E5%85%AD/1.png" alt=""></p>
+<p><img src="SpringBoot%E5%9F%BA%E7%A1%80%E5%85%AD/2.png" alt=""></p>
+<h5 id="1-2-核心概念"><a href="#1-2-核心概念" class="headerlink" title="1.2 核心概念"></a>1.2 核心概念</h5><p>docker主机(Host)：安装了Docker程序的机器（Docker直接安装在操作系统之上）；</p>
+<p>docker客户端(Client)：连接docker主机进行操作；</p>
+<p>docker仓库(Registry)：用来保存各种打包好的软件镜像；</p>
+<p>docker镜像(Images)：软件打包成镜像；放在docker仓库中；</p>
+<p>docker容器(Container)：镜像启动后的实例称为一个容器；容器是独立运行的一个或一组应用</p>
+<p><img src="SpringBoot%E5%9F%BA%E7%A1%80%E5%85%AD/3.png" alt=""></p>
+<p>使用Docker的步骤：</p>
+<p>1）、安装Docker</p>
+<p>2）、在Docker仓库找到这个软件对应的镜像；</p>
+<p>3）、使用Docker运行这个镜像，这个镜像就会生成一个Docker容器；</p>
+<p>4）、对容器的启动停止就是对软件的启动停止；</p>
+<h5 id="1-3-安装Dock"><a href="#1-3-安装Dock" class="headerlink" title="1.3 安装Dock"></a>1.3 安装Dock</h5><p><strong>（1）、安装linux虚拟机</strong></p>
+<p>​    1）、VMWare、VirtualBox（安装）；</p>
+<p>​    2）、导入虚拟机文件centos7-atguigu.ova；</p>
+<p>​    3）、双击启动linux虚拟机;使用  root/ 123456登陆</p>
+<p>​    4）、使用客户端连接linux服务器进行命令操作；</p>
+<p>​    5）、设置虚拟机网络；</p>
+<p>​        桥接网络===选好网卡====接入网线；</p>
+<p>​    6）、设置好网络以后使用命令重启虚拟机的网络</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service network restart</span><br></pre></td></tr></table></figure>
+
+<p>​    7）、查看linux的ip地址</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ip addr</span><br></pre></td></tr></table></figure>
+
+<p>​    8）、使用客户端连接linux；</p>
+<p><strong>（2）、在linux虚拟机上安装docker</strong></p>
+<p>步骤：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">1、检查内核版本，必须是3.10及以上</span><br><span class="line">uname -r</span><br><span class="line">2、安装docker</span><br><span class="line">yum install docker</span><br><span class="line">3、输入y确认安装</span><br><span class="line">4、启动docker</span><br><span class="line">[root@localhost ~]# systemctl start docker</span><br><span class="line">[root@localhost ~]# docker -v</span><br><span class="line">Docker version 1.12.6, build 3e8e77d/1.12.6</span><br><span class="line">5、开机启动docker</span><br><span class="line">[root@localhost ~]# systemctl enable docker</span><br><span class="line">Created symlink from /etc/systemd/system/multi-user.target.wants/docker.service to /usr/lib/systemd/system/docker.service.</span><br><span class="line">6、停止docker</span><br><span class="line">systemctl stop docker</span><br></pre></td></tr></table></figure>
+
+<p><a href="https://blog.csdn.net/jackphang/article/details/80810740?depth_1-utm_source=distribute.pc_relevant.none-task&utm_source=distribute.pc_relevant.none-task" target="_blank" rel="noopener">离线安装Docker</a></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> tar xzvf docker-18.03.1-ce.tar</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> sudo cp docker/* /usr/bin/</span></span><br><span class="line"><span class="meta">#</span><span class="bash">开启 docker 守护进程（这个与常规安装方式不一样）</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> sudo dockerd &amp;</span></span><br><span class="line">-------</span><br><span class="line"><span class="meta">$</span><span class="bash"> sudo docker images</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> sudo docker ps -a</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> sudo docker --version</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> sudo docker info</span></span><br><span class="line">-----------------------------</span><br></pre></td></tr></table></figure>
+
+<p>将以下文件放入 /usr/lib/systemd/system/docker.service 中，就可使用service docker restart/stop 等操作来启停docker</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">[Unit]</span><br><span class="line">Description=Docker Application Container Engine</span><br><span class="line">Documentation=https://docs.docker.com</span><br><span class="line">After=network-online.target firewalld.service</span><br><span class="line">Wants=network-online.target</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">Type=notify</span><br><span class="line"><span class="meta">#</span><span class="bash"> the default is not to use systemd <span class="keyword">for</span> cgroups because the delegate issues still</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> exists and systemd currently does not support the cgroup feature <span class="built_in">set</span> required</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> <span class="keyword">for</span> containers run by docker</span></span><br><span class="line">ExecStart=/usr/bin/dockerd</span><br><span class="line">ExecReload=/bin/kill -s HUP $MAINPID</span><br><span class="line"><span class="meta">#</span><span class="bash"> Having non-zero Limit*s causes performance problems due to accounting overhead</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> <span class="keyword">in</span> the kernel. We recommend using cgroups to <span class="keyword">do</span> container-local accounting.</span></span><br><span class="line">LimitNOFILE=infinity</span><br><span class="line">LimitNPROC=infinity</span><br><span class="line">LimitCORE=infinity</span><br><span class="line"><span class="meta">#</span><span class="bash"> Uncomment TasksMax <span class="keyword">if</span> your systemd version supports it.</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> Only systemd 226 and above support this version.</span></span><br><span class="line"><span class="meta">#</span><span class="bash">TasksMax=infinity</span></span><br><span class="line">TimeoutStartSec=0</span><br><span class="line"><span class="meta">#</span><span class="bash"> <span class="built_in">set</span> delegate yes so that systemd does not reset the cgroups of docker containers</span></span><br><span class="line">Delegate=yes</span><br><span class="line"><span class="meta">#</span><span class="bash"> <span class="built_in">kill</span> only the docker process, not all processes <span class="keyword">in</span> the cgroup</span></span><br><span class="line">KillMode=process</span><br><span class="line"><span class="meta">#</span><span class="bash"> restart the docker process <span class="keyword">if</span> it exits prematurely</span></span><br><span class="line">Restart=on-failure</span><br><span class="line">StartLimitBurst=3</span><br><span class="line">StartLimitInterval=60s</span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br></pre></td></tr></table></figure>
+
+<h5 id="1-4-Docker-常用命令-amp-操作"><a href="#1-4-Docker-常用命令-amp-操作" class="headerlink" title="1.4 Docker 常用命令&amp;操作"></a>1.4 Docker 常用命令&amp;操作</h5><p>（1）镜像操作</p>
+<table>
+<thead>
+<tr>
+<th>操作</th>
+<th>命令</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>检索</td>
+<td>docker  search 关键字  eg：docker  search redis</td>
+<td>我们经常去docker  hub上检索镜像的详细信息，如镜像的TAG。</td>
+</tr>
+<tr>
+<td>拉取</td>
+<td>docker pull 镜像名:tag</td>
+<td>:tag是可选的，tag表示标签，多为软件的版本，默认是latest</td>
+</tr>
+<tr>
+<td>列表</td>
+<td>docker images</td>
+<td>查看所有本地镜像</td>
+</tr>
+<tr>
+<td>删除</td>
+<td>docker rmi image-id</td>
+<td>删除指定的本地镜像</td>
+</tr>
+</tbody></table>
+<p><a href="https://hub.docker.com/" target="_blank" rel="noopener">https://hub.docker.com/</a></p>
+<p>（2）容器操作</p>
+<p>软件镜像—-运行镜像—-产生一个容器；</p>
+<p>步骤：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">1、搜索镜像</span><br><span class="line">[root@localhost ~]# docker search tomcat</span><br><span class="line">2、拉取镜像</span><br><span class="line">[root@localhost ~]# docker pull tomcat</span><br><span class="line">3、根据镜像启动容器</span><br><span class="line">docker run --name mytomcat -d tomcat:latest</span><br><span class="line">4、docker ps  </span><br><span class="line">查看运行中的容器</span><br><span class="line">5、 停止运行中的容器</span><br><span class="line">docker stop  容器的id</span><br><span class="line">6、查看所有的容器</span><br><span class="line">docker ps -a</span><br><span class="line">7、启动容器</span><br><span class="line">docker start 容器id</span><br><span class="line">8、删除一个容器</span><br><span class="line"> docker rm 容器id</span><br><span class="line">9、启动一个做了端口映射的tomcat</span><br><span class="line">[root@localhost ~]# docker run -d -p 8888:8080 tomcat</span><br><span class="line">-d：后台运行</span><br><span class="line">-p: 将主机的端口映射到容器的一个端口    主机端口:容器内部的端口</span><br><span class="line"></span><br><span class="line">10、为了演示简单关闭了linux的防火墙</span><br><span class="line">service firewalld status ；查看防火墙状态</span><br><span class="line">service firewalld stop：关闭防火墙</span><br><span class="line">11、查看容器的日志</span><br><span class="line">docker logs container-name/container-id</span><br><span class="line"></span><br><span class="line">更多命令参看</span><br><span class="line">https://docs.docker.com/engine/reference/commandline/docker/</span><br><span class="line">可以参考每一个镜像的文档</span><br></pre></td></tr></table></figure>
+
+<p>（3）安装Mysql</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull mysql</span><br></pre></td></tr></table></figure>
+
+<p>错误的启动</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# docker run --name mysql01 -d mysql</span><br><span class="line">42f09819908bb72dd99ae19e792e0a5d03c48638421fa64cce5f8ba0f40f5846</span><br><span class="line"></span><br><span class="line">mysql退出了</span><br><span class="line">[root@localhost ~]# docker ps -a</span><br><span class="line">CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS                           PORTS               NAMES</span><br><span class="line">42f09819908b        mysql               "docker-entrypoint.sh"   34 seconds ago      Exited (1) 33 seconds ago                            mysql01</span><br><span class="line">538bde63e500        tomcat              "catalina.sh run"        About an hour ago   Exited (143) About an hour ago                       compassionate_</span><br><span class="line">goldstine</span><br><span class="line">c4f1ac60b3fc        tomcat              "catalina.sh run"        About an hour ago   Exited (143) About an hour ago                       lonely_fermi</span><br><span class="line">81ec743a5271        tomcat              "catalina.sh run"        About an hour ago   Exited (143) About an hour ago                       sick_ramanujan</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//错误日志</span><br><span class="line">[root@localhost ~]# docker logs 42f09819908b</span><br><span class="line">error: database is uninitialized and password option is not specified </span><br><span class="line">  You need to specify one of MYSQL_ROOT_PASSWORD, MYSQL_ALLOW_EMPTY_PASSWORD and MYSQL_RANDOM_ROOT_PASSWORD；这个三个参数必须指定一个</span><br></pre></td></tr></table></figure>
+
+<p>正确的启动</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# docker run --name mysql01 -e MYSQL_ROOT_PASSWORD=123456 -d mysql</span><br><span class="line">b874c56bec49fb43024b3805ab51e9097da779f2f572c22c695305dedd684c5f</span><br><span class="line">[root@localhost ~]# docker ps</span><br><span class="line">CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS               NAMES</span><br><span class="line">b874c56bec49        mysql               "docker-entrypoint.sh"   4 seconds ago       Up 3 seconds        3306/tcp            mysql01</span><br></pre></td></tr></table></figure>
+
+<p>做了端口映射</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# docker run -p 3306:3306 --name mysql02 -e MYSQL_ROOT_PASSWORD=123456 -d mysql</span><br><span class="line">ad10e4bc5c6a0f61cbad43898de71d366117d120e39db651844c0e73863b9434</span><br><span class="line">[root@localhost ~]# docker ps</span><br><span class="line">CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                    NAMES</span><br><span class="line">ad10e4bc5c6a        mysql               "docker-entrypoint.sh"   4 seconds ago       Up 2 seconds        0.0.0.0:3306-&gt;3306/tcp   mysql02</span><br></pre></td></tr></table></figure>
+
+<p>几个其他的高级操作</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="builtin-name">run</span> --name mysql03 -v /conf/mysql:/etc/mysql/conf.d -e <span class="attribute">MYSQL_ROOT_PASSWORD</span>=my-secret-pw -d mysql:tag</span><br><span class="line">把主机的/conf/mysql文件夹挂载到 mysqldocker容器的/etc/mysql/conf.d文件夹里面</span><br><span class="line">改mysql的配置文件就只需要把mysql配置文件放在自定义的文件夹下（/conf/mysql）</span><br><span class="line"></span><br><span class="line">docker <span class="builtin-name">run</span> --name some-mysql -e <span class="attribute">MYSQL_ROOT_PASSWORD</span>=my-secret-pw -d mysql:tag <span class="attribute">--character-set-server</span>=utf8mb4 <span class="attribute">--collation-server</span>=utf8mb4_unicode_ci</span><br><span class="line">指定mysql的一些配置参数</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-SpringBoot与数据访问"><a href="#2-SpringBoot与数据访问" class="headerlink" title="2. SpringBoot与数据访问"></a>2. SpringBoot与数据访问</h4><h5 id="1-1-JDBC"><a href="#1-1-JDBC" class="headerlink" title="1.1 JDBC"></a>1.1 JDBC</h5><p>依赖：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-jdbc<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>mysql<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mysql-connector-java<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">scope</span>&gt;</span>runtime<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>配置：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-jdbc<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>mysql<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mysql-connector-java<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">scope</span>&gt;</span>runtime<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">datasource:</span></span><br><span class="line">    <span class="attr">username:</span> <span class="string">root</span></span><br><span class="line">    <span class="attr">password:</span> <span class="string">root</span></span><br><span class="line">    <span class="attr">url:</span> <span class="string">jdbc:mysql://localhost:3306/jdbc</span></span><br><span class="line">    <span class="attr">driver-class-name:</span> <span class="string">com.mysql.cj.jdbc.Driver</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>MySQL 8.0 以上版本的数据库连接有所不同：</strong></p>
+<ul>
+<li>1、MySQL 8.0 以上版本驱动包版本 <a href="https://static.runoob.com/download/mysql-connector-java-8.0.16.jar" target="_blank" rel="noopener">mysql-connector-java-8.0.16.jar</a>。</li>
+<li>2、<strong>com.mysql.jdbc.Driver</strong> 更换为 <strong>com.mysql.cj.jdbc.Driver</strong>。</li>
+</ul>
+<p>默认使用class com.zaxxer.hikari.HikariDataSource作为数据源，相关配置 在类DataSourceProperties 中；</p>
+<p>自动配置：</p>
+<p>org.springframework.boot.autoconfigure.jdbc：</p>
+<ol>
+<li><p>参考DataSourceConfiguration，根据配置创建数据源连接池，默认使用hikari连接池；可以使用spring.datasource.type指定自定义的数据源类型；</p>
+</li>
+<li><p>SpringBoot默认支持的数据源连接池</p>
+</li>
+</ol>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">org</span><span class="selector-class">.apache</span><span class="selector-class">.commons</span><span class="selector-class">.dbcp2</span><span class="selector-class">.BasicDataSource</span></span><br><span class="line"><span class="selector-tag">com</span><span class="selector-class">.zaxxer</span><span class="selector-class">.hikari</span><span class="selector-class">.HikariDataSource</span></span><br><span class="line"><span class="selector-tag">org</span><span class="selector-class">.apache</span><span class="selector-class">.tomcat</span><span class="selector-class">.jdbc</span><span class="selector-class">.pool</span><span class="selector-class">.DataSource</span></span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>自定义数据源类型</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span>(proxyBeanMethods = <span class="keyword">false</span>)</span><br><span class="line"><span class="meta">@ConditionalOnMissingBean</span>(&#123;DataSource<span class="class">.<span class="keyword">class</span>&#125;)</span></span><br><span class="line"><span class="class">@<span class="title">ConditionalOnProperty</span>(<span class="title">name</span> </span>= &#123;<span class="string">"spring.datasource.type"</span>&#125;)</span><br><span class="line"><span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Generic</span> </span>&#123;</span><br><span class="line">    Generic() &#123;&#125;</span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function">DataSource <span class="title">dataSource</span><span class="params">(DataSourcePropert ies properties)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//使用DataSourceBuilder创建数据源，利用反射创建响应type的数据源，并且绑定相关属性</span></span><br><span class="line">        <span class="keyword">return</span> properties.initializeDataSourceBuilder().build();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>DataSourceInitializer：ApplicationListener</li>
+</ol>
+<p>​    作用：</p>
+<p>​        1）、运行建表语句；</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"> <span class="function"><span class="keyword">boolean</span> <span class="title">createSchema</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    List&lt;Resource&gt; scripts = <span class="keyword">this</span>.getScripts(</span><br><span class="line">        <span class="string">"spring.datasource.schema"</span>, <span class="keyword">this</span>.properties.getSchema(), <span class="string">"schema"</span>);</span><br><span class="line">    <span class="keyword">if</span> (!scripts.isEmpty()) &#123;</span><br><span class="line">        <span class="keyword">if</span> (!<span class="keyword">this</span>.isEnabled()) &#123;</span><br><span class="line">            logger.debug(<span class="string">"Initialization disabled (not running DDL scripts)"</span>);</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        String username = <span class="keyword">this</span>.properties.getSchemaUsername();</span><br><span class="line">        String password = <span class="keyword">this</span>.properties.getSchemaPassword();</span><br><span class="line">        <span class="keyword">this</span>.runScripts(scripts, username, password);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> !scripts.isEmpty();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>注意：需要设置initialization-mode， 默认不开启</strong></p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">datasource:</span></span><br><span class="line">    <span class="attr">username:</span> <span class="string">root</span></span><br><span class="line">    <span class="attr">password:</span> <span class="string">root</span></span><br><span class="line">    <span class="attr">url:</span> <span class="string">jdbc:mysql://localhost:3306/jdbc</span></span><br><span class="line">    <span class="attr">driver-class-name:</span> <span class="string">com.mysql.cj.jdbc.Driver</span></span><br><span class="line">    <span class="attr">initialization-mode:</span> <span class="string">always</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>​        2）、运行插入数据的sql语句；</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">initSchema</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    List&lt;Resource&gt; scripts = <span class="keyword">this</span>.getScripts(</span><br><span class="line">        <span class="string">"spring.datasource.data"</span>, <span class="keyword">this</span>.properties.getData(), <span class="string">"data"</span>);</span><br><span class="line">    <span class="keyword">if</span> (!scripts.isEmpty()) &#123;</span><br><span class="line">        <span class="keyword">if</span> (!<span class="keyword">this</span>.isEnabled()) &#123;</span><br><span class="line">            logger.debug(<span class="string">"Initialization disabled (not running data scripts)"</span>);</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        String username = <span class="keyword">this</span>.properties.getDataUsername();</span><br><span class="line">        String password = <span class="keyword">this</span>.properties.getDataPassword();</span><br><span class="line">        <span class="keyword">this</span>.runScripts(scripts, username, password);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>需要默认将文件命名为：</p>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">schema-*.sql、data-*.sql</span></span><br><span class="line"><span class="attr">默认规则：schema.sql，schema-all.sql；</span></span><br><span class="line"><span class="meta">可以使用</span>   <span class="string"></span></span><br><span class="line">	<span class="attr">schema</span>:<span class="string"></span></span><br><span class="line">      <span class="meta">-</span> <span class="string">classpath:department.sql</span></span><br><span class="line">      <span class="attr">指定位置</span></span><br></pre></td></tr></table></figure>
+
+<p>5、操作数据库：自动配置了JdbcTemplate操作数据库</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloController</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    JdbcTemplate jdbcTemplate;</span><br><span class="line">    <span class="meta">@ResponseBody</span></span><br><span class="line">    <span class="meta">@GetMapping</span>(<span class="string">"/query"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Map&lt;String, Object&gt; <span class="title">map</span><span class="params">()</span></span>&#123;</span><br><span class="line">        List&lt;Map&lt;String, Object&gt;&gt; list = jdbcTemplate.queryForList(</span><br><span class="line">            <span class="string">"select * from employee"</span>);</span><br><span class="line">        <span class="keyword">return</span> list.get(<span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="1-2-整合Druid数据源"><a href="#1-2-整合Druid数据源" class="headerlink" title="1.2 整合Druid数据源"></a>1.2 整合Druid数据源</h5><p>导入依赖：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.alibaba<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>druid<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.1.21<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>log4j<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>log4j<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.2.17<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DruidConfig</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="meta">@ConfigurationProperties</span>(prefix = <span class="string">"spring.datasource"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> DataSource <span class="title">druid</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> DruidDataSource();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//配置Druid监控</span></span><br><span class="line">    <span class="comment">// 1、配置一个管理后台的Servlet</span></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> ServletRegistrationBean <span class="title">statViewServlet</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        ServletRegistrationBean bean = <span class="keyword">new</span> ServletRegistrationBean(<span class="keyword">new</span> StatViewServlet(), <span class="string">"/druid/*"</span>);</span><br><span class="line">        Map&lt;String, String&gt; initParams = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        initParams.put(<span class="string">"loginUsername"</span>, <span class="string">"admin"</span>);</span><br><span class="line">        initParams.put(<span class="string">"loginPassword"</span>, <span class="string">"admin"</span>);</span><br><span class="line">        initParams.put(<span class="string">"allow"</span>, <span class="string">""</span>);<span class="comment">// 默认支持所有访问</span></span><br><span class="line">        initParams.put(<span class="string">"deny"</span>, <span class="string">"192.168.10.10"</span>);</span><br><span class="line"></span><br><span class="line">        bean.setInitParameters(initParams);</span><br><span class="line">        <span class="keyword">return</span> bean;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 2、配置一个监控的filter</span></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> FilterRegistrationBean <span class="title">webStatFilter</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        FilterRegistrationBean bean = <span class="keyword">new</span> FilterRegistrationBean();</span><br><span class="line">        bean.setFilter(<span class="keyword">new</span> WebStatFilter());</span><br><span class="line">        Map&lt;String, String&gt; initParams = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        initParams.put(<span class="string">"exclusions"</span>, <span class="string">"*.js,*.css,/druid/*"</span>);</span><br><span class="line">        bean.setInitParameters(initParams);</span><br><span class="line">        bean.setUrlPatterns(Arrays.asList(<span class="string">"/*"</span>));</span><br><span class="line">        <span class="keyword">return</span> bean;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="1-3-整合Mybatis"><a href="#1-3-整合Mybatis" class="headerlink" title="1.3 整合Mybatis"></a>1.3 整合Mybatis</h5><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.mybatis.spring.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mybatis-spring-boot-starter<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.1.2<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="SpringBoot%E5%9F%BA%E7%A1%80%E5%85%AD/4.png" alt=""></p>
+<p>步骤：</p>
+<p>​    1）、配置数据源相关属性</p>
+<p>​    2）、给数据库建表</p>
+<p>​    3）、创建JavaBean</p>
+<h6 id="1-注解版"><a href="#1-注解版" class="headerlink" title="(1) 注解版"></a>(1) 注解版</h6><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Mapper</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">DepartmentMapper</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Select</span>(<span class="string">"select * from department where id = #&#123;id&#125;"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Department <span class="title">getDepartById</span><span class="params">(Integer id)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Delete</span>(<span class="string">"delete from department where id =#&#123;id&#125;"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">deleteDepartById</span><span class="params">(Integer id)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Options</span>(useGeneratedKeys = <span class="keyword">true</span>, keyProperty = <span class="string">"id"</span>)</span><br><span class="line">    <span class="meta">@Insert</span>(<span class="string">"insert into department(departmentName) values(#&#123;departmentName&#125;)"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">insertDepart</span><span class="params">(Department department)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Update</span>(<span class="string">"update department set departmentName=#&#123;departmentName&#125; where id = #&#123;id&#125;"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">updateDept</span><span class="params">(Department department)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>存在问题： 当bean对象属性名于数据库字段名不一致时，映射失败！</strong></p>
+<p>自定义MyBatis的配置规则；给容器中添加一个ConfigurationCustomizer；开启驼峰命名</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MybtisConfig</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> ConfigurationCustomizer <span class="title">configurationCustomizer</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> ConfigurationCustomizer() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">customize</span><span class="params">(org.apache.ibatis.session.Configuration configuration)</span> </span>&#123;</span><br><span class="line">                configuration.setMapUnderscoreToCamelCase(<span class="keyword">true</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>关于@Mapper注解</strong></p>
+<p>在启动类中添加一下注解，可以每个mapper 都可以省略@Mapper</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@MapperScan</span>(value = <span class="string">"com.wu.mapper"</span>)</span><br></pre></td></tr></table></figure>
+
+<p>使用MapperScan批量扫描所有的Mapper接口；</p>
+<h6 id="2）配置文件版"><a href="#2）配置文件版" class="headerlink" title="(2）配置文件版"></a>(2）配置文件版</h6><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">mybatis:</span></span><br><span class="line">  <span class="attr">config-location:</span> <span class="string">classpath:mybatis/mybatis-config.xml</span></span><br><span class="line">  <span class="comment">#指定全局配置文件的位置</span></span><br><span class="line">  <span class="attr">mapper-locations:</span> <span class="string">classpath:mybatis/mapper/*.xml</span></span><br><span class="line">  <span class="comment">#指定sql映射文件的位置</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//mapper 接口</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">EmployeeMapper</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Employee <span class="title">getEmpById</span><span class="params">(Integer id)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">insertEmp</span><span class="params">(Employee employee)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>存在同样bean对象属性名于数据库字段名不一致问题;</p>
+<p>可以通过配置mybatis-config.xml 文件；开启驼峰命名</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="UTF-8" ?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">configuration</span></span></span><br><span class="line"><span class="meta">        <span class="meta-keyword">PUBLIC</span> <span class="meta-string">"-//mybatis.org//DTD Config 3.0//EN"</span></span></span><br><span class="line"><span class="meta">        <span class="meta-string">"http://mybatis.org/dtd/mybatis-3-config.dtd"</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 配置文件的根元素 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">settings</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">setting</span> <span class="attr">name</span>=<span class="string">"mapUnderscoreToCamelCase"</span> <span class="attr">value</span>=<span class="string">"true"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">settings</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">mapper</span> <span class="meta-keyword">PUBLIC</span> <span class="meta-string">"-//mybatis.org//DTD Mapper 3.0//EN"</span></span></span><br><span class="line"><span class="meta">        <span class="meta-string">"http://mybatis.org/dtd/mybatis-3-mapper.dtd"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">mapper</span> <span class="attr">namespace</span>=<span class="string">"com.wu.mapper.EmployeeMapper"</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--public Employee getEmpById(Integer id);</span></span><br><span class="line"><span class="comment">    public void insertEmp(Employee employee);--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"getEmpById"</span> <span class="attr">parameterType</span>=<span class="string">"Integer"</span> <span class="attr">resultType</span>=<span class="string">"com.wu.bean.Employee"</span>&gt;</span></span><br><span class="line">        SELECT * FROM employee WHERE id =#&#123;id&#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">insert</span> <span class="attr">id</span> =<span class="string">"insertEmp"</span>&gt;</span></span><br><span class="line">        INSERT INTO employee(lastName, email, gender,d_id) VALUES(#&#123;lastName&#125;,#&#123;email&#125;,#&#123;gender&#125;,#&#123;dId&#125;)</span><br><span class="line">    <span class="tag">&lt;/<span class="name">insert</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">mapper</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="1-4-整合SpringData-JPA"><a href="#1-4-整合SpringData-JPA" class="headerlink" title="1.4 整合SpringData JPA"></a>1.4 整合SpringData JPA</h5><p>JPA:ORM（Object Relational Mapping）；</p>
+<p><img src="SpringBoot%E5%9F%BA%E7%A1%80%E5%85%AD/5.png" alt=""></p>
+<p>1）、编写一个实体类（bean）和数据表进行映射，并且配置好映射关系；</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Table</span>(name = <span class="string">"tbl_user"</span>)<span class="comment">//@Table来指定和哪个数据表对应;如果省略默认表名就是user；</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Id</span><span class="comment">//主键</span></span><br><span class="line">    <span class="meta">@GeneratedValue</span>(strategy = GenerationType.IDENTITY)<span class="comment">//自增主键</span></span><br><span class="line">    <span class="keyword">private</span> Integer id;</span><br><span class="line">    <span class="meta">@Column</span>(name = <span class="string">"last_name"</span>)<span class="comment">//与数据表对应的列名</span></span><br><span class="line">    <span class="keyword">private</span> String lastName;</span><br><span class="line">    <span class="keyword">private</span> String email; <span class="comment">//省略默认列名就是属性名</span></span><br></pre></td></tr></table></figure>
+
+<p>2）、编写一个Dao接口来操作实体类对应的数据表（Repository）</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//继承JpaRepository来完成对数据库的操作</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">UserRepository</span> <span class="keyword">extends</span> <span class="title">JpaRepository</span>&lt;<span class="title">User</span>,<span class="title">Integer</span>&gt; </span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>3）、基本的配置JpaProperties</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span>  </span><br><span class="line"> <span class="attr">jpa:</span></span><br><span class="line">    <span class="attr">hibernate:</span></span><br><span class="line"><span class="comment">#     更新或者创建数据表结构</span></span><br><span class="line">      <span class="attr">ddl-auto:</span> <span class="string">update</span></span><br><span class="line"><span class="comment">#    控制台显示SQL</span></span><br><span class="line">    <span class="attr">show-sql:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+
+<h4 id=""><a href="#" class="headerlink" title=""></a></h4>
+      
+    </div>
+
+    
+    
+    
+	<div>
+		
+	</div>
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/21/SpringBoot%E5%9F%BA%E7%A1%80%E4%BA%94/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -196,8 +451,17 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-03-19 23:31:02" itemprop="dateModified" datetime="2020-03-19T23:31:02+08:00">2020-03-19</time>
+                <time title="修改时间：2020-03-28 17:06:12" itemprop="dateModified" datetime="2020-03-28T17:06:12+08:00">2020-03-28</time>
               </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/SpringBoot/" itemprop="url" rel="index"><span itemprop="name">SpringBoot</span></a>
+                </span>
+            </span>
 
           
 
@@ -460,8 +724,17 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-03-19 23:30:23" itemprop="dateModified" datetime="2020-03-19T23:30:23+08:00">2020-03-19</time>
+                <time title="修改时间：2020-03-28 17:06:19" itemprop="dateModified" datetime="2020-03-28T17:06:19+08:00">2020-03-28</time>
               </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/SpringBoot/" itemprop="url" rel="index"><span itemprop="name">SpringBoot</span></a>
+                </span>
+            </span>
 
           
 
@@ -763,9 +1036,24 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2020-03-08 19:37:58 / 修改时间：22:38:28" itemprop="dateCreated datePublished" datetime="2020-03-08T19:37:58+08:00">2020-03-08</time>
+              <time title="创建时间：2020-03-08 19:37:58" itemprop="dateCreated datePublished" datetime="2020-03-08T19:37:58+08:00">2020-03-08</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-03-28 17:06:04" itemprop="dateModified" datetime="2020-03-28T17:06:04+08:00">2020-03-28</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/SpringBoot/" itemprop="url" rel="index"><span itemprop="name">SpringBoot</span></a>
+                </span>
             </span>
 
           
@@ -797,7 +1085,7 @@
 <ol start="2">
 <li>“/**” 访问当前项目的任何资源，（静态资源默认访问的文件夹）</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&quot;classpath:&#x2F;META-INF&#x2F;resources&#x2F;&quot;, </span><br><span class="line">&quot;classpath:&#x2F;resources&#x2F;&quot;, </span><br><span class="line">&quot;classpath:&#x2F;static&#x2F;&quot;, </span><br><span class="line">&quot;classpath:&#x2F;public&#x2F;&quot;,</span><br></pre></td></tr></table></figure>
+<figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"classpath:/META-INF/resources/"</span>, </span><br><span class="line"><span class="string">"classpath:/resources/"</span>, </span><br><span class="line"><span class="string">"classpath:/static/"</span>, </span><br><span class="line"><span class="string">"classpath:/public/"</span>,</span><br></pre></td></tr></table></figure>
 
 <p><del>“/“ 当前项目的根路径</del> </p>
 <p>例如：</p>
@@ -815,7 +1103,7 @@
 
 <p><strong>Thymeleaf 自动渲染classpath:/templates/路径下的HTML文件</strong></p>
 <p>注意：在编写controller时，不能使用@RestController，要使用@Controller，否则无效，因为</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">1)只是使用@RestController注解Controller，则Controller中的方法无法返回jsp页面，配置的视图解析器InternalResourceViewResolver不起作用，返回的内容就是Return 里的内容。</span><br><span class="line"></span><br><span class="line">例如：本来应该到success.jsp页面的，则其显示success.</span><br><span class="line"></span><br><span class="line">2)如果需要返回到指定页面，则需要用 @Controller配合视图解析器InternalResourceViewResolver才行。</span><br><span class="line">3)如果需要返回JSON，XML或自定义mediaType内容到页面，则需要在对应的方法上加上@ResponseBody注解。</span><br></pre></td></tr></table></figure>
+<figure class="highlight autoit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>)只是使用<span class="symbol">@RestController</span>注解Controller，则Controller中的方法无法返回jsp页面，配置的视图解析器InternalResourceViewResolver不起作用，返回的内容就是<span class="keyword">Return</span> 里的内容。</span><br><span class="line"></span><br><span class="line">例如：本来应该到success.jsp页面的，则其显示success.</span><br><span class="line"></span><br><span class="line"><span class="number">2</span>)如果需要返回到指定页面，则需要用 <span class="symbol">@Controller</span>配合视图解析器InternalResourceViewResolver才行。</span><br><span class="line"><span class="number">3</span>)如果需要返回JSON，XML或自定义mediaType内容到页面，则需要在对应的方法上加上<span class="symbol">@ResponseBody</span>注解。</span><br></pre></td></tr></table></figure>
 
 <p>使用：</p>
 <ol>
@@ -880,9 +1168,24 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2020-02-27 19:37:58 / 修改时间：18:03:54" itemprop="dateCreated datePublished" datetime="2020-02-27T19:37:58+08:00">2020-02-27</time>
+              <time title="创建时间：2020-02-27 19:37:58" itemprop="dateCreated datePublished" datetime="2020-02-27T19:37:58+08:00">2020-02-27</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-03-28 17:05:31" itemprop="dateModified" datetime="2020-03-28T17:05:31+08:00">2020-03-28</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/SpringBoot/" itemprop="url" rel="index"><span itemprop="name">SpringBoot</span></a>
+                </span>
             </span>
 
           
@@ -965,7 +1268,7 @@
 <figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">logging.level.com.wu</span>=<span class="string">trace</span></span><br><span class="line"><span class="comment">#指定具体包下的日志记录等级</span></span><br><span class="line"></span><br><span class="line"><span class="meta">logging.file.name</span>=<span class="string">mylog.log</span></span><br><span class="line"><span class="comment">#logging.file.name=D:/mylog.log</span></span><br><span class="line"><span class="comment">#指定日志文件名，默认路径为当前项目下，也可以指定路径</span></span><br><span class="line"></span><br><span class="line"><span class="meta">logging.file.path</span>=<span class="string">/spring/log</span></span><br><span class="line"><span class="comment"># 可以指定完整的路径（不能带文件名），在当前磁盘的根路径下创建spring文件夹和里面的log文件夹；使用 spring.log 作为默认文件；不指定路径，默认在当前项目下生成springboot.log日志</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#当logging.file.name和logging.file.path同时指定，只有前者生效</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#  在控制台输出的日志的格式</span></span><br><span class="line"><span class="meta">logging.pattern.console</span>=<span class="string">%d&#123;yyyy-MM-dd&#125; [%thread] %-5level %logger&#123;50&#125; - %msg%n</span></span><br><span class="line"><span class="comment"># 指定文件中日志输出的格式</span></span><br><span class="line"><span class="meta">logging.pattern.file</span>=<span class="string">%d&#123;yyyy-MM-dd&#125; === [%thread] === %-5level === %logger&#123;50&#125; ==== %msg%n</span></span><br></pre></td></tr></table></figure>
 
 <p>示例：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">日志输出格式：</span><br><span class="line">	%d表示日期时间，</span><br><span class="line">	%thread表示线程名，</span><br><span class="line">	%-5level：级别从左显示5个字符宽度</span><br><span class="line">	%logger&#123;50&#125; 表示logger名字最长50个字符，否则按照句点分割。 </span><br><span class="line">	%msg：日志消息，</span><br><span class="line">	%n是换行符</span><br><span class="line"></span><br><span class="line">   %d&#123;yyyy-MM-dd HH:mm:ss.SSS&#125; [%thread] %-5level %logger&#123;50&#125; - %msg%n</span><br></pre></td></tr></table></figure>
+<figure class="highlight haml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">日志输出格式：</span><br><span class="line"><span class="tag">	%<span class="selector-tag">d</span></span>表示日期时间，</span><br><span class="line"><span class="tag">	%<span class="selector-tag">thread</span></span>表示线程名，</span><br><span class="line"><span class="tag">	%</span>-5level：级别从左显示5个字符宽度</span><br><span class="line"><span class="tag">	%<span class="selector-tag">logger</span>&#123;50&#125;</span> 表示logger名字最长50个字符，否则按照句点分割。 </span><br><span class="line"><span class="tag">	%<span class="selector-tag">msg</span></span>：日志消息，</span><br><span class="line"><span class="tag">	%<span class="selector-tag">n</span></span>是换行符</span><br><span class="line"></span><br><span class="line"><span class="tag">   %<span class="selector-tag">d</span>&#123;yyyy-MM-dd HH:mm:ss.SSS&#125;</span> [%thread] %-5level %logger&#123;50&#125; - %msg%n</span><br></pre></td></tr></table></figure>
 
 <table>
 <thead>
@@ -1084,8 +1387,17 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-02-25 19:02:22" itemprop="dateModified" datetime="2020-02-25T19:02:22+08:00">2020-02-25</time>
+                <time title="修改时间：2020-03-28 17:05:57" itemprop="dateModified" datetime="2020-03-28T17:05:57+08:00">2020-03-28</time>
               </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/SpringBoot/" itemprop="url" rel="index"><span itemprop="name">SpringBoot</span></a>
+                </span>
+            </span>
 
           
 
@@ -1106,7 +1418,7 @@
 <p><strong>@SpringBootConfiguration</strong>：该注解作用于某类上时，表明该类是一个SpringBoot的配置类</p>
 <p>​            <strong>@Configuration：</strong> 用于标注配置类，相当于Spring中的配置文件；其实配置类也是容器的一个组件，拥            有<strong>@Component</strong>注解</p>
 <p><strong>@EnableAutoConfiguration：</strong> 开启自动配置功能；</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@AutoConfigurationPackage</span><br><span class="line">@Import(&#123;AutoConfigurationImportSelector.class&#125;)</span><br><span class="line">public @interface EnableAutoConfiguration &#123;</span><br></pre></td></tr></table></figure>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">@AutoConfigurationPackage</span></span><br><span class="line"><span class="variable">@Import</span>(&#123;AutoConfigurationImportSelector.class&#125;)</span><br><span class="line">public <span class="variable">@interface</span> EnableAutoConfiguration &#123;</span><br></pre></td></tr></table></figure>
 
 <p>​            <strong>@AutoConfigurationPackage</strong>: 自动配置包</p>
 <p>​                            <strong>@Import({Registrar.class})</strong>： Spring底层注解，用于给容器导入一个组件；导入组件由                            Registrar.class指定</p>
@@ -1647,8 +1959,17 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-10-30 23:41:58" itemprop="dateModified" datetime="2019-10-30T23:41:58+08:00">2019-10-30</time>
+                <time title="修改时间：2020-03-28 17:07:51" itemprop="dateModified" datetime="2020-03-28T17:07:51+08:00">2020-03-28</time>
               </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Vue/" itemprop="url" rel="index"><span itemprop="name">Vue</span></a>
+                </span>
+            </span>
 
           
 
@@ -1810,8 +2131,17 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-10-16 23:31:20" itemprop="dateModified" datetime="2019-10-16T23:31:20+08:00">2019-10-16</time>
+                <time title="修改时间：2020-03-28 17:04:52" itemprop="dateModified" datetime="2020-03-28T17:04:52+08:00">2020-03-28</time>
               </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/SpringBoot/" itemprop="url" rel="index"><span itemprop="name">SpringBoot</span></a>
+                </span>
+            </span>
 
           
 
@@ -2022,133 +2352,11 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/27/%E6%B5%85%E6%9E%90cookie-session-token/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/self.png">
-      <meta itemprop="name" content="Anderson Wu">
-      <meta itemprop="description" content="Love is love">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="陪你度过漫长岁月">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/09/27/%E6%B5%85%E6%9E%90cookie-session-token/" class="post-title-link" itemprop="url">浅析cookie，session和token</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-09-27 19:37:58" itemprop="dateCreated datePublished" datetime="2019-09-27T19:37:58+08:00">2019-09-27</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-10-13 22:34:38" itemprop="dateModified" datetime="2019-10-13T22:34:38+08:00">2019-10-13</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h5 id="一、发展史"><a href="#一、发展史" class="headerlink" title="一、发展史"></a>一、发展史</h5><p>​            以前，Web应用基本都是文档浏览，在浏览过程中，服务器无需记录哪位用户浏览了哪些文档，所以每次请求都是新的HTTP协议（请求和响应）。</p>
-<p>​            当我们用浏览器打开一个网页，用到的是HTTP协议，它是无状态的，当前请求和上一次请求是没有任何关系的，互不关联。但是这种无状态的的好处是快速。所以就会带来一个问题就是，当几个请求的页面要有关联，比如：我在<a href="http://www.a.com/login.php里面登陆了，我在www.a.com/index.php" target="_blank" rel="noopener">www.a.com/login.php里面登陆了，我在www.a.com/index.php</a> 也希望是登陆状态，但是，这是2个不同的页面，也就是2个不同的HTTP请求，这2个HTTP请求是无状态的，也就是无关联的，所以无法单纯的在index.php中读取到它在login.php中已经登陆了！</p>
-<p>​            因为不可能这2个页面都去登陆一次或者2个页面都去查询数据库，如果有登陆状态，就判断是登陆的了。这种查询数据库的方案虽然可行，但是每次都要去查询数据库，会造成数据库的压力。 </p>
-<p>​            为了解决以上问题，一种新的客户端存储数据方式出现了：cookie。cookie是把少量的信息存储在用户自己的电脑上，它在一个域名下是一个全局的，只要设置它的存储路径在域名<a href="http://www.a.com下" target="_blank" rel="noopener">www.a.com下</a> ，那么当用户用浏览器访问时，php就可以从这个域名的任意页面读取cookie中的信息。所以就很好的解决了我在<a href="http://www.a.com/login.php页面登陆了，我也可以在www.a.com/index.php获取到这个登陆信息了。同时又不用反复去查询数据库。" target="_blank" rel="noopener">www.a.com/login.php页面登陆了，我也可以在www.a.com/index.php获取到这个登陆信息了。同时又不用反复去查询数据库。</a></p>
-<p>​            虽然这种方案很不错，也很快速方便，但是由于cookie 是存在用户端，而且它本身存储的尺寸大小也有限，最关键是用户可以是可见的，并可以随意的修改，很不安全。那如何又要安全，又可以方便的全局读取信息呢？于是，这个时候，一种新的存储会话机制：session 诞生了。</p>
-<h5 id="二、cookie"><a href="#二、cookie" class="headerlink" title="二、cookie"></a>二、cookie</h5><p>​            cookie是浏览器里面能永久存储的数据，仅仅是浏览器实现的一种数据存储功能。</p>
-<p>​             cookie由服务器生成，发送给浏览器，浏览器把cookie以k-v形式保存到某个目录下的文本文件内，下一次请求同一网站时会把该cookie发送给服务器。由于cookie是存在客户端上的，所以浏览器加入了一些限制确保cookie不会被恶意使用，同时不会占据太多磁盘空间，所以每个域的cookie数量是有限的。</p>
-<h5 id="三、session"><a href="#三、session" class="headerlink" title="三、session"></a>三、session</h5><p>​            Session 就是在一次会话中解决2次HTTP的请求的关联，让它们产生联系，让2两个页面都能读取到找个这个全局的session信息。session信息存在于服务器端，所以也就很好的解决了安全问题。</p>
-<p>​            Session的中文翻译是“会话”，当用户打开某个web应用时，便与web服务器产生一次session。服务器使用session把用户的信息临时保存在了服务器上，用户离开网站后session会被销毁。这种用户信息存储方式相对cookie来说更安全，可是session有一个缺陷：如果web服务器做了负载均衡，那么下一个操作请求到了另一台服务器的时候session会丢失。</p>
-<p><strong>session请求过程：</strong></p>
-<ul>
-<li><p>客户端向服务器请求，发送用户名和密码</p>
-</li>
-<li><p>服务器生成sessionId，绑定用户数据存储在数据库</p>
-</li>
-<li><p>服务器返回sessionId给客户端</p>
-</li>
-<li><p>客户端存储sessionId，以后的请求都带上这个sessionId</p>
-</li>
-<li><p>服务器如果收到这个sessionId，那么就去数据库查找用户数据，如果找到了说明验证通过</p>
-</li>
-<li><p>服务器把验证结果返回客户端</p>
-</li>
-</ul>
-<p><img src="%E6%B5%85%E6%9E%90cookie-session-token/1.png" alt=""></p>
-<blockquote>
-<p>session存在问题：</p>
-<p>1、session保存在服务端，当客户访问量增加时，服务端就需要存储大量的session会话，对服务器有很大的考验；<br>2、当服务端为集群时，用户登陆其中一台服务器，会将session保存到该服务器的内存中，但是当用户的访问到其他服务器时，会无法访问，通常采用缓存一致性技术来保证可以共享，或者采用第三方缓存来保存session，不方便。</p>
-</blockquote>
-<h5 id="四、Token"><a href="#四、Token" class="headerlink" title="四、Token"></a>四、Token</h5><p>​            Token是服务端生成的一串字符串，以作客户端进行请求的一个令牌，当第一次登录后，服务器生成一个Token便将此Token返回给客户端，以后客户端只需带上这个Token前来请求数据即可，无需再次带上用户名和密码。</p>
-<p>​            Token 的认证方式类似于<strong>临时的证书签名</strong>, 并且是一种服务端无状态的认证方式, 非常适合于 REST API 的场景. 所谓无状态就是服务端并不会保存身份认证相关的数据。</p>
-<p><strong>Token组成：</strong></p>
-<ul>
-<li>uid: 用户唯一身份标识</li>
-<li>time: 当前时间的时间戳</li>
-<li>sign: 签名, 使用 hash/encrypt 压缩成定长的十六进制字符串，以防止第三方恶意拼接</li>
-<li>固定参数(可选): 将一些常用的固定参数加入到 token 中是为了避免重复查库</li>
-</ul>
-<p><strong>Toeken存放：</strong></p>
-<p>Token在客户端一般存放于localStorage，cookie，或sessionStorage中。在服务器一般存于数据库中.</p>
-<p><strong>Token过程:</strong><br>1、客户端向服务器请求，发送用户名和密码<br>2、服务器根据用户信息通过加密生成token，用户信息包括账号，token过期时间等，具体由服务器自定义。<br>3、服务器返回token给客户端<br>4、客户端用cookie存储token，以后的请求都带上这个token<br>5、服务器把token解密，确认用户信息是否正确，如经过正确就说明验证通过。<br>6、服务器把验证结果返回客户端</p>
-<p><img src="%E6%B5%85%E6%9E%90cookie-session-token/2.png" alt=""></p>
-<h5 id="五、Cookie与session区别："><a href="#五、Cookie与session区别：" class="headerlink" title="五、Cookie与session区别："></a>五、Cookie与session区别：</h5><p>1、cookie数据存放在客户的浏览器上，session数据放在服务器上。<br>2、cookie不是很安全，别人可以分析存放在本地的cookie并进行cookie欺骗,考虑到安全应当使用session。</p>
-<p>3、session会在一定时间内保存在服务器上。当访问增多，会比较占用你服务器的性能,考虑到减轻服务器性能方面，应当使用cookie。</p>
-<p>4、单个cookie保存的数据不能超过4K，很多浏览器都限制一个站点最多保存20个cookie。</p>
-<h5 id="六、Token与session区别"><a href="#六、Token与session区别" class="headerlink" title="六、Token与session区别"></a>六、Token与session区别</h5><ol>
-<li>token就是令牌，比如你授权（登录）一个程序时，他就是个依据，判断你是否已经授权该软件，Token的状态是存储在客户端。</li>
-<li>cookie就是写在客户端的一个txt文件，里面包括你登录信息之类的，这样你下次在登录某个网站，就会自动调用cookie自动登录用户名；</li>
-<li>session是写在服务器端的文件，也需要在客户端写入cookie文件，但是文件里是你的浏览器编号.Session的状态是存储在服务器端，客户端只有session id；</li>
-</ol>
-<h5 id="七、小结"><a href="#七、小结" class="headerlink" title="七、小结"></a>七、小结</h5><ol>
-<li>session存储于服务器，可以理解为一个状态列表，拥有一个唯一识别符号sessionId，通常存放于cookie中。服务器收到cookie后解析出sessionId，再去session列表中查找，才能找到相应session。依赖cookie</li>
-<li>cookie类似一个令牌，装有sessionId，存储在客户端，浏览器通常会自动添加。</li>
-<li>token也类似一个令牌，无状态，用户信息都被加密到token中，服务器收到token后解密就可知道是哪个用户。需要开发者手动添加。</li>
-</ol>
-
-      
-    </div>
-
-    
-    
-    
-	<div>
-		
-	</div>
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -2216,16 +2424,35 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">20</span>
+          <span class="site-state-item-count">21</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">6</span>
-        <span class="site-state-item-name">标签</span>
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
 </div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/AndersonBlog" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;AndersonBlog" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:anderson992@163.com" title="E-Mail → mailto:anderson992@163.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/publicdomain/zero/1.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-zero.svg" alt="Creative Commons"></a>
+  </div>
 
 
 
@@ -2250,12 +2477,17 @@
   &copy; 
   <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
-    <i class="fa fa-user"></i>
+    <i class="fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">Anderson Wu</span>
+  <span class="author" itemprop="copyrightHolder">Anderson</span>
+<script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
   </div>
+
+
+
+
 
         
 
