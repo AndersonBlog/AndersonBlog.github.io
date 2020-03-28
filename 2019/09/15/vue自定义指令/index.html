@@ -27,14 +27,14 @@
 <meta property="og:site_name" content="陪你度过漫长岁月">
 <meta property="og:description" content="1.背景：​         这周差不多一周没有正式写代码，成为一名“数据分析师”，回想起之前学习的前端框架vue，我好像对vue的自定义指定不熟悉，决定学习这一部分内容。 2.常用指令​        vue有很多常用指令，比如v-on添加监听事件，v-bind做属性绑定，v-if进行控制切换一个元素是否显示，v-for指令可以绑定数组的数据来渲染一个项目列表。 3.自定义指令​">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://yoursite.com/2019/09/15/vue%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8C%87%E4%BB%A4/vue%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8C%87%E4%BB%A4/define1.PNG">
-<meta property="og:image" content="http://yoursite.com/2019/09/15/vue%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8C%87%E4%BB%A4/vue%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8C%87%E4%BB%A4/define2.PNG">
+<meta property="og:image" content="http://yoursite.com/2019/09/15/vue%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8C%87%E4%BB%A4/define1.PNG">
+<meta property="og:image" content="http://yoursite.com/2019/09/15/vue%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8C%87%E4%BB%A4/define2.PNG">
 <meta property="article:published_time" content="2019-09-15T12:02:19.000Z">
 <meta property="article:modified_time" content="2020-03-28T09:08:17.949Z">
 <meta property="article:author" content="Anderson Wu">
 <meta property="article:tag" content="instruction">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://yoursite.com/2019/09/15/vue%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8C%87%E4%BB%A4/vue%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8C%87%E4%BB%A4/define1.PNG">
+<meta name="twitter:image" content="http://yoursite.com/2019/09/15/vue%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8C%87%E4%BB%A4/define1.PNG">
 
 <link rel="canonical" href="http://yoursite.com/2019/09/15/vue%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8C%87%E4%BB%A4/">
 
@@ -240,7 +240,7 @@
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"http://how2j.cn/study/vue.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"> </span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"div1"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">v-pink</span>&gt;</span> 好好学习，天天向上 <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"> </span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"> </span><br><span class="line"><span class="actionscript">Vue.directive(<span class="string">'pink'</span>, <span class="function"><span class="keyword">function</span> <span class="params">(el)</span> </span>&#123;</span></span><br><span class="line"><span class="actionscript">    el.innerHTML = el.innerHTML + <span class="string">' ( 使用自定义指令x-pink ) '</span></span></span><br><span class="line"><span class="actionscript">    el.style.color = <span class="string">'pink'</span></span></span><br><span class="line">    el.font-weight:bold</span><br><span class="line">&#125;)</span><br><span class="line"> </span><br><span class="line"><span class="actionscript"><span class="keyword">new</span> Vue(&#123;</span></span><br><span class="line"><span class="actionscript">  el: <span class="string">'#div1'</span></span></span><br><span class="line">&#125;)</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <p>效果：</p>
-<p><img src="vue%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8C%87%E4%BB%A4/define1.PNG" alt=""></p>
+<p><img src="/2019/09/15/vue%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8C%87%E4%BB%A4/define1.PNG" alt></p>
 <h5 id="4-带参数的自定义指令"><a href="#4-带参数的自定义指令" class="headerlink" title="4.带参数的自定义指令"></a>4.带参数的自定义指令</h5><p>​        自定义指令可以获取视图中的json对象的值。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Vue.directive(<span class="string">'xart'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">el,binding</span>) </span>&#123;</span><br><span class="line">	el.innerHTML = el.innerHTML + <span class="string">'( '</span> + binding.value.text + <span class="string">' )'</span></span><br><span class="line">	el.style.color = binding.value.color</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 
@@ -251,7 +251,7 @@
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"http://how2j.cn/study/vue.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"> </span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"div1"</span>&gt;</span></span><br><span class="line">     </span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">v-xart</span>=<span class="string">"&#123;color:'red',text:'best learning video'&#125;"</span>&gt;</span> 好好学习，天天向上 <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">     </span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"> </span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"> </span><br><span class="line"><span class="actionscript">Vue.directive(<span class="string">'xart'</span>, <span class="function"><span class="keyword">function</span> <span class="params">(el,binding)</span> </span>&#123;</span></span><br><span class="line"><span class="actionscript">    el.innerHTML = el.innerHTML + <span class="string">'( '</span> + binding.value.text + <span class="string">' )'</span></span></span><br><span class="line">    el.style.color = binding.value.color</span><br><span class="line">&#125;)</span><br><span class="line"> </span><br><span class="line"><span class="actionscript"><span class="keyword">new</span> Vue(&#123;</span></span><br><span class="line"><span class="actionscript">  el: <span class="string">'#div1'</span></span></span><br><span class="line">&#125;)</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <p>效果：</p>
-<p><img src="vue%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8C%87%E4%BB%A4/define2.PNG" alt=""></p>
+<p><img src="/2019/09/15/vue%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8C%87%E4%BB%A4/define2.PNG" alt></p>
 
     </div>
 
@@ -379,7 +379,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">21</span>
+          <span class="site-state-item-count">22</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

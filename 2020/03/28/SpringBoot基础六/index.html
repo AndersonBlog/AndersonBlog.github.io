@@ -27,17 +27,17 @@
 <meta property="og:site_name" content="陪你度过漫长岁月">
 <meta property="og:description" content="1. Docker1.1 简介Docker是一个开源的应用容器引擎；是一个轻量级容器技术； Docker支持将软件编译成一个镜像；然后在镜像中各种软件做好配置，将镜像发布出去，其他使用者可以直接使用这个镜像；">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://yoursite.com/.com//1.png">
-<meta property="og:image" content="http://yoursite.com/.com//2.png">
-<meta property="og:image" content="http://yoursite.com/.com//3.png">
-<meta property="og:image" content="http://yoursite.com/.com//4.png">
-<meta property="og:image" content="http://yoursite.com/.com//5.png">
+<meta property="og:image" content="http://yoursite.com/2020/03/28/SpringBoot%E5%9F%BA%E7%A1%80%E5%85%AD/1.png">
+<meta property="og:image" content="http://yoursite.com/2020/03/28/SpringBoot%E5%9F%BA%E7%A1%80%E5%85%AD/2.png">
+<meta property="og:image" content="http://yoursite.com/2020/03/28/SpringBoot%E5%9F%BA%E7%A1%80%E5%85%AD/3.png">
+<meta property="og:image" content="http://yoursite.com/2020/03/28/SpringBoot%E5%9F%BA%E7%A1%80%E5%85%AD/4.png">
+<meta property="og:image" content="http://yoursite.com/2020/03/28/SpringBoot%E5%9F%BA%E7%A1%80%E5%85%AD/5.png">
 <meta property="article:published_time" content="2020-03-28T11:37:58.000Z">
 <meta property="article:modified_time" content="2020-03-28T11:18:59.675Z">
 <meta property="article:author" content="Anderson Wu">
 <meta property="article:tag" content="SpringBoot">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://yoursite.com/.com//1.png">
+<meta name="twitter:image" content="http://yoursite.com/2020/03/28/SpringBoot%E5%9F%BA%E7%A1%80%E5%85%AD/1.png">
 
 <link rel="canonical" href="http://yoursite.com/2020/03/28/SpringBoot%E5%9F%BA%E7%A1%80%E5%85%AD/">
 
@@ -226,14 +226,14 @@
 <a id="more"></a>
 
 <p>运行中的这个镜像称为容器，容器启动是非常快速的。</p>
-<p><img src="/.com//1.png" alt></p>
-<p><img src="/.com//2.png" alt></p>
+<p><img src="/2020/03/28/SpringBoot%E5%9F%BA%E7%A1%80%E5%85%AD/1.png" alt></p>
+<p><img src="/2020/03/28/SpringBoot%E5%9F%BA%E7%A1%80%E5%85%AD/2.png" alt></p>
 <h5 id="1-2-核心概念"><a href="#1-2-核心概念" class="headerlink" title="1.2 核心概念"></a>1.2 核心概念</h5><p>docker主机(Host)：安装了Docker程序的机器（Docker直接安装在操作系统之上）；</p>
 <p>docker客户端(Client)：连接docker主机进行操作；</p>
 <p>docker仓库(Registry)：用来保存各种打包好的软件镜像；</p>
 <p>docker镜像(Images)：软件打包成镜像；放在docker仓库中；</p>
 <p>docker容器(Container)：镜像启动后的实例称为一个容器；容器是独立运行的一个或一组应用</p>
-<p><img src="/.com//3.png" alt></p>
+<p><img src="/2020/03/28/SpringBoot%E5%9F%BA%E7%A1%80%E5%85%AD/3.png" alt></p>
 <p>使用Docker的步骤：</p>
 <p>1）、安装Docker</p>
 <p>2）、在Docker仓库找到这个软件对应的镜像；</p>
@@ -371,7 +371,7 @@
 
 <h5 id="1-3-整合Mybatis"><a href="#1-3-整合Mybatis" class="headerlink" title="1.3 整合Mybatis"></a>1.3 整合Mybatis</h5><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.mybatis.spring.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mybatis-spring-boot-starter<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.1.2<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
-<p><img src="/.com//4.png" alt></p>
+<p><img src="/2020/03/28/SpringBoot%E5%9F%BA%E7%A1%80%E5%85%AD/4.png" alt></p>
 <p>步骤：</p>
 <p>​    1）、配置数据源相关属性</p>
 <p>​    2）、给数据库建表</p>
@@ -398,7 +398,7 @@
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">mapper</span> <span class="meta-keyword">PUBLIC</span> <span class="meta-string">"-//mybatis.org//DTD Mapper 3.0//EN"</span></span></span><br><span class="line"><span class="meta">        <span class="meta-string">"http://mybatis.org/dtd/mybatis-3-mapper.dtd"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">mapper</span> <span class="attr">namespace</span>=<span class="string">"com.wu.mapper.EmployeeMapper"</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--public Employee getEmpById(Integer id);</span></span><br><span class="line"><span class="comment">    public void insertEmp(Employee employee);--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"getEmpById"</span> <span class="attr">parameterType</span>=<span class="string">"Integer"</span> <span class="attr">resultType</span>=<span class="string">"com.wu.bean.Employee"</span>&gt;</span></span><br><span class="line">        SELECT * FROM employee WHERE id =#&#123;id&#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">insert</span> <span class="attr">id</span> =<span class="string">"insertEmp"</span>&gt;</span></span><br><span class="line">        INSERT INTO employee(lastName, email, gender,d_id) VALUES(#&#123;lastName&#125;,#&#123;email&#125;,#&#123;gender&#125;,#&#123;dId&#125;)</span><br><span class="line">    <span class="tag">&lt;/<span class="name">insert</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">mapper</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <h5 id="1-4-整合SpringData-JPA"><a href="#1-4-整合SpringData-JPA" class="headerlink" title="1.4 整合SpringData JPA"></a>1.4 整合SpringData JPA</h5><p>JPA:ORM（Object Relational Mapping）；</p>
-<p><img src="/.com//5.png" alt></p>
+<p><img src="/2020/03/28/SpringBoot%E5%9F%BA%E7%A1%80%E5%85%AD/5.png" alt></p>
 <p>1）、编写一个实体类（bean）和数据表进行映射，并且配置好映射关系；</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Table</span>(name = <span class="string">"tbl_user"</span>)<span class="comment">//@Table来指定和哪个数据表对应;如果省略默认表名就是user；</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Id</span><span class="comment">//主键</span></span><br><span class="line">    <span class="meta">@GeneratedValue</span>(strategy = GenerationType.IDENTITY)<span class="comment">//自增主键</span></span><br><span class="line">    <span class="keyword">private</span> Integer id;</span><br><span class="line">    <span class="meta">@Column</span>(name = <span class="string">"last_name"</span>)<span class="comment">//与数据表对应的列名</span></span><br><span class="line">    <span class="keyword">private</span> String lastName;</span><br><span class="line">    <span class="keyword">private</span> String email; <span class="comment">//省略默认列名就是属性名</span></span><br></pre></td></tr></table></figure>
 
@@ -456,7 +456,10 @@
     <a href="/2020/03/21/SpringBoot%E5%9F%BA%E7%A1%80%E4%BA%94/" rel="prev" title="SpringBoot基础五">
       <i class="fa fa-chevron-left"></i> SpringBoot基础五
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2020/03/28/ceshi/" rel="next" title="ceshi">
+      ceshi <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -532,7 +535,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">21</span>
+          <span class="site-state-item-count">22</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

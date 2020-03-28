@@ -252,7 +252,7 @@
 <p>​         以调用 submit() 方法的形式提交表单时，不会触发 submit 事件，因此要记得在调用此方法之前先验证表单数据。</p>
 <p>​        提交表单可能遇到最大的问题是：重复提交表单。当第一次提交表单时，如果反应时间很长，用户可能会变得不耐烦，而反复点击提交按钮，而重复提交表单。</p>
 <p>​        解决重复提交表单的办法有两个：在第一次提交表单后就禁用提交按钮，或者利用 onsubmit 事件处理程序取消后续的表单提交操作。</p>
-<h5 id="三、重置表单"><a href="#三、重置表单" class="headerlink" title="三、重置表单"></a>三、重置表单</h5><p>​        在用户单击重置按钮时，表单会被重置。使用 type 特性值为 “reset” 的 <input> 或 <button> 都可以创建重置按钮，实例如下：</p>
+<h5 id="三、重置表单"><a href="#三、重置表单" class="headerlink" title="三、重置表单"></a>三、重置表单</h5><p>​        在用户单击重置按钮时，表单会被重置。使用 type 特性值为 “reset” 的 <input> 或 <button> 都可以创建重置按钮，实例如下：</button></p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 通用重置按钮 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"reset"</span> <span class="attr">value</span>=<span class="string">"Reset Form"</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 自定义重置按钮 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">"reset"</span>&gt;</span>Reset Form<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <p>​        在重置表单时，所有表单字段都会恢复到页面刚加载完毕时的初始值。如果某个字段的初始值为空，就会恢复为空；而带有默认值的字段，也会恢复为默认值。</p>
@@ -391,7 +391,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">21</span>
+          <span class="site-state-item-count">22</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

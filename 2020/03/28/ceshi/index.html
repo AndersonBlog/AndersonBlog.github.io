@@ -20,25 +20,20 @@
     var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Gemini","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="一、需求A​        前几天，在task中有一个应用场景，求两个子序列的最短”父序列”，想到LCS得到两个序列的最长公共子序列，那在求最短”父序列”也可以应用到LCS。 二、基本概念子序列(subsequence)： ​         一个特定序列的子序列就是将给定序列中零个或多个元素去掉后得到的结果(不改变元素间相对次序)。例如序列&lt;A,B,C,B,D,A,B&gt;的子序列有：&amp;">
-<meta property="og:type" content="article">
-<meta property="og:title" content="LCS求序列的父序列">
-<meta property="og:url" content="http://yoursite.com/2019/12/14/LCS%E5%BA%94%E7%94%A8/index.html">
+  <meta property="og:type" content="article">
+<meta property="og:title" content="ceshi">
+<meta property="og:url" content="http://yoursite.com/2020/03/28/ceshi/index.html">
 <meta property="og:site_name" content="陪你度过漫长岁月">
-<meta property="og:description" content="一、需求A​        前几天，在task中有一个应用场景，求两个子序列的最短”父序列”，想到LCS得到两个序列的最长公共子序列，那在求最短”父序列”也可以应用到LCS。 二、基本概念子序列(subsequence)： ​         一个特定序列的子序列就是将给定序列中零个或多个元素去掉后得到的结果(不改变元素间相对次序)。例如序列&lt;A,B,C,B,D,A,B&gt;的子序列有：&amp;">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://yoursite.com/2019/12/14/LCS%E5%BA%94%E7%94%A8/1576420589811.png">
-<meta property="og:image" content="http://yoursite.com/2019/12/14/LCS%E5%BA%94%E7%94%A8/1576422186090.png">
-<meta property="og:image" content="http://yoursite.com/2019/12/14/LCS%E5%BA%94%E7%94%A8/1576422548040.png">
-<meta property="og:image" content="http://yoursite.com/2019/12/14/LCS%E5%BA%94%E7%94%A8/1576422503595.png">
-<meta property="article:published_time" content="2019-12-14T11:37:58.000Z">
-<meta property="article:modified_time" content="2020-02-25T06:49:17.039Z">
+<meta property="og:image" content="http://yoursite.com/2020/03/28/ceshi/1.png">
+<meta property="og:image" content="http://yoursite.com/2020/03/28/ceshi/2.png">
+<meta property="article:published_time" content="2020-03-28T12:21:32.000Z">
+<meta property="article:modified_time" content="2020-03-28T12:24:13.666Z">
 <meta property="article:author" content="Anderson Wu">
-<meta property="article:tag" content="Algorithm">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://yoursite.com/2019/12/14/LCS%E5%BA%94%E7%94%A8/1576420589811.png">
+<meta name="twitter:image" content="http://yoursite.com/2020/03/28/ceshi/1.png">
 
-<link rel="canonical" href="http://yoursite.com/2019/12/14/LCS%E5%BA%94%E7%94%A8/">
+<link rel="canonical" href="http://yoursite.com/2020/03/28/ceshi/">
 
 
 <script id="page-configurations">
@@ -51,7 +46,7 @@
   };
 </script>
 
-  <title>LCS求序列的父序列 | 陪你度过漫长岁月</title>
+  <title>ceshi | 陪你度过漫长岁月</title>
   
 
 
@@ -173,7 +168,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/14/LCS%E5%BA%94%E7%94%A8/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/28/ceshi/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/self.png">
@@ -186,7 +181,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          LCS求序列的父序列
+          ceshi
         </h1>
 
         <div class="post-meta">
@@ -195,16 +190,10 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2019-12-14 19:37:58" itemprop="dateCreated datePublished" datetime="2019-12-14T19:37:58+08:00">2019-12-14</time>
+              <time title="创建时间：2020-03-28 20:21:32 / 修改时间：20:24:13" itemprop="dateCreated datePublished" datetime="2020-03-28T20:21:32+08:00">2020-03-28</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-02-25 14:49:17" itemprop="dateModified" datetime="2020-02-25T14:49:17+08:00">2020-02-25</time>
-              </span>
 
           
 
@@ -217,37 +206,8 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h5 id="一、需求A"><a href="#一、需求A" class="headerlink" title="一、需求A"></a>一、需求A</h5><p>​        前几天，在task中有一个应用场景，求两个子序列的最短”父序列”，想到LCS得到两个序列的最长公共子序列，那在求最短”父序列”也可以应用到LCS。</p>
-<h5 id="二、基本概念"><a href="#二、基本概念" class="headerlink" title="二、基本概念"></a>二、基本概念</h5><p><strong>子序列(subsequence)：</strong></p>
-<p>​         一个特定序列的子序列就是将给定序列中零个或多个元素去掉后得到的结果(不改变元素间相对次序)。例如序列&lt;A,B,C,B,D,A,B&gt;的子序列有：&lt;A,B&gt;、&lt;B,C,A&gt;、&lt;A,B,C,D,A&gt;等。</p>
-<p><strong>公共子序列(common subsequence)：</strong></p>
-<p>​          给定序列X和Y，序列Z是X的子序列，也是Y的子序列，则Z是X和Y的公共子序列。例如X=[A,B,C,B,D,A,B]，Y=[B,D,C,A,B,A[，那么序列Z=[B,C,A]为X和Y的公共子序列，其长度为3。但Z不是X和Y的最长公共子序列，而序列[B,C,B,A]和[B,D,A,B]也均为X和Y的最长公共子序列，长度为4，而X和Y不存在长度大于等于5的公共子序列。对于序列[A,B,C]和序列[E,F,G]的公共子序列只有空序列[]。</p>
-<p><strong>最长公共子序列：</strong></p>
-<p>​            给定序列X和Y，从它们的所有公共子序列中选出长度最长的那一个或几个。</p>
-<p><strong>字串：</strong></p>
-<p>​         将一个序列从最前或最后或同时删掉零个或几个字符构成的新系列。区别与子序列，子序列是可以从中间抠掉字符的。cnblogs这个字符串中子序列有多少个呢？很显然有27个，比如其中的cb,cgs等等都是其子序列。</p>
-<p><strong>最短”父序列”：</strong></p>
-<p>​         两个子序列的最短”父序列”是指，同时包含两个子序列的最短序列，比如 ABCD和BCEF的最短”父序列”为 ABCEF。</p>
-<p>下图为子序列和字串的区别：</p>
-<p><img src="/2019/12/14/LCS%E5%BA%94%E7%94%A8/1576420589811.png" alt="1576420589811"></p>
-<h5 id="三、最短”父序列”求解过程"><a href="#三、最短”父序列”求解过程" class="headerlink" title="三、最短”父序列”求解过程"></a>三、最短”父序列”求解过程</h5><ul>
-<li>先求解两个序列的最长公共子序列</li>
-<li>将两个子序列合并成一个序列，得到合并序列</li>
-<li>合并序列切除最长公共子序列，得到最短”父序列”。</li>
-</ul>
-<h5 id="四、算法应用"><a href="#四、算法应用" class="headerlink" title="四、算法应用"></a>四、算法应用</h5><p><strong>递归算法：</strong></p>
-<p>设有字符串A[0…n]，B[0…m]，当数组A和B对应位置字符相同时，则直接求解下一个位置；当不同时取两种情况中的较大数值。递推公式如下：</p>
-<p><img src="/2019/12/14/LCS%E5%BA%94%E7%94%A8/1576422186090.png" alt="1576422186090"></p>
-<p>​         用递归的方法优点是编程简单，容易理解。缺点是效率不高，有大量的重复执行递归调用，而且只能求出最大公共子序列的长度，求不出具体的最大公共子序列。</p>
-<p><strong>动态规划算法：</strong></p>
-<p> 动态规划采用二维数组来标识中间计算结果，避免重复的计算来提高效率。</p>
-<p>　　设有字符串A[0…n]，B[0…m]，下面就是递推公式。字符串A对应的是二维数组c[ ][ ] 的行，字符串B对应的是二维数组c[ ][ ]的列。</p>
-<p><img src="/2019/12/14/LCS%E5%BA%94%E7%94%A8/1576422548040.png" alt="1576422548040"></p>
-<p>构建LCS的DP表，如下：</p>
-<p><img src="/2019/12/14/LCS%E5%BA%94%E7%94%A8/1576422503595.png" alt="1576422503595"></p>
-<p>按照指定的路径倒推回去，就可以得到LCS，其中棕色方格为相等元素，即LCS = {3,4,6,7,8}，这是其中一个结果。</p>
-<p>在倒推时，如果s1[i] == s2[j] 就跳转到c[i - 1][j - 1],如果s1[i] != s1[j], 就向前找或向上找（只能一个方向）。</p>
-<h5 id="五、总结"><a href="#五、总结" class="headerlink" title="五、总结"></a>五、总结</h5><p>求得两个序列的最长公共子序列，就可以通过合并两个子序列，再切割最长公共子序列，得到两个序列的最短”父序列”。</p>
+        <p><img src="/2020/03/28/ceshi/1.png" alt></p>
+<p><img src="/2020/03/28/ceshi/2.png" alt></p>
 
     </div>
 
@@ -273,7 +233,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://yoursite.com/2019/12/14/LCS%E5%BA%94%E7%94%A8/" title="LCS求序列的父序列">http://yoursite.com/2019/12/14/LCS应用/</a>
+    <a href="http://yoursite.com/2020/03/28/ceshi/" title="ceshi">http://yoursite.com/2020/03/28/ceshi/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/publicdomain/zero/1.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>ZERO</a> 许可协议。转载请注明出处！
@@ -283,9 +243,6 @@
 
 
       <footer class="post-footer">
-          <div class="post-tags">
-              <a href="/tags/Algorithm/" rel="tag"># Algorithm</a>
-          </div>
 
         
 
@@ -293,13 +250,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2019/11/02/element-ui%E4%BD%BF%E7%94%A8%E4%B8%AD%E7%9A%84%E7%96%91%E9%97%AE/" rel="prev" title="Element UI使用中的疑问">
-      <i class="fa fa-chevron-left"></i> Element UI使用中的疑问
+    <a href="/2020/03/28/SpringBoot%E5%9F%BA%E7%A1%80%E5%85%AD/" rel="prev" title="SpringBoot基础六">
+      <i class="fa fa-chevron-left"></i> SpringBoot基础六
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2020/02/10/SpringBoot%E5%9F%BA%E7%A1%80%E4%B8%80/" rel="next" title="SpringBoot基础一">
-      SpringBoot基础一 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -359,7 +313,6 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#一、需求A"><span class="nav-text">一、需求A</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#二、基本概念"><span class="nav-text">二、基本概念</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#三、最短”父序列”求解过程"><span class="nav-text">三、最短”父序列”求解过程</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#四、算法应用"><span class="nav-text">四、算法应用</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#五、总结"><span class="nav-text">五、总结</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 

@@ -27,17 +27,17 @@
 <meta property="og:site_name" content="陪你度过漫长岁月">
 <meta property="og:description" content="1.本文涉及到的知识： Jwt Token，session和cookie区别  2.无状态HTTP协议​        由于HTTP是一种没有状态的通信协议，服务器无法记录客户端的登录状态信息，当客户端重新登录服务器需要再一次进行身份认证，这样带来不好的用户体验。 ​        用户的登录状态信息可以保存在服务器或客户端， 3.Token？为什么需要Token？可以参考cookie, sess">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://yoursite.com/2019/10/13/SpringBoot-Token/SpringBoot-Token/jwt.png">
-<meta property="og:image" content="http://yoursite.com/2019/10/13/SpringBoot-Token/SpringBoot-Token/%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84.PNG">
-<meta property="og:image" content="http://yoursite.com/2019/10/13/SpringBoot-Token/SpringBoot-Token/getMessageNoToken.PNG">
-<meta property="og:image" content="http://yoursite.com/2019/10/13/SpringBoot-Token/SpringBoot-Token/login.PNG">
-<meta property="og:image" content="http://yoursite.com/2019/10/13/SpringBoot-Token/SpringBoot-Token/getMessageWithToken.PNG">
+<meta property="og:image" content="http://yoursite.com/2019/10/13/SpringBoot-Token/jwt.png">
+<meta property="og:image" content="http://yoursite.com/2019/10/13/SpringBoot-Token/%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84.PNG">
+<meta property="og:image" content="http://yoursite.com/2019/10/13/SpringBoot-Token/getMessageNoToken.PNG">
+<meta property="og:image" content="http://yoursite.com/2019/10/13/SpringBoot-Token/login.PNG">
+<meta property="og:image" content="http://yoursite.com/2019/10/13/SpringBoot-Token/getMessageWithToken.PNG">
 <meta property="article:published_time" content="2019-10-13T12:02:19.000Z">
 <meta property="article:modified_time" content="2020-03-28T09:04:52.623Z">
 <meta property="article:author" content="Anderson Wu">
 <meta property="article:tag" content="Token JWT SpringBoot">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://yoursite.com/2019/10/13/SpringBoot-Token/SpringBoot-Token/jwt.png">
+<meta name="twitter:image" content="http://yoursite.com/2019/10/13/SpringBoot-Token/jwt.png">
 
 <link rel="canonical" href="http://yoursite.com/2019/10/13/SpringBoot-Token/">
 
@@ -236,7 +236,7 @@
 <h5 id="3-Token？为什么需要Token？"><a href="#3-Token？为什么需要Token？" class="headerlink" title="3.Token？为什么需要Token？"></a>3.Token？为什么需要Token？</h5><p>可以参考<a href="https://andersonblog.github.io/2019/09/27/浅析cookie-session-token/" target="_blank" rel="noopener">cookie, session和token区别</a>，以及为什么使用token。</p>
 <h5 id="4-JWT"><a href="#4-JWT" class="headerlink" title="4. JWT"></a>4. JWT</h5><p>​       <strong>Json web token (JWT)</strong>, 是为了在网络应用环境间传递声明而执行的一种基于<code>JSON</code>的开放标准（(RFC 7519).<strong>定义了一种简洁的，自包含的方法用于通信双方之间以JSON对象的形式安全的传递信息。</strong>因为数字签名的存在，这些信息是可信的，<strong>JWT可以使用HMAC算法或者是RSA的公私秘钥对进行签名。</strong></p>
 <p>JWT请求流程：</p>
-<p><img src="SpringBoot-Token/jwt.png" alt=""></p>
+<p><img src="/2019/10/13/SpringBoot-Token/jwt.png" alt></p>
 <ol>
 <li>用户使用账号和面发出post请求；</li>
 <li>服务器使用私钥创建一个jwt；</li>
@@ -320,7 +320,7 @@
 </li>
 </ul>
 <p>​        这个部分需要base64加密后的header和base64加密后的payload使用 . 连接组成的字符串，然后通过header中声明的加密方式进行加盐secret组合加密，然后就构成了jwt的第三部分。<br>密钥secret是保存在服务端的，服务端会根据这个密钥进行生成token和进行验证，所以需要保护好。</p>
-<h5 id="5-项目"><a href="#5-项目" class="headerlink" title="5.项目"></a>5.项目</h5><h6 id="项目结构"><a href="#项目结构" class="headerlink" title="项目结构"></a>项目结构</h6><p><img src="SpringBoot-Token/%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84.PNG" alt=""></p>
+<h5 id="5-项目"><a href="#5-项目" class="headerlink" title="5.项目"></a>5.项目</h5><h6 id="项目结构"><a href="#项目结构" class="headerlink" title="项目结构"></a>项目结构</h6><p><img src="/2019/10/13/SpringBoot-Token/%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84.PNG" alt></p>
 <h6 id="项目依赖："><a href="#项目依赖：" class="headerlink" title="项目依赖："></a>项目依赖：</h6><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.auth0<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>java-jwt<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">version</span>&gt;</span>3.4.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>mysql<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mysql-connector-java<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">scope</span>&gt;</span>runtime<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">version</span>&gt;</span>5.1.37<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.mybatis.spring.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mybatis-spring-boot-starter<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">version</span>&gt;</span>1.3.2<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.alibaba<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>fastjson<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">version</span>&gt;</span>1.2.47<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.projectlombok<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>lombok<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">version</span>&gt;</span>1.16.22<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <h5 id="6-实现步骤"><a href="#6-实现步骤" class="headerlink" title="6.实现步骤"></a>6.实现步骤</h5><h6 id="6-1-自定义两个注解"><a href="#6-1-自定义两个注解" class="headerlink" title="6.1 自定义两个注解"></a>6.1 自定义两个注解</h6><p><strong>用来跳过验证的PassToken</strong></p>
@@ -398,9 +398,9 @@
 <p><strong>UserMapper.xml</strong></p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version='1.0' encoding='UTF-8' ?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">mapper</span> <span class="meta-keyword">PUBLIC</span> <span class="meta-string">"-//mybatis.org//DTD Mapper 3.0//EN"</span> <span class="meta-string">"http://mybatis.org/dtd/mybatis-3-mapper.dtd"</span> &gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">mapper</span> <span class="attr">namespace</span>=<span class="string">"com.wu.springBootToken.mapper.UserMapper"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"findByUserNameAndPasswd"</span> <span class="attr">resultType</span>=<span class="string">"com.wu.springBootToken.entity.User"</span>&gt;</span></span><br><span class="line">        select * from user</span><br><span class="line">        where username=#&#123;username&#125; and password=#&#123;userpasswd&#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">mapper</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
-<h5 id="7-测试"><a href="#7-测试" class="headerlink" title="7. 测试"></a>7. 测试</h5><h6 id="7-1-在没token的情况下访问-getMessage接口"><a href="#7-1-在没token的情况下访问-getMessage接口" class="headerlink" title="7.1 在没token的情况下访问/getMessage接口"></a>7.1 在没token的情况下访问/getMessage接口</h6><p><img src="SpringBoot-Token/getMessageNoToken.PNG" alt=""></p>
-<h6 id="7-2-用户名和密码登录"><a href="#7-2-用户名和密码登录" class="headerlink" title="7.2 用户名和密码登录"></a>7.2 用户名和密码登录</h6><p><img src="SpringBoot-Token/login.PNG" alt=""></p>
-<h6 id="7-3-请求头携带token的情况下访问-getMessage接口"><a href="#7-3-请求头携带token的情况下访问-getMessage接口" class="headerlink" title="7.3 请求头携带token的情况下访问/getMessage接口"></a>7.3 请求头携带token的情况下访问/getMessage接口</h6><p><img src="SpringBoot-Token/getMessageWithToken.PNG" alt=""></p>
+<h5 id="7-测试"><a href="#7-测试" class="headerlink" title="7. 测试"></a>7. 测试</h5><h6 id="7-1-在没token的情况下访问-getMessage接口"><a href="#7-1-在没token的情况下访问-getMessage接口" class="headerlink" title="7.1 在没token的情况下访问/getMessage接口"></a>7.1 在没token的情况下访问/getMessage接口</h6><p><img src="/2019/10/13/SpringBoot-Token/getMessageNoToken.PNG" alt></p>
+<h6 id="7-2-用户名和密码登录"><a href="#7-2-用户名和密码登录" class="headerlink" title="7.2 用户名和密码登录"></a>7.2 用户名和密码登录</h6><p><img src="/2019/10/13/SpringBoot-Token/login.PNG" alt></p>
+<h6 id="7-3-请求头携带token的情况下访问-getMessage接口"><a href="#7-3-请求头携带token的情况下访问-getMessage接口" class="headerlink" title="7.3 请求头携带token的情况下访问/getMessage接口"></a>7.3 请求头携带token的情况下访问/getMessage接口</h6><p><img src="/2019/10/13/SpringBoot-Token/getMessageWithToken.PNG" alt></p>
 <h5 id="8-相关连接"><a href="#8-相关连接" class="headerlink" title="8.相关连接"></a>8.相关连接</h5><p><a href="https://github.com/AndersonBlog/springBootToken.git" target="_blank" rel="noopener">项目链接</a></p>
 <p>参考资料：</p>
 <p><a href="https://blog.csdn.net/FindHuni/article/details/94451136" target="_blank" rel="noopener">https://blog.csdn.net/FindHuni/article/details/94451136</a>       </p>
@@ -534,7 +534,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">21</span>
+          <span class="site-state-item-count">22</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

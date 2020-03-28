@@ -27,14 +27,14 @@
 <meta property="og:site_name" content="陪你度过漫长岁月">
 <meta property="og:description" content="一、发展史​            以前，Web应用基本都是文档浏览，在浏览过程中，服务器无需记录哪位用户浏览了哪些文档，所以每次请求都是新的HTTP协议（请求和响应）。 ​            当我们用浏览器打开一个网页，用到的是HTTP协议，它是无状态的，当前请求和上一次请求是没有任何关系的，互不关联。但是这种无状态的的好处是快速。所以就会带来一个问题就是，当几个请求的页面要有关联，比如：我">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://yoursite.com/2019/09/27/%E6%B5%85%E6%9E%90cookie-session-token/%E6%B5%85%E6%9E%90cookie-session-token/1.png">
-<meta property="og:image" content="http://yoursite.com/2019/09/27/%E6%B5%85%E6%9E%90cookie-session-token/%E6%B5%85%E6%9E%90cookie-session-token/2.png">
+<meta property="og:image" content="http://yoursite.com/2019/09/27/%E6%B5%85%E6%9E%90cookie-session-token/1.png">
+<meta property="og:image" content="http://yoursite.com/2019/09/27/%E6%B5%85%E6%9E%90cookie-session-token/2.png">
 <meta property="article:published_time" content="2019-09-27T11:37:58.000Z">
 <meta property="article:modified_time" content="2020-03-28T09:09:26.168Z">
 <meta property="article:author" content="Anderson Wu">
 <meta property="article:tag" content="Cookie seesion Token">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://yoursite.com/2019/09/27/%E6%B5%85%E6%9E%90cookie-session-token/%E6%B5%85%E6%9E%90cookie-session-token/1.png">
+<meta name="twitter:image" content="http://yoursite.com/2019/09/27/%E6%B5%85%E6%9E%90cookie-session-token/1.png">
 
 <link rel="canonical" href="http://yoursite.com/2019/09/27/%E6%B5%85%E6%9E%90cookie-session-token/">
 
@@ -248,7 +248,7 @@
 <li><p>服务器把验证结果返回客户端</p>
 </li>
 </ul>
-<p><img src="%E6%B5%85%E6%9E%90cookie-session-token/1.png" alt=""></p>
+<p><img src="/2019/09/27/%E6%B5%85%E6%9E%90cookie-session-token/1.png" alt></p>
 <blockquote>
 <p>session存在问题：</p>
 <p>1、session保存在服务端，当客户访问量增加时，服务端就需要存储大量的session会话，对服务器有很大的考验；<br>2、当服务端为集群时，用户登陆其中一台服务器，会将session保存到该服务器的内存中，但是当用户的访问到其他服务器时，会无法访问，通常采用缓存一致性技术来保证可以共享，或者采用第三方缓存来保存session，不方便。</p>
@@ -265,7 +265,7 @@
 <p><strong>Toeken存放：</strong></p>
 <p>Token在客户端一般存放于localStorage，cookie，或sessionStorage中。在服务器一般存于数据库中.</p>
 <p><strong>Token过程:</strong><br>1、客户端向服务器请求，发送用户名和密码<br>2、服务器根据用户信息通过加密生成token，用户信息包括账号，token过期时间等，具体由服务器自定义。<br>3、服务器返回token给客户端<br>4、客户端用cookie存储token，以后的请求都带上这个token<br>5、服务器把token解密，确认用户信息是否正确，如经过正确就说明验证通过。<br>6、服务器把验证结果返回客户端</p>
-<p><img src="%E6%B5%85%E6%9E%90cookie-session-token/2.png" alt=""></p>
+<p><img src="/2019/09/27/%E6%B5%85%E6%9E%90cookie-session-token/2.png" alt></p>
 <h5 id="五、Cookie与session区别："><a href="#五、Cookie与session区别：" class="headerlink" title="五、Cookie与session区别："></a>五、Cookie与session区别：</h5><p>1、cookie数据存放在客户的浏览器上，session数据放在服务器上。<br>2、cookie不是很安全，别人可以分析存放在本地的cookie并进行cookie欺骗,考虑到安全应当使用session。</p>
 <p>3、session会在一定时间内保存在服务器上。当访问增多，会比较占用你服务器的性能,考虑到减轻服务器性能方面，应当使用cookie。</p>
 <p>4、单个cookie保存的数据不能超过4K，很多浏览器都限制一个站点最多保存20个cookie。</p>
@@ -406,7 +406,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">21</span>
+          <span class="site-state-item-count">22</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
