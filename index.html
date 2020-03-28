@@ -165,69 +165,6 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/28/ceshi/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/self.png">
-      <meta itemprop="name" content="Anderson Wu">
-      <meta itemprop="description" content="Love is love">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="陪你度过漫长岁月">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/03/28/ceshi/" class="post-title-link" itemprop="url">ceshi</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2020-03-28 20:21:32 / 修改时间：20:24:13" itemprop="dateCreated datePublished" datetime="2020-03-28T20:21:32+08:00">2020-03-28</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p><img src="/2020/03/28/ceshi/1.png" alt></p>
-<p><img src="/2020/03/28/ceshi/2.png" alt></p>
-
-      
-    </div>
-
-    
-    
-    
-	<div>
-		
-	</div>
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/28/SpringBoot%E5%9F%BA%E7%A1%80%E5%85%AD/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1983,6 +1920,262 @@
   
   
 
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/13/SpringBoot-Token/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/self.png">
+      <meta itemprop="name" content="Anderson Wu">
+      <meta itemprop="description" content="Love is love">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="陪你度过漫长岁月">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/10/13/SpringBoot-Token/" class="post-title-link" itemprop="url">SpringBoot实现基于Token的用户身份验证</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-10-13 20:02:19" itemprop="dateCreated datePublished" datetime="2019-10-13T20:02:19+08:00">2019-10-13</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-03-28 17:04:52" itemprop="dateModified" datetime="2020-03-28T17:04:52+08:00">2020-03-28</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/SpringBoot/" itemprop="url" rel="index"><span itemprop="name">SpringBoot</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h5 id="1-本文涉及到的知识："><a href="#1-本文涉及到的知识：" class="headerlink" title="1.本文涉及到的知识："></a>1.本文涉及到的知识：</h5><ul>
+<li>Jwt</li>
+<li>Token，session和cookie区别</li>
+</ul>
+<h5 id="2-无状态HTTP协议"><a href="#2-无状态HTTP协议" class="headerlink" title="2.无状态HTTP协议"></a>2.无状态HTTP协议</h5><p>​        由于HTTP是一种没有状态的通信协议，服务器无法记录客户端的登录状态信息，当客户端重新登录服务器需要再一次进行身份认证，这样带来不好的用户体验。</p>
+<p>​        用户的登录状态信息可以保存在服务器或客户端，</p>
+<h5 id="3-Token？为什么需要Token？"><a href="#3-Token？为什么需要Token？" class="headerlink" title="3.Token？为什么需要Token？"></a>3.Token？为什么需要Token？</h5><p>可以参考<a href="https://andersonblog.github.io/2019/09/27/浅析cookie-session-token/" target="_blank" rel="noopener">cookie, session和token区别</a>，以及为什么使用token。</p>
+<h5 id="4-JWT"><a href="#4-JWT" class="headerlink" title="4. JWT"></a>4. JWT</h5><p>​       <strong>Json web token (JWT)</strong>, 是为了在网络应用环境间传递声明而执行的一种基于<code>JSON</code>的开放标准（(RFC 7519).<strong>定义了一种简洁的，自包含的方法用于通信双方之间以JSON对象的形式安全的传递信息。</strong>因为数字签名的存在，这些信息是可信的，<strong>JWT可以使用HMAC算法或者是RSA的公私秘钥对进行签名。</strong></p>
+<p>JWT请求流程：</p>
+<p><img src="/2019/10/13/SpringBoot-Token/jwt.png" alt></p>
+<ol>
+<li>用户使用账号和面发出post请求；</li>
+<li>服务器使用私钥创建一个jwt；</li>
+<li>服务器返回这个jwt给浏览器；</li>
+<li>浏览器将该jwt串在请求头中像服务器发送请求；</li>
+<li>服务器验证该jwt；</li>
+<li>返回响应的资源给浏览器。</li>
+</ol>
+<p><strong>JWT的主要应用场景</strong></p>
+<p>​         身份认证在这种场景下，一旦用户完成了登陆，在接下来的每个请求中包含JWT，<strong>可以用来验证用户身份以及对路由，服务和资源的访问权限进行验证。</strong>由于它的开销非常小，可以轻松的在不同域名的系统中传递，所有目前在<strong>单点登录（SSO）</strong>中比较广泛的使用了该技术。 信息交换在通信的双方之间使用JWT对数据进行编码是一种非常安全的方式，<strong>由于它的信息是经过签名的，可以确保发送者发送的信息是没有经过伪造的。</strong></p>
+<p><strong>优点</strong></p>
+<ol>
+<li><p>简洁(Compact): 可以通过URL，POST参数或者在HTTP header发送，因为数据量小，传输速度也很快</p>
+</li>
+<li><p>自包含(Self-contained)：负载中包含了所有用户所需要的信息，避免了多次查询数据库</p>
+</li>
+<li><p>因为Token是以JSON加密的形式保存在客户端的，所以JWT是跨语言的，原则上任何web形式都支持。</p>
+</li>
+<li><p>不需要在服务端保存会话信息，特别适用于分布式微服务。</p>
+</li>
+</ol>
+<p><strong>JWT的结构</strong></p>
+<p><strong>JWT是由三段信息构成的，将这三段信息文本用.连接一起就构成了JWT字符串。</strong><br>就像这样:<br><code>eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWV9.TJVA95OrM7E2cBab30RMHrHDcEfxjoYZgeFONFh7HgQ</code></p>
+<p><strong>JWT包含了三部分：</strong></p>
+<ul>
+<li>Header 头部(标题包含了令牌的元数据，并且包含签名和/或加密算法的类型)</li>
+<li>Payload 负载 (类似于飞机上承载的物品)</li>
+<li>Signature 签名/签证</li>
+</ul>
+<p><strong>Header</strong></p>
+<p><strong>JWT的头部承载两部分信息：token类型和采用的加密算法。</strong></p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123; </span><br><span class="line">  <span class="attr">"alg"</span>: <span class="string">"HS256"</span>,</span><br><span class="line">   <span class="attr">"typ"</span>: <span class="string">"JWT"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>声明类型:这里是jwt</strong></p>
+<p><strong>声明加密的算法:通常直接使用 HMAC SHA256</strong></p>
+<p><strong>加密算法是单向函数散列算法，常见的有MD5、SHA、HAMC。</strong></p>
+<ul>
+<li>MD5(message-digest algorithm 5) （信息-摘要算法）缩写，广泛用于加密和解密技术，常用于文件校验。校验？不管文件多大，经过MD5后都能生成唯一的MD5值</li>
+<li>SHA (Secure Hash Algorithm，安全散列算法），数字签名等密码学应用中重要的工具，安全性高于MD5</li>
+<li>HMAC (Hash Message Authentication Code)，散列消息鉴别码，基于密钥的Hash算法的认证协议。用公开函数和密钥产生一个固定长度的值作为认证标识，用这个标识鉴别消息的完整性。常用于接口签名验证</li>
+</ul>
+<p><strong>Payload</strong></p>
+<p>载荷就是存放有效信息的地方。<br><strong>有效信息包含三个部分</strong></p>
+<ol>
+<li><p>标准中注册的声明</p>
+</li>
+<li><p>公共的声明</p>
+</li>
+<li><p>私有的声明</p>
+<p><strong>标准中注册的声明 (建议但不强制使用) ：</strong></p>
+</li>
+</ol>
+<ul>
+<li><p>iss: jwt签发者</p>
+</li>
+<li><p>sub: 面向的用户(jwt所面向的用户)</p>
+</li>
+<li><p>aud: 接收jwt的一方</p>
+</li>
+<li><p>exp: 过期时间戳(jwt的过期时间，这个过期时间必须要大于签发时间)</p>
+</li>
+<li><p>nbf: 定义在什么时间之前，该jwt都是不可用的.</p>
+</li>
+<li><p>iat: jwt的签发时间jti: jwt的唯一身份标识，主要用来作为一次性</p>
+</li>
+<li><p>token,从而回避重放攻击。</p>
+<p><strong>公共的声明 ：</strong></p>
+</li>
+</ul>
+<p>公共的声明可以添加任何的信息，一般添加用户的相关信息或其他业务需要的必要信息.但不建议添加敏感信息，因为该部分在客户端可解密.</p>
+<p><strong>私有的声明 ：</strong></p>
+<p>私有声明是提供者和消费者所共同定义的声明，一般不建议存放敏感信息，因为base64是对称解密的，意味着该部分信息可以归类为明文信息。</p>
+<p><strong>Signature</strong></p>
+<p><strong>jwt的第三部分是一个签证信息，这个签证信息由三部分组成：</strong></p>
+<ul>
+<li><p>header (base64后的)</p>
+</li>
+<li><p>payload (base64后的)</p>
+</li>
+<li><p>secret</p>
+</li>
+</ul>
+<p>​        这个部分需要base64加密后的header和base64加密后的payload使用 . 连接组成的字符串，然后通过header中声明的加密方式进行加盐secret组合加密，然后就构成了jwt的第三部分。<br>密钥secret是保存在服务端的，服务端会根据这个密钥进行生成token和进行验证，所以需要保护好。</p>
+<h5 id="5-项目"><a href="#5-项目" class="headerlink" title="5.项目"></a>5.项目</h5><h6 id="项目结构"><a href="#项目结构" class="headerlink" title="项目结构"></a>项目结构</h6><p><img src="/2019/10/13/SpringBoot-Token/%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84.PNG" alt></p>
+<h6 id="项目依赖："><a href="#项目依赖：" class="headerlink" title="项目依赖："></a>项目依赖：</h6><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.auth0<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>java-jwt<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">version</span>&gt;</span>3.4.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>mysql<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mysql-connector-java<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">scope</span>&gt;</span>runtime<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">version</span>&gt;</span>5.1.37<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.mybatis.spring.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mybatis-spring-boot-starter<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">version</span>&gt;</span>1.3.2<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.alibaba<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>fastjson<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">version</span>&gt;</span>1.2.47<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.projectlombok<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>lombok<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">version</span>&gt;</span>1.16.22<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="6-实现步骤"><a href="#6-实现步骤" class="headerlink" title="6.实现步骤"></a>6.实现步骤</h5><h6 id="6-1-自定义两个注解"><a href="#6-1-自定义两个注解" class="headerlink" title="6.1 自定义两个注解"></a>6.1 自定义两个注解</h6><p><strong>用来跳过验证的PassToken</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Target</span>(&#123;ElementType.METHOD, ElementType.TYPE&#125;)</span><br><span class="line"><span class="meta">@Retention</span>(RetentionPolicy.RUNTIME)</span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> PassToken &#123;</span><br><span class="line">    <span class="function"><span class="keyword">boolean</span> <span class="title">required</span><span class="params">()</span> <span class="keyword">default</span> <span class="keyword">true</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>需要登录才能进行操作的注解UserLoginToken</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Target</span>(&#123;ElementType.METHOD, ElementType.TYPE&#125;)</span><br><span class="line"><span class="meta">@Retention</span>(RetentionPolicy.RUNTIME)</span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> UserLoginToken &#123;</span><br><span class="line">    <span class="function"><span class="keyword">boolean</span> <span class="title">required</span><span class="params">()</span> <span class="keyword">default</span> <span class="keyword">true</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>@Target</code>:注解的作用目标</p>
+<p>@Target(ElementType.TYPE)——接口、类、枚举、注解</p>
+<p>@Target(ElementType.FIELD)——字段、枚举的常量</p>
+<p>@Target(ElementType.METHOD)——方法</p>
+<p>@Target(ElementType.PARAMETER)——方法参数</p>
+<p>@Target(ElementType.CONSTRUCTOR) ——构造函数</p>
+<p>@Target(ElementType.LOCAL_VARIABLE)——局部变量</p>
+<p>@Target(ElementType.ANNOTATION_TYPE)——注解</p>
+<p>@Target(ElementType.PACKAGE)——包</p>
+<p><code>@Retention</code>：注解的保留位置**</p>
+<p>RetentionPolicy.SOURCE:这种类型的Annotations只在源代码级别保留,编译时就会被忽略,在class字节码文件中不包含。</p>
+<p>RetentionPolicy.CLASS:这种类型的Annotations编译时被保留,默认的保留策略,在class文件中存在,但JVM将会忽略,运行时无法获得。</p>
+<p>RetentionPolicy.RUNTIME:这种类型的Annotations将被JVM保留,所以他们能在运行时被JVM或其他使用反射机制的代码所读取和使用。<br>@Document：说明该注解将被包含在javadoc中</p>
+<p>@Inherited：说明子类可以继承父类中的该注解***</p>
+<h6 id="6-2-实体类"><a href="#6-2-实体类" class="headerlink" title="6.2 实体类"></a>6.2 实体类</h6><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span> <span class="keyword">implements</span> <span class="title">Serializable</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> String Id;</span><br><span class="line">    <span class="keyword">private</span> String username;</span><br><span class="line">    <span class="keyword">private</span> String password;</span><br><span class="line">	...	<span class="comment">//省略set和get方法，或者可以使用lombok简化实体类的编写</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h6 id="6-3-返回体"><a href="#6-3-返回体" class="headerlink" title="6.3 返回体"></a>6.3 返回体</h6><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Builder</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ResponseTemplate</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> Integer code;</span><br><span class="line">    <span class="keyword">public</span> String message;</span><br><span class="line">    <span class="keyword">public</span> Object data;</span><br><span class="line">	...	<span class="comment">//省略set和get方法，或者可以使用lombok简化实体类的编写</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>使用了@Bulide注解后，就可以使用链式风格优雅地创建对象，比如：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ResponseTemplate.builder().code(<span class="number">200</span>).message(<span class="string">"测试成功"</span>).data(<span class="string">"测试📕"</span>).build();</span><br></pre></td></tr></table></figure>
+
+<h6 id="6-4创建一个拦截器配置，用于拦截前端请求，实现-WebMvcConfigurer-接口"><a href="#6-4创建一个拦截器配置，用于拦截前端请求，实现-WebMvcConfigurer-接口" class="headerlink" title="6.4创建一个拦截器配置，用于拦截前端请求，实现 WebMvcConfigurer 接口"></a>6.4创建一个拦截器配置，用于拦截前端请求，实现 WebMvcConfigurer 接口</h6><ul>
+<li>重写addHandlerInterception方法，将登录拦截器注册到web mvc配置中，指明拦截的URL</li>
+<li>在配置类上添加了注解@Configuration，标明了该类是一个配置类并且会将该类作为一个SpringBean添加到IOC容器内</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">InterceptorConfig</span> <span class="keyword">implements</span> <span class="title">WebMvcConfigurer</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addInterceptors</span><span class="params">(InterceptorRegistry registry)</span> </span>&#123;</span><br><span class="line">        registry.addInterceptor(authenticationInterceptor()).addPathPatterns(<span class="string">"/**"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> AuthenticationInterceptor <span class="title">authenticationInterceptor</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> AuthenticationInterceptor();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>​         InterceptorRegistry内的addInterceptor需要一个实现HandlerInterceptor接口的拦截器实例，addPathPatterns方法用于设置拦截器的过滤路径规则。<br>这里需要拦截所有请求，通过判断是否有@UserLoginToken注解 决定是否需要登录</p>
+<h6 id="6-5-创建一个拦截器，继承HandlerInterception接口，实现拦截还是放通的逻辑，拦截后需要获取token并校验"><a href="#6-5-创建一个拦截器，继承HandlerInterception接口，实现拦截还是放通的逻辑，拦截后需要获取token并校验" class="headerlink" title="6.5 创建一个拦截器，继承HandlerInterception接口，实现拦截还是放通的逻辑，拦截后需要获取token并校验"></a>6.5 创建一个拦截器，继承HandlerInterception接口，实现拦截还是放通的逻辑，拦截后需要获取token并校验</h6><p><strong>HandlerInterceptor接口主要定义了三个方法</strong></p>
+<ol>
+<li><p>boolean preHandle (HttpServletRequest request, HttpServletResponse response, Object handler)：</p>
+<p>预处理回调方法,实现处理器的预处理，第三个参数为响应的处理器,自定义Controller,返回值为true表示继续流程（如调用下一个拦截器或处理器）或者接着执行postHandle()和afterCompletion()；false表示流程中断，不会继续调用其他的拦截器或处理器，中断执行。</p>
+</li>
+<li><p>void postHandle()：</p>
+<p>后处理回调方法，实现处理器的后处理（DispatcherServlet进行视图返回渲染之前进行调用），此时我们可以通过modelAndView（模型和视图对象）对模型数据进行处理或对视图进行处理，modelAndView也可能为null。</p>
+</li>
+<li><p>void afterCompletion():</p>
+<p>整个请求处理完毕回调方法,该方法也是需要当前对应的Interceptor的preHandle()的返回值为true时才会执行，也就是在DispatcherServlet渲染了对应的视图之后执行。用于进行资源清理。整个请求处理完毕回调方法。如性能监控中我们可以在此记录结束时间并输出消耗时间，还可以进行一些资源清理，类似于try-catch-finally中的finally，但仅调用处理器执行链中</p>
+<p>重写preHandler方法，返回类型为布尔型，true代表放行，false代表不放行，主要流程如下：</p>
+</li>
+</ol>
+<ul>
+<li>从 http 请求头中取出 token</li>
+<li>判断是否映射到方法，如果不是映射到方法直接通过</li>
+<li>检查是否有passtoken注释，有则跳过认证</li>
+<li>检查有没有需要用户登录的注解，有则需要取出并验证</li>
+<li>认证通过则可以访问，不通过会报相关错误信息</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AuthenticationInterceptor</span> <span class="keyword">implements</span> <span class="title">HandlerInterceptor</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    UserService userService;</span><br><span class="line"></span><br><span class="line">    Logger log = LoggerFactory.getLogger(AuthenticationInterceptor<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">preHandle</span><span class="params">(HttpServletRequest request, HttpServletResponse response, Object handler)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        <span class="comment">//从http请求取出token</span></span><br><span class="line">        String token = request.getHeader(<span class="string">"token"</span>);</span><br><span class="line">        log.info(<span class="string">"获取到的token为：&#123;&#125;"</span>, token);</span><br><span class="line">        <span class="comment">//如果不是映射到方法直接通过</span></span><br><span class="line">        <span class="keyword">if</span> (!(handler <span class="keyword">instanceof</span> HandlerMethod)) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        HandlerMethod handlerMethod = (HandlerMethod) handler;</span><br><span class="line">        Method method = handlerMethod.getMethod();</span><br><span class="line"></span><br><span class="line">        <span class="comment">//是否有passtoken注释，有则跳过认证</span></span><br><span class="line">        <span class="keyword">if</span> (method.isAnnotationPresent(PassToken<span class="class">.<span class="keyword">class</span>)) </span>&#123;</span><br><span class="line">            PassToken passToken = method.getAnnotation(PassToken<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line">            <span class="keyword">if</span> (passToken.required()) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//有没有需要用户权限的注解</span></span><br><span class="line">        <span class="keyword">if</span> (method.isAnnotationPresent(UserLoginToken<span class="class">.<span class="keyword">class</span>)) </span>&#123;</span><br><span class="line">            UserLoginToken userLoginToken = method.getAnnotation(UserLoginToken<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line">            <span class="keyword">if</span> (userLoginToken.required()) &#123;</span><br><span class="line">                <span class="comment">//执行认证</span></span><br><span class="line">                <span class="keyword">if</span> (token == <span class="keyword">null</span>) &#123;</span><br><span class="line">                    <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(<span class="string">"无token，请重新登录"</span>);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="comment">//获取token中的user id</span></span><br><span class="line">                String userId;</span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">                    userId = JWT.decode(token).getAudience().get(<span class="number">0</span>);</span><br><span class="line">                &#125; <span class="keyword">catch</span> (JWTDecodeException e) &#123;</span><br><span class="line">                    log.info(<span class="string">"Token非法"</span>);</span><br><span class="line">                    <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(<span class="string">"401,Token非法"</span>);</span><br><span class="line">                &#125;</span><br><span class="line">                User user = userService.finduserbyId(userId);</span><br><span class="line">                <span class="keyword">if</span> (user == <span class="keyword">null</span>) &#123;</span><br><span class="line">                    log.info(<span class="string">"用户不存在，请重新登录!"</span>);</span><br><span class="line">                    <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(<span class="string">"用户不存在，请重新登录!"</span>);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="comment">//验证token</span></span><br><span class="line">                JWTVerifier jwtVerifier = JWT.require(Algorithm.HMAC256(user.getPassword())).build();</span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">                    jwtVerifier.verify(token);</span><br><span class="line">                &#125; <span class="keyword">catch</span> (JWTVerificationException e) &#123;</span><br><span class="line">                    log.info(<span class="string">"401,Token非法"</span>);</span><br><span class="line">                    <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(<span class="string">"401,Token非法"</span>);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">postHandle</span><span class="params">(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">afterCompletion</span><span class="params">(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h6 id="6-6-controller层加入登录操作注解"><a href="#6-6-controller层加入登录操作注解" class="headerlink" title="6.6 controller层加入登录操作注解"></a>6.6 controller层加入登录操作注解</h6><p>​        不加注解的话默认不验证，登录接口一般是不验证的。在getMessage()上了登录注解，说明该接口必须登录获取token后，在请求头中加上token并通过验证才可以访问</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserController</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    Logger logger = LoggerFactory.getLogger(UserController<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    UserService userService;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    TokenService tokenService;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@GetMapping</span>(<span class="string">"/wlecome"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">welcome</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"welcome TokenController"</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@RequestMapping</span>(value = <span class="string">"/login"</span>, method = RequestMethod.GET)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">login</span><span class="params">(User user, HttpServletResponse response)</span> </span>&#123;</span><br><span class="line">        JSONObject jsonObject = <span class="keyword">new</span> JSONObject();</span><br><span class="line">        logger.info(<span class="string">"用户名username为:"</span> + user.getUsername() + <span class="string">"密码password为:"</span> + user.getPassword());</span><br><span class="line"></span><br><span class="line">        User userSearch = userService.getUser(user.getUsername(), user.getPassword());</span><br><span class="line">        <span class="keyword">if</span> (userSearch != <span class="keyword">null</span>) &#123;</span><br><span class="line">            String token = tokenService.getToken(userSearch);</span><br><span class="line">            jsonObject.put(<span class="string">"message"</span>, <span class="string">"用户登录成功!"</span>);</span><br><span class="line">            jsonObject.put(<span class="string">"token"</span>, token);</span><br><span class="line"></span><br><span class="line">            Cookie cookie = <span class="keyword">new</span> Cookie(<span class="string">"token"</span>, token);</span><br><span class="line">            cookie.setPath(<span class="string">"/"</span>);</span><br><span class="line"></span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            jsonObject.put(<span class="string">"message"</span>, <span class="string">"登陆失败, 当前用户不存在，请重新输入！"</span>);</span><br><span class="line">            <span class="keyword">return</span> ResponseTemplate.builder().code(<span class="number">500</span>).message(<span class="string">"账号或密码错误！"</span>).data(jsonObject).build();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ResponseTemplate.builder().code(<span class="number">200</span>).message(<span class="string">"用户登录成功"</span>).data(jsonObject).build();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@UserLoginToken</span></span><br><span class="line">    <span class="meta">@RequestMapping</span>(value = <span class="string">"getMessage"</span>, method = RequestMethod.GET)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">getMessage</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        logger.info(<span class="string">"**************测试start**************"</span>);</span><br><span class="line">        <span class="keyword">return</span> ResponseTemplate.builder().code(<span class="number">200</span>).message(<span class="string">"访问成功"</span>).data(<span class="string">"携带Token，成功访问"</span>).build();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h6 id="6-7-service层"><a href="#6-7-service层" class="headerlink" title="6.7 service层"></a>6.7 service层</h6><p><strong>TokenService</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Service</span>(<span class="string">"TokenService"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TokenService</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getToken</span><span class="params">(User user)</span> </span>&#123;</span><br><span class="line">        Date start = <span class="keyword">new</span> Date();</span><br><span class="line">        <span class="keyword">long</span> currentTime = System.currentTimeMillis() + <span class="number">60</span> * <span class="number">60</span> * <span class="number">1000</span>;<span class="comment">//Token一小时有效</span></span><br><span class="line">        Date end = <span class="keyword">new</span> Date(currentTime);</span><br><span class="line">        String token = <span class="string">""</span>;</span><br><span class="line"></span><br><span class="line">        token = JWT.create().withAudience(user.getId()).withIssuedAt(start).withExpiresAt(end)</span><br><span class="line">                .sign(Algorithm.HMAC256(user.getPassword()));</span><br><span class="line">        <span class="keyword">return</span> token;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>​    方法getToken(User user)生成Token，Algorithm.HMAC256(): 使用HS256生成token,密钥则是用户的密码，唯一密钥的话可以保存在服务端。withAudience()存入需要保存在token的信息，这里把用户ID存入token中。</p>
+<p><strong>UserService</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Service</span>(<span class="string">"UserService"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserService</span> </span>&#123;    </span><br><span class="line">    <span class="meta">@Autowired</span>    UserMapper userMapper;    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> User <span class="title">getUser</span><span class="params">(String username, String password)</span> </span>&#123;        </span><br><span class="line">        <span class="keyword">return</span> userMapper.findByUserNameAndPasswd(username,password);    &#125;    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> User <span class="title">finduserbyId</span><span class="params">(String userId)</span> </span>&#123;        </span><br><span class="line">        System.out.println(userId + <span class="string">"***************************"</span>);        </span><br><span class="line">        <span class="keyword">return</span> userMapper.findUserById(userId);    </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>两个查找User方法，根据username和password，或id。</p>
+<p>@Service注解，将自动将该类注册到Spring容器中。</p>
+<h6 id="6-8-Dao层"><a href="#6-8-Dao层" class="headerlink" title="6.8 Dao层"></a>6.8 Dao层</h6><p><strong>UserMapper</strong>  Interface</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Mapper</span></span><br><span class="line"><span class="meta">@C</span></span><br><span class="line">omponent</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">UserMapper</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function">User <span class="title">findByUserNameAndPasswd</span><span class="params">(String username, String userpasswd)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Select</span>(<span class="string">"select * from user where id=#&#123;id&#125;"</span>)</span><br><span class="line">    <span class="function">User <span class="title">findUserById</span><span class="params">(@Param(<span class="string">"id"</span>)</span> String id)</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>@Component注解，将该接口注册成单例bean组件到Spring容器中。</p>
+<p><strong>UserMapper.xml</strong></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version='1.0' encoding='UTF-8' ?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">mapper</span> <span class="meta-keyword">PUBLIC</span> <span class="meta-string">"-//mybatis.org//DTD Mapper 3.0//EN"</span> <span class="meta-string">"http://mybatis.org/dtd/mybatis-3-mapper.dtd"</span> &gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">mapper</span> <span class="attr">namespace</span>=<span class="string">"com.wu.springBootToken.mapper.UserMapper"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"findByUserNameAndPasswd"</span> <span class="attr">resultType</span>=<span class="string">"com.wu.springBootToken.entity.User"</span>&gt;</span></span><br><span class="line">        select * from user</span><br><span class="line">        where username=#&#123;username&#125; and password=#&#123;userpasswd&#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">mapper</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="7-测试"><a href="#7-测试" class="headerlink" title="7. 测试"></a>7. 测试</h5><h6 id="7-1-在没token的情况下访问-getMessage接口"><a href="#7-1-在没token的情况下访问-getMessage接口" class="headerlink" title="7.1 在没token的情况下访问/getMessage接口"></a>7.1 在没token的情况下访问/getMessage接口</h6><p><img src="/2019/10/13/SpringBoot-Token/getMessageNoToken.PNG" alt></p>
+<h6 id="7-2-用户名和密码登录"><a href="#7-2-用户名和密码登录" class="headerlink" title="7.2 用户名和密码登录"></a>7.2 用户名和密码登录</h6><p><img src="/2019/10/13/SpringBoot-Token/login.PNG" alt></p>
+<h6 id="7-3-请求头携带token的情况下访问-getMessage接口"><a href="#7-3-请求头携带token的情况下访问-getMessage接口" class="headerlink" title="7.3 请求头携带token的情况下访问/getMessage接口"></a>7.3 请求头携带token的情况下访问/getMessage接口</h6><p><img src="/2019/10/13/SpringBoot-Token/getMessageWithToken.PNG" alt></p>
+<h5 id="8-相关连接"><a href="#8-相关连接" class="headerlink" title="8.相关连接"></a>8.相关连接</h5><p><a href="https://github.com/AndersonBlog/springBootToken.git" target="_blank" rel="noopener">项目链接</a></p>
+<p>参考资料：</p>
+<p><a href="https://blog.csdn.net/FindHuni/article/details/94451136" target="_blank" rel="noopener">https://blog.csdn.net/FindHuni/article/details/94451136</a>       </p>
+<p><a href="https://www.cnblogs.com/ChromeT/p/10932202.html" target="_blank" rel="noopener">https://www.cnblogs.com/ChromeT/p/10932202.html</a></p>
+<p><a href="https://www.jianshu.com/p/e88d3f8151db" target="_blank" rel="noopener">https://www.jianshu.com/p/e88d3f8151db</a></p>
+<p>​        </p>
+
+      
+    </div>
+
+    
+    
+    
+	<div>
+		
+	</div>
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
   </div>
 
   
@@ -2055,7 +2248,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">22</span>
+          <span class="site-state-item-count">21</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
