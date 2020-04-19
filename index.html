@@ -171,6 +171,163 @@
   
   <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/06/Nginx%20%E4%B8%8E%E5%BE%AE%E6%9C%8D%E5%8A%A1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/self.png">
+      <meta itemprop="name" content="Anderson Wu">
+      <meta itemprop="description" content="Love is love">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="陪你度过漫长岁月">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/04/06/Nginx%20%E4%B8%8E%E5%BE%AE%E6%9C%8D%E5%8A%A1/" class="post-title-link" itemprop="url">Nginx 与微服务</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-04-06 15:05:50 / 修改时间：23:38:49" itemprop="dateCreated datePublished" datetime="2020-04-06T15:05:50+08:00">2020-04-06</time>
+            </span>
+		 
+
+          
+		  
+		  
+		
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="Nginx-与微服务"><a href="#Nginx-与微服务" class="headerlink" title="Nginx 与微服务"></a>Nginx 与微服务</h3><h4 id="1-微服务"><a href="#1-微服务" class="headerlink" title="1. 微服务"></a>1. 微服务</h4><p>随着当下应用程序功能越来越完善，传统的应用程序围绕着业务逻辑为核心，来定义和划分服务，以及对象和模块，适配器充当程序内核与外界接口的桥梁。</p>
+<p>![](Nginx 与微服务/1.png)</p>
+<p>如图所示， 适配器包括数据库访问组件，生成和使用消息的消息传递组件以及公开API或实现UI的Web组件。</p>
+<p>​        在安装部署时，只需将整个应用程序作为一个整体打包，比如将Java 程序打包成WAR 文件，直接部署在Tomcat或Jetty等WEB服务器。而随着业务扩展和用户量提高，整个应用程序整体会变得非常庞大臃肿，迭代开发变成一件非常困难的事情，比如：应用程序中数量庞大的JAR 包之间的依赖关系，或是每次迭代都需要重新部署整个应用，或是所有模块都在同一个进程中运行，因此任何模块中的错误（例如内存泄漏）都可能导致整个进程中断。</p>
+<p>​      微服务架构可以解决单一的应用程序的局限性，在微服务的理念中，根据程序的特征或功能，把整体单一的应用程序拆分成多个服务模块，彼此在业务逻辑上相互独立，从而减低服务之间的耦合性，每个服务对外公开REST API, 相互之间通过API来调用其服务。</p>
+<p>![](Nginx 与微服务/2.png)</p>
+<h4 id="1-2-通信"><a href="#1-2-通信" class="headerlink" title="1.2 通信"></a>1.2 通信</h4><p>   在组件内部，可以通过语言级方法或函数调用进行交互，而微服务是基于多主机的分布式系统，每个服务都是运行的实例，服务之间的交互属于进程通信<strong>（IPC，InterProcess Communication）</strong>。</p>
+
+      
+    </div>
+
+    
+    
+    
+	<div>
+		
+	</div>
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/01/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E6%80%BB%E7%BB%93/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/self.png">
+      <meta itemprop="name" content="Anderson Wu">
+      <meta itemprop="description" content="Love is love">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="陪你度过漫长岁月">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/04/01/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E6%80%BB%E7%BB%93/" class="post-title-link" itemprop="url">排序算法总结</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-04-01 23:51:25" itemprop="dateCreated datePublished" datetime="2020-04-01T23:51:25+08:00">2020-04-01</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-04-02 00:03:14" itemprop="dateModified" datetime="2020-04-02T00:03:14+08:00">2020-04-02</time>
+              </span>
+		 
+
+          
+		  
+		  
+		
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="排序算法总结"><a href="#排序算法总结" class="headerlink" title="排序算法总结"></a>排序算法总结</h3><p><a href="https://twocups.cn/index.php/2020/02/01/17/" target="_blank" rel="noopener">https://twocups.cn/index.php/2020/02/01/17/</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/40695917" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/40695917</a></p>
+
+      
+    </div>
+
+    
+    
+    
+	<div>
+		
+	</div>
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/28/SpringBoot%E5%9F%BA%E7%A1%80%E5%85%AD/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -899,199 +1056,6 @@
   
   
 
-        
-  
-  
-  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/27/Vue%E4%B8%ADslot-scope%E7%9A%84%E7%90%86%E8%A7%A3/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/self.png">
-      <meta itemprop="name" content="Anderson Wu">
-      <meta itemprop="description" content="Love is love">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="陪你度过漫长岁月">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/10/27/Vue%E4%B8%ADslot-scope%E7%9A%84%E7%90%86%E8%A7%A3/" class="post-title-link" itemprop="url">Vue中slot-scope理解</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-10-27 10:02:19" itemprop="dateCreated datePublished" datetime="2019-10-27T10:02:19+08:00">2019-10-27</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-03-28 21:12:45" itemprop="dateModified" datetime="2020-03-28T21:12:45+08:00">2020-03-28</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Vue/" itemprop="url" rel="index"><span itemprop="name">Vue</span></a>
-                </span>
-            </span>
-		 
-
-          
-		  
-		  
-		
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span id="busuanzi_value_page_pv"></span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>这段时间在学习开发一个人事管理系统，在使用vue开发前端时，发现需要使用slot，但是Vue官网文档对slot说明很简洁，我不太明白其用法和应用场景，所以仔细学习一下。</p>
-<h5 id="1-slot"><a href="#1-slot" class="headerlink" title="1.slot"></a>1.slot</h5>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2019/10/27/Vue%E4%B8%ADslot-scope%E7%9A%84%E7%90%86%E8%A7%A3/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-	<div>
-		
-	</div>
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/13/SpringBoot-Token/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/self.png">
-      <meta itemprop="name" content="Anderson Wu">
-      <meta itemprop="description" content="Love is love">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="陪你度过漫长岁月">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/10/13/SpringBoot-Token/" class="post-title-link" itemprop="url">SpringBoot实现基于Token的用户身份验证</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-10-13 20:02:19" itemprop="dateCreated datePublished" datetime="2019-10-13T20:02:19+08:00">2019-10-13</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-03-28 21:14:21" itemprop="dateModified" datetime="2020-03-28T21:14:21+08:00">2020-03-28</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/SpringBoot/" itemprop="url" rel="index"><span itemprop="name">SpringBoot</span></a>
-                </span>
-            </span>
-		 
-
-          
-		  
-		  
-		
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span id="busuanzi_value_page_pv"></span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h5 id="1-本文涉及到的知识："><a href="#1-本文涉及到的知识：" class="headerlink" title="1.本文涉及到的知识："></a>1.本文涉及到的知识：</h5><ul>
-<li>Jwt</li>
-<li>Token，session和cookie区别</li>
-</ul>
-<h5 id="2-无状态HTTP协议"><a href="#2-无状态HTTP协议" class="headerlink" title="2.无状态HTTP协议"></a>2.无状态HTTP协议</h5>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2019/10/13/SpringBoot-Token/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-	<div>
-		
-	</div>
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -1164,7 +1128,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">21</span>
+          <span class="site-state-item-count">23</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1193,7 +1157,7 @@
         <a href="https://fontawesome.dashgame.com/#new" title="Icon → https:&#x2F;&#x2F;fontawesome.dashgame.com&#x2F;#new" rel="noopener" target="_blank"><i class="fa fa-fw fa-bar-chart"></i>Icon</a>
       </span>
       <span class="links-of-author-item">
-        <a href="https://andersonblog.github.io/" title="GitHUbBlog → https:&#x2F;&#x2F;andersonblog.github.io&#x2F;" rel="noopener" target="_blank"><i class="fa fa-fw fa-github-alt"></i>GitHUbBlog</a>
+        <a href="https://andersonblog.github.io/" title="GitHubBlog → https:&#x2F;&#x2F;andersonblog.github.io&#x2F;" rel="noopener" target="_blank"><i class="fa fa-fw fa-github-alt"></i>GitHubBlog</a>
       </span>
       <span class="links-of-author-item">
         <a href="https://andersonblog.gitee.io/" title="GiteeBlog → https:&#x2F;&#x2F;andersonblog.gitee.io&#x2F;" rel="noopener" target="_blank"><i class="fa fa-fw fa-git-square"></i>GiteeBlog</a>
