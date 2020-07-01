@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/2.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/1.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Gemini","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="消息队列简介1. 术语解析中间件：实现应用程序和其他应用程序、网络、硬件、操作系统交互或通信的软件。通常使用网络服务在不同的应用程序之间进行资源共享。 队列（queue）: 是一种线性存储结构，要求数据从队尾入队，从队头出队，具有先进先出（First In First Out）的特点。  消息队列（Message Queue）: 是一种使用队列（Queue）作为底层存储数据结构，可以用于解决不同进">
+<meta property="og:type" content="article">
+<meta property="og:title" content="消息队列简介">
+<meta property="og:url" content="http://yoursite.com/2020/06/20/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/index.html">
+<meta property="og:site_name" content="陪你度过漫长岁月">
+<meta property="og:description" content="消息队列简介1. 术语解析中间件：实现应用程序和其他应用程序、网络、硬件、操作系统交互或通信的软件。通常使用网络服务在不同的应用程序之间进行资源共享。 队列（queue）: 是一种线性存储结构，要求数据从队尾入队，从队头出队，具有先进先出（First In First Out）的特点。  消息队列（Message Queue）: 是一种使用队列（Queue）作为底层存储数据结构，可以用于解决不同进">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://yoursite.com/2020/06/20/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/4.png">
+<meta property="og:image" content="http://yoursite.com/2020/06/20/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/1.png">
+<meta property="og:image" content="http://yoursite.com/2020/06/20/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/2.png">
+<meta property="og:image" content="http://yoursite.com/2020/06/20/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/7.png">
+<meta property="og:image" content="http://yoursite.com/2020/06/20/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/5.png">
+<meta property="og:image" content="http://yoursite.com/2020/06/20/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/6.png">
+<meta property="og:image" content="http://yoursite.com/2020/06/20/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/8.png">
+<meta property="article:published_time" content="2020-06-20T11:37:58.000Z">
+<meta property="article:modified_time" content="2020-07-01T16:24:14.235Z">
+<meta property="article:author" content="Anderson Wu">
+<meta property="article:tag" content="消息队列">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/2020/06/20/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/4.png">
+
+<link rel="canonical" href="http://yoursite.com/2020/06/20/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>消息队列简介 | 陪你度过漫长岁月</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">陪你度过漫长岁月</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">To be yourself</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap" rel="section"><i class="fa fa-fw fa-sitemap"></i>站点地图</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/20/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/self.png">
+      <meta itemprop="name" content="Anderson Wu">
+      <meta itemprop="description" content="Love is love">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="陪你度过漫长岁月">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          消息队列简介
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-06-20 19:37:58" itemprop="dateCreated datePublished" datetime="2020-06-20T19:37:58+08:00">2020-06-20</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-07-02 00:24:14" itemprop="dateModified" datetime="2020-07-02T00:24:14+08:00">2020-07-02</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E4%B8%AD%E9%97%B4%E4%BB%B6/" itemprop="url" rel="index"><span itemprop="name">中间件</span></a>
+                </span>
+            </span>
+		 
+
+          
+		  
+		  
+		
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h4 id="消息队列简介"><a href="#消息队列简介" class="headerlink" title="消息队列简介"></a>消息队列简介</h4><h4 id="1-术语解析"><a href="#1-术语解析" class="headerlink" title="1. 术语解析"></a>1. 术语解析</h4><p><strong>中间件</strong>：实现应用程序和其他应用程序、网络、硬件、操作系统交互或通信的软件。通常使用网络服务在不同的应用程序之间进行资源共享。</p>
+<p><strong>队列（queue）</strong>: 是一种线性存储结构，要求数据从队尾入队，从队头出队，具有先进先出（First In First Out）的特点。</p>
+<p><img src="/2020/06/20/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/4.png" alt></p>
+<p><strong>消息队列（Message Queue）</strong>: 是一种使用队列（Queue）作为底层存储数据结构，可以用于解决不同进程与应用程序之间通讯的分布式消息容器，也可以称为消息中间件。</p>
+<p><strong>消息中间件</strong>：也称为消息队列</p>
+<p><strong>消息队列(Message Queue)</strong>： 是指用高效可靠的消息传递机制进行与平台无关的数据交流，并基于数据通信来进行分布式系统的集成。通过提供消息传递和消息队列模型，可以在分布式环境下扩展进程的通信。</p>
+<h4 id="2-消息队列的作用"><a href="#2-消息队列的作用" class="headerlink" title="2. 消息队列的作用"></a>2. 消息队列的作用</h4><p>​        随着微服务和分布式架构的流行，为了解决应用程序之间的资源共享带来的业务耦合，流量峰值和处理时机等问题，需要借助消息队列，作为中间件实现高性能、高可用、可伸缩和一致性的系统架构。</p>
+<p><strong>解耦</strong>：</p>
+<p>​      如图，在购物系统中，支付系统将支付结果放在消息队列中，通知订单系统修改订单支付状态，从而保持数据的一致性。在整个系统架构中，消息队列作为中间件，对两个系统进行解耦，实现消息传递的服务。</p>
+<p><img src="/2020/06/20/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/1.png" alt></p>
+<p>  事实上，在微服务中，考虑到模块之间的扩展性，消息队列常常作为事件驱动架构一部分，连接在各个程序之间，如图：</p>
+<p><img src="/2020/06/20/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/2.png" alt></p>
+<p><strong>高可用</strong>：</p>
+<p><img src="/2020/06/20/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/7.png" alt></p>
+<p>​       例如 Kafka，Kafka集群提供HA机制，每个partition 会同步数据到其他的broker上，保存多个副本；在所有的broker 上选举出leader，生产者和消费者只对leader进行读写操作，一旦leader宕机，剩下的broker保存有副本数据，重新选举出leader，继续进行读写，从而实现高可用性。</p>
+<p><strong>削峰</strong>：</p>
+<p>​       利用消息队列的异步处理<strong>通过异步处理，将短时间高并发产生的事务消息存储在消息队列中，从而削平高峰期的并发事务</strong>。例如：在秒杀或抢购的活动中系统可能会因为流量过大，配置承载不了瞬间流量，直接挂掉，即“宕机”现象。为解决这个问题，可以把所有的请求放在消息队列中，系统根据自身的请求吞吐量从消息队列中取出请求信息进行处理。</p>
+<h4 id="3-消息队列特点"><a href="#3-消息队列特点" class="headerlink" title="3. 消息队列特点"></a>3. 消息队列特点</h4><h5 id="3-1-P2P-（point-to-point-queue）模式"><a href="#3-1-P2P-（point-to-point-queue）模式" class="headerlink" title="3.1 P2P （point to point, queue）模式"></a>3.1 P2P （point to point, queue）模式</h5><ul>
+<li>消息队列（queue）</li>
+<li>发送者/生产者 (Producer)</li>
+<li>接收者/消费者（Consumer）</li>
+</ul>
+<p><img src="/2020/06/20/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/5.png" alt></p>
+<p>P2P模式：每个消息都被发送到一个特定的队列，接收者从队列中获取消息。队列保留着消息，直到他们被消费或超时。</p>
+<p>P2P的特点：</p>
+<ul>
+<li>每个消息只有一个生产者（Producer）和消费者（Consumer）(即一旦被消费，消息就不再在消息队列中)</li>
+<li>发送者和接收者之间在时间上没有依赖性，也就是说当发送者发送了消息之后，不管接收者有没有正在运行，它不会影响到消息被发送到队列</li>
+<li>接收者在成功接收消息之后需向队列应答成功，以便消息队列删除当前接收的消息；</li>
+</ul>
+<h5 id="3-2-Pub-Sub-（publish-subscribe，topic）模式"><a href="#3-2-Pub-Sub-（publish-subscribe，topic）模式" class="headerlink" title="3.2 Pub/Sub （publish/subscribe，topic）模式"></a>3.2 Pub/Sub （publish/subscribe，topic）模式</h5><p><img src="/2020/06/20/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/6.png" alt></p>
+<ul>
+<li><p>角色主题（Topic）</p>
+</li>
+<li><p>发布者(Publisher)：是指消息的生产者</p>
+</li>
+<li><p>订阅者(Subscriber)： 是指订阅了这条Topic 的接收者</p>
+</li>
+</ul>
+<p>Pub/Sub 模式中，多个发布者将消息发送到Topic，系统将这些消息传递给多个订阅者。</p>
+<p>发布/订阅模式特点：</p>
+<ul>
+<li>每个消息可以有多个订阅者；</li>
+<li>发布者和订阅者之间有时间上的依赖性。针对某个主题（Topic）的订阅者，它必须创建一个订阅者之后，才能消费发布者的消息；</li>
+<li>为了消费消息，订阅者需要提前订阅该角色主题，并保持在线运行；</li>
+</ul>
+<h4 id="4-消息队列存在一些问题"><a href="#4-消息队列存在一些问题" class="headerlink" title="4. 消息队列存在一些问题"></a>4. 消息队列存在一些问题</h4><p><img src="/2020/06/20/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/8.png" alt></p>
+<h5 id="4-1-降低系统的可用性"><a href="#4-1-降低系统的可用性" class="headerlink" title="4.1 降低系统的可用性"></a>4.1 降低系统的可用性</h5><p>​    前面指的高可用只是针对消息队列内部来说，而对于整个系统，由于依赖于消息队列的稳定性，一旦消息队列故障，整个系统将受到影响。</p>
+<h5 id="4-2-系统复杂性提高"><a href="#4-2-系统复杂性提高" class="headerlink" title="4.2 系统复杂性提高"></a>4.2 系统复杂性提高</h5><p>使用消息队列后，需要考虑消息没有被重复消费、处理消息丢失的情况、保证消息传递的顺序性等等问题；</p>
+<h5 id="4-3-一致性问题"><a href="#4-3-一致性问题" class="headerlink" title="4.3 一致性问题"></a>4.3 一致性问题</h5><p>   对于关联到几个应用系统的请求，请求出队后，当只有一个应用处理失败，没有写入数据库，导致整个请求失败。</p>
+<p><a href="https://www.sohu.com/a/340091992_463994" target="_blank" rel="noopener">https://www.sohu.com/a/340091992_463994</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/52773169" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/52773169</a></p>
+<p><a href="https://www.cnblogs.com/dotnet261010/p/13099201.html" target="_blank" rel="noopener">https://www.cnblogs.com/dotnet261010/p/13099201.html</a></p>
+<p><a href="https://www.cnblogs.com/liujunjun/p/13173339.html" target="_blank" rel="noopener">https://www.cnblogs.com/liujunjun/p/13173339.html</a></p>
+<p><a href="https://www.jianshu.com/p/27411342d957" target="_blank" rel="noopener">https://www.jianshu.com/p/27411342d957</a></p>
+
+    </div>
+
+    
+    
+    
+	<div>
+		
+		 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+		<div style="text-align:center;color: #ccc;font-size:14px;">
+			<span>访问总量<span id="busuanzi_value_site_pv"></span>次</span>
+			<span>|</span>
+			<span>总访客<span id="busuanzi_value_site_uv"></span>人</span>
+		</div>
+      
+</div>
+
+		
+	</div>
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Anderson Wu
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://yoursite.com/2020/06/20/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/" title="消息队列简介">http://yoursite.com/2020/06/20/消息队列/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/publicdomain/zero/1.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>ZERO</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/" rel="tag"># 消息队列</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/04/25/SpringBoot%E5%9F%BA%E7%A1%80%E4%B8%83/" rel="prev" title="SpringBoot基础七">
+      <i class="fa fa-chevron-left"></i> SpringBoot基础七
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/06/20/Solace/" rel="next" title="Solace">
+      Solace <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#消息队列简介"><span class="nav-text">消息队列简介</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-术语解析"><span class="nav-text">1. 术语解析</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-消息队列的作用"><span class="nav-text">2. 消息队列的作用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-消息队列特点"><span class="nav-text">3. 消息队列特点</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#3-1-P2P-（point-to-point-queue）模式"><span class="nav-text">3.1 P2P （point to point, queue）模式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-2-Pub-Sub-（publish-subscribe，topic）模式"><span class="nav-text">3.2 Pub&#x2F;Sub （publish&#x2F;subscribe，topic）模式</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-消息队列存在一些问题"><span class="nav-text">4. 消息队列存在一些问题</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#4-1-降低系统的可用性"><span class="nav-text">4.1 降低系统的可用性</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-2-系统复杂性提高"><span class="nav-text">4.2 系统复杂性提高</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-3-一致性问题"><span class="nav-text">4.3 一致性问题</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Anderson Wu"
+      src="/images/self.png">
+  <p class="site-author-name" itemprop="name">Anderson Wu</p>
+  <div class="site-description" itemprop="description">Love is love</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">25</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/AndersonBlog" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;AndersonBlog" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:anderson992@163.com" title="E-Mail → mailto:anderson992@163.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://fontawesome.dashgame.com/#new" title="Icon → https:&#x2F;&#x2F;fontawesome.dashgame.com&#x2F;#new" rel="noopener" target="_blank"><i class="fa fa-fw fa-bar-chart"></i>Icon</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://andersonblog.github.io/" title="GitHubBlog → https:&#x2F;&#x2F;andersonblog.github.io&#x2F;" rel="noopener" target="_blank"><i class="fa fa-fw fa-github-alt"></i>GitHubBlog</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://andersonblog.gitee.io/" title="GiteeBlog → https:&#x2F;&#x2F;andersonblog.gitee.io&#x2F;" rel="noopener" target="_blank"><i class="fa fa-fw fa-git-square"></i>GiteeBlog</a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/publicdomain/zero/1.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-zero.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Anderson</span>
+<script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
