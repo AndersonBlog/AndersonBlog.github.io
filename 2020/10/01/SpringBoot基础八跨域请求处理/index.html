@@ -38,7 +38,7 @@
 <meta property="og:image" content="https://andersonblog.gitee.io/2020/10/01/SpringBoot%E5%9F%BA%E7%A1%80%E5%85%AB%E8%B7%A8%E5%9F%9F%E8%AF%B7%E6%B1%82%E5%A4%84%E7%90%86/9.gif">
 <meta property="og:image" content="https://andersonblog.gitee.io/2020/10/01/SpringBoot%E5%9F%BA%E7%A1%80%E5%85%AB%E8%B7%A8%E5%9F%9F%E8%AF%B7%E6%B1%82%E5%A4%84%E7%90%86/10.gif">
 <meta property="article:published_time" content="2020-10-01T11:37:58.000Z">
-<meta property="article:modified_time" content="2020-10-02T04:36:17.819Z">
+<meta property="article:modified_time" content="2020-10-05T02:47:35.282Z">
 <meta property="article:author" content="Anderson Wu">
 <meta property="article:tag" content="SpringBoot">
 <meta name="twitter:card" content="summary">
@@ -220,7 +220,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-10-02 12:36:17" itemprop="dateModified" datetime="2020-10-02T12:36:17+08:00">2020-10-02</time>
+                <time title="修改时间：2020-10-05 10:47:35" itemprop="dateModified" datetime="2020-10-05T10:47:35+08:00">2020-10-05</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -263,8 +263,7 @@
 <a id="more"></a>
 
 <p>假设我们正在访问 <code>https://api.mywebsite.com</code> 这个站点，点击按钮向 <code>https://api.mywebsite.com/users</code> 发送请求，获取网站上的一些用户信息：</p>
-<img src="/2020/10/01/SpringBoot%E5%9F%BA%E7%A1%80%E5%85%AB%E8%B7%A8%E5%9F%9F%E8%AF%B7%E6%B1%82%E5%A4%84%E7%90%86/1.gif" style="zoom:150%;">
-
+<p><img src="/2020/10/01/SpringBoot%E5%9F%BA%E7%A1%80%E5%85%AB%E8%B7%A8%E5%9F%9F%E8%AF%B7%E6%B1%82%E5%A4%84%E7%90%86/1.gif" alt></p>
 <blockquote>
 <p><strong>“</strong> </p>
 <p>⚠️：这里原作者有个笔误，把 <code>https://api.mywebsite.com</code> 误写为 <code>https://www.mywebsite.com</code> 了，图中也有这个错误，读者要注意一下不要被误导</p>
@@ -315,7 +314,7 @@
 <td>不同源（端口不同）</td>
 </tr>
 </tbody></table>
-<p><img src="/2020/10/01/SpringBoot%E5%9F%BA%E7%A1%80%E5%85%AB%E8%B7%A8%E5%9F%9F%E8%AF%B7%E6%B1%82%E5%A4%84%E7%90%86/3.png" alt="3"></p>
+<p><img src="/2020/10/01/SpringBoot%E5%9F%BA%E7%A1%80%E5%85%AB%E8%B7%A8%E5%9F%9F%E8%AF%B7%E6%B1%82%E5%A4%84%E7%90%86/3.png" alt></p>
 <p><strong>同源策略会限制三种行为：</strong></p>
 <ul>
 <li>Cookie、LocalStorage 和 IndexDB 访问受限</li>
@@ -344,37 +343,29 @@
 <li>服务器实现了 <code>CORS</code> 接口，就可以跨源通信</li>
 </ul>
 <h5 id="3-1-浏览器-CORS"><a href="#3-1-浏览器-CORS" class="headerlink" title="3.1 浏览器 CORS"></a>3.1 浏览器 CORS</h5><p>出于安全原因，浏览器限制<strong>从脚本内发起</strong>的跨域 HTTP 请求。 例如 XHR 和 Fetch 就遵循同源策略。这意味着使用 API 的 Web 应用程序只能从加载应用程序的同一个域请求 HTTP 资源。</p>
-<img src="/2020/10/01/SpringBoot%E5%9F%BA%E7%A1%80%E5%85%AB%E8%B7%A8%E5%9F%9F%E8%AF%B7%E6%B1%82%E5%A4%84%E7%90%86/4.gif">
-
-
-
+<p><img src="/2020/10/01/SpringBoot%E5%9F%BA%E7%A1%80%E5%85%AB%E8%B7%A8%E5%9F%9F%E8%AF%B7%E6%B1%82%E5%A4%84%E7%90%86/4.gif" alt></p>
 <p>日常的业务开发中，我们会经常访问跨域资源，为了安全的请求跨域资源，浏览器使用一种称为 CORS 的机制。</p>
 <p>CORS 的全名是 <strong>Cross-Origin Resource Sharing</strong>，即<strong>跨域资源共享</strong>。尽管默认情况下浏览器禁止我们访问跨域资源，但是我们可以利用 CORS <strong>放宽</strong>这种限制，在保证安全性的前提下访问跨域资源。</p>
 <p>浏览器可以利用 CORS 机制，放行符合规范的跨域访问，阻止不合规范的跨域访问。浏览器内部是怎么做的呢？我们下面就来分析一下。</p>
 <p>Web 程序发出跨域请求后，浏览器会<strong>自动</strong>向我们的 HTTP header 添加一个额外的请求头字段：<code>Origin</code>。<code>Origin</code> 标记了请求的站点来源：</p>
 <figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">GET https://api.website.com/users HTTP/1/1</span><br><span class="line"><span class="attribute">Origin</span>: https://www.mywebsite.com // &lt;- 浏览器自己加的</span><br></pre></td></tr></table></figure>
 
-<img src="/2020/10/01/SpringBoot%E5%9F%BA%E7%A1%80%E5%85%AB%E8%B7%A8%E5%9F%9F%E8%AF%B7%E6%B1%82%E5%A4%84%E7%90%86/5.gif">
-
+<p><img src="/2020/10/01/SpringBoot%E5%9F%BA%E7%A1%80%E5%85%AB%E8%B7%A8%E5%9F%9F%E8%AF%B7%E6%B1%82%E5%A4%84%E7%90%86/5.gif" alt></p>
 <p>为了使浏览器允许访问跨域资源， 服务器返回的 response 还需要加一些响应头字段，这些字段将<strong>显式表明</strong>此服务器是否允许这个跨域请求。</p>
 <h5 id="3-3-服务器-CORS"><a href="#3-3-服务器-CORS" class="headerlink" title="3.3 服务器 CORS"></a>3.3 服务器 CORS</h5><p>作为服务器开发人员，我们可以通过在 HTTP 响应中添加额外的响应头字段 <code>Access-Control-*</code> 来表明是否允许跨域请求。根据这些 CORS 响应头字段，浏览器可以允许一些被同源策略限制的跨源响应。</p>
 <p>虽然有<a href="https://fetch.spec.whatwg.org/#http-responses" target="_blank" rel="noopener">好几个 CORS 响应头字段</a>，但有一个字段是<strong>必加</strong>的，那就是 <code>Access-Control-Allow-Origin</code>。这个头字段的值指定了哪些站点被允许跨域访问资源。</p>
 <p>1️⃣ 如果我们有服务器的开发权限，我们可以给 <code>https://www.mywebsite.com</code> 加上访问权限：将该域添加到 <code>Access-Control-Allow-Origin</code> 中。</p>
-<img src="/2020/10/01/SpringBoot%E5%9F%BA%E7%A1%80%E5%85%AB%E8%B7%A8%E5%9F%9F%E8%AF%B7%E6%B1%82%E5%A4%84%E7%90%86/6.gif">
-
+<p><img src="/2020/10/01/SpringBoot%E5%9F%BA%E7%A1%80%E5%85%AB%E8%B7%A8%E5%9F%9F%E8%AF%B7%E6%B1%82%E5%A4%84%E7%90%86/6.gif" alt></p>
 <p>这个响应头字段现在被添加到服务器发回给客户端的 response header 中。这个字段添加后，如果我们从 <code>https://www.mywebsite.com</code> 发送跨域请求，同源策略将不再限制 <code>https://api.mywebsite.com</code> 站点返回的资源。</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">HTTP/1.1 <span class="number">200</span> OK</span><br><span class="line"><span class="attribute">Access-Control-Allow-Origin</span>: https://www.mywebsite.com</span><br><span class="line"><span class="attribute">Date</span>: Fri, 11 Oct 2019 15:47 GM</span><br><span class="line"><span class="attribute">Content-Length</span>: 29</span><br><span class="line"><span class="attribute">Content-Type</span>: application/json</span><br><span class="line"><span class="attribute">Server</span>: Apache</span><br><span class="line">&#123;user: [&#123;...&#125;]&#125;</span><br></pre></td></tr></table></figure>
 
-<img src="/2020/10/01/SpringBoot%E5%9F%BA%E7%A1%80%E5%85%AB%E8%B7%A8%E5%9F%9F%E8%AF%B7%E6%B1%82%E5%A4%84%E7%90%86/7.gif">
-
+<p><img src="/2020/10/01/SpringBoot%E5%9F%BA%E7%A1%80%E5%85%AB%E8%B7%A8%E5%9F%9F%E8%AF%B7%E6%B1%82%E5%A4%84%E7%90%86/7.gif" alt></p>
 <p>2️⃣ 收到服务器返回的 response 后，浏览器中的 CORS 机制会检查 <code>Access-Control-Allow-Origin</code> 的值是否等于 request 中 <code>Origin</code> 的值。</p>
 <p>在这个例子中，request 的 <code>Origin</code> 是 <code>https://www.mywebsite.com</code>，这和 response 中 <code>Access-Control-Allow-Origin</code> 的值是一样的：</p>
-<img src="/2020/10/01/SpringBoot%E5%9F%BA%E7%A1%80%E5%85%AB%E8%B7%A8%E5%9F%9F%E8%AF%B7%E6%B1%82%E5%A4%84%E7%90%86/8.gif">
-
+<p><img src="/2020/10/01/SpringBoot%E5%9F%BA%E7%A1%80%E5%85%AB%E8%B7%A8%E5%9F%9F%E8%AF%B7%E6%B1%82%E5%A4%84%E7%90%86/8.gif" alt></p>
 <p>3️⃣ 浏览器校验通过，前端成功地接收到跨域资源。</p>
 <p>那么，当我们试图从一个没有在 <code>Access-Control-Allow-Origin</code> 中列出的网站跨域访问这些资源会发生什么呢？</p>
-<img src="/2020/10/01/SpringBoot%E5%9F%BA%E7%A1%80%E5%85%AB%E8%B7%A8%E5%9F%9F%E8%AF%B7%E6%B1%82%E5%A4%84%E7%90%86/9.gif">
-
+<p><img src="/2020/10/01/SpringBoot%E5%9F%BA%E7%A1%80%E5%85%AB%E8%B7%A8%E5%9F%9F%E8%AF%B7%E6%B1%82%E5%A4%84%E7%90%86/9.gif" alt></p>
 <p>如上图所示，从 <code>https://www.anotherwebsite.com</code> 跨域访问 <code>https://api.mywebsite.com</code> 资源，浏览器抛出一个 CORS Error，经过上面的讲解，我们可以读懂这个报错信息了：</p>
 <figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">The <span class="string">'Access-Control-Allow-Origin'</span> header has <span class="keyword">a</span> <span class="built_in">value</span></span><br><span class="line"> <span class="string">'https://www.mywebsite.com'</span> that is <span class="keyword">not</span> equal </span><br><span class="line"><span class="built_in">to</span> <span class="keyword">the</span> supplied origin.</span><br></pre></td></tr></table></figure>
 
@@ -385,8 +376,7 @@
 </blockquote>
 <p><code>Access-Control-Allow-Origin</code> 是 CORS 机制提供的众多头字段之一。服务器开发人员还可以通过其它头字段扩展服务器的 CORS 策略，以允许/禁止某些请求。</p>
 <p>另一个常见的响应头字段是 <code>Access-Control-Allow-Methods</code>。其指明了跨域请求所允许使用的 HTTP 方法。</p>
-<img src="/2020/10/01/SpringBoot%E5%9F%BA%E7%A1%80%E5%85%AB%E8%B7%A8%E5%9F%9F%E8%AF%B7%E6%B1%82%E5%A4%84%E7%90%86/10.gif">
-
+<p><img src="/2020/10/01/SpringBoot%E5%9F%BA%E7%A1%80%E5%85%AB%E8%B7%A8%E5%9F%9F%E8%AF%B7%E6%B1%82%E5%A4%84%E7%90%86/10.gif" alt></p>
 <p>在上图的案例中，只有<code>GET</code>，<code>POST</code> 或 <code>PUT</code> 方法被允许跨域访问资源。其他 HTTP 方法，例如 <code>PATCH</code> 和 <code>DELETE</code> 都会被阻止。</p>
 <blockquote>
 <p>“</p>
